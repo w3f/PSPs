@@ -12,7 +12,7 @@ Below is the workflow of a successful PSP:
 1. **Draft:** A first draft, which is merged into this repo and actively improved together with the community. 
 2. **Call for Feedback:** The PSP will be shared on different channels for additional feedback for at least 2 weeks. The result of this step is either an acceptance of the standard (->Accepted) or the rejection (->Draft). 
 3. **Accepted:** Any further changes are unlikely, and developers can start integrating the PSP. Once a PSP is accepted, a reference implementation needs to be created.    
-4. **Integrated:** The PSP is actively used and a reference implementation exists. . 
+4. **Integrated:** The PSP is actively used and a reference implementation exists.
 
 ## Contributing PSPs
 
