@@ -16,7 +16,7 @@ Below is the workflow of a successful PSP:
 
 ## Contributing PSPs
 
-Before you start writing a formal PSP, you should discuss an idea in the various community channels. A PSP should provide the motivation as well as a technical specification for the feature. 
+Before you start writing a formal PSP, you should discuss an idea in the various community channels (see the [Polkadot community website](https://polkadot.network/community/)). A PSP should provide the motivation as well as a technical specification for the feature. 
 
 1. Fork this repository.
 2. In the newly created fork, create a copy of the template.
