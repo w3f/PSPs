@@ -32,10 +32,10 @@ More examples:
 - A native fungible token of a chain. e.g. DOT on Polkadot, BTC on Bitcoin, ETH on Ethereum
 - A non-fungible token provided by a chain.
 - An instance of a non-fungible token. e.g. A particular Crypto Kitty
-- A bridgged token provided by a chain. e.g. XBTC on ChainX
+- A bridged token provided by a chain. e.g. XBTC on ChainX
 - A utility token provided by runtime modules or smart contracts. e.g. MKR on Ethereum, SDOT on ChainX
 - A service provided by a chain. e.g. DEX on exchange chain
-- A traiding pair in a exchange that provided by a chain. e.g. BTCETH pair on a DEX chain
+- A trading pair in a exchange that provided by a chain. e.g. BTCETH pair on a DEX chain
 
 ## Specification
 
@@ -67,7 +67,7 @@ There are two encoding format for SUI.
 - Standard encoding
   - Encoded as a URI string
 
-- Custom SCALE ecnoding to avoid unnecessary space usage
+- Custom SCALE encoding to avoid unnecessary space usage
   - ```rust
   struct SRUI {
     userinfo: Option<ParaId>,
@@ -89,9 +89,9 @@ There are two encoding format for SUI.
 (using `polkadot` as the schema)
 
 - Polkadot DOT: `polkadot://polkadot/balances`
-- The Default Inatnace Balances token on parachain 1: `polkadot://1@polkadot/srml-balances`
+- The Default instance Balances token on parachain 1: `polkadot://1@polkadot/srml-balances`
 - The Instance2 Balances token on parachain 2: `polkadot://2@polkadot/balances.2`
-- Generic Asset Asset ID 5 token on a indenpent chain: `polkadot://chain-name/srml-generic-asset/5`
+- Generic Asset Asset ID 5 token on a independent chain: `polkadot://chain-name/srml-generic-asset/5`
 - The smart contract module on parachain 3 on Kusama: `polkadot://3@kusama/srml-contracts`
 - A NFT with ID of  `UniqueWeapon001` with provided by a smart contract with address of `0x1234abcd` on a Instance2 contracts module on parachain 4 on Kusama: `polkadot://4@kusama/srml-contracts.2/0x1234abcd/UniqueWeapon001`
 - The balances of user `0x1111aaaa` of a ERC20-like token contract with address of `0x2222bbbb` on a smart contract chain: `polkadot://smart-contract-chain-name/srml-contracts/0x2222bbbb/0x1111aaaa`
