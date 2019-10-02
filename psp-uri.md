@@ -19,7 +19,7 @@ A URI format that identifies a resource in the Polkadot ecosystem, which can be 
 
 In the cross-chain Substrate / Polkadot ecosystem, there will be multiple chains interacting with each other. Therefore it is esstenital to have a uniformed way to address each chain and the resources / services hosted by different chain.
 
-Substrate Uniform Resource Identifier (SRUI) provides a way to uniformally address a cross-chain resource.
+Substrate Uniform Resource Identifier (SURI) provides a way to uniformally address a cross-chain resource.
 
 A resource can be:
 
@@ -48,7 +48,7 @@ URI = scheme:[//authority]path[?query][#fragment]
 authority = [userinfo@]host[:port]
 ```
 
-For SRUI, the format is defined as
+For SURI, the format is defined as
 
 - schema: TBD
   - `polkadot` or `substrate` or something more generalized?
@@ -62,14 +62,14 @@ For SRUI, the format is defined as
 
 ### Encoding
 
-There are two encoding format for SUI.
+There are two encoding formats for SURI.
 
 - Standard encoding
   - Encoded as a URI string
 
 - Custom SCALE encoding to avoid unnecessary space usage
   - ```rust
-  struct SRUI {
+  struct SURI {
     userinfo: Option<ParaId>,
     host: Option<ChainId>,
     path_components: Vec<RuntimeStr>,
