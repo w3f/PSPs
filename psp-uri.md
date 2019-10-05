@@ -57,7 +57,7 @@ For SURI, the format is defined as
 - host: the relay chain index or address
   - Leave empty to point to current chain
 - path: the resource path in a chain
-  - Begin with the runtime moudle name and followed by runtime module specific path
+  - Begin with the runtime module name and followed by runtime module specific path
 - query & fragment: unspecified
 
 ### Encoding
