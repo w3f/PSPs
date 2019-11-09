@@ -91,7 +91,7 @@ pns.register(node).then((event) => {
 
 the owner can renew the domain before it expires with the price he or she bought. 
 
-The auction starts when anyone who want the domain claim auction after ttl from registered date passes or when the owner wants to sell it.
+The auction starts when anyone who wants the domain claims an auction after `ttl` from registered date passes or when the owner wants to sell it.
 
 The resolver will record the highest bidder only.
 
