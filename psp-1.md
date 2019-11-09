@@ -43,7 +43,7 @@ Updating of domain records can also be handled separately from resolution. Some 
 ENS in Polkadot just need one part:
 - resolver
 
-The resolver is the state where it manages all domains with address. Think of it as a Ethereum world state just for the DNS system.
+The resolver is the state where it manages all domains with addresses. Think of it as an Ethereum world state just for the DNS system.
 
 ## Data model
 
