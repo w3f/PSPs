@@ -72,7 +72,7 @@ pub struct Domain<AccountId, Balance, Moment> {
 ```
 
 The resolver records the auction status and domain information for each item.
-If someone registers a domain which did not exist before, they get domain paying the initilization price(1 milli dot) and have it for 1 year.
+If someone registers a domain which did not exist before, they get the domain by paying the initialization price (1 milli dot) and have it for 1 year.
 The format of the domain(e.g. .io, .com, .dot, etc) can be limited using regular expression in frontend library or in the module using rust `regex` lib in `no_std` mode.
 
 For example, suppose you wish to register the address of Bob.
