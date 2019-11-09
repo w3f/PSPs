@@ -99,7 +99,7 @@ Bidding is available before the auction is closed.
 
 The auction will finalize when anyone submits a request to finalize auction after the auction closing date.
 
-The recorded highest bidder will take the domain and register it new with the new price and have it for one year. 
+The recorded highest bidder will take the domain and register it with the new price and have it for one year. 
 
 ## Name Syntax
 
