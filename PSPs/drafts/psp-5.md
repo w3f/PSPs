@@ -12,7 +12,7 @@ This standard describes the basic JSON structure (refered to as "genesis file") 
 
 ## Motivation
 
-The [Polkadot specification](https://github.com/w3f/polkadot-spec) describes how genesis parameters should be inserted into the state storage, but networks contain additional useful information such as boot nodes, protocol identifiers, telemetry endpoints and properties that are not part of the genesis state. A standardized JSON structure allows a portable integration from different Polkadot implementations, allowing those implementations to correctly use and process the data.
+The [Polkadot specification](https://github.com/w3f/polkadot-spec) describes how genesis parameters should be inserted into the state storage, but networks contain additional useful information such as boot nodes, protocol identifiers, telemetry endpoints and properties that are not part of the genesis state. A standardized JSON structure allows a portable integration for different Polkadot implementations, nodes and and other tools, allowing these software to correctly use and process the data.
 
 ## Specification
 
