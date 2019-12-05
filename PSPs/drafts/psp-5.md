@@ -20,28 +20,28 @@ The Polkadot Runtime Environment Specification describes how genesis parameters 
 
 The genesis file must be represented in the following format:
 
-|Name              |Type                     |Mandatory|Description|
-|------------------|-------------------------|---------|-----------|
-|name              |String                   |YES      |The name of the chain network|
-|id                |String                   |YES      |Client-side parameter for logging, directory names, etc |
-|bootNodes         |[String]            |YES      |An array containing one or multiple `libp2p` [Multiaddresses](https://docs.libp2p.io/concepts/addressing/), including protocol id and multihash|
-|telemetryEndpoints|[[String, Int]]|NO       |An array of zero, one or multiple telemetry endpoints, where the inner array(s) contain(s) two values. The first value is an address with the full URL scheme and the second value is a number indicating the logging verbosity.|
-|protocolId        |String                   |NO       |The identifier of the chain network, which is sent with each request|
-|properties        |Object->Properties       |NO       |Metadata for the chain network|
-|consensusEngine   |null                     |YES      |Never used; left only for backward compatibility|
-|genesis           |Object->Genesis          |YES      |Contains the genesis parameters|
+|Name              |Type              |Mandatory|Description|
+|------------------|------------------|---------|-----------|
+|name              |String            |YES      |The name of the chain network|
+|id                |String            |YES      |Client-side parameter for logging, directory names, etc |
+|bootNodes         |[String]          |YES      |An array containing one or multiple `libp2p` [Multiaddresses](https://docs.libp2p.io/concepts/addressing/), including protocol id and multihash|
+|telemetryEndpoints|[[String, Int]]   |NO       |An array of zero, one or multiple telemetry endpoints, where the inner array(s) contain(s) two values. The first value is an address with the full URL scheme and the second value is a number indicating the logging verbosity.|
+|protocolId        |String            |NO       |The identifier of the chain network, which is sent with each request|
+|properties        |Object->Properties|NO       |Metadata for the chain network|
+|consensusEngine   |null              |YES      |Never used; left only for backward compatibility|
+|genesis           |Object->Genesis   |YES      |Contains the genesis parameters|
 
 **Object:** Properties
-|Name              |Type                     |Mandatory|Description|
-|------------------|-------------------------|---------|-----------|
-|ss58Format        |Int                      |NO       |The format of the [ss58 address format](https://github.com/paritytech/substrate/wiki/External-Address-Format-(SS58))|
-|tokenDecimals     |Int                      |NO       |The decimal precision of the native token|
-|tokenSymbol       |String                   |NO       |Symbol of the native token|
+|Name         |Type  |Mandatory|Description|
+|-------------|------|---------|-----------|
+|ss58Format   |Int   |NO       |[SS58 Address Format](https://github.com/paritytech/substrate/wiki/External-Address-Format-(SS58))|
+|tokenDecimals|Int   |NO       |The decimal precision of the native token|
+|tokenSymbol  |String|NO       |Symbol of the native token|
 
 **Object:** Genesis
-|Name              |Type                     |Mandatory|Description|
-|------------------|-------------------------|---------|-----------|
-|raw               |Object[String:String]       |YES      |The key/values pairs required for the runtime|
+|Name|Type                 |Mandatory|Description|
+|----|---------------------|---------|-----------|
+|raw |Object[String:String]|YES      |The key/values pairs required for the runtime|
 
 **Example:**
 ```
@@ -93,8 +93,6 @@ This Polkadot Standards Proposal is placed in the public domain as defined in th
 - What does the second object in `"genesis"` > `"raw"` do? See: `"raw": [{},{}]`
 - Since Polkadot has not been released yet, why is `"consensusEngine"` a legacy field?
 - What should be defined in the header value "Reference Implemenation"?
-- What's the logging verbosity for telemetry endpoints?
-- Telemetry log levels:
 - Those telemetry log levels are implementation specific and probably do not need to be standardized. Should the log levels be part of the genesis file? Should telemetry itself be part of the genesis file? If yes, then the behavior of the telemetry endpoint/interfaces must probably be specced, too.
 ```
 pub const SUBSTRATE_DEBUG: &str = "9";
