@@ -8,7 +8,7 @@
 
 ## Summary
 
-This standard describes the basic JSON structure (refered to as "genesis file") in which genesis parameters including relevant data and metadata of the network should be saved and distributed.
+This standard describes the basic JSON structure (refered to as a "genesis file") in which genesis parameters including relevant data and metadata of the network should be saved and distributed.
 
 The detailed description and requirements for the genesis parameters can be found in the [Polkadot Runtime Environment Specification](https://github.com/w3f/polkadot-spec).
 
@@ -25,10 +25,10 @@ The genesis file must be represented in the following format:
 |name              |String                   |YES      |The name of the chain network|
 |id                |String                   |YES      |Client-side parameter for logging, directory names, etc |
 |bootNodes         |Array[String]            |YES      |List of `libp2p` [Multiaddresses](https://docs.libp2p.io/concepts/addressing/), including protocol id and multihash|
-|telemetryEndpoints|Array[Array[String, Int]]|NO       |A list of Websocket telemetry endpoints pairs, where the first value is a address prefixed with a `wss://` schema and the second value is a number indicating the logging verbosity|
-|protocolId        |String                   |NO       |The identifier to of the chain network, gets sent with each request|
+|telemetryEndpoints|Array[Array[String, Int]]|NO       |A list of Websocket telemetry endpoints pairs, where the first value is an address prefixed with a `wss://` schema and the second value is a number indicating the logging verbosity|
+|protocolId        |String                   |NO       |The identifier of the chain network, which is sent with each request|
 |properties        |Object->Properties       |NO       |Metadata for the chain network|
-|consensusEngine   |null                     |YES      |Never used, left only for backward compatibility|
+|consensusEngine   |null                     |YES      |Never used; left only for backward compatibility|
 |genesis           |Object->Genesis          |YES      |Contains the genesis parameters|
 
 **Object:** Properties
@@ -78,17 +78,18 @@ The genesis file must be represented in the following format:
 
 ## Tests
 
-TODO: If applicable, please include a list of potential test cases to validate an implementation. 
+Multiple genesis files can be found in the Polkadot Runtime Environment specification repository:
+- https://github.com/w3f/polkadot-spec/tree/master/genesis-state
 
 ## Copyright
 
-TODO: Each PSP must be labeled as placed in the [public domain](https://creativecommons.org/publicdomain/zero/1.0/).
+This Polkadot Standards Proposal is placed in the public domain as defined in the [CC0 1.0 Universal (CC0 1.0) Public Domain Dedication](https://creativecommons.org/publicdomain/zero/1.0/).
 
 ## TODO
-- Why is the client side `id` mandatory while `protocol_id` is not?
-- Shouldn't `id` and `protocol_id` be the same?
+- Why is the client side `id` mandatory while `protocolId` is not?
+- Shouldn't `id` and `protocolId` be the same field/value?
 - What does "format" of the ss58 address format mean?
-- In the (kusama) JSON file the `property` field has certain key/value pairs, but the Substrate code accepts anything. This behaviour makes sense in terms of the genesis parameters, since those values just get inserted into the state storage. But how can `property` be useful if those values are not predefined?
+- In the (kusama) JSON file, the `property` field has certain key/value pairs, but the Substrate code accepts anything. This behaviour makes sense in terms of the genesis parameters, since those values just get inserted into the state storage. But how can `property` be useful if those values are not predefined?
 - What does the second object in `"genesis"` > `"raw"` do? See: `"raw": [{},{}]`
 - Since Polkadot has not been released yet, why is `"consensusEngine"` a legacy field?
 - What should be defined in the header value "Reference Implemenation"?
