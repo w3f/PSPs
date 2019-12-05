@@ -3,7 +3,7 @@
 * **PSP Number:** 001
 * **Authors:** Fabio Lama <github.com/lamafab, fabio@web3.foundation>
 * **Status:** Call for Feedback
-* **Created:** 2019-12-04
+* **Created:** 2019-12-05
 * **Reference Implementation:** https://github.com/w3f/polkadot-spec/blob/master/genesis-state/kusama/ksmcc3/kusama.json
 
 ## Summary
@@ -24,8 +24,8 @@ The genesis file must be represented in the following format:
 |------------------|-------------------------|---------|-----------|
 |name              |String                   |YES      |The name of the chain network|
 |id                |String                   |YES      |Client-side parameter for logging, directory names, etc |
-|bootNodes         |Array[String]            |YES      |List of `libp2p` [Multiaddresses](https://docs.libp2p.io/concepts/addressing/), including protocol id and multihash|
-|telemetryEndpoints|Array[Array[String, Int]]|NO       |A list of Websocket telemetry endpoints pairs, where the first value is an address prefixed with a `wss://` schema and the second value is a number indicating the logging verbosity|
+|bootNodes         |[String]            |YES      |An array containing one or multiple `libp2p` [Multiaddresses](https://docs.libp2p.io/concepts/addressing/), including protocol id and multihash|
+|telemetryEndpoints|[[String, Int]]|NO       |An array of zero, one or multiple telemetry endpoints, where the inner array(s) contain(s) two values. The first value is an address with the full URL scheme and the second value is a number indicating the logging verbosity.|
 |protocolId        |String                   |NO       |The identifier of the chain network, which is sent with each request|
 |properties        |Object->Properties       |NO       |Metadata for the chain network|
 |consensusEngine   |null                     |YES      |Never used; left only for backward compatibility|
@@ -34,7 +34,7 @@ The genesis file must be represented in the following format:
 **Object:** Properties
 |Name              |Type                     |Mandatory|Description|
 |------------------|-------------------------|---------|-----------|
-|ss58Format        |Int                      |NO       |The format of the [ss58 address format]()|
+|ss58Format        |Int                      |NO       |The format of the [ss58 address format](https://github.com/paritytech/substrate/wiki/External-Address-Format-(SS58))|
 |tokenDecimals     |Int                      |NO       |The decimal precision of the native token|
 |tokenSymbol       |String                   |NO       |Symbol of the native token|
 
@@ -88,7 +88,7 @@ This Polkadot Standards Proposal is placed in the public domain as defined in th
 ## TODO
 - Why is the client side `id` mandatory while `protocolId` is not?
 - Shouldn't `id` and `protocolId` be the same field/value?
-- What does "format" of the ss58 address format mean?
+- The ss58 address format should also be a PSP.
 - In the (kusama) JSON file, the `property` field has certain key/value pairs, but the Substrate code accepts anything. This behaviour makes sense in terms of the genesis parameters, since those values just get inserted into the state storage. But how can `property` be useful if those values are not predefined?
 - What does the second object in `"genesis"` > `"raw"` do? See: `"raw": [{},{}]`
 - Since Polkadot has not been released yet, why is `"consensusEngine"` a legacy field?
