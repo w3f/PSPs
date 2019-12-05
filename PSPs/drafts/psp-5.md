@@ -31,20 +31,23 @@ The genesis file must be represented in the following format:
 |consensusEngine   |null              |YES      |Never used; left only for backward compatibility|
 |genesis           |Object->Genesis   |YES      |Contains the genesis parameters|
 
-**Object:** Properties
+Object: Properties
+
 |Name         |Type  |Mandatory|Description|
 |-------------|------|---------|-----------|
 |ss58Format   |Int   |NO       |[SS58 Address Format](https://github.com/paritytech/substrate/wiki/External-Address-Format-(SS58))|
 |tokenDecimals|Int   |NO       |The decimal precision of the native token|
 |tokenSymbol  |String|NO       |Symbol of the native token|
 
-**Object:** Genesis
+Object: Genesis
+
 |Name|Type                 |Mandatory|Description|
 |----|---------------------|---------|-----------|
 |raw |Object[String:String]|YES      |The key/values pairs required for the runtime|
 
 **Example:**
-```
+
+```json
 {
   "name": "Kusama CC3",
   "id": "ksmcc3",
@@ -86,6 +89,7 @@ Multiple genesis files can be found in the Polkadot Runtime Environment specific
 This Polkadot Standards Proposal is placed in the public domain as defined in the [CC0 1.0 Universal (CC0 1.0) Public Domain Dedication](https://creativecommons.org/publicdomain/zero/1.0/).
 
 ## TODO
+
 - Why is the client side `id` mandatory while `protocolId` is not?
 - Shouldn't `id` and `protocolId` be the same field/value?
 - The ss58 address format should also be a PSP.
@@ -94,7 +98,8 @@ This Polkadot Standards Proposal is placed in the public domain as defined in th
 - Since Polkadot has not been released yet, why is `"consensusEngine"` a legacy field?
 - What should be defined in the header value "Reference Implemenation"?
 - Those telemetry log levels are implementation specific and probably do not need to be standardized. Should the log levels be part of the genesis file? Should telemetry itself be part of the genesis file? If yes, then the behavior of the telemetry endpoint/interfaces must probably be specced, too.
-```
+
+```rust
 pub const SUBSTRATE_DEBUG: &str = "9";
 pub const SUBSTRATE_INFO: &str = "0";
 
