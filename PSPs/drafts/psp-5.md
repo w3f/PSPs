@@ -4,7 +4,7 @@
 * **Authors:** Fabio Lama <github.com/lamafab, fabio@web3.foundation>
 * **Status:** Call for Feedback
 * **Created:** 2019-12-05
-* **Reference Implementation:** https://github.com/w3f/polkadot-spec/blob/master/genesis-state/kusama/ksmcc3/kusama.json
+* **Reference Implementation:** https://github.com/paritytech/polkadot
 
 ## Summary
 
@@ -94,3 +94,14 @@ This Polkadot Standards Proposal is placed in the public domain as defined in th
 - Since Polkadot has not been released yet, why is `"consensusEngine"` a legacy field?
 - What should be defined in the header value "Reference Implemenation"?
 - What's the logging verbosity for telemetry endpoints?
+- Telemetry log levels:
+- Those telemetry log levels are implementation specific and probably do not need to be standardized. Should the log levels be part of the genesis file? Should telemetry itself be part of the genesis file? If yes, then the behavior of the telemetry endpoint/interfaces must probably be specced, too.
+```
+pub const SUBSTRATE_DEBUG: &str = "9";
+pub const SUBSTRATE_INFO: &str = "0";
+
+pub const CONSENSUS_TRACE: &str = "9";
+pub const CONSENSUS_DEBUG: &str = "5";
+pub const CONSENSUS_WARN: &str = "4";
+pub const CONSENSUS_INFO: &str = "1";
+```
