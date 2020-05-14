@@ -51,11 +51,11 @@ To make communication between users secure we will use AES256-GCM encryption to 
 
 Here is sequence diagram to see all the steps in distributed key generating process. Suppose that wallet client connect to web-server through websocket and continuously receive new status. "Rust DKG lib" on diagram - Rust code compiled to WebAssembly to use it in JS. Also there are on diagrams "found message" symbols, it means that Wallet APP got new status from web-server through the websocket.
 
-![](sequence_wallet_diagram.png)
+![](/pictures/sequence_wallet_diagram.png)
 
 To sign transactions we will use the DSS protocol that was mentioned above. It’s secure 3 - round Schnorr signature scheme where signature is creating distributively. Final signature is compatible with the EdDSA verification function against the distributed secret key. When transaction is signed there are will be couple of options to send it. Transaction can be send by the last partisipant who add his partial signature or by the first who initiate transaction.
 
-![](dss_sequence_diagram.png)
+![](/pictures/dss_sequence_diagram.png)
 
 ## Web-server wallet API
 
@@ -91,13 +91,6 @@ Broadcast Deal for some participant
 
 Broadcast Response of processed Deal
 ***
-### /dkg/deal/respose/complaint
-
-#### POST
-##### Summary:
-
-Complain on Deal/participant
-***
 ### /dkg/secretCommit/broadcast
 
 #### POST
@@ -110,7 +103,7 @@ Broadcast secretCommit for participants
 #### POST
 ##### Summary:
 
-Broadcast complain of secretCommit if something is wrong
+Broadcast correctness signature of secretCommit
 ***
 ### /dss/transaction/new
 
