@@ -257,7 +257,7 @@ const AcalaAssetOperationDescriptions: AssetOperationDescription = {
       parameterTypes: {
         assetId: {
           type: 'CurrencyId',
-          hasher: 'twox_64_concat',
+          hasher: 'Twox64Concat',
         },
       },
       returnType: 'Balance',
@@ -267,7 +267,7 @@ const AcalaAssetOperationDescriptions: AssetOperationDescription = {
       parameterTypes: {
         assetId: {
           type: 'CurrencyId',
-          hasher: 'blake2_128_concat',
+          hasher: 'Blake2_128Concat',
         }
         account: {
           type: 'AccountId',
