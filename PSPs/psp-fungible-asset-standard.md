@@ -66,7 +66,7 @@ interface AssetOperationDescription {
   types: TypeRegistry;
   queries: {
     [name: string]: {
-      parameterTypes: Record<string, TypeWithHahser>;
+      parameterTypes?: Record<string, TypeWithHahser>;
       returnType: string;
       path: Path;
     };
@@ -134,13 +134,6 @@ The initial query ability will be limited on accessing the storage directly with
   - description
     - Query the free balance of a given account for a given asset
 
-- totalBalance: Balance
-  - parameters
-    - assetId: AssetId
-    - who: AccountId
-  - description
-    - Query the combined balance of a given account for a given asset
-
 #### Operations
 
 - transfer
@@ -155,6 +148,7 @@ The initial query ability will be limited on accessing the storage directly with
 
 - Transfer
   - parameters
+    - assetId: AssetId
     - from: AccountId
     - to: AccountId
     - amount: Balance
@@ -163,7 +157,156 @@ The initial query ability will be limited on accessing the storage directly with
 
 ## Examples
 
-[To be created]
+Polkadot:
+
+```typescript
+const PolkadotAssetDescription: AssetDescription = {
+  name: 'Polkadot',
+  symbol: 'DOT',
+  decimals: 12,
+  // uri: ??
+  description: 'Polkadot token description',
+  icon: 'https://ipfs.io/ipfs/QmY7mkAnaX4JNJWiLEeAgrbhe5MPkEmeuW83PmafAtL9pi'
+}
+
+const PolkadotAssetOperationDescription: AssetOperationDescription = {
+  types: {
+    Balance: 'u128',
+    AccountId: 'GenericAccountId',
+  },
+  queries: {
+    totalIssuance: {
+      returnType: 'Balance',
+      path: 'Balances.TotalIssuance', // or ['Balances', 'TotalIssuance']
+    },
+    freeBalance: {
+      parameterTypes: {
+        account: {
+          type: 'AccountId',
+          hasher: 'Blake2_128Concat',
+        },
+      },
+      returnType: 'Balance',
+      path: 'System.Account.$account.data.free', // or ['System', 'Account', '$account', 'data', 'free']
+    },
+  },
+  operations: {
+    transfer: {
+      parameterTypes: {
+        to: 'AccountId',
+        amount: 'Balance',
+      },
+      path: 'Balances.transfer', // or ['Balances', 'transfer']
+    }
+  },
+  events: {
+    Transfer: {
+      types: {
+        from: 'AccountId',
+        to: 'AccountId',
+        value: 'Balance',
+      },
+      path: 'Balances.Transfer', // or ['Balances', 'Transfer']
+    },
+  },
+}
+
+```
+
+Acala:
+
+```typescript
+const AcalaAssetDescriptions: Record<string, AssetOperationDescription> = {
+  ACA: {
+    name: 'Acala',
+    symbol: 'ACA',
+    decimals: 18,
+    // uri: ??
+    description: 'Acala token description',
+    icon: 'https://ipfs.io/ipfs/QmX1ESvSLJMai5DuAcU6MXyaDHboBCUBe3VqM7zUqgJ6kj'
+  },
+  aUSD: {
+    name: 'Acala Dollar',
+    symbol: 'aUSD',
+    decimals: 18,
+    // uri: ??
+    description: 'Acala Dollar description',
+    icon: 'https://ipfs.io/ipfs/QmQrSbMLvxHqgzi8E2Qy4r65GD94mbyPHWbTYVrT4gDT2e'
+  },
+  LDOT: {
+    name: 'Acala Liquid DOT',
+    symbol: 'LDOT',
+    decimals: 18,
+    // uri: ??
+    description: 'Acala Liquid Dollar description',
+    icon: 'https://ipfs.io/ipfs/QmR1uCTRkSQsBhhL66JJWTZjRk3E6JfEJ7cegc46vZZMVF'
+  },
+}
+
+const AcalaAssetOperationDescriptions: AssetOperationDescription = {
+  types: {
+    AssetId: 'CurrencyId', // Acala internally use CurrencyId instead of AssetId
+    CurrencyId: {
+      _enum: ['ACA', 'aUSD', 'LDOT']
+    },
+    Balance: 'u128',
+    AccountId: 'GenericAccountId',
+  },
+  queries: {
+    totalIssuance: {
+      parameterTypes: {
+        assetId: {
+          type: 'CurrencyId',
+          hasher: 'twox_64_concat',
+        },
+      },
+      returnType: 'Balance',
+      path: 'Tokens.TotalIssuance.$assetId', // or ['Tokens', 'TotalIssuance', '$assetId']
+    },
+    freeBalance: {
+      parameterTypes: {
+        assetId: {
+          type: 'CurrencyId',
+          hasher: 'blake2_128_concat',
+        }
+        account: {
+          type: 'AccountId',
+          hasher: 'Blake2_128Concat',
+        },
+      },
+      returnType: 'Balance',
+      path: 'Tokens.Accounts.$account.$assetId.free', // or ['System', 'Account', '$account', '$assetId', 'free']
+    },
+  },
+  operations: {
+    transfer: {
+      parameterTypes: {
+        to: 'AccountId',
+        assetId: 'CurrencyId',
+        amount: 'Balance',
+      },
+      path: 'Tokens.transfer', // or ['Tokens', 'transfer']
+    }
+  },
+  events: {
+    Transfer: {
+      types: {
+        from: 'AccountId',
+        to: 'AccountId',
+        value: 'Balance',
+      },
+      path: 'Tokens.Transferred', // or ['Tokens', 'Transferred']
+    },
+  },
+}
+
+const AcalaAssetOperationDescriptions: Record<string, AssetOperationDescription> = {
+  ACA: PolkadotAssetOperationDescription, // Same as DOT
+  aUSD: AcalaAssetOperationDescriptions, // Implemented by orml-tokens
+  LDOT: AcalaAssetOperationDescriptions,
+}
+
+```
 
 ## Tests
 
