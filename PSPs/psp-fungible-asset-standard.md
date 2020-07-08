@@ -91,7 +91,6 @@ interface TypeWithHasher {
 }
 type TypeName = string;
 type Hasher = 'Blake2_128' | 'Blake2_256' | 'Blake2_128Concat' | 'Twox128' | 'Twox256' | 'Twox64Concat' | 'Identity';
-type Hasher = ''
 type Path = string | [ModuleName, MethodName, ...string[]]
 ```
 
