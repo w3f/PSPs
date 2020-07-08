@@ -53,7 +53,7 @@ interface AssetDescription {
 }
 ```
 
-Asset description can also be embedded in genesis file as additional properties. It is expected to be immutable but maybe changed under speical circumstances (e.g. project rename / rebrand).
+Asset description can also be embedded in genesis file as additional properties. It is expected to be immutable but maybe changed under special circumstances (e.g. project rename / rebrand).
 
 ### Asset Operations
 
@@ -85,7 +85,7 @@ interface AssetOperationDescription {
   };
 }
 
-interface TypeWithHahser {
+interface TypeWithHasher {
   type: TypeName;
   hasher: Hasher;
 }
@@ -95,11 +95,11 @@ type Hasher = ''
 type Path = string | [ModuleName, MethodName, ...string[]]
 ```
 
-Asset operation description stores the nessusary information to perform asset operations and might need to be updated with new runtime versions. There should be a way to fetch the corresponding `AssetOperationDescription` . e.g. From a registry or a commonly known location.
+Asset operation description stores the necessary information to perform asset operations and might need to be updated with new runtime versions. There should be a way to fetch the corresponding `AssetOperationDescription` . e.g. From a registry or a commonly known location.
 
 #### TypeRegistry
 
-Type registry stores the nessusary type information to interact with the runtime. This is inspired by polkadot.js type registry.
+Type registry stores the necessary type information to interact with the runtime. This is inspired by polkadot.js type registry.
 
 ```typescript
 interface TypeRegistry {
