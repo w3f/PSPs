@@ -66,7 +66,7 @@ interface AssetOperationDescription {
   types: TypeRegistry;
   queries: {
     [name: string]: {
-      parameterTypes?: Record<string, TypeWithHahser>;
+      parameterTypes?: Record<string, TypeWithHasher>;
       returnType: string;
       path: Path;
     };
@@ -104,16 +104,16 @@ Type registry stores the necessary type information to interact with the runtime
 
 ```typescript
 interface TypeRegistry {
-  [typename: string]: TypeDefination;
+  [typename: string]: TypeDefinition;
 }
 
-type TypeDefination = string | // primitives or buildin types
-  Record<string, TypeDefination> | // struct
-  { _enum: EnumDefination } | // enum
-  Array<TypeDefination> // tuple
+type TypeDefinition = string | // primitives or buildin types
+  Record<string, TypeDefinition> | // struct
+  { _enum: EnumDefinition } | // enum
+  Array<TypeDefinition> // tuple
 
-type EnumDefination = Array<string> | // C like enum
-  Record<string, TypeDefination> // Algebraic data types like enum, the order of the key matches to the variant index
+type EnumDefinition = Array<string> | // C like enum
+  Record<string, TypeDefinition> // Algebraic data types like enum, the order of the key matches to the variant index
 ```
 
 Currently the type registry needs to be manually maintained and at later stage, https://github.com/paritytech/scale-info/ could be used to automatically generate the type inforamtion.
