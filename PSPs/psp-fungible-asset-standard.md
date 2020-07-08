@@ -96,6 +96,8 @@ type Path = string | [ModuleName, MethodName, ...string[]]
 
 Asset operation description stores the necessary information to perform asset operations and might need to be updated with new runtime versions. There should be a way to fetch the corresponding `AssetOperationDescription` . e.g. From a registry or a commonly known location.
 
+Note: Substrate Runtime Metadata is required to encode / decode dispatchable calls and events. The details of Substrate Runtime Metadata is out of scope.
+
 #### TypeRegistry
 
 Type registry stores the necessary type information to interact with the runtime. This is inspired by polkadot.js type registry.
