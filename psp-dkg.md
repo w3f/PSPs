@@ -1,6 +1,6 @@
-# PSP-2: Polkadot DKG threshold multisig wallet
+# PSP-7: Polkadot DKG threshold multisig wallet
 
-* **PSP Number:** 2
+* **PSP Number:** 7
 * **Author(s):** Everstake
 * **Status:** PoC
 * **Created:** [2020-02-13]
