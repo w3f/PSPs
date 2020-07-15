@@ -1,4 +1,4 @@
-# Fungible Asset Standard
+# Fungible Asset Wallet Metadata
 
 * **PSP Number:** 3
 * **Authors:** @xlc
@@ -8,7 +8,7 @@
 
 ## Summary
 
-A fungible asset standard for Substrate-based blockchains.
+Standard to allow Substrate chains to advertise metadata allowing off-chain logic to interact with their state, events and transaction dispatches in order to query or manipulate fungible currencies existing on the chain.
 
 ## References
 
@@ -20,7 +20,7 @@ A fungible asset standard for Substrate-based blockchains.
 
 ## Motivation
 
-A cross-chain asset standard is required for blockchains to transfer assets across the ecosystem and for clients (e.g. wallet, browser extension) to offer a unified support of all the assets provided by different chains.
+A wallet-metadata standard is required to allow off-chain clients (e.g. wallet, browser extension) to offer a unified support of all assets provided by different chains without any pre-knowledge of the chain.
 
 ## Specification
 
