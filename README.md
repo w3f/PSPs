@@ -21,7 +21,7 @@ Below is the workflow of a successful PSP:
 3. **Accepted:** Any further changes are unlikely, and developers can start integrating the PSP. Once a PSP is accepted, a reference implementation needs to be created and the PSP will be merged into the accepted subfolder.    
 4. **Integrated:** The PSP is actively used and a reference implementation exists and the PSP will be merged into the integrated subfolder.
 
-In order to be **merged or accepted** for the different stages, the contributors and reviewers need to approve a PR. Reviewers should be known experts in the topic covered by the PSP. 
+In order to be **merged or accepted** for the different stages, reviewers need to approve a PR. Reviewers should be known experts in the topic covered by the PSP. 
 
 ## :pencil: Contributing
 
