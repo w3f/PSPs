@@ -1,7 +1,7 @@
 # Substrate Uniform Resource Identifier
 
-* **PSP Number:** [To be assigned]
-* **Authors:** xlc
+* **PSP Number:** 2
+* **Authors:** @xlc
 * **Status:** Draft
 * **Created:** 2019-10-01
 * **Reference Implementation** [To be implemented]
