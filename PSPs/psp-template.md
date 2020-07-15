@@ -1,6 +1,6 @@
 # Title
 
-* **PSP Number:** [To be assigned]
+* **PSP Number:** [To be assigned (=number of the initial PR to the PSPs repo)]
 * **Authors:** [Name and Email or GitHub Username]
 * **Status:** [Draft, Call for Feedback, Accepted, Integrated]
 * **Created:** [yyyy-mm-dd]
