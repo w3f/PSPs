@@ -1,7 +1,7 @@
 # Fungible Asset Standard
 
-* **PSP Number:** [To be assigned]
-* **Authors:** xlc
+* **PSP Number:** 3
+* **Authors:** @xlc
 * **Status:** Draft
 * **Created:** 2019-10-08
 * **Reference Implementation** [To be implemented]
