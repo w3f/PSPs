@@ -1,9 +1,9 @@
 # 1. JSON-RPC Interfaces for Polkadot Nodes
 
-* **PSP Number:** 002
+* **PSP Number:** 006
 * **Authors:** Fabio Lama <github.com/lamafab, fabio@web3.foundation>
-* **Status:** Work in Progress
-* **Date:** 2020-05-25
+* **Status:** Draft 
+* **Date:** 2020-11-25
 * **Reference Implementation:** <https://github.com/paritytech/substrate>
 
 ## 1.1. Summary
