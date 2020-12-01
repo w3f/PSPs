@@ -20,13 +20,13 @@ This standard should serve as  common ground for API endpoints in order for exte
 
 All parameters in the specified JSON-RPC methods are **REQUIRED**, unless explicitly mentioned otherwise (**OPTIONAL**). Return values which are OPTIONAL indicate the possibility of `null` being returned. Additionally, the JSON-RPC API should be made available over the [WebSocket Protocol](https://tools.ietf.org/html/rfc6455).
 
-Certain APIs, indicated by `pubsub`, communicate exclusively over the WebSocket protocol and follow the publish-subscribe pattern. The client needs to subscribe to those APIs by specifying an arbitrary subscriber ID (`"id"` field), which can either be an integer or a string. The publisher will then create response messages for the corresponding ID (`"subscription"` field) and specify a subscription name (`"method"` field).
+Certain APIs, indicated by `pubsub`, communicate exclusively over the WebSocket protocol and follow the publish-subscribe pattern. The client needs to subscribe to those APIs by specifying the `method`. The publisher will then create response messages for the corresponding subscription (defined in the `"method"` field) and generate a `subscription` ID, which can either be an integer or a string. The client needs to keep track of that ID in order to unsubscribe from messages.
 
 Request:
 
 ```json
 {
-    "id": <ID>,
+    "id": 1,
     "jsonrpc": "2.0",
     "method": <METHOD>,
     "params": [
@@ -48,7 +48,7 @@ Response:
 }
 ```
 
-The `pubsub` APIs documentation in this document contain more complete examples.
+This document contains examples on how `pubsub` APIs are supposed to be used.
 
 ### 1.3.1. Safety
 
@@ -213,7 +213,7 @@ A string of varying size representing hexadecimal-encoded data. Contains a `0x` 
       - [1.7.3.1. Parameter](#1731-parameter)
       - [1.7.3.2. Response](#1732-response)
       - [1.7.3.3. Example](#1733-example)
-    - [1.7.4. author_unwatchExtrinsic (pubsub)](#174-author_unwatchextrinsic-pubsub)
+    - [1.7.4. grandpa_unsubscribeJustifications (pubsub)](#174-grandpa_unsubscribejustifications-pubsub)
       - [1.7.4.1. Parameter](#1741-parameter)
       - [1.7.4.2. Response](#1742-response)
       - [1.7.4.3. Example](#1743-example)
@@ -1127,11 +1127,9 @@ Response (shortened):
 }
 ```
 
-### 1.7.4. author_unwatchExtrinsic (pubsub)
+### 1.7.4. grandpa_unsubscribeJustifications (pubsub)
 
-Unsubscribe from extrinsic watching.
-
-This endpoints communicates over the Websocket protocol (`author_extrinsicUpdate` subscription).
+Unsubscribe from justification watching.
 
 #### 1.7.4.1. Parameter
 
@@ -1480,8 +1478,6 @@ Response:
 
 Unsubscribe extrinsic watching.
 
-This endpoint communicates over the Websocket protocol (`grandpa_justifications` subscription).
-
 #### 1.8.10.1. Parameter
 
 * `STRING` or `U32` - The subscriber ID, depending on subscription initialization.
@@ -1774,8 +1770,6 @@ Response:
 
 Unsubscribe from watching all block headers.
 
-This endpoint communicates over the Websocket protocol (`chain_allHead` subscription).
-
 #### 1.9.7.1. Parameter
 
 * `STRING` or `U32` - The subscriber ID, depending on subscription initialization.
@@ -1871,8 +1865,6 @@ Response:
 
 Unsubscribe from watching new block headers.
 
-This endpoint communicates over the Websocket protocol (`chain_newHead` subscription).
-
 #### 1.9.9.1. Parameter
 
 * `STRING` or `U32` - The subscriber ID, depending on subscription initialization.
@@ -1967,8 +1959,6 @@ Response:
 ### 1.9.11. chain_unsubscribeFinalizedHeads (pubsub)
 
 Unsubscribe from watching finalized block headers.
-
-This endpoint communicates over the Websocket protocol (`chain_finalizedHead` subscription).
 
 #### 1.9.11.1. Parameter
 
@@ -2527,8 +2517,6 @@ Response (shortened):
 
 Unsubscribe from watching the runtime version.
 
-This endpoint communicates over the Websocket protocol (`state_runtimeVersion` subscription).
-
 #### 1.11.14.1. Parameter
 
 * `STRING` or `U32` - The subscriber ID, depending on subscription initialization.
@@ -2627,8 +2615,6 @@ Response (shortened):
 ### 1.11.16. state_unsubscribeStorage (pubsub)
 
 Unsubscribe from watching storage.
-
-This endpoint communicates over the Websocket protocol (`state_storage` subscription).
 
 #### 1.11.16.1. Parameter
 
