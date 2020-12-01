@@ -88,7 +88,7 @@ A boolean type, which can either be `true` or `false`.
 
 #### 1.3.3.4. MAP
 
-A key/value object.
+A key/value object, where keys are `STRING`s and values are arbitrary types. Each API defines its own value types.
 
 ```json
 {
