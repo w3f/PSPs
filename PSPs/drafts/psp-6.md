@@ -35,12 +35,12 @@ returned. Additionally, the JSON-RPC API should be made available over the
 Certain APIs, indicated by `pubsub`, communicate exclusively over the WebSocket protocol and follow
 the publish-subscribe pattern. The client needs to subscribe to those APIs by specifying the
 `method`. The publisher will then create response messages for the corresponding subscription
-(defined in the `"method"` field) and generate a `subscription` ID, which can either be an integer
+(defined in the `"method"` field) and generates a `subscription` ID, which can either be an integer
 or a string. The client needs to keep track of that ID in order to unsubscribe from messages.
 
 Request:
 
-```json
+```bash
 {
     "id": 1,
     "jsonrpc": "2.0",
@@ -53,7 +53,7 @@ Request:
 
 Response:
 
-```json
+```bash
 {
     "jsonrpc": "2.0",
     "method": <SUBSCRIPTION>,
@@ -1472,7 +1472,7 @@ Return **one** of the following extrinsic statuses:
 
 Request:
 
-```bash
+```json
 {
     "id": 1,
     "jsonrpc": "2.0",
@@ -1524,7 +1524,7 @@ Unsubscribe extrinsic watching.
 
 Request:
 
-```bash
+```json
 {
     "jsonrpc": "2.0",
     "method": "author_unwatchExtrinsic",
@@ -1767,7 +1767,7 @@ None.
 
 Request:
 
-```bash
+```json
 {
     "jsonrpc": "2.0",
     "method": "chain_subscribeAllHeads",
@@ -1816,7 +1816,7 @@ Unsubscribe from watching all block headers.
 
 Request:
 
-```bash
+```json
 {
     "jsonrpc": "2.0",
     "method": "chain_unsubscribeAllHeads",
@@ -1862,7 +1862,7 @@ None.
 
 Request:
 
-```bash
+```json
 {
     "jsonrpc": "2.0",
     "method": "chain_subscribeNewHeads",
@@ -1911,7 +1911,7 @@ Unsubscribe from watching new block headers.
 
 Request:
 
-```bash
+```json
 {
     "jsonrpc": "2.0",
     "method": "chain_unsubscribeNewHeads",
@@ -1957,7 +1957,7 @@ None.
 
 Request:
 
-```bash
+```json
 {
     "jsonrpc": "2.0",
     "method": "chain_subscribeFinalizedHeads",
@@ -2006,7 +2006,7 @@ Unsubscribe from watching finalized block headers.
 
 Request:
 
-```bash
+```json
 {
     "jsonrpc": "2.0",
     "method": "chain_unsubscribeFinalizedHeads",
@@ -2509,7 +2509,7 @@ None.
 
 Request:
 
-```bash
+```json
 {
     "jsonrpc": "2.0",
     "method": "state_subscribeRuntimeVersion",
@@ -2558,7 +2558,7 @@ Unsubscribe from watching the runtime version.
 
 Request:
 
-```bash
+```json
 {
     "jsonrpc": "2.0",
     "method": "state_unsubscribeRuntimeVersion",
@@ -2605,7 +2605,7 @@ This endpoint communicates over the Websocket protocol (`state_storage` subscrip
 
 Request:
 
-```bash
+```json
 {
     "jsonrpc": "2.0",
     "method": "state_subscribeStorage",
@@ -2650,7 +2650,7 @@ Unsubscribe from watching storage.
 
 Request:
 
-```bash
+```json
 {
     "jsonrpc": "2.0",
     "method": "state_unsubscribeStorage",
