@@ -79,8 +79,8 @@ A sequence of characters: `"value"`
 
 Unsigned integers.
 
-* `U32` - A 32-byte unsigned integer.
-* `U64` - A 64-byte unsigned integer.
+* `U32` - A 32-byte unsigned integer (min: `0`, max: `4294967295`).
+* `U64` - A 64-byte unsigned integer (min: `0`, max: `18446744073709551615`).
 
 #### 1.3.3.3. BOOL
 
