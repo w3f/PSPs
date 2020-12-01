@@ -2928,4 +2928,4 @@ Response (shortened):
 
 ## 1.18. Copyright
 
-Each PSP must be labeled as placed in the [public domain](https://creativecommons.org/publicdomain/zero/1.0/).
+This document is placed in the [public domain](https://creativecommons.org/publicdomain/zero/1.0/).
