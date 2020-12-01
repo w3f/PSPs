@@ -1659,7 +1659,7 @@ One of the following types gets returned, depending on the provided parameters:
 Request:
 
 ```bash
-curl -H "Content-Type: application/json" -d '{"id":1, "jsonrpc":"2.0", "method": "chain_getBlockHash", "params":[50, "0x64", [200]]}' http://localhost:9933
+curl -H "Content-Type: application/json" -d '{"id":1, "jsonrpc":"2.0", "method": "chain_getBlockHash", "params":[[50, "0x64", 200]]}' http://localhost:9933
 ```
 
 Response:
