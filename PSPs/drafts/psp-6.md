@@ -139,85 +139,85 @@ This type has 66 characters in total and only includes the characters `[a-fA-F0-
   - [1.4. JSON-PRC methods](#14-json-prc-methods)
   - [1.5. System](#15-system)
     - [1.5.1. System Errors](#151-system-errors)
-    - [1.5.2. system_name](#152-system_name)
+    - [1.5.2. `system_name`](#152-system_name)
       - [1.5.2.1. Parameter](#1521-parameter)
       - [1.5.2.2. Response](#1522-response)
       - [1.5.2.3. Example](#1523-example)
-    - [1.5.3. system_version](#153-system_version)
+    - [1.5.3. `system_version`](#153-system_version)
       - [1.5.3.1. Parameter](#1531-parameter)
       - [1.5.3.2. Response](#1532-response)
       - [1.5.3.3. Example](#1533-example)
-    - [1.5.4. system_chain](#154-system_chain)
+    - [1.5.4. `system_chain`](#154-system_chain)
       - [1.5.4.1. Parameter](#1541-parameter)
       - [1.5.4.2. Response](#1542-response)
       - [1.5.4.3. Example](#1543-example)
-    - [1.5.5. system_chainType](#155-system_chaintype)
+    - [1.5.5. `system_chainType`](#155-system_chaintype)
       - [1.5.5.1. Parameter](#1551-parameter)
       - [1.5.5.2. Response](#1552-response)
       - [1.5.5.3. Example](#1553-example)
-    - [1.5.6. system_properties](#156-system_properties)
+    - [1.5.6. `system_properties`](#156-system_properties)
       - [1.5.6.1. Parameter](#1561-parameter)
       - [1.5.6.2. Response](#1562-response)
       - [1.5.6.3. Example](#1563-example)
-    - [1.5.7. system_health](#157-system_health)
+    - [1.5.7. `system_health`](#157-system_health)
       - [1.5.7.1. Parameter](#1571-parameter)
       - [1.5.7.2. Response](#1572-response)
       - [1.5.7.3. Example](#1573-example)
-    - [1.5.8. system_localPeerId](#158-system_localpeerid)
+    - [1.5.8. `system_localPeerId`](#158-system_localpeerid)
       - [1.5.8.1. Parameter](#1581-parameter)
       - [1.5.8.2. Response](#1582-response)
       - [1.5.8.3. Example](#1583-example)
-    - [1.5.9. system_localListenAddresses](#159-system_locallistenaddresses)
+    - [1.5.9. `system_localListenAddresses`](#159-system_locallistenaddresses)
       - [1.5.9.1. Parameter](#1591-parameter)
       - [1.5.9.2. Response](#1592-response)
       - [1.5.9.3. Example](#1593-example)
-    - [1.5.10. system_peers](#1510-system_peers)
+    - [1.5.10. `system_peers`](#1510-system_peers)
       - [1.5.10.1. Parameter](#15101-parameter)
       - [1.5.10.2. Response](#15102-response)
       - [1.5.10.3. Example](#15103-example)
-    - [1.5.11. system_networkState](#1511-system_networkstate)
-    - [1.5.12. system_addReservedPeer](#1512-system_addreservedpeer)
+    - [1.5.11. `system_networkState`](#1511-system_networkstate)
+    - [1.5.12. `system_addReservedPeer`](#1512-system_addreservedpeer)
       - [1.5.12.1. Parameter](#15121-parameter)
       - [1.5.12.2. Response](#15122-response)
       - [1.5.12.3. Example](#15123-example)
-    - [1.5.13. system_removeReservedPeer](#1513-system_removereservedpeer)
+    - [1.5.13. `system_removeReservedPeer`](#1513-system_removereservedpeer)
       - [1.5.13.1. Parameter](#15131-parameter)
       - [1.5.13.2. Response](#15132-response)
       - [1.5.13.3. Example](#15133-example)
-    - [1.5.14. system_nodeRoles](#1514-system_noderoles)
+    - [1.5.14. `system_nodeRoles`](#1514-system_noderoles)
       - [1.5.14.1. Parameter](#15141-parameter)
       - [1.5.14.2. Response](#15142-response)
       - [1.5.14.3. Example](#15143-example)
-    - [1.5.15. system_syncState](#1515-system_syncstate)
+    - [1.5.15. `system_syncState`](#1515-system_syncstate)
       - [1.5.15.1. Parameter](#15151-parameter)
       - [1.5.15.2. Response](#15152-response)
       - [1.5.15.3. Example](#15153-example)
-    - [1.5.16. system_accountNextIndex](#1516-system_accountnextindex)
+    - [1.5.16. `system_accountNextIndex`](#1516-system_accountnextindex)
       - [1.5.16.1. Parameter](#15161-parameter)
       - [1.5.16.2. Response](#15162-response)
       - [1.5.16.3. Example](#15163-example)
-    - [1.5.17. system_dryRun](#1517-system_dryrun)
+    - [1.5.17. `system_dryRun`](#1517-system_dryrun)
       - [1.5.17.1. Parameter](#15171-parameter)
       - [1.5.17.2. Response](#15172-response)
   - [1.6. Babe](#16-babe)
-    - [1.6.1. babe_epochAuthorship](#161-babe_epochauthorship)
+    - [1.6.1. `babe_epochAuthorship`](#161-babe_epochauthorship)
       - [1.6.1.1. Parameter](#1611-parameter)
       - [1.6.1.2. Response](#1612-response)
       - [1.6.1.3. Example](#1613-example)
   - [1.7. Grandpa](#17-grandpa)
-    - [1.7.1. grandpa_roundState](#171-grandpa_roundstate)
+    - [1.7.1. `grandpa_roundState`](#171-grandpa_roundstate)
       - [1.7.1.1. Parameter](#1711-parameter)
       - [1.7.1.2. Response](#1712-response)
       - [1.7.1.3. Example](#1713-example)
-    - [1.7.2. grandpa_proveFinality](#172-grandpa_provefinality)
+    - [1.7.2. `grandpa_proveFinality`](#172-grandpa_provefinality)
       - [1.7.2.1. Parameter](#1721-parameter)
       - [1.7.2.2. Response](#1722-response)
       - [1.7.2.3. Example](#1723-example)
-    - [1.7.3. grandpa_subscribeJustifications (pubsub)](#173-grandpa_subscribejustifications-pubsub)
+    - [1.7.3. `grandpa_subscribeJustifications` (pubsub)](#173-grandpa_subscribejustifications-pubsub)
       - [1.7.3.1. Parameter](#1731-parameter)
       - [1.7.3.2. Response](#1732-response)
       - [1.7.3.3. Example](#1733-example)
-    - [1.7.4. grandpa_unsubscribeJustifications (pubsub)](#174-grandpa_unsubscribejustifications-pubsub)
+    - [1.7.4. `grandpa_unsubscribeJustifications` (pubsub)](#174-grandpa_unsubscribejustifications-pubsub)
       - [1.7.4.1. Parameter](#1741-parameter)
       - [1.7.4.2. Response](#1742-response)
       - [1.7.4.3. Example](#1743-example)
@@ -225,89 +225,89 @@ This type has 66 characters in total and only includes the characters `[a-fA-F0-
     - [1.8.1. Common types](#181-common-types)
       - [1.8.1.1. Key types](#1811-key-types)
       - [1.8.1.2. Author Errors](#1812-author-errors)
-    - [1.8.2. author_submitExtrinsic](#182-author_submitextrinsic)
+    - [1.8.2. `author_submitExtrinsic`](#182-author_submitextrinsic)
       - [1.8.2.1. Parameter](#1821-parameter)
       - [1.8.2.2. Response](#1822-response)
-    - [1.8.3. author_pendingExtrinsics](#183-author_pendingextrinsics)
+    - [1.8.3. `author_pendingExtrinsics`](#183-author_pendingextrinsics)
       - [1.8.3.1. Parameter](#1831-parameter)
       - [1.8.3.2. Response](#1832-response)
-    - [1.8.4. author_removeExtrinsic](#184-author_removeextrinsic)
+    - [1.8.4. `author_removeExtrinsic`](#184-author_removeextrinsic)
       - [1.8.4.1. Parameter](#1841-parameter)
       - [1.8.4.2. Response](#1842-response)
-    - [1.8.5. author_insertKey](#185-author_insertkey)
+    - [1.8.5. `author_insertKey`](#185-author_insertkey)
       - [1.8.5.1. Parameter](#1851-parameter)
       - [1.8.5.2. Response](#1852-response)
       - [1.8.5.3. Example](#1853-example)
-    - [1.8.6. author_rotateKeys](#186-author_rotatekeys)
+    - [1.8.6. `author_rotateKeys`](#186-author_rotatekeys)
       - [1.8.6.1. Parameter](#1861-parameter)
       - [1.8.6.2. Response](#1862-response)
       - [1.8.6.3. Example](#1863-example)
-    - [1.8.7. author_hasSessionKeys](#187-author_hassessionkeys)
+    - [1.8.7. `author_hasSessionKeys`](#187-author_hassessionkeys)
       - [1.8.7.1. Parameter](#1871-parameter)
       - [1.8.7.2. Response](#1872-response)
       - [1.8.7.3. Example](#1873-example)
-    - [1.8.8. author_hasKey](#188-author_haskey)
+    - [1.8.8. `author_hasKey`](#188-author_haskey)
       - [1.8.8.1. Parameter](#1881-parameter)
       - [1.8.8.2. Response](#1882-response)
       - [1.8.8.3. Example](#1883-example)
-    - [1.8.9. author_submitAndWatchExtrinsic (pubsub)](#189-author_submitandwatchextrinsic-pubsub)
+    - [1.8.9. `author_submitAndWatchExtrinsic` (pubsub)](#189-author_submitandwatchextrinsic-pubsub)
       - [1.8.9.1. Parameter](#1891-parameter)
       - [1.8.9.2. Response](#1892-response)
       - [1.8.9.3. Example](#1893-example)
-    - [1.8.10. author_unwatchExtrinsic (pubsub)](#1810-author_unwatchextrinsic-pubsub)
+    - [1.8.10. `author_unwatchExtrinsic` (pubsub)](#1810-author_unwatchextrinsic-pubsub)
       - [1.8.10.1. Parameter](#18101-parameter)
       - [1.8.10.2. Response](#18102-response)
       - [1.8.10.3. Example](#18103-example)
   - [1.9. Chain](#19-chain)
     - [1.9.1. Chain Errors](#191-chain-errors)
-    - [1.9.2. chain_getHeader](#192-chain_getheader)
+    - [1.9.2. `chain_getHeader`](#192-chain_getheader)
       - [1.9.2.1. Parameter](#1921-parameter)
       - [1.9.2.2. Response](#1922-response)
       - [1.9.2.3. Example](#1923-example)
-    - [1.9.3. chain_getBlock](#193-chain_getblock)
+    - [1.9.3. `chain_getBlock`](#193-chain_getblock)
       - [1.9.3.1. Parameter](#1931-parameter)
       - [1.9.3.2. Response](#1932-response)
       - [1.9.3.3. Example](#1933-example)
-    - [1.9.4. chain_getBlockHash](#194-chain_getblockhash)
+    - [1.9.4. `chain_getBlockHash`](#194-chain_getblockhash)
       - [1.9.4.1. Parameter](#1941-parameter)
       - [1.9.4.2. Response](#1942-response)
       - [1.9.4.3. Example](#1943-example)
-    - [1.9.5. chain_getFinalizedHead](#195-chain_getfinalizedhead)
+    - [1.9.5. `chain_getFinalizedHead`](#195-chain_getfinalizedhead)
       - [1.9.5.1. Parameter](#1951-parameter)
       - [1.9.5.2. Response](#1952-response)
       - [1.9.5.3. Example](#1953-example)
-    - [1.9.6. chain_subscribeAllHeads (pubsub)](#196-chain_subscribeallheads-pubsub)
+    - [1.9.6. `chain_subscribeAllHeads` (pubsub)](#196-chain_subscribeallheads-pubsub)
       - [1.9.6.1. Parameter](#1961-parameter)
       - [1.9.6.2. Response](#1962-response)
       - [1.9.6.3. Example](#1963-example)
-    - [1.9.7. chain_unsubscribeAllHeads (pubsub)](#197-chain_unsubscribeallheads-pubsub)
+    - [1.9.7. `chain_unsubscribeAllHeads` (pubsub)](#197-chain_unsubscribeallheads-pubsub)
       - [1.9.7.1. Parameter](#1971-parameter)
       - [1.9.7.2. Response](#1972-response)
       - [1.9.7.3. Example](#1973-example)
-    - [1.9.8. chain_subscribeNewHeads (pubsub)](#198-chain_subscribenewheads-pubsub)
+    - [1.9.8. `chain_subscribeNewHeads` (pubsub)](#198-chain_subscribenewheads-pubsub)
       - [1.9.8.1. Parameter](#1981-parameter)
       - [1.9.8.2. Response](#1982-response)
       - [1.9.8.3. Example](#1983-example)
-    - [1.9.9. chain_unsubscribeNewHeads (pubsub)](#199-chain_unsubscribenewheads-pubsub)
+    - [1.9.9. `chain_unsubscribeNewHeads` (pubsub)](#199-chain_unsubscribenewheads-pubsub)
       - [1.9.9.1. Parameter](#1991-parameter)
       - [1.9.9.2. Response](#1992-response)
       - [1.9.9.3. Example](#1993-example)
-    - [1.9.10. chain_subscribeFinalizedHeads (pubsub)](#1910-chain_subscribefinalizedheads-pubsub)
+    - [1.9.10. `chain_subscribeFinalizedHeads` (pubsub)](#1910-chain_subscribefinalizedheads-pubsub)
       - [1.9.10.1. Parameter](#19101-parameter)
       - [1.9.10.2. Response](#19102-response)
       - [1.9.10.3. Example](#19103-example)
-    - [1.9.11. chain_unsubscribeFinalizedHeads (pubsub)](#1911-chain_unsubscribefinalizedheads-pubsub)
+    - [1.9.11. `chain_unsubscribeFinalizedHeads` (pubsub)](#1911-chain_unsubscribefinalizedheads-pubsub)
       - [1.9.11.1. Parameter](#19111-parameter)
       - [1.9.11.2. Response](#19112-response)
       - [1.9.11.3. Example](#19113-example)
   - [1.10. Offchain](#110-offchain)
     - [1.10.1. Offchain Errors](#1101-offchain-errors)
     - [1.10.2. Storage kinds](#1102-storage-kinds)
-    - [1.10.3. offchain_localStorageSet](#1103-offchain_localstorageset)
+    - [1.10.3. `offchain_localStorageSet`](#1103-offchain_localstorageset)
       - [1.10.3.1. Parameter](#11031-parameter)
       - [1.10.3.2. Response](#11032-response)
       - [1.10.3.3. Example](#11033-example)
-    - [1.10.4. offchain_localStorageGet](#1104-offchain_localstorageget)
+    - [1.10.4. `offchain_localStorageGet`](#1104-offchain_localstorageget)
       - [1.10.4.1. Parameter](#11041-parameter)
       - [1.10.4.2. Response](#11042-response)
       - [1.10.4.3. Example](#11043-example)
@@ -315,93 +315,93 @@ This type has 66 characters in total and only includes the characters `[a-fA-F0-
     - [1.11.1. State Errors](#1111-state-errors)
     - [1.11.2. Common types](#1112-common-types)
       - [1.11.2.1. State Errors](#11121-state-errors)
-    - [1.11.3. state_call](#1113-state_call)
-    - [1.11.4. state_getPairs](#1114-state_getpairs)
+    - [1.11.3. `state_call`](#1113-state_call)
+    - [1.11.4. `state_getPairs`](#1114-state_getpairs)
       - [1.11.4.1. Parameter](#11141-parameter)
       - [1.11.4.2. Response](#11142-response)
       - [1.11.4.3. Example](#11143-example)
-    - [1.11.5. state_getKeysPaged](#1115-state_getkeyspaged)
+    - [1.11.5. `state_getKeysPaged`](#1115-state_getkeyspaged)
       - [1.11.5.1. Parameter](#11151-parameter)
       - [1.11.5.2. Response](#11152-response)
       - [1.11.5.3. Example](#11153-example)
-    - [1.11.6. state_getStorage](#1116-state_getstorage)
+    - [1.11.6. `state_getStorage`](#1116-state_getstorage)
       - [1.11.6.1. Parameter](#11161-parameter)
       - [1.11.6.2. Response](#11162-response)
       - [1.11.6.3. Example](#11163-example)
-    - [1.11.7. state_getStorageHash](#1117-state_getstoragehash)
+    - [1.11.7. `state_getStorageHash`](#1117-state_getstoragehash)
       - [1.11.7.1. Parameter](#11171-parameter)
       - [1.11.7.2. Response](#11172-response)
       - [1.11.7.3. Example](#11173-example)
-    - [1.11.8. state_getStorageSize](#1118-state_getstoragesize)
+    - [1.11.8. `state_getStorageSize`](#1118-state_getstoragesize)
       - [1.11.8.1. Parameter](#11181-parameter)
       - [1.11.8.2. Response](#11182-response)
       - [1.11.8.3. Example](#11183-example)
-    - [1.11.9. state_getMetadata](#1119-state_getmetadata)
+    - [1.11.9. `state_getMetadata`](#1119-state_getmetadata)
       - [1.11.9.1. Parameter](#11191-parameter)
       - [1.11.9.2. Response](#11192-response)
       - [1.11.9.3. Example](#11193-example)
-    - [1.11.10. state_getRuntimeVersion](#11110-state_getruntimeversion)
+    - [1.11.10. `state_getRuntimeVersion`](#11110-state_getruntimeversion)
       - [1.11.10.1. Parameter](#111101-parameter)
       - [1.11.10.2. Response](#111102-response)
       - [1.11.10.3. Example](#111103-example)
-    - [1.11.11. state_queryStorage](#11111-state_querystorage)
+    - [1.11.11. `state_queryStorage`](#11111-state_querystorage)
       - [1.11.11.1. Parameter](#111111-parameter)
       - [1.11.11.2. Response](#111112-response)
       - [1.11.11.3. Example](#111113-example)
-    - [1.11.12. state_getReadProof](#11112-state_getreadproof)
+    - [1.11.12. `state_getReadProof`](#11112-state_getreadproof)
       - [1.11.12.1. Parameter](#111121-parameter)
       - [1.11.12.2. Response](#111122-response)
       - [1.11.12.3. Example](#111123-example)
-    - [1.11.13. state_subscribeRuntimeVersion (pubsub)](#11113-state_subscriberuntimeversion-pubsub)
+    - [1.11.13. `state_subscribeRuntimeVersion` (pubsub)](#11113-state_subscriberuntimeversion-pubsub)
       - [1.11.13.1. Parameter](#111131-parameter)
       - [1.11.13.2. Response](#111132-response)
       - [1.11.13.3. Example](#111133-example)
-    - [1.11.14. state_unsubscribeRuntimeVersion (pubsub)](#11114-state_unsubscriberuntimeversion-pubsub)
+    - [1.11.14. `state_unsubscribeRuntimeVersion` (pubsub)](#11114-state_unsubscriberuntimeversion-pubsub)
       - [1.11.14.1. Parameter](#111141-parameter)
       - [1.11.14.2. Response](#111142-response)
       - [1.11.14.3. Example](#111143-example)
-    - [1.11.15. state_subscribeStorage (pubsub)](#11115-state_subscribestorage-pubsub)
+    - [1.11.15. `state_subscribeStorage` (pubsub)](#11115-state_subscribestorage-pubsub)
       - [1.11.15.1. Parameter](#111151-parameter)
       - [1.11.15.2. Response](#111152-response)
       - [1.11.15.3. Example](#111153-example)
-    - [1.11.16. state_unsubscribeStorage (pubsub)](#11116-state_unsubscribestorage-pubsub)
+    - [1.11.16. `state_unsubscribeStorage` (pubsub)](#11116-state_unsubscribestorage-pubsub)
       - [1.11.16.1. Parameter](#111161-parameter)
       - [1.11.16.2. Response](#111162-response)
       - [1.11.16.3. Example](#111163-example)
   - [1.12. Child State](#112-child-state)
-    - [1.12.1. childstate_getKeys](#1121-childstate_getkeys)
+    - [1.12.1. `childstate_getKeys`](#1121-childstate_getkeys)
       - [1.12.1.1. Parameter](#11211-parameter)
       - [1.12.1.2. Response](#11212-response)
-    - [1.12.2. childstate_getStorage](#1122-childstate_getstorage)
+    - [1.12.2. `childstate_getStorage`](#1122-childstate_getstorage)
       - [1.12.2.1. Parameter](#11221-parameter)
       - [1.12.2.2. Response](#11222-response)
-    - [1.12.3. childstate_getStorageHash](#1123-childstate_getstoragehash)
+    - [1.12.3. `childstate_getStorageHash`](#1123-childstate_getstoragehash)
       - [1.12.3.1. Parameter](#11231-parameter)
       - [1.12.3.2. Response](#11232-response)
-    - [1.12.4. childstate_getStorageSize](#1124-childstate_getstoragesize)
+    - [1.12.4. `childstate_getStorageSize`](#1124-childstate_getstoragesize)
       - [1.12.4.1. Parameter](#11241-parameter)
       - [1.12.4.2. Response](#11242-response)
   - [1.13. Engine](#113-engine)
     - [1.13.1. Engine Errors](#1131-engine-errors)
-    - [1.13.2. engine_createBlock](#1132-engine_createblock)
-    - [1.13.3. engine_finalizeBlock](#1133-engine_finalizeblock)
+    - [1.13.2. `engine_createBlock`](#1132-engine_createblock)
+    - [1.13.3. `engine_finalizeBlock`](#1133-engine_finalizeblock)
   - [1.14. Payment](#114-payment)
     - [1.14.1. Payment Errors](#1141-payment-errors)
-    - [1.14.2. payment_queryInfo](#1142-payment_queryinfo)
+    - [1.14.2. `payment_queryInfo`](#1142-payment_queryinfo)
   - [1.15. Contracts](#115-contracts)
     - [1.15.1. Contracts Errors](#1151-contracts-errors)
-    - [1.15.2. contracts_call](#1152-contracts_call)
-    - [1.15.3. contracts_getStorage](#1153-contracts_getstorage)
+    - [1.15.2. `contracts_call`](#1152-contracts_call)
+    - [1.15.3. `contracts_getStorage`](#1153-contracts_getstorage)
       - [1.15.3.1. Parameter](#11531-parameter)
       - [1.15.3.2. Response](#11532-response)
-    - [1.15.4. contracts_rentProjection](#1154-contracts_rentprojection)
+    - [1.15.4. `contracts_rentProjection`](#1154-contracts_rentprojection)
   - [1.16. BABE](#116-babe)
     - [1.16.1. BABE Errors](#1161-babe-errors)
-    - [1.16.2. babe_epochAuthorship](#1162-babe_epochauthorship)
+    - [1.16.2. `babe_epochAuthorship`](#1162-babe_epochauthorship)
       - [1.16.2.1. Parameter](#11621-parameter)
       - [1.16.2.2. Response](#11622-response)
   - [1.17. Sync](#117-sync)
-    - [1.17.1. sync_state_genSyncSpec](#1171-sync_state_gensyncspec)
+    - [1.17.1. `sync_state_genSyncSpec`](#1171-sync_state_gensyncspec)
       - [1.17.1.1. Parameter](#11711-parameter)
       - [1.17.1.2. Response](#11712-response)
       - [1.17.1.3. Example](#11713-example)
@@ -415,7 +415,7 @@ System RPC API.
 
 RPC error codes are in the `2000` - `2999` range. No known error types are specified.
 
-### 1.5.2. system_name
+### 1.5.2. `system_name`
 
 Get the node's implementation name.
 
@@ -445,7 +445,7 @@ Response:
 }
 ```
 
-### 1.5.3. system_version
+### 1.5.3. `system_version`
 
 Get the node implementation's version. Should be a [semantic versioning](https://semver.org/lang/de/) string.
 
@@ -475,7 +475,7 @@ Response:
 }
 ```
 
-### 1.5.4. system_chain
+### 1.5.4. `system_chain`
 
 Get the chain's type. Given as a string identifier.
 
@@ -505,7 +505,7 @@ Response:
 }
 ```
 
-### 1.5.5. system_chainType
+### 1.5.5. `system_chainType`
 
 Get the chain's type.
 
@@ -535,7 +535,7 @@ Response:
 }
 ```
 
-### 1.5.6. system_properties
+### 1.5.6. `system_properties`
 
 Get a custom set of properties as a JSON object, defined in the chain specification.
 
@@ -570,7 +570,7 @@ Response:
 }
 ```
 
-### 1.5.7. system_health
+### 1.5.7. `system_health`
 
 Return health status of the node.
 
@@ -612,7 +612,7 @@ Response:
 }
 ```
 
-### 1.5.8. system_localPeerId
+### 1.5.8. `system_localPeerId`
 
 Returns the base58-encoded PeerId fo the node.
 
@@ -642,7 +642,7 @@ Response:
 }
 ```
 
-### 1.5.9. system_localListenAddresses
+### 1.5.9. `system_localListenAddresses`
 
 Returns the libp2p multiaddresses that the local node is listening on.
 
@@ -677,7 +677,7 @@ Response:
 }
 ```
 
-### 1.5.10. system_peers
+### 1.5.10. `system_peers`
 
 Returns currently connected peers.
 
@@ -732,11 +732,11 @@ Response:
 }
 ```
 
-### 1.5.11. system_networkState
+### 1.5.11. `system_networkState`
 
 *NOTE: This API is future-reserved, specification will be adjusted.*
 
-### 1.5.12. system_addReservedPeer
+### 1.5.12. `system_addReservedPeer`
 
 **Warning**: This method is [UNSAFE](#Safety).
 
@@ -770,7 +770,7 @@ Response
 }
 ```
 
-### 1.5.13. system_removeReservedPeer
+### 1.5.13. `system_removeReservedPeer`
 
 **Warning**: This method is [UNSAFE](#Safety).
 
@@ -802,7 +802,7 @@ Response"
 }
 ```
 
-### 1.5.14. system_nodeRoles
+### 1.5.14. `system_nodeRoles`
 
 Returns the roles the node is running as.
 
@@ -840,7 +840,7 @@ Response:
 }
 ```
 
-### 1.5.15. system_syncState
+### 1.5.15. `system_syncState`
 
 Returns the state of the syncing of the node.
 
@@ -877,7 +877,7 @@ Response:
 }
 ```
 
-### 1.5.16. system_accountNextIndex
+### 1.5.16. `system_accountNextIndex`
 
 Returns the next valid index (aka. nonce) for given account.
 
@@ -911,7 +911,7 @@ Response:
 }
 ```
 
-### 1.5.17. system_dryRun
+### 1.5.17. `system_dryRun`
 
 Dry run an extrinsic. Returns a SCALE encoded `ApplyExtrinsicResult`.
 
@@ -928,7 +928,7 @@ Dry run an extrinsic. Returns a SCALE encoded `ApplyExtrinsicResult`.
 
 Babe RPC API.
 
-### 1.6.1. babe_epochAuthorship
+### 1.6.1. `babe_epochAuthorship`
 
 Returns data about which slots (primary or secondary) can be claimed in the current epoch with the key in the keystore.
 
@@ -981,7 +981,7 @@ Response:
 
 Grandpa RPC API.
 
-### 1.7.1. grandpa_roundState
+### 1.7.1. `grandpa_roundState`
 
 Returns the state of the current best round state as well as the ongoing background rounds.
 
@@ -1059,7 +1059,7 @@ Response (shortened):
 }
 ```
 
-### 1.7.2. grandpa_proveFinality
+### 1.7.2. `grandpa_proveFinality`
 
 Prove finality for the provided block range. Returns `NULL` if there are no known finalized blocks in the range. If no authorities set is provided, the current one will be attempted.
 
@@ -1091,7 +1091,7 @@ Response (shortened):
 }
 ```
 
-### 1.7.3. grandpa_subscribeJustifications (pubsub)
+### 1.7.3. `grandpa_subscribeJustifications` (pubsub)
 
 Returns the block most recently finalized by Grandpa, alongside side its justification.
 
@@ -1131,7 +1131,7 @@ Response (shortened):
 }
 ```
 
-### 1.7.4. grandpa_unsubscribeJustifications (pubsub)
+### 1.7.4. `grandpa_unsubscribeJustifications` (pubsub)
 
 Unsubscribe from justification watching.
 
@@ -1234,7 +1234,7 @@ RPC error codes are in the `1000` - `1999` range. The following known error type
   * RPC code: 1017
   * RPC message: "The crypto for the given key type is unknown, please add the public key to the request to insert the key successfully"
 
-### 1.8.2. author_submitExtrinsic
+### 1.8.2. `author_submitExtrinsic`
 
 **Warning**: This method is [UNSAFE](#Safety).
 
@@ -1248,7 +1248,7 @@ Submit an extrinsic for inclusion into a block.
 
 * `HASH` - The resulting transaction hash of the extrinsic.
 
-### 1.8.3. author_pendingExtrinsics
+### 1.8.3. `author_pendingExtrinsics`
 
 Returns all pending extrinsics, potentially grouped by sender.
 
@@ -1261,7 +1261,7 @@ None.
 * `ARRAY`
   * `HEX` - (OPTIONAL) SCALE encoded extrinsic.
 
-### 1.8.4. author_removeExtrinsic
+### 1.8.4. `author_removeExtrinsic`
 
 **Warning**: This method is [UNSAFE](#Safety).
 
@@ -1279,7 +1279,7 @@ Either one of the following types:
 * `ARRAY` - (OPTIONAL)
   * `HEX` - The extrinsic that was removed.
 
-### 1.8.5. author_insertKey
+### 1.8.5. `author_insertKey`
 
 **Warning**: This method is [UNSAFE](#Safety).
 
@@ -1313,7 +1313,7 @@ Response:
 }
 ```
 
-### 1.8.6. author_rotateKeys
+### 1.8.6. `author_rotateKeys`
 
 **Warning**: This method is [UNSAFE](#Safety).
 
@@ -1345,7 +1345,7 @@ Response:
 }
 ```
 
-### 1.8.7. author_hasSessionKeys
+### 1.8.7. `author_hasSessionKeys`
 
 Checks if the keystore has private keys for the given session public keys.
 
@@ -1375,7 +1375,7 @@ Response:
 }
 ```
 
-### 1.8.8. author_hasKey
+### 1.8.8. `author_hasKey`
 
 Checks if the keystore has private keys for the given public key and key type.
 
@@ -1407,7 +1407,7 @@ Response:
 }
 ```
 
-### 1.8.9. author_submitAndWatchExtrinsic (pubsub)
+### 1.8.9. `author_submitAndWatchExtrinsic` (pubsub)
 
 Submit an extrinsic and watch.
 
@@ -1478,7 +1478,7 @@ Response:
 }
 ```
 
-### 1.8.10. author_unwatchExtrinsic (pubsub)
+### 1.8.10. `author_unwatchExtrinsic` (pubsub)
 
 Unsubscribe extrinsic watching.
 
@@ -1523,7 +1523,7 @@ Blockchain RPC API.
 
 RPC error codes are in the `3000` - `3999` range. No known error types are specified.
 
-### 1.9.2. chain_getHeader
+### 1.9.2. `chain_getHeader`
 
 Get header of a relay chain block. If no block hash is provided, the latest block header will be returned.
 
@@ -1571,7 +1571,7 @@ Response:
 }
 ```
 
-### 1.9.3. chain_getBlock
+### 1.9.3. `chain_getBlock`
 
 Get header and body of a relay chain block. If no block hash is provided, the latest block body will be returned.
 
@@ -1634,7 +1634,7 @@ Response:
 }
 ```
 
-### 1.9.4. chain_getBlockHash
+### 1.9.4. `chain_getBlockHash`
 
 Get hash of the 'n-th' block in the canon chain. If no parameters are provided, the latest block hash gets returned.
 
@@ -1680,7 +1680,7 @@ Response:
 }
 ```
 
-### 1.9.5. chain_getFinalizedHead
+### 1.9.5. `chain_getFinalizedHead`
 
 Get hash of the last finalized block in the canon chain.
 
@@ -1712,7 +1712,7 @@ Response:
 }
 ```
 
-### 1.9.6. chain_subscribeAllHeads (pubsub)
+### 1.9.6. `chain_subscribeAllHeads` (pubsub)
 
 Subscription for all block headers (new blocks and finalized blocks).
 
@@ -1770,7 +1770,7 @@ Response:
 }
 ```
 
-### 1.9.7. chain_unsubscribeAllHeads (pubsub)
+### 1.9.7. `chain_unsubscribeAllHeads` (pubsub)
 
 Unsubscribe from watching all block headers.
 
@@ -1807,7 +1807,7 @@ Response:
 }
 ```
 
-### 1.9.8. chain_subscribeNewHeads (pubsub)
+### 1.9.8. `chain_subscribeNewHeads` (pubsub)
 
 Subscription for new block headers.
 
@@ -1865,7 +1865,7 @@ Response:
 }
 ```
 
-### 1.9.9. chain_unsubscribeNewHeads (pubsub)
+### 1.9.9. `chain_unsubscribeNewHeads` (pubsub)
 
 Unsubscribe from watching new block headers.
 
@@ -1902,7 +1902,7 @@ Response:
 }
 ```
 
-### 1.9.10. chain_subscribeFinalizedHeads (pubsub)
+### 1.9.10. `chain_subscribeFinalizedHeads` (pubsub)
 
 Subscription for finalized block headers.
 
@@ -1960,7 +1960,7 @@ Response:
 }
 ```
 
-### 1.9.11. chain_unsubscribeFinalizedHeads (pubsub)
+### 1.9.11. `chain_unsubscribeFinalizedHeads` (pubsub)
 
 Unsubscribe from watching finalized block headers.
 
@@ -2012,7 +2012,7 @@ The following Storage kinds are available:
 * "PERSISTENT" - is non-revertible and not fork-aware. It means that any value set by the offchain worker is persisted even if that block (at which the worker is called) is reverted as non-canonical (meaning that the block was surpassed by a longer chain). The value is available for the worker that is re-run at the new (different block with the same block number) and future blocks. This storage can be used by offchain workers to handle forks and coordinate offchain workers running on different forks.
 * "LOCAL" - is revertible and fork-aware. It means that any value set by the offchain worker triggered at a certain block is reverted if that block is reverted as non-canonical. The value is NOT available for the worker that is re-run at the next or any future blocks.
 
-### 1.10.3. offchain_localStorageSet
+### 1.10.3. `offchain_localStorageSet`
 
 Set offchain local storage under given key and prefix.
 
@@ -2044,7 +2044,7 @@ Response:
 }
 ```
 
-### 1.10.4. offchain_localStorageGet
+### 1.10.4. `offchain_localStorageGet`
 
 Get offchain local storage under given key and prefix.
 
@@ -2089,13 +2089,13 @@ RPC error codes are in the `4000` - `4999` range. No known error types are speci
 
 *NOTE: This type is future-reserved, specification will be adjusted.*
 
-### 1.11.3. state_call
+### 1.11.3. `state_call`
 
 *NOTE: This API is future-reserved, specification will be adjusted.*
 
 Call a contract at a block's state.
 
-### 1.11.4. state_getPairs
+### 1.11.4. `state_getPairs`
 
 **Warning**: This method is [UNSAFE](#Safety).
 
@@ -2140,7 +2140,7 @@ Response (shortened):
 }
 ```
 
-### 1.11.5. state_getKeysPaged
+### 1.11.5. `state_getKeysPaged`
 
 **Warning**: This method is [UNSAFE](#Safety).
 
@@ -2179,7 +2179,7 @@ Response:
 }
 ```
 
-### 1.11.6. state_getStorage
+### 1.11.6. `state_getStorage`
 
 Returns a storage entry at a specific block's state. If not block hash is provided, the latest value is returned.
 
@@ -2210,7 +2210,7 @@ Response:
 }
 ```
 
-### 1.11.7. state_getStorageHash
+### 1.11.7. `state_getStorageHash`
 
 Returns the hash of a storage entry at a block's state. If no block hash is provided, the latest value is returned.
 
@@ -2241,7 +2241,7 @@ Response:
 }
 ```
 
-### 1.11.8. state_getStorageSize
+### 1.11.8. `state_getStorageSize`
 
 Returns the size of a storage entry at a block's state. If no block hash is provided, the latest value is used.
 
@@ -2272,7 +2272,7 @@ Response:
 }
 ```
 
-### 1.11.9. state_getMetadata
+### 1.11.9. `state_getMetadata`
 
 Returns the runtime metadata.
 
@@ -2302,7 +2302,7 @@ Response (shortened):
 }
 ```
 
-### 1.11.10. state_getRuntimeVersion
+### 1.11.10. `state_getRuntimeVersion`
 
 Get the runtime version at a given block. If no block hash is provided, the latest version gets returned.
 
@@ -2357,7 +2357,7 @@ Response (shortened):
 }
 ```
 
-### 1.11.11. state_queryStorage
+### 1.11.11. `state_queryStorage`
 
 **Warning**: This method is [UNSAFE](#Safety).
 
@@ -2410,7 +2410,7 @@ Response:
 }
 ```
 
-### 1.11.12. state_getReadProof
+### 1.11.12. `state_getReadProof`
 
 Returns the proof of storage entries.
 
@@ -2451,7 +2451,7 @@ Response (shortened):
 }
 ```
 
-### 1.11.13. state_subscribeRuntimeVersion (pubsub)
+### 1.11.13. `state_subscribeRuntimeVersion` (pubsub)
 
 Runtime version subscription. Creates a message for current version and each upgrade.
 
@@ -2517,7 +2517,7 @@ Response (shortened):
 }
 ```
 
-### 1.11.14. state_unsubscribeRuntimeVersion (pubsub)
+### 1.11.14. `state_unsubscribeRuntimeVersion` (pubsub)
 
 Unsubscribe from watching the runtime version.
 
@@ -2554,7 +2554,7 @@ Response:
 }
 ```
 
-### 1.11.15. state_subscribeStorage (pubsub)
+### 1.11.15. `state_subscribeStorage` (pubsub)
 
 Storage subscription. If storage keys are specified, it creates a message for each block which changes the specified storage keys. If none are specified, then it creates a message for every block.
 
@@ -2616,7 +2616,7 @@ Response (shortened):
 }
 ```
 
-### 1.11.16. state_unsubscribeStorage (pubsub)
+### 1.11.16. `state_unsubscribeStorage` (pubsub)
 
 Unsubscribe from watching storage.
 
@@ -2655,7 +2655,7 @@ Response:
 
 ## 1.12. Child State
 
-### 1.12.1. childstate_getKeys
+### 1.12.1. `childstate_getKeys`
 
 **Warning**: This method is [UNSAFE](#Safety).
 
@@ -2672,7 +2672,7 @@ Returns the keys from the specified child storage. The keys can also be filtered
 * `ARRAY`
   * `HEX` - (OPTIONAL) Storage key.
 
-### 1.12.2. childstate_getStorage
+### 1.12.2. `childstate_getStorage`
 
 Returns a child storage entry.
 
@@ -2686,7 +2686,7 @@ Returns a child storage entry.
 
 * `HEX` - (OPTIONAL) Storage data, if found.
 
-### 1.12.3. childstate_getStorageHash
+### 1.12.3. `childstate_getStorageHash`
 
 Returns the hash of a child storage entry.
 
@@ -2700,7 +2700,7 @@ Returns the hash of a child storage entry.
 
 * `HASH` - (OPTIONAL) The hash of the child storage entry, if found.
 
-### 1.12.4. childstate_getStorageSize
+### 1.12.4. `childstate_getStorageSize`
 
 Returns the size of a child storage entry.
 
@@ -2722,13 +2722,13 @@ Returns the size of a child storage entry.
 
 Engine RPC API.
 
-### 1.13.2. engine_createBlock
+### 1.13.2. `engine_createBlock`
 
 *NOTE: This API is future-reserved, specification will be adjusted.*.
 
 Instructs the manual-seal authorship task to create a new block.
 
-### 1.13.3. engine_finalizeBlock
+### 1.13.3. `engine_finalizeBlock`
 
 *NOTE: This API is future-reserved, specification will be adjusted.*.
 
@@ -2742,7 +2742,7 @@ Payment PRC API.
 
 *NOTE: This type is future-reserved, specification will be adjusted.*
 
-### 1.14.2. payment_queryInfo
+### 1.14.2. `payment_queryInfo`
 
 *NOTE: This API is future-reserved, specification will be adjusted.*.
 
@@ -2754,11 +2754,11 @@ Contracts RPC API.
 
 *NOTE: This type is future-reserved, specification will be adjusted.*
 
-### 1.15.2. contracts_call
+### 1.15.2. `contracts_call`
 
 *NOTE: This API is future-reserved, specification will be adjusted.*
 
-### 1.15.3. contracts_getStorage
+### 1.15.3. `contracts_getStorage`
 
 *NOTE: This API is future-reserved, specification will be adjusted.*
 
@@ -2774,7 +2774,7 @@ Returns the value under a specified storage key in a contract given by an addres
 
 * `HEX` - (OPTIONAL) The value of the storage key.
 
-### 1.15.4. contracts_rentProjection
+### 1.15.4. `contracts_rentProjection`
 
 *NOTE: This API is future-reserved, specification will be adjusted.*
 
@@ -2786,7 +2786,7 @@ BABE RPC API.
 
 *NOTE: This type is future-reserved, specification will be adjusted.*
 
-### 1.16.2. babe_epochAuthorship
+### 1.16.2. `babe_epochAuthorship`
 
 *NOTE: This API is future-reserved, specification will be adjusted.*
 
@@ -2811,7 +2811,7 @@ None.
 
 Sync State RPC API.
 
-### 1.17.1. sync_state_genSyncSpec
+### 1.17.1. `sync_state_genSyncSpec`
 
 Returns the JSON serialized chain specification running the node (i.e. the current state state), with a sync state.
 
