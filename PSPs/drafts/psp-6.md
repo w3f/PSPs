@@ -108,13 +108,17 @@ An object containing a varying amount of items.
 ]
 ```
 
-#### 1.3.3.6. HASH
-
-A string which represents a 32-byte, hexadecimal-encoded Blake2 hash. Contains a `0x` prefix to indicate the hexadecimal encoding. This type has 66 characters in total.
-
 #### 1.3.3.7. HEX
 
 A string of varying size representing hexadecimal-encoded data. Contains a `0x` prefix to indicate the hexadecimal encoding.
+
+This type only includes the characters `[a-fA-F0-9]`.
+
+#### 1.3.3.6. HASH
+
+A string which represents a 32-byte, hexadecimal-encoded Blake2 hash. Contains a `0x` prefix to indicate the hexadecimal encoding.
+
+This type has 66 characters in total and only includes the characters `[a-fA-F0-9]`, with the exception of the `0x` prefix.
 
 ## 1.4. JSON-PRC methods
 
@@ -130,8 +134,8 @@ A string of varying size representing hexadecimal-encoded data. Contains a `0x` 
       - [1.3.3.3. BOOL](#1333-bool)
       - [1.3.3.4. MAP](#1334-map)
       - [1.3.3.5. ARRAY](#1335-array)
-      - [1.3.3.6. HASH](#1336-hash)
       - [1.3.3.7. HEX](#1337-hex)
+      - [1.3.3.6. HASH](#1336-hash)
   - [1.4. JSON-PRC methods](#14-json-prc-methods)
   - [1.5. System](#15-system)
     - [1.5.1. System Errors](#151-system-errors)
