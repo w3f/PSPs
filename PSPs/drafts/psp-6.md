@@ -18,9 +18,37 @@ This standard should serve as  common ground for API endpoints in order for exte
 
 [JSON-RPC](https://www.jsonrpc.org/specification) is a stateless, light-weight remote procedure call (RPC) protocol. Primarily this specification defines several data structures and the rules around their processing. It is transport agnostic in that the concepts can be used within the same process, over sockets, over http, or in many various message passing environments. It uses [JSON](https://www.json.org/json-en.html) ([RFC 4627](https://www.ietf.org/rfc/rfc4627.txt)) as data format.
 
-All parameters in the specified JSON-RPC methods are **REQUIRED**, unless explicitly mentioned otherwise (**OPTIONAL**). Return values which are OPTIONAL indicate the possibility of `null` being returned.
+All parameters in the specified JSON-RPC methods are **REQUIRED**, unless explicitly mentioned otherwise (**OPTIONAL**). Return values which are OPTIONAL indicate the possibility of `null` being returned. Additionally, the JSON-RPC API should be made available over the [WebSocket Protocol](https://tools.ietf.org/html/rfc6455).
 
-Additionally, the JSON-RPC API should be made available over the [WebSocket Protocol](https://tools.ietf.org/html/rfc6455).
+Certain APIs, indicated by `pubsub`, communicate exclusively over the WebSocket protocol and follow the publish-subscribe pattern. The client needs to subscribe to those APIs by specifying an arbitrary subscriber ID (`"id"` field), which can either be an integer or a string. The publisher will then create response messages for the corresponding ID (`"subscription"` field) and specify a subscription name (`"method"` field).
+
+Request:
+
+```json
+{
+    "id": <ID>,
+    "jsonrpc": "2.0",
+    "method": <METHOD>,
+    "params": [
+        <PARAMS>
+    ]
+}
+```
+
+Response:
+
+```json
+{
+    "jsonrpc": "2.0",
+    "method": <SUBSCRIPTION>,
+    "params": {
+        "result": <RESULT>,
+        "subscription": <ID>
+    }
+}
+```
+
+The `pubsub` APIs documentation in this document contain more complete examples.
 
 ### 1.3.1. Safety
 
