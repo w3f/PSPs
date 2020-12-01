@@ -18,20 +18,23 @@ be able to reuse existing functionality on various implementations of the Polkad
 disparity among node implementations will simplify their development, as well as allow applications
 which use different node implementations to switch seamlessly between them.
 
+## 1.3. Table of Contents
+
 - [1. JSON-RPC Interfaces for Polkadot Nodes](#1-json-rpc-interfaces-for-polkadot-nodes)
   - [1.1. Summary](#11-summary)
   - [1.2. Motivation](#12-motivation)
-  - [1.3. Specification](#13-specification)
-    - [1.3.1. Safety](#131-safety)
-    - [1.3.2. Errors](#132-errors)
-    - [1.3.3. Common types](#133-common-types)
-      - [1.3.3.1. `STRING`](#1331-string)
-      - [1.3.3.2. `U32` / `U64`](#1332-u32--u64)
-      - [1.3.3.3. `BOOL`](#1333-bool)
-      - [1.3.3.4. `MAP`](#1334-map)
-      - [1.3.3.5. `ARRAY`](#1335-array)
-      - [1.3.3.7. `HEX`](#1337-hex)
-      - [1.3.3.6. `HASH`](#1336-hash)
+  - [1.3. Table of Contents](#13-table-of-contents)
+  - [1.4. Specification](#14-specification)
+    - [1.4.1. Safety](#141-safety)
+    - [1.4.2. Errors](#142-errors)
+    - [1.4.3. Common types](#143-common-types)
+      - [1.4.3.1. `STRING`](#1431-string)
+      - [1.4.3.2. `U32` / `U64`](#1432-u32--u64)
+      - [1.4.3.3. `BOOL`](#1433-bool)
+      - [1.4.3.4. `MAP`](#1434-map)
+      - [1.4.3.5. `ARRAY`](#1435-array)
+      - [1.4.3.6. `HEX`](#1436-hex)
+      - [1.4.3.7. `HASH`](#1437-hash)
   - [1.5. System](#15-system)
     - [1.5.1. System Errors](#151-system-errors)
     - [1.5.2. `system_name`](#152-system_name)
@@ -302,7 +305,7 @@ which use different node implementations to switch seamlessly between them.
       - [1.17.1.3. Example](#11713-example)
   - [1.18. Copyright](#118-copyright)
 
-## 1.3. Specification
+## 1.4. Specification
 
 [JSON-RPC](https://www.jsonrpc.org/specification) is a stateless, light-weight remote procedure call
 (RPC) protocol. Primarily this specification defines several data structures and the rules around
@@ -350,7 +353,7 @@ Response:
 
 This document contains examples on how `pubsub` APIs are supposed to be used.
 
-### 1.3.1. Safety
+### 1.4.1. Safety
 
 Exposing RPC calls to the public may open up a huge surface of attacks, such as denial or service
 attacks, and has to be carefully considered. There are quite a few RPC methods that should be never
@@ -369,33 +372,33 @@ exposing safe and unsafe RPC to all interfaces.
 
 **Warning**: Enabling `--public-unsafe-{rpc/ws}` is dangerous and should be avoided.
 
-### 1.3.2. Errors
+### 1.4.2. Errors
 
 Each namespace specifies RPC error code ranges of possible error types that can be returned. Known
 error types are defined in this document and some APIs may return undefined error messages. Defined
 error messages are subject to expansion and changes.
 
-### 1.3.3. Common types
+### 1.4.3. Common types
 
 This document references commonly used types, represented in capital letters, as defined in the
 subsections below.
 
-#### 1.3.3.1. `STRING`
+#### 1.4.3.1. `STRING`
 
 A sequence of characters: `"value"`
 
-#### 1.3.3.2. `U32` / `U64`
+#### 1.4.3.2. `U32` / `U64`
 
 Unsigned integers.
 
 - `U32` - A 32-byte unsigned integer (min: `0`, max: `4294967295`).
 - `U64` - A 64-byte unsigned integer (min: `0`, max: `18446744073709551615`).
 
-#### 1.3.3.3. `BOOL`
+#### 1.4.3.3. `BOOL`
 
 A boolean type, which can either be `true` or `false`.
 
-#### 1.3.3.4. `MAP`
+#### 1.4.3.4. `MAP`
 
 A key/value object, where keys are `STRING`s and values are arbitrary types. Each API defines its
 own value types.
@@ -407,7 +410,7 @@ own value types.
 }
 ```
 
-#### 1.3.3.5. `ARRAY`
+#### 1.4.3.5. `ARRAY`
 
 An object containing a varying amount of items.
 
@@ -415,14 +418,14 @@ An object containing a varying amount of items.
 ["item1", "item2"]
 ```
 
-#### 1.3.3.7. `HEX`
+#### 1.4.3.6. `HEX`
 
 A string of varying size representing hexadecimal-encoded data. Contains a `0x` prefix to indicate
 the hexadecimal encoding.
 
 This type only includes the characters `[a-fA-F0-9]`.
 
-#### 1.3.3.6. `HASH`
+#### 1.4.3.7. `HASH`
 
 A string which represents a 32-byte, hexadecimal-encoded Blake2 hash. Contains a `0x` prefix to
 indicate the hexadecimal encoding.
