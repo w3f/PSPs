@@ -83,7 +83,7 @@ exposing safe and unsafe RPC to all interfaces.
 | Safe API      | `--local-{rpc/ws}`        | `--public-{rpc/ws}`        |
 | Unsafe API    | `--local-unsafe-{rpc/ws}` | `--public-unsafe-{rpc/ws}` |
 
-**Warning**: Enabling `--public-unsafe-{rpc|ws}` is dangerous and should be avoided.
+**Warning**: Enabling `--public-unsafe-{rpc/ws}` is dangerous and should be avoided.
 
 ### 1.3.2. Errors
 
@@ -96,22 +96,22 @@ error messages are subject to expansion and changes.
 This document references commonly used types, represented in capital letters, as defined in the
 subsections below.
 
-#### 1.3.3.1. STRING
+#### 1.3.3.1. `STRING`
 
 A sequence of characters: `"value"`
 
-#### 1.3.3.2. U32 / U64
+#### 1.3.3.2. `U32` / `U64`
 
 Unsigned integers.
 
 - `U32` - A 32-byte unsigned integer (min: `0`, max: `4294967295`).
 - `U64` - A 64-byte unsigned integer (min: `0`, max: `18446744073709551615`).
 
-#### 1.3.3.3. BOOL
+#### 1.3.3.3. `BOOL`
 
 A boolean type, which can either be `true` or `false`.
 
-#### 1.3.3.4. MAP
+#### 1.3.3.4. `MAP`
 
 A key/value object, where keys are `STRING`s and values are arbitrary types. Each API defines its
 own value types.
@@ -123,7 +123,7 @@ own value types.
 }
 ```
 
-#### 1.3.3.5. ARRAY
+#### 1.3.3.5. `ARRAY`
 
 An object containing a varying amount of items.
 
@@ -131,14 +131,14 @@ An object containing a varying amount of items.
 ["item1", "item2"]
 ```
 
-#### 1.3.3.7. HEX
+#### 1.3.3.7. `HEX`
 
 A string of varying size representing hexadecimal-encoded data. Contains a `0x` prefix to indicate
 the hexadecimal encoding.
 
 This type only includes the characters `[a-fA-F0-9]`.
 
-#### 1.3.3.6. HASH
+#### 1.3.3.6. `HASH`
 
 A string which represents a 32-byte, hexadecimal-encoded Blake2 hash. Contains a `0x` prefix to
 indicate the hexadecimal encoding.
@@ -155,13 +155,13 @@ exception of the `0x` prefix.
     - [1.3.1. Safety](#131-safety)
     - [1.3.2. Errors](#132-errors)
     - [1.3.3. Common types](#133-common-types)
-      - [1.3.3.1. STRING](#1331-string)
-      - [1.3.3.2. U32 / U64](#1332-u32--u64)
-      - [1.3.3.3. BOOL](#1333-bool)
-      - [1.3.3.4. MAP](#1334-map)
-      - [1.3.3.5. ARRAY](#1335-array)
-      - [1.3.3.7. HEX](#1337-hex)
-      - [1.3.3.6. HASH](#1336-hash)
+      - [1.3.3.1. `STRING`](#1331-string)
+      - [1.3.3.2. `U32` / `U64`](#1332-u32--u64)
+      - [1.3.3.3. `BOOL`](#1333-bool)
+      - [1.3.3.4. `MAP`](#1334-map)
+      - [1.3.3.5. `ARRAY`](#1335-array)
+      - [1.3.3.7. `HEX`](#1337-hex)
+      - [1.3.3.6. `HASH`](#1336-hash)
   - [1.4. JSON-PRC methods](#14-json-prc-methods)
   - [1.5. System](#15-system)
     - [1.5.1. System Errors](#151-system-errors)
