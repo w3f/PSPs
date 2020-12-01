@@ -409,7 +409,7 @@ This type has 66 characters in total and only includes the characters `[a-fA-F0-
 
 ## 1.5. System
 
-System RPC API.
+System RPC API that exposes metadata or can be used for administration of the blockchain network.
 
 ### 1.5.1. System Errors
 
