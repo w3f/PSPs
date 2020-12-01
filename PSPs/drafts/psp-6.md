@@ -110,7 +110,7 @@ An object containing a varying amount of items.
 
 #### 1.3.3.6. HASH
 
-A string which represents a 32-byte, hexadecimal-encoded Blake2 hash. Contains a `0x` prefix to indicate the hexadecimal encoding.
+A string which represents a 32-byte, hexadecimal-encoded Blake2 hash. Contains a `0x` prefix to indicate the hexadecimal encoding. This type has 66 characters in total.
 
 #### 1.3.3.7. HEX
 
