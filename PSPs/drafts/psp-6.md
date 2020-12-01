@@ -34,9 +34,9 @@ returned. Additionally, the JSON-RPC API should be made available over the
 
 Certain APIs, indicated by `pubsub`, communicate exclusively over the WebSocket protocol and follow
 the publish-subscribe pattern. The client needs to subscribe to those APIs by specifying the
-`method`. The publisher will then create response messages for the corresponding subscription
-(defined in the `"method"` field) and generates a `subscription` ID, which can either be an integer
-or a string. The client needs to keep track of that ID in order to unsubscribe from messages.
+`method`. The publisher then creates response messages for the corresponding subscription (defined
+in the `"method"` field) and generates a `subscription` ID, which can either be an integer or a
+string. The client needs to keep track of that ID in order to unsubscribe from messages.
 
 Request:
 
@@ -1474,12 +1474,12 @@ Request:
 
 ```json
 {
-    "id": 1,
-    "jsonrpc": "2.0",
-    "method": "author_submitAndWatchExtrinsic",
-    "params": [
-        "0x01d43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000bae32a8130ab7966a82a8a025e24d23f0244e606f34375f66855b105d1d2e25eca2e21855ba44e90bd48833638220a4a9ddd1b6ffa08a2424df1a8ffbd8b0d8f00"
-    ]
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "author_submitAndWatchExtrinsic",
+  "params": [
+    "0x01d43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000bae32a8130ab7966a82a8a025e24d23f0244e606f34375f66855b105d1d2e25eca2e21855ba44e90bd48833638220a4a9ddd1b6ffa08a2424df1a8ffbd8b0d8f00"
+  ]
 }
 ```
 
@@ -1526,12 +1526,10 @@ Request:
 
 ```json
 {
-    "jsonrpc": "2.0",
-    "method": "author_unwatchExtrinsic",
-    "params": [
-        10
-    ],
-    "id": 1
+  "jsonrpc": "2.0",
+  "method": "author_unwatchExtrinsic",
+  "params": [10],
+  "id": 1
 }
 ```
 
@@ -1769,10 +1767,10 @@ Request:
 
 ```json
 {
-    "jsonrpc": "2.0",
-    "method": "chain_subscribeAllHeads",
-    "params": [],
-    "id": 1
+  "jsonrpc": "2.0",
+  "method": "chain_subscribeAllHeads",
+  "params": [],
+  "id": 1
 }
 ```
 
@@ -1818,12 +1816,10 @@ Request:
 
 ```json
 {
-    "jsonrpc": "2.0",
-    "method": "chain_unsubscribeAllHeads",
-    "params": [
-        3
-    ],
-    "id": 1
+  "jsonrpc": "2.0",
+  "method": "chain_unsubscribeAllHeads",
+  "params": [3],
+  "id": 1
 }
 ```
 
@@ -1864,10 +1860,10 @@ Request:
 
 ```json
 {
-    "jsonrpc": "2.0",
-    "method": "chain_subscribeNewHeads",
-    "params": [],
-    "id": 1
+  "jsonrpc": "2.0",
+  "method": "chain_subscribeNewHeads",
+  "params": [],
+  "id": 1
 }
 ```
 
@@ -1913,12 +1909,10 @@ Request:
 
 ```json
 {
-    "jsonrpc": "2.0",
-    "method": "chain_unsubscribeNewHeads",
-    "params": [
-        7
-    ],
-    "id": 1
+  "jsonrpc": "2.0",
+  "method": "chain_unsubscribeNewHeads",
+  "params": [7],
+  "id": 1
 }
 ```
 
@@ -1959,10 +1953,10 @@ Request:
 
 ```json
 {
-    "jsonrpc": "2.0",
-    "method": "chain_subscribeFinalizedHeads",
-    "params": [],
-    "id": 1
+  "jsonrpc": "2.0",
+  "method": "chain_subscribeFinalizedHeads",
+  "params": [],
+  "id": 1
 }
 ```
 
@@ -2008,12 +2002,10 @@ Request:
 
 ```json
 {
-    "jsonrpc": "2.0",
-    "method": "chain_unsubscribeFinalizedHeads",
-    "params": [
-        5
-    ],
-    "id": 1
+  "jsonrpc": "2.0",
+  "method": "chain_unsubscribeFinalizedHeads",
+  "params": [5],
+  "id": 1
 }
 ```
 
@@ -2511,10 +2503,10 @@ Request:
 
 ```json
 {
-    "jsonrpc": "2.0",
-    "method": "state_subscribeRuntimeVersion",
-    "params": [],
-    "id": 1
+  "jsonrpc": "2.0",
+  "method": "state_subscribeRuntimeVersion",
+  "params": [],
+  "id": 1
 }
 ```
 
@@ -2560,12 +2552,10 @@ Request:
 
 ```json
 {
-    "jsonrpc": "2.0",
-    "method": "state_unsubscribeRuntimeVersion",
-    "params": [
-        5
-    ],
-    "id": 1
+  "jsonrpc": "2.0",
+  "method": "state_unsubscribeRuntimeVersion",
+  "params": [5],
+  "id": 1
 }
 ```
 
@@ -2607,10 +2597,10 @@ Request:
 
 ```json
 {
-    "jsonrpc": "2.0",
-    "method": "state_subscribeStorage",
-    "params": [],
-    "id": 1
+  "jsonrpc": "2.0",
+  "method": "state_subscribeStorage",
+  "params": [],
+  "id": 1
 }
 ```
 
@@ -2652,12 +2642,10 @@ Request:
 
 ```json
 {
-    "jsonrpc": "2.0",
-    "method": "state_unsubscribeStorage",
-    "params": [
-        14
-    ],
-    "id": 1
+  "jsonrpc": "2.0",
+  "method": "state_unsubscribeStorage",
+  "params": [14],
+  "id": 1
 }
 ```
 
