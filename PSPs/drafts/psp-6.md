@@ -692,7 +692,7 @@ None.
       * `"LIGHT"` - Light client node.
       * `"AUTHORITY"` - Acts as an authority.
     * `"protocolVersion"`: `U32` - Protocol version.
-    * `"bestHash"`: `STRING` - Peer best block hash.
+    * `"bestHash"`: `HEX` - Peer best block hash.
     * `"bestNumber"`: `U64` - Peer best block number.
 
 #### 1.5.10.3. Example
@@ -1275,7 +1275,7 @@ Either one of the following types:
 #### 1.8.4.2. Response
 
 * `ARRAY` - (OPTIONAL)
-  * `STRING` - The hash of the extrinsic that was removed.
+  * `HEX` - The extrinsic that was removed.
 
 ### 1.8.5. author_insertKey
 
@@ -1727,7 +1727,7 @@ None.
 * `MAP`
   * `"digest"`: `MAP`
     * `"logs"`: `ARRAY`
-      * `STRING` - Hey-encoded digest item.
+      * `HEX` - Digest item.
   * `"extrinsicsRoot"`: `HASH` - The merkle root of extrinsics.
   * `"number"`: `HEX` - The block number.
   * `"parentHash"`: `HASH` - The parent hash.
@@ -2162,7 +2162,7 @@ Returns the keys with prefix with pagination support.
 #### 1.11.5.2. Response
 
 * `ARRAY`
-  * `STRING` - (OPTIONAL) Storage key
+  * `HEX` - (OPTIONAL) Storage key
 
 #### 1.11.5.3. Example
 
@@ -2314,7 +2314,7 @@ Get the runtime version at a given block. If no block hash is provided, the late
 
 #### 1.11.10.1. Parameter
 
-* `STRING` - (OPTIONAL) Hex encoded block hash.
+* `HEX` - (OPTIONAL) The block hash.
 
 #### 1.11.10.2. Response
 
