@@ -447,7 +447,7 @@ Response:
 
 ### 1.5.3. system_version
 
-Get the node implementation's version. Should be a semver string.
+Get the node implementation's version. Should be a [semantic versioning](https://semver.org/lang/de/) string.
 
 #### 1.5.3.1. Parameter
 
