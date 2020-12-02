@@ -29,7 +29,7 @@ which use different node implementations to switch seamlessly between them.
     - [1.4.2. Errors](#142-errors)
     - [1.4.3. Common types](#143-common-types)
       - [1.4.3.1. `STRING`](#1431-string)
-      - [1.4.3.2. `U32` / `U64`](#1432-u32--u64)
+      - [1.4.3.2. `U32` / `U64` / `U128`](#1432-u32--u64--u128)
       - [1.4.3.3. `BOOL`](#1433-bool)
       - [1.4.3.4. `MAP`](#1434-map)
       - [1.4.3.5. `ARRAY`](#1435-array)
@@ -286,6 +286,8 @@ which use different node implementations to switch seamlessly between them.
   - [1.14. Payment](#114-payment)
     - [1.14.1. Payment Errors](#1141-payment-errors)
     - [1.14.2. `payment_queryInfo`](#1142-payment_queryinfo)
+      - [1.14.2.1. Parameters](#11421-parameters)
+      - [1.14.2.2. Response](#11422-response)
   - [1.15. Contracts](#115-contracts)
     - [1.15.1. Contracts Errors](#1151-contracts-errors)
     - [1.15.2. `contracts_call`](#1152-contracts_call)
@@ -387,12 +389,13 @@ subsections below.
 
 A sequence of characters: `"value"`
 
-#### 1.4.3.2. `U32` / `U64`
+#### 1.4.3.2. `U32` / `U64` / `U128`
 
 Unsigned integers.
 
-- `U32` - A 32-byte unsigned integer (min: `0`, max: `4294967295`).
-- `U64` - A 64-byte unsigned integer (min: `0`, max: `18446744073709551615`).
+- `U32` - A 32-bit unsigned integer (min: `0`, max: `4294967295`).
+- `U64` - A 64-bit unsigned integer (min: `0`, max: `18446744073709551615`).
+- `U128` - A 128-bit unsigned integer (min: `0`, max: `340282366920938463463374607431768211455`).
 
 #### 1.4.3.3. `BOOL`
 
@@ -1691,7 +1694,7 @@ One of the following types gets returned, depending on the provided parameters:
 Request:
 
 ```bash
-curl -H "Content-Type: application/json" -d '{"id":1, "jsonrpc":"2.0", "method": "chain_getBlockHash", "params":[[50, "0x64", 200]]}' http://localhost:9933
+curl -H "Content-Type: application/json" -d '{"id":1, "jsonrpc":"2.0", "method": "chain_getBlockHash", "params":[50, "0x64", 200]}' http://localhost:9933
 ```
 
 Response:
@@ -2336,7 +2339,7 @@ returned.
 
 #### 1.11.10.1. Parameter
 
-- `HEX` - (OPTIONAL) The block hash.
+- `HEX` - (OPTIONAL) The block hash indicating the state. `NULL` implies the current state.
 
 #### 1.11.10.2. Response
 
@@ -2751,7 +2754,20 @@ _NOTE: This type is future-reserved, specification will be adjusted._
 
 ### 1.14.2. `payment_queryInfo`
 
-_NOTE: This API is future-reserved, specification will be adjusted._.
+Query the known data about the fee of an extrinsic at the given block.
+
+This method cannot be aware of the internals of an extension, for example a tip. It only interprets
+the extrinsic as some encoded value and accounts for its weight and length, the runtime's extrinsic
+base weight, and the current fee multiplier.
+
+#### 1.14.2.1. Parameters
+
+- `HEX` - The SCALE encoded extrinsic.
+- `HEX` - (OPTIONAL) The block hash indicating the state. `NULL` implies the current state.
+
+#### 1.14.2.2. Response
+
+- `U128` - The fee of the extrinsic.
 
 ## 1.15. Contracts
 
