@@ -36,4 +36,5 @@ Before you start writing a formal PSP, you should discuss an idea in the various
 
 ## :bulb: Help
 
+* [GitHub Discussions](https://github.com/w3f/PSPs/discussions)
 * [PSP Channel on Riot](https://riot.im/app/#/room/#psp:web3.foundation)
