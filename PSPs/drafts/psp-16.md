@@ -4,7 +4,7 @@
 - **Authors:** @poria-cat
 - **Status:** Draft
 - **Created:** 2021-05-18
-
+- * **Reference Implementation** https://github.com/Starry-Network/starry_node/tree/master/pallets/pallet-sub
 ## Summary
 
 This is an application for batch mintable NFTs, where a single NFT can be split into more SubNFTs
