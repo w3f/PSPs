@@ -20,14 +20,16 @@ The XP.network protocol allows parachains to communicate in a connectionless but
 
 At the moment, XCMP is a work in progress and SPREE only exists in documentation and will only be developed after the parachains become available. With all the advantages of the two above mentioned protocols, neither of them offers the precision XP.network Protocol does.
 
-Our protocol allows to mark and store the current state of every transaction in a blob with a unique TopicID. Even though the future implementations of XCMP will allow to create channels between two parachains, TopicIDs will still be useful when multiple transactions are being executed between two parachains simultaneously. Another XCMP feature - ordered delivery - does not provide the same precision as the TopicId does. The TopicId does not rely on the order of messages. It relies on the unique identifier which is the safest pointer.
-Once the state of a transaction changes or an error occurs, the requesting parachain gets notified. Some of such messages help keep the end user properly informed about the state of events with his/her transaction, others inform the pallets that the transaction has terminated and the memory must be freed from the blob, which might be expensive to store, especially when it is no longer needed.
-Another feature uses the fact that a pallet, implementing our protocol, is a part of its parent parachain. Therefore, it has no additional overhead in tracking whether the transaction succeeded or failed. It listens to events related to the transaction and notifies the requesting parachian of the result and provides the data of the outcome when it becomes available without being additionally requested about this information.
+1. Our protocol allows to mark and store the current state of every transaction in a blob with a unique TopicID. Even though the future implementations of XCMP will allow to create channels between two parachains, TopicIDs will still be useful when multiple transactions are being executed between two parachains simultaneously. Another XCMP feature - ordered delivery - does not provide the same precision as the TopicId does. The TopicId does not rely on the order of messages. It relies on the unique identifier which is the safest pointer.
+
+2. Once the state of a transaction changes or an error occurs, the requesting parachain gets notified. Some of such messages help keep the end user properly informed about the state of events with his/her transaction, others inform the pallets that the transaction has terminated and the memory must be freed from the blob, which might be expensive to store, especially when it is no longer needed.
+
+3. Another feature uses the fact that a pallet, implementing our protocol, is a part of its parent parachain. Therefore, it has no additional overhead in tracking whether the transaction succeeded or failed. It listens to events related to the transaction and notifies the requesting parachian of the result and provides the data of the outcome when it becomes available without being additionally requested about this information.
 As a transport layer of our protocol we’re using the existing version of XCMP. When the new version of XCMP is developed we will migrate our protocol there. Once SPREE becomes available we will move our protocol there, since it will provide more security in its own storage, that a parachain cannot forge or alter. 
 
 ## Specification
 
-**XP Relay Chain Protocol** will be supported by a number of pallets, each acting as a “post office” for its parathread. A typical message will include:
+**XP Protocol** will be supported by a number of pallets, each acting as a “post office” for its parathread. A typical message will include:
 ```terminal
 {
 ID:                 id,               //required to identify that the other blockchain’s reply is related to this request,
@@ -47,16 +49,16 @@ Even the complete message adds only 64 additional bits to the original TX binary
 
 The **XP.network Decision Tree**, regulating the efficiency of the data flow between the two pallets, will roughly look like this:
 
-![img](https://github.com/xp-network/w3f_application/blob/main/XP.network%20Protocol-3.png)
+![img](https://github.com/xp-network/w3f_application/blob/main/XP.network%20Protocol-2.png)
 
 The above scheme is a work in progress and subject to change.
 
-Apart from standard setup, a pallet implementing XP.network Relay Chain Protocol consists of:
+Apart from standard setup, a pallet implementing XP.network Protocol consists of:
 
 1. **Message Listener** - it listens to the incoming messages and passes them to the Decision Tree.
 2. **Message Deserialiser** - it reads the contents of the binary file and populates the fields of the Message struct.
 3. **Message Serialiser** - it packs the values of the Message struct into a binary representation.
-4. **Message Sender** - it uses the Relay Chain callback mechanism to communicate with the other parachains and parathreads using XP Network protocol.
+4. **Message Sender** - it uses XCMP to communicate with the other parachains and parathreads using XP Network protocol.
 5. **Runtime Storage** - it stores the binaries with the current state of the corresponding transaction. Each blob can be accessed like so: ```sender[TopicId]```.
 6. **Decision Tree** - it controls the efficiency of the data flow between the pallets.
 
