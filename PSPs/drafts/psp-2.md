@@ -68,7 +68,7 @@ There are two encoding formats for SURI.
   - Encoded as a URI string
 
 - Custom SCALE encoding to avoid unnecessary space usage
-  - ```rust
+  ```rust
   struct SURI {
     userinfo: Option<ParaId>,
     host: Option<ChainId>,
