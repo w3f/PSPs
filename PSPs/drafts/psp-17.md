@@ -1,10 +1,11 @@
 # PSP-20 Token Standard in Ink!
 
 - **PSP Number:** 17
-- **Authors:** TODO
+- **Authors:** [SuperColony](https://github.com/Supercolony-net)
 - **Status:** Draft
-- **Created:** 2021 06 19
-- **Reference Implementation** NA
+- **Created:** 2021-06-19
+- **Reference Implementation:** [OpenBrush](https://github.com/Supercolony-net/openbrush-contracts/blob/main/contracts/token/erc20/impls.rs)
+
 
 ## Summary
 
