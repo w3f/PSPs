@@ -4,7 +4,7 @@
 - **Authors:** [SuperColony](https://github.com/Supercolony-net)
 - **Status:** Draft
 - **Created:** 2021-06-19
-- **Reference Implementation:** [OpenBrush](https://github.com/Supercolony-net/openbrush-contracts/blob/main/contracts/token/erc20/impls.rs)
+- **Reference Implementation:** [OpenBrush](https://github.com/Supercolony-net/openbrush-contracts/blob/feature/derive-macro-support/contracts/token/psp20/impls.rs)
 
 
 ## Summary
