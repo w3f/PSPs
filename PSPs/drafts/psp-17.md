@@ -23,6 +23,8 @@ Because naming of trait affects the identifiers of functions in this trait. It i
 The second motivation is to define the exhaustive method list in this trait. Unlike ERC20, we suggest include `increase_allowance` & `decrease_allowance`
 as part of the standard proposal and extract metadata fields to separate trait.
 
+The proposal is called `PSP20` instead of `PSP17` because it will be more simple for developers to associate `ERC20` with `PSP20` standard.
+
 ## Specification
 
 ### Types
