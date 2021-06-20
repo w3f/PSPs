@@ -12,19 +12,36 @@ This proposal aims to standarize the Token standard in Ink! smart contracts, in 
 
 ## Motivation
 
-Due to some Ink! specificities, that differ from solidity smart contract development, the Token Standard should be adapted to Ink!.
-Also calling it PSP-20 makes more sense as the implemntation differs from the solidity ERC20 standards.
+Due to some Ink! specificities, that differ from solidity smart contract development, the Token Standard should be adapted to Ink!. Also calling it PSP-20 makes more sense as the implemntation differs from the solidity ERC20 standards.
+
 The goal is to build, as Openzeppelin for ethereum ecosystem, a set of standards for commonly used contracts in Ink! called OpenBrush.
+
+The main motivation for this proposal is to have one **trait** that share the same **trait naming** between all implementations.
+The second motivation is to define the exhaustive method list in this trait. We also added *increase_allowance* & *decrease_allowance* as part of the standar proposal.
 
 ## Specification
 
 ### PSP-20 Contract
 
+## Types
+
+#### AccountId
+The default AccountId is an **[u8; 32]** struct
+
+#### Balance
+The default Balance is set an **u128** struct
+
+#### Trait
+
+```rust
+pub trait IPsp20
+```
 ## Events
 
 #### Transfer 
 Must ber emitted when a token transfer occurs.
-When contract creates new token, *from* takes the zero account argument AccountId::from([0x0; 32]).
+When contract creates (mint) new tokens, *from* will be **None**
+When contract deletes (burn) tokens, *to* will be **None**
 ```rust
 Transfer
 from: Option<AccountId>,
