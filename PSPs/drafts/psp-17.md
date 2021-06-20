@@ -20,7 +20,7 @@ The goal is to build, as OpenZeppelin for ethereum ecosystem, a set of standards
 
 The main motivation for this proposal is to have one **trait** that shares the same **trait naming** between all implementations.
 Because naming of trait affects the identifiers of functions in this trait. It is why the name of the trait must be the same across all implementations.
-The second motivation is to define the exhaustive method list in this trait. Unlike ERC-20, we suggest include `increase_allowance` & `decrease_allowance`
+The second motivation is to define the exhaustive method list in this trait. Unlike ERC20, we suggest include `increase_allowance` & `decrease_allowance`
 as part of the standard proposal and extract metadata fields to separate trait.
 
 ## Specification
@@ -91,7 +91,7 @@ Suggested methods doesn't return `Result`, Suggested methods don't return `Resul
 But this panic can contain one of the following messages.
 
 ```rust
-pub enum Erc20Error {
+pub enum PSP20Error {
  /// Unknown error type for cases if writer of traits added own restrictions
  Unknown(&'static str),
  /// Returned if not enough balance to fulfill a request is available.
