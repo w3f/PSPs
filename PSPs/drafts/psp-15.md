@@ -16,6 +16,7 @@ Many times it is necessary to mint many NFTs at the same time, if using the cycl
 
 ## Specification
 
+```
 /// The set of minted NFTs. (collection_id, start_idx) => nft_info
 Tokens get(fn tokens): double_map hasher(blake2_128_concat) T::Hash, hasher(blake2_128_concat) u128 => TokenInfo<T::AccountId>;
 
@@ -27,6 +28,7 @@ pub struct TokenInfo<AccountId> {
     pub owner: AccountId,
     pub uri: Vec<u8>,
 }
+```
 
 ## Tests
 
