@@ -1,10 +1,10 @@
-# PSP-20 Token Standard in Ink!
+# PSP-17 Token Standard in Ink!
 
 - **PSP Number:** 17
 - **Authors:** [SuperColony](https://github.com/Supercolony-net)
 - **Status:** Draft
 - **Created:** 2021-06-19
-- **Reference Implementation:** [OpenBrush](https://github.com/Supercolony-net/openbrush-contracts/blob/feature/derive-macro-support/contracts/token/psp20/impls.rs)
+- **Reference Implementation:** [OpenBrush](https://github.com/Supercolony-net/openbrush-contracts/blob/main/contracts/token/psp20/impls.rs)
 
 
 ## Summary
@@ -14,7 +14,7 @@ This proposal aims to define the standard token in ink! smart contracts, in the 
 ## Motivation
 
 Due to some ink! specificities that differ from solidity smart contract development, the Token Standard should be adapted to ink!.
-Also calling it PSP-20 makes more sense as the implementation differs from the solidity ERC20 standards.
+Also calling it PSP-17 makes more sense as the implementation differs from the solidity ERC20 standards.
 
 The goal is to build a set of standards for commonly used contracts in ink! called OpenBrush, just like OpenZeppelin for Ethereum ecosystem.
 
@@ -22,8 +22,6 @@ The main motivation for this proposal is to have one **trait** that shares the s
 as naming of trait affects the identifiers of functions in this trait.
 The second motivation is to define an exhaustive method list in this trait. Unlike ERC20, we suggest including `increase_allowance` & `decrease_allowance`
 as a part of standard proposal and extract metadata fields to separate trait.
-
-We call the proposal `PSP20` instead of `PSP17` because it will be more simple for developers to associate `ERC20` with `PSP20` standard.
 
 ## Specification
 
@@ -38,7 +36,7 @@ type Balance = u128;
 ### Traits
 
 ```rust
-pub trait IPSP20 {
+pub trait IPSP17 {
  fn total_supply(&self) -> Balance;
 
  fn balance_of(&self, owner: AccountId) -> Balance;
@@ -56,12 +54,17 @@ pub trait IPSP20 {
  fn decrease_allowance(&mut self, spender: AccountId, delta_value: Balance);
 }
 
-pub trait IPSP20Metadata {
+pub trait IPSP17Metadata {
  fn token_name(&self) -> Option<String>;
 
  fn token_symbol(&self) -> Option<String>;
 
  fn token_decimals(&self) -> u8;
+}
+
+pub trait IPSP17Receiver {
+ fn on_psp17_received(&mut self, operator: AccountId, from: AccountId, value: Balance, data: Vec<u8>) -> Result<(), PSP17ReceiverError>;
+ 
 }
 ```
 ### Events
@@ -91,11 +94,11 @@ struct Approval {
 ```
 
 ### Errors
-Suggested methods don't return `Result`. Instead, they panic.
+Suggested methods don't return `Result` (except `on_psp17_received`). Instead, they panic.
 This panic can contain one of the following messages:
 
 ```rust
-pub enum PSP20Error {
+pub enum PSP17Error {
  /// Unknown error type for cases if writer of traits added own restrictions
  Unknown(&'static str),
  /// Returned if not enough balance to fulfill a request is available.
@@ -106,6 +109,15 @@ pub enum PSP20Error {
  ZeroRecipientAddress,
  /// Returned if sender's address is zero.
  ZeroSenderAddress,
+}
+```
+
+PSP17ReceiverError:
+
+```rust
+pub enum IPSP17ReceiverError {
+ /// Returned if a transfer is rejected.
+ TransferRejected(String),
 }
 ```
 
