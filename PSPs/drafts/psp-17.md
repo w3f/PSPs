@@ -161,6 +161,8 @@ fn balance_of(&self, owner: AccountId) -> Balance;
 Transfers `value` amount of tokens from the caller's account to account `to`.
  Emits a `Transfer` event on success.
 
+This method also calls [on_psp17_received](#on_psp17_received) method on `to`. 
+
 **Errors**
 * Panics with `InsufficientBalance` error if there are not enough tokens on
 the caller's account Balance.
@@ -181,6 +183,8 @@ fn allowance(&self, owner: AccountId, spender: AccountId) -> Balance;
 Transfers `value` tokens on behalf of `from` to the account `to`.
 This can be used to allow a contract to transfer tokens on ones behalf and/or to charge fees in sub-currencies,for example.
 Emits `Transfer` and `Approval` events on success.
+
+This method also calls [on_psp17_received](#on_psp17_received) method on `to`.
 
 **Errors**
 * Panics with `InsufficientAllowance` error if there are not enough tokens allowed for the caller to withdraw from `from`.
@@ -229,6 +233,9 @@ fn decrease_allowance(&mut self, spender: AccountId, delta_value: Balance);
 #### on_psp17_received
 Handle the receipt of a PSP17 token by a smart contract.
 Returns `Ok(())` if the contract has accepted the token(s) and `Err(PSP17ReceiverError::TransferRejected(&'static str))` otherwise.
+
+This method will get called on every transfer to check whether the recipient in `transfer` is a contract, and if it is,
+does it accept tokens. This is done to prevent contracts from locking tokens forever.
 
 **Errors**
 
