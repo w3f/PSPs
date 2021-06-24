@@ -62,6 +62,9 @@ pub trait IPSP17Metadata {
  fn token_decimals(&self) -> u8;
 }
 
+
+/// Interface for any contract that wants to support safe transfers
+/// from PSP17 token smart contracts.
 pub trait IPSP17Receiver {
  fn on_psp17_received(&mut self, operator: AccountId, from: AccountId, value: Balance, data: Vec<u8>) -> Result<(), PSP17ReceiverError>;
  
@@ -117,7 +120,7 @@ PSP17ReceiverError:
 ```rust
 pub enum IPSP17ReceiverError {
  /// Returned if a transfer is rejected.
- TransferRejected(String),
+ TransferRejected(&'static str),
 }
 ```
 
@@ -223,6 +226,17 @@ Emits `Approval` event.
 fn decrease_allowance(&mut self, spender: AccountId, delta_value: Balance);
 ```
 
+#### on_psp17_received
+Handle the receipt of a PSP17 token by a smart contract.
+Returns `Ok(())` if the contract has accepted the token(s) and `Err(PSP17ReceiverError::TransferRejected(&'static str))` otherwise.
+
+**Errors**
+
+This method does not throw. Returns `PSP17ReceiverError` if the contract does not accept the tokens.
+
+```rust
+fn on_psp17_received(&mut self, operator: AccountId, from: AccountId, value: Balance, data: Vec<u8>) -> Result<(), PSP17ReceiverError>;
+```
 
 ## Copyright
 
