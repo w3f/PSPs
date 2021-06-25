@@ -36,7 +36,7 @@ type Balance = u128;
 ### Traits
 
 ```rust
-pub trait IPSP17 {
+pub trait PSP17 {
  fn total_supply(&self) -> Balance;
 
  fn balance_of(&self, owner: AccountId) -> Balance;
@@ -54,7 +54,7 @@ pub trait IPSP17 {
  fn decrease_allowance(&mut self, spender: AccountId, delta_value: Balance);
 }
 
-pub trait IPSP17Metadata {
+pub trait PSP17Metadata {
  fn token_name(&self) -> Option<String>;
 
  fn token_symbol(&self) -> Option<String>;
@@ -64,9 +64,8 @@ pub trait IPSP17Metadata {
 
 /// Interface for any contract that wants to support safe transfers
 /// from PSP17 token smart contracts.
-pub trait IPSP17Receiver {
+pub trait PSP17Receiver {
  fn on_received(&mut self, operator: AccountId, from: AccountId, value: Balance, data: Vec<u8>) -> Result<(), PSP17ReceiverError>;
- 
 }
 ```
 ### Events
@@ -119,7 +118,7 @@ pub enum PSP17Error {
 PSP17ReceiverError:
 
 ```rust
-pub enum IPSP17ReceiverError {
+pub enum PSP17ReceiverError {
  /// Returned if a transfer is rejected.
  TransferRejected(String),
 }
