@@ -103,7 +103,7 @@ This panic can contain one of the following messages:
 ```rust
 pub enum PSP17Error {
  /// Unknown error type for cases if writer of traits added own restrictions
- Unknown(&'static str),
+ Unknown(String),
  /// Returned if not enough balance to fulfill a request is available.
  InsufficientBalance,
  /// Returned if not enough allowance to fulfill a request is available.
