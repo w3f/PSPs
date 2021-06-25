@@ -62,11 +62,10 @@ pub trait IPSP17Metadata {
  fn token_decimals(&self) -> u8;
 }
 
-
 /// Interface for any contract that wants to support safe transfers
 /// from PSP17 token smart contracts.
 pub trait IPSP17Receiver {
- fn on_psp17_received(&mut self, operator: AccountId, from: AccountId, value: Balance, data: Vec<u8>) -> Result<(), PSP17ReceiverError>;
+ fn on_received(&mut self, operator: AccountId, from: AccountId, value: Balance, data: Vec<u8>) -> Result<(), PSP17ReceiverError>;
  
 }
 ```
@@ -97,7 +96,7 @@ struct Approval {
 ```
 
 ### Errors
-Suggested methods don't return `Result` (except `on_psp17_received`). Instead, they panic.
+Suggested methods don't return `Result` (except `on_received`). Instead, they panic.
 This panic can contain one of the following messages:
 
 ```rust
@@ -112,6 +111,8 @@ pub enum PSP17Error {
  ZeroRecipientAddress,
  /// Returned if sender's address is zero.
  ZeroSenderAddress,
+ /// Returned if safe transfer check fails (see _do_safe_transfer_check() in PSP20 trait)
+ SafeTransferCheckFailed(String),
 }
 ```
 
@@ -161,7 +162,7 @@ fn balance_of(&self, owner: AccountId) -> Balance;
 Transfers `value` amount of tokens from the caller's account to account `to`.
  Emits a `Transfer` event on success.
 
-This method also calls [on_psp17_received](#on_psp17_received) method on `to`. 
+This method also calls [on_received](#on_received) method on `to`. 
 
 **Errors**
 * Panics with `InsufficientBalance` error if there are not enough tokens on
@@ -184,7 +185,7 @@ Transfers `value` tokens on behalf of `from` to the account `to`.
 This can be used to allow a contract to transfer tokens on ones behalf and/or to charge fees in sub-currencies,for example.
 Emits `Transfer` and `Approval` events on success.
 
-This method also calls [on_psp17_received](#on_psp17_received) method on `to`.
+This method also calls [on_received](#on_received) method on `to`.
 
 **Errors**
 * Panics with `InsufficientAllowance` error if there are not enough tokens allowed for the caller to withdraw from `from`.
@@ -230,7 +231,7 @@ Emits `Approval` event.
 fn decrease_allowance(&mut self, spender: AccountId, delta_value: Balance);
 ```
 
-#### on_psp17_received
+#### on_received
 Handle the receipt of a PSP17 token by a smart contract.
 Returns `Ok(())` if the contract has accepted the token(s) and `Err(PSP17ReceiverError::TransferRejected(String))` otherwise.
 
@@ -242,7 +243,7 @@ does it accept tokens. This is done to prevent contracts from locking tokens for
 This method does not throw. Returns `PSP17ReceiverError` if the contract does not accept the tokens.
 
 ```rust
-fn on_psp17_received(&mut self, operator: AccountId, from: AccountId, value: Balance, data: Vec<u8>) -> Result<(), PSP17ReceiverError>;
+fn on_received(&mut self, operator: AccountId, from: AccountId, value: Balance, data: Vec<u8>) -> Result<(), PSP17ReceiverError>;
 ```
 
 ## Copyright
