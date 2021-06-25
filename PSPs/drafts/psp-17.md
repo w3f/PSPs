@@ -120,7 +120,7 @@ PSP17ReceiverError:
 ```rust
 pub enum IPSP17ReceiverError {
  /// Returned if a transfer is rejected.
- TransferRejected(&'static str),
+ TransferRejected(String),
 }
 ```
 
@@ -232,7 +232,7 @@ fn decrease_allowance(&mut self, spender: AccountId, delta_value: Balance);
 
 #### on_psp17_received
 Handle the receipt of a PSP17 token by a smart contract.
-Returns `Ok(())` if the contract has accepted the token(s) and `Err(PSP17ReceiverError::TransferRejected(&'static str))` otherwise.
+Returns `Ok(())` if the contract has accepted the token(s) and `Err(PSP17ReceiverError::TransferRejected(String))` otherwise.
 
 This method will get called on every transfer to check whether the recipient in `transfer` is a contract, and if it is,
 does it accept tokens. This is done to prevent contracts from locking tokens forever.
