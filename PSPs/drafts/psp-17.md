@@ -1,10 +1,10 @@
-# PSP-20 Token Standard in Ink!
+# PSP-17 Token Standard in Ink!
 
 - **PSP Number:** 17
 - **Authors:** [SuperColony](https://github.com/Supercolony-net)
 - **Status:** Draft
 - **Created:** 2021-06-19
-- **Reference Implementation:** [OpenBrush](https://github.com/Supercolony-net/openbrush-contracts/blob/feature/derive-macro-support/contracts/token/psp20/impls.rs)
+- **Reference Implementation:** [OpenBrush](https://github.com/Supercolony-net/openbrush-contracts/blob/main/contracts/token/psp20/impls.rs)
 
 
 ## Summary
@@ -14,7 +14,7 @@ This proposal aims to define the standard token in ink! smart contracts, in the 
 ## Motivation
 
 Due to some ink! specificities that differ from solidity smart contract development, the Token Standard should be adapted to ink!.
-Also calling it PSP-20 makes more sense as the implementation differs from the solidity ERC20 standards.
+Also calling it PSP-17 makes more sense as the implementation differs from the solidity ERC20 standards.
 
 The goal is to build a set of standards for commonly used contracts in ink! called OpenBrush, just like OpenZeppelin for Ethereum ecosystem.
 
@@ -22,8 +22,6 @@ The main motivation for this proposal is to have one **trait** that shares the s
 as naming of trait affects the identifiers of functions in this trait.
 The second motivation is to define an exhaustive method list in this trait. Unlike ERC20, we suggest including `increase_allowance` & `decrease_allowance`
 as a part of standard proposal and extract metadata fields to separate trait.
-
-We call the proposal `PSP20` instead of `PSP17` because it will be more simple for developers to associate `ERC20` with `PSP20` standard.
 
 ## Specification
 
@@ -38,7 +36,7 @@ type Balance = u128;
 ### Traits
 
 ```rust
-pub trait IPSP20 {
+pub trait PSP17 {
  fn total_supply(&self) -> Balance;
 
  fn balance_of(&self, owner: AccountId) -> Balance;
@@ -56,12 +54,18 @@ pub trait IPSP20 {
  fn decrease_allowance(&mut self, spender: AccountId, delta_value: Balance);
 }
 
-pub trait IPSP20Metadata {
+pub trait PSP17Metadata {
  fn token_name(&self) -> Option<String>;
 
  fn token_symbol(&self) -> Option<String>;
 
  fn token_decimals(&self) -> u8;
+}
+
+/// Interface for any contract that wants to support safe transfers
+/// from PSP17 token smart contracts.
+pub trait PSP17Receiver {
+ fn on_received(&mut self, operator: AccountId, from: AccountId, value: Balance, data: Vec<u8>) -> Result<(), PSP17ReceiverError>;
 }
 ```
 ### Events
@@ -91,13 +95,13 @@ struct Approval {
 ```
 
 ### Errors
-Suggested methods don't return `Result`. Instead, they panic.
+Suggested methods don't return `Result` (except `on_received`). Instead, they panic.
 This panic can contain one of the following messages:
 
 ```rust
-pub enum PSP20Error {
+pub enum PSP17Error {
  /// Unknown error type for cases if writer of traits added own restrictions
- Unknown(&'static str),
+ Unknown(String),
  /// Returned if not enough balance to fulfill a request is available.
  InsufficientBalance,
  /// Returned if not enough allowance to fulfill a request is available.
@@ -106,6 +110,17 @@ pub enum PSP20Error {
  ZeroRecipientAddress,
  /// Returned if sender's address is zero.
  ZeroSenderAddress,
+ /// Returned if safe transfer check fails (see _do_safe_transfer_check() in PSP20 trait)
+ SafeTransferCheckFailed(String),
+}
+```
+
+PSP17ReceiverError:
+
+```rust
+pub enum PSP17ReceiverError {
+ /// Returned if a transfer is rejected.
+ TransferRejected(String),
 }
 ```
 
@@ -146,6 +161,8 @@ fn balance_of(&self, owner: AccountId) -> Balance;
 Transfers `value` amount of tokens from the caller's account to account `to`.
  Emits a `Transfer` event on success.
 
+This method also calls [on_received](#on_received) method on `to`. 
+
 **Errors**
 * Panics with `InsufficientBalance` error if there are not enough tokens on
 the caller's account Balance.
@@ -166,6 +183,8 @@ fn allowance(&self, owner: AccountId, spender: AccountId) -> Balance;
 Transfers `value` tokens on behalf of `from` to the account `to`.
 This can be used to allow a contract to transfer tokens on ones behalf and/or to charge fees in sub-currencies,for example.
 Emits `Transfer` and `Approval` events on success.
+
+This method also calls [on_received](#on_received) method on `to`.
 
 **Errors**
 * Panics with `InsufficientAllowance` error if there are not enough tokens allowed for the caller to withdraw from `from`.
@@ -211,6 +230,20 @@ Emits `Approval` event.
 fn decrease_allowance(&mut self, spender: AccountId, delta_value: Balance);
 ```
 
+#### on_received
+Handle the receipt of a PSP17 token by a smart contract.
+Returns `Ok(())` if the contract has accepted the token(s) and `Err(PSP17ReceiverError::TransferRejected(String))` otherwise.
+
+This method will get called on every transfer to check whether the recipient in `transfer` is a contract, and if it is,
+does it accept tokens. This is done to prevent contracts from locking tokens forever.
+
+**Errors**
+
+This method does not throw. Returns `PSP17ReceiverError` if the contract does not accept the tokens.
+
+```rust
+fn on_received(&mut self, operator: AccountId, from: AccountId, value: Balance, data: Vec<u8>) -> Result<(), PSP17ReceiverError>;
+```
 
 ## Copyright
 
