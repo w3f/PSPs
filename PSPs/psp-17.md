@@ -137,15 +137,6 @@ pub enum PSP17ReceiverError {
 }
 ```
 
-PSP17ReceiverError:
-
-```rust
-pub enum IPSP17ReceiverError {
- /// Returned if a transfer is rejected.
- TransferRejected(&'static str),
-}
-```
-
 ### Methods
 
 #### token_name
