@@ -1,7 +1,7 @@
 # PSP-17 Token Standard in Ink!
 
 - **PSP Number:** 17
-- **Authors:** [SuperColony](https://github.com/Supercolony-net)
+- **Authors:** Green Baneling <green.baneling@supercolony.net>, Markian <markian@supercolony.net>, Pierre Ossun <pierre.ossun@supercolony.net>, Sven <sven.seven@supercolony.net>
 - **Status:** Draft
 - **Created:** 2021-06-19
 - **Reference Implementation:** [OpenBrush](https://github.com/Supercolony-net/openbrush-contracts/blob/main/contracts/token/psp20/impls.rs)
@@ -9,21 +9,34 @@
 
 ## Summary
 
-This proposal aims to define the standard token in ink! smart contracts, in the same way of EIP-20 for Ethereum ecosystem (https://eips.ethereum.org/EIPS/eip-20).
+A standard interface for Ink! tokens.
+
+This proposal aims to define the standard token in ink! smart contracts, in the same way of EIP-20 for Ethereum ecosystem (https://github.com/ethereum/EIPs/edit/master/EIPS/eip-20.md).
+
+## Implementation
+
+Example implementation:
+
+- [OpenBrush](https://github.com/Supercolony-net/openbrush-contracts/blob/main/contracts/token/psp20/impls.rs)
 
 ## Motivation
 
-Due to some ink! specificities that differ from solidity smart contract development, the Token Standard should be adapted to ink!.
-Also calling it PSP-17 makes more sense as the implementation differs from the solidity ERC20 standards.
+A standard interface allows any Ink! tokens on Polkadot/Kusama to be re-used by other applications: from wallets to decentralized exchanges.
 
-The goal is to build a set of standards for commonly used contracts in ink! called OpenBrush, just like OpenZeppelin for Ethereum ecosystem.
+
+## Motivation for having a standard separate from ERC20
+
+Due to different nature of ink!'s the Token Standard should be have ink! specific rules and methods. 
+Therefore different name - PSP-20.
+
+
+## Specification
 
 The main motivation for this proposal is to have one **trait** that shares the same **trait naming** between all implementations,
 as naming of trait affects the identifiers of functions in this trait.
 The second motivation is to define an exhaustive method list in this trait. Unlike ERC20, we suggest including `increase_allowance` & `decrease_allowance`
 as a part of standard proposal and extract metadata fields to separate trait.
 
-## Specification
 
 ### Types
 ```rust
