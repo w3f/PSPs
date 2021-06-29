@@ -11,7 +11,7 @@
 
 A standard interface for Ink! tokens.
 
-This proposal aims to define the standard token in ink! smart contracts, in the same way of EIP-20 for Ethereum ecosystem (https://github.com/ethereum/EIPs/edit/master/EIPS/eip-20.md).
+This proposal aims to define the standard token in ink! smart contracts, just like [EIP-20](https://github.com/ethereum/EIPs/edit/master/EIPS/eip-20.md) for Ethereum ecosystem.
 
 ## Implementation
 
@@ -26,15 +26,15 @@ A standard interface allows any Ink! tokens on Polkadot/Kusama to be re-used by 
 
 ## Motivation for having a standard separate from ERC20
 
-Due to different nature of ink!'s the Token Standard should be have ink! specific rules and methods. 
-Therefore different name - PSP-20.
+Due to different nature of ink!, the standard should have ink!-specific rules and methods,
+therefore PSP-20 differs from ERC-20 in its implementation.
 
 
 ## Specification
 
 The main motivation for this proposal is to have one **trait** that shares the same **trait naming** between all implementations,
 as naming of trait affects the identifiers of functions in this trait.
-The second motivation is to define an exhaustive method list in this trait. Unlike ERC20, we suggest including `increase_allowance` & `decrease_allowance`
+The second motivation is to define an exhaustive method list in this trait. Unlike ERC-20, we suggest including `increase_allowance` & `decrease_allowance`
 as a part of standard proposal and extract metadata fields to separate trait.
 
 
