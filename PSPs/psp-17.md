@@ -62,7 +62,7 @@ pub trait PSP17 {
  /// 
  /// **Errors**
  /// * Panics with `InsufficientBalance` error if there are not enough tokens on
- /// the caller's account Balance.
+ /// the caller's account balance.
  /// * Panics with `ZeroSenderAddress` error if sender's address is zero.
  /// * Panics with `ZeroRecipientAddress` error if recipient's address is zero.
  fn transfer(&mut self, to: AccountId, value: Balance, data: Vec<u8>);
@@ -91,7 +91,7 @@ pub trait PSP17 {
  /// * Panics with `ZeroRecipientAddress` error if recipient's address is zero.
  fn approve(&mut self, spender: AccountId, value: Balance);
 
- /// Atomically increases the allowance granted to `spender` by the caller on `delta_value`.
+ /// Atomically increases the allowance granted to `spender` by the caller by `delta_value`.
  /// Emits `Approval` event.
  /// 
  /// **Errors**
@@ -99,7 +99,7 @@ pub trait PSP17 {
  /// * Panics with `ZeroRecipientAddress` error if recipient's address is zero.
  fn increase_allowance(&mut self, spender: AccountId, delta_value: Balance);
 
- /// Atomically decreases the allowance granted to `spender` by the caller on `delta_value`.
+ /// Atomically decreases the allowance granted to `spender` by the caller by `delta_value`.
  /// Emits `Approval` event.
  /// 
  /// **Errors**
