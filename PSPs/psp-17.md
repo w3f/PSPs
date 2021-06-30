@@ -1,7 +1,7 @@
-# PSP-17 Token Standard in Ink!
+# PSP-17 Fungible Token Standard in Ink!
 
 - **PSP Number:** 17
-- **Authors:** Green Baneling <green.baneling@supercolony.net>, Markian <markian@supercolony.net>, Pierre Ossun <pierre.ossun@supercolony.net>, Sven <sven.seven@supercolony.net>
+- **Authors:** Green Baneling <green.baneling@supercolony.net>, Markian <markian@supercolony.net>, Pierre <pierre.ossun@supercolony.net>, Sven <sven.seven@supercolony.net>, Varg <varg.vikernes@supercolony.net>
 - **Status:** Draft
 - **Created:** 2021-06-19
 - **Reference Implementation:** [OpenBrush](https://github.com/Supercolony-net/openbrush-contracts/blob/main/contracts/token/psp20/impls.rs)
@@ -12,6 +12,9 @@
 A standard interface for Ink! tokens.
 
 This proposal aims to define the standard token in ink! smart contracts, in the same way of EIP-20 for Ethereum ecosystem (https://github.com/ethereum/EIPs/edit/master/EIPS/eip-20.md).
+
+## Importance
+Currently with no standard every contract will have a different signature. So no interoperability is possible. This porposal aims to resolve that by having one **trait**(interface) that shares the same **trait naming** between all implementations, as naming of trait affects the identifiers of functions in this trait.
 
 ## Implementation
 
@@ -27,16 +30,17 @@ A standard interface allows any Ink! tokens on Polkadot/Kusama to be re-used by 
 ## Motivation for having a standard separate from ERC20
 
 Due to different nature of ink!'s the Token Standard should be have ink! specific rules and methods. 
-Therefore different name - PSP-20.
+Therefore different name - PSP-17.
+
+Also, this standard proposal defines an extensive method list in the trait(interface). Unlike ERC20, it includes `increase_allowance` & `decrease_allowance`. and defines metadata fields as part of a separate trait.
+Another difference is that it has `PSP17Receiver` trait and `on_received` method is called at the end of transfer if the recipient is a contract.
 
 
 ## Specification
-
-The main motivation for this proposal is to have one **trait** that shares the same **trait naming** between all implementations,
-as naming of trait affects the identifiers of functions in this trait.
-The second motivation is to define an exhaustive method list in this trait. Unlike ERC20, we suggest including `increase_allowance` & `decrease_allowance`
-as a part of standard proposal and extract metadata fields to separate trait.
-Another suggestion is to have `PSP17Receiver` and call `on_received` method at the end of transfer if the recipient is a contract.
+1. Traits
+2. Types
+3. Events
+4. Errors
 
 ### Traits
 
@@ -144,6 +148,10 @@ type Balance = u128;
 ```
 
 ### Events
+
+‼️ Important ‼️
+
+Events are not supported currently due to how ink! currently handles them.  
 The identifiers of events must be based on the name of the trait. At the moment, ink! doesn't support it,
 but it must be fixed with this [issue](https://github.com/paritytech/ink/issues/809). 
 
