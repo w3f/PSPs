@@ -45,7 +45,7 @@ Another difference is that it has `PSP17Receiver` trait and `on_received` method
 ### Traits
 
 ```rust
-/// PSP17 is a trait of Fungible Token Standard
+/// PSP17 is a trait of Fungible Token Standard.
 pub trait PSP17 {
  /// Returns the total token supply.
  fn total_supply(&self) -> Balance;
@@ -113,7 +113,7 @@ pub trait PSP17 {
  fn decrease_allowance(&mut self, spender: AccountId, delta_value: Balance);
 }
 
-/// PSP17Metadata is an optional trait of metadata for Fungible Token Standard
+/// PSP17Metadata is an optional trait of metadata for Fungible Token Standard.
 pub trait PSP17Metadata {
  /// Returns the token name.
  fn name(&self) -> Option<String>;
@@ -183,8 +183,8 @@ This panic can contain one of the following messages:
 
 ```rust
 pub enum PSP17Error {
- /// Unknown error type for cases if writer of traits added own restrictions
- Unknown(String),
+ /// Custom error type for cases if writer of traits added own restrictions
+ Custom(String),
  /// Returned if not enough balance to fulfill a request is available.
  InsufficientBalance,
  /// Returned if not enough allowance to fulfill a request is available.
