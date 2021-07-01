@@ -14,7 +14,7 @@ A standard interface for Ink! tokens.
 This proposal aims to define the standard token in ink! smart contracts, just like [EIP-20](https://github.com/ethereum/EIPs/edit/master/EIPS/eip-20.md) for Ethereum ecosystem.
 
 ## Importance
-Currently, while there is no standard, every contract will have different signatures. Thus, no interoperability is possible. This proposal aims to resolve that by having one **trait**(interface) that shares the
+Currently, while there is no standard, every contract will have different signature. Thus, no interoperability is possible. This proposal aims to resolve that by having one **trait**(interface) that shares the
 same **trait naming** between all implementations, as naming of trait affects the identifiers of functions in this trait.
 
 ## Implementation
