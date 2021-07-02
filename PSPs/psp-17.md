@@ -11,10 +11,11 @@
 
 A standard interface for Ink! tokens.
 
-This proposal aims to define the standard token in ink! smart contracts, in the same way of EIP-20 for Ethereum ecosystem (https://github.com/ethereum/EIPs/edit/master/EIPS/eip-20.md).
+This proposal aims to define the standard token in ink! smart contracts, just like [EIP-20](https://github.com/ethereum/EIPs/edit/master/EIPS/eip-20.md) for Ethereum ecosystem.
 
 ## Importance
-Currently with no standard every contract will have a different signature. So no interoperability is possible. This porposal aims to resolve that by having one **trait**(interface) that shares the same **trait naming** between all implementations, as naming of trait affects the identifiers of functions in this trait.
+Currently, while there is no standard, every contract will have different signature. Thus, no interoperability is possible. This proposal aims to resolve that by having one **trait**(interface) that shares the
+same **trait naming** between all implementations, as naming of trait affects the identifiers of functions in this trait.
 
 ## Implementation
 
@@ -29,18 +30,18 @@ A standard interface allows any Ink! tokens on Polkadot/Kusama to be re-used by 
 
 ## Motivation for having a standard separate from ERC20
 
-Due to different nature of ink!'s the Token Standard should be have ink! specific rules and methods. 
-Therefore different name - PSP-17.
+Due to different nature of ink!, the standard should have ink!-specific rules and methods,
+therefore PSP-20 differs from ERC-20 in its implementation.
 
-Also, this standard proposal defines an extensive method list in the trait(interface). Unlike ERC20, it includes `increase_allowance` & `decrease_allowance`. and defines metadata fields as part of a separate trait.
-Another difference is that it has `PSP17Receiver` trait and `on_received` method is called at the end of transfer if the recipient is a contract.
+Also, this standard proposal defines an extensive method list in the trait (interface). Unlike ERC20, it includes `increase_allowance` & `decrease_allowance`, and defines metadata fields as part of a separate trait.
+Another difference is that it has `PSP17Receiver` trait, and `on_received` method is called at the end of transfer if the recipient is a contract.
 
 
 ## Specification
-1. Traits
-2. Types
-3. Events
-4. Errors
+1. [Traits](#Traits)
+2. [Types](#Types)
+3. [Events](#Events)
+4. [Errors](#Errors)
 
 ### Traits
 
