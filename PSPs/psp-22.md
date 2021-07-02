@@ -1,10 +1,10 @@
-# PSP-17 Fungible Token Standard in Ink!
+# PSP-22 Fungible Token Standard in Ink!
 
-- **PSP Number:** 17
+- **PSP Number:** 22
 - **Authors:** Green Baneling <green.baneling@supercolony.net>, Markian <markian@supercolony.net>, Pierre <pierre.ossun@supercolony.net>, Sven <sven.seven@supercolony.net>, Varg <varg.vikernes@supercolony.net>
 - **Status:** Draft
 - **Created:** 2021-06-19
-- **Reference Implementation:** [OpenBrush](https://github.com/Supercolony-net/openbrush-contracts/blob/main/contracts/token/psp20/impls.rs)
+- **Reference Implementation:** [OpenBrush](https://github.com/Supercolony-net/openbrush-contracts/blob/main/contracts/token/psp20/traits.rs)
 
 
 ## Summary
@@ -21,7 +21,7 @@ same **trait naming** between all implementations, as naming of trait affects th
 
 Example implementation:
 
-- [OpenBrush](https://github.com/Supercolony-net/openbrush-contracts/blob/main/contracts/token/psp20/impls.rs)
+- [OpenBrush](https://github.com/Supercolony-net/openbrush-contracts/blob/main/contracts/token/psp20/traits.rs)
 
 ## Motivation
 
@@ -31,10 +31,10 @@ A standard interface allows any Ink! tokens on Polkadot/Kusama to be re-used by 
 ## Motivation for having a standard separate from ERC20
 
 Due to different nature of ink!, the standard should have ink!-specific rules and methods,
-therefore PSP-20 differs from ERC-20 in its implementation.
+therefore PSP-22 differs from ERC-20 in its implementation.
 
 Also, this standard proposal defines an extensive method list in the trait (interface). Unlike ERC20, it includes `increase_allowance` & `decrease_allowance`, and defines metadata fields as part of a separate trait.
-Another difference is that it has `PSP17Receiver` trait, and `on_received` method is called at the end of transfer if the recipient is a contract.
+Another difference is that it has `PSP22Receiver` trait, and `on_received` method is called at the end of transfer if the recipient is a contract.
 
 
 ## Specification
@@ -46,8 +46,8 @@ Another difference is that it has `PSP17Receiver` trait, and `on_received` metho
 ### Traits
 
 ```rust
-/// PSP17 is a trait of Fungible Token Standard.
-pub trait PSP17 {
+/// PSP22 is a trait of Fungible Token Standard.
+pub trait PSP22 {
  /// Returns the total token supply.
  fn total_supply(&self) -> Balance;
 
@@ -114,8 +114,8 @@ pub trait PSP17 {
  fn decrease_allowance(&mut self, spender: AccountId, delta_value: Balance);
 }
 
-/// PSP17Metadata is an optional trait of metadata for Fungible Token Standard.
-pub trait PSP17Metadata {
+/// PSP22Metadata is an optional trait of metadata for Fungible Token Standard.
+pub trait PSP22Metadata {
  /// Returns the token name.
  fn name(&self) -> Option<String>;
 
@@ -126,17 +126,17 @@ pub trait PSP17Metadata {
  fn decimals(&self) -> u8;
 }
 
-/// PSP17Receiver is a trait for any contract that wants to support safe transfers
-/// from PSP17 token smart contracts to avoid unexpected tokens on balance of contract.
-pub trait PSP17Receiver {
- /// Handle the receipt of a PSP17 token by a smart contract.
- /// Returns `Ok(())` if the contract has accepted the token(s) and `Err(PSP17ReceiverError::TransferRejected(String))` otherwise.
+/// PSP22Receiver is a trait for any contract that wants to support safe transfers
+/// from PSP22 token smart contracts to avoid unexpected tokens on balance of contract.
+pub trait PSP22Receiver {
+ /// Handle the receipt of a PSP22 token by a smart contract.
+ /// Returns `Ok(())` if the contract has accepted the token(s) and `Err(PSP22ReceiverError::TransferRejected(String))` otherwise.
  /// 
  /// This method will get called on every transfer to check whether the recipient in `transfer` is a contract, and if it is,
  /// does it accept tokens. This is done to prevent contracts from locking tokens forever.
  /// 
- /// This method does not throw. Returns `PSP17ReceiverError` if the contract does not accept the tokens.
- fn on_received(&mut self, operator: AccountId, from: AccountId, value: Balance, data: Vec<u8>) -> Result<(), PSP17ReceiverError>;
+ /// This method does not throw. Returns `PSP22ReceiverError` if the contract does not accept the tokens.
+ fn on_received(&mut self, operator: AccountId, from: AccountId, value: Balance, data: Vec<u8>) -> Result<(), PSP22ReceiverError>;
 }
 ```
 
@@ -183,7 +183,7 @@ Suggested methods don't return `Result` (except `on_received`). Instead, they pa
 This panic can contain one of the following messages:
 
 ```rust
-pub enum PSP17Error {
+pub enum PSP22Error {
  /// Custom error type for cases if writer of traits added own restrictions
  Custom(String),
  /// Returned if not enough balance to fulfill a request is available.
@@ -194,11 +194,11 @@ pub enum PSP17Error {
  ZeroRecipientAddress,
  /// Returned if sender's address is zero.
  ZeroSenderAddress,
- /// Returned if safe transfer check fails (see _do_safe_transfer_check() in PSP17 trait)
+ /// Returned if safe transfer check fails (see _do_safe_transfer_check() in PSP22 trait)
  SafeTransferCheckFailed(String),
 }
 
-pub enum PSP17ReceiverError {
+pub enum PSP22ReceiverError {
  /// Returned if a transfer is rejected.
  TransferRejected(String),
 }
