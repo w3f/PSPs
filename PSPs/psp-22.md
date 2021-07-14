@@ -192,12 +192,12 @@ The full ABI JSON for interface and events can be found at the top down of this 
     "",
     " # Errors",
     "",
-    " Panics with `InsufficientBalance` error if there are not enough tokens on",
+    " Panics with message `InsufficientBalance` if there are not enough tokens on",
     " the caller's account Balance.",
     "",
-    " Panics with `ZeroSenderAddress` error if sender's address is zero.",
+    " Panics with message `ZeroSenderAddress` if sender's address is zero.",
     "",
-    " Panics with `ZeroRecipientAddress` error if recipient's address is zero."
+    " Panics with message `ZeroRecipientAddress` if recipient's address is zero."
   ],
   "mutates": true,
   "name": [
@@ -262,15 +262,15 @@ The full ABI JSON for interface and events can be found at the top down of this 
     "",
     " # Errors",
     "",
-    " Panics with `InsufficientAllowance` error if there are not enough tokens allowed",
+    " Panics with message `InsufficientAllowance` if there are not enough tokens allowed",
     " for the caller to withdraw from `from`.",
     "",
-    " Panics with `InsufficientBalance` error if there are not enough tokens on",
+    " Panics with message `InsufficientBalance` if there are not enough tokens on",
     " the the account Balance of `from`.",
     "",
-    " Panics with `ZeroSenderAddress` error if sender's address is zero.",
+    " Panics with message `ZeroSenderAddress` if sender's address is zero.",
     "",
-    " Panics with `ZeroRecipientAddress` error if recipient's address is zero."
+    " Panics with message `ZeroRecipientAddress` if recipient's address is zero."
   ],
   "mutates": true,
   "name": [
@@ -316,9 +316,9 @@ The full ABI JSON for interface and events can be found at the top down of this 
     "",
     " # Errors",
     "",
-    " Panics with `ZeroSenderAddress` error if sender's address is zero.",
+    " Panics with message `ZeroSenderAddress` if sender's address is zero.",
     "",
-    " Panics with `ZeroRecipientAddress` error if recipient's address is zero."
+    " Panics with message `ZeroRecipientAddress` if recipient's address is zero."
   ],
   "mutates": true,
   "name": [
@@ -362,9 +362,9 @@ The full ABI JSON for interface and events can be found at the top down of this 
     "",
     " # Errors",
     "",
-    " Panics with `ZeroSenderAddress` error if sender's address is zero.",
+    " Panics with message `ZeroSenderAddress` if sender's address is zero.",
     "",
-    " Panics with `ZeroRecipientAddress` error if recipient's address is zero."
+    " Panics with message `ZeroRecipientAddress` if recipient's address is zero."
   ],
   "mutates": true,
   "name": [
@@ -407,12 +407,12 @@ The full ABI JSON for interface and events can be found at the top down of this 
     "",
     " # Errors",
     "",
-    " Panics with `InsufficientAllowance` error if there are not enough tokens allowed",
+    " Panics with message `InsufficientAllowance` if there are not enough tokens allowed",
     " by owner for `spender`.",
     "",
-    " Panics with `ZeroSenderAddress` error if sender's address is zero.",
+    " Panics with message `ZeroSenderAddress` if sender's address is zero.",
     "",
-    " Panics with `ZeroRecipientAddress` error if recipient's address is zero."
+    " Panics with message `ZeroRecipientAddress` if recipient's address is zero."
   ],
   "mutates": true,
   "name": [
@@ -543,7 +543,7 @@ PSP22Receiver is an interface for any contract that wants to support safe transf
   ],
   "docs": [
     " Handle the receipt of a PSP22 token by a smart contract.",
-    " Returns `Ok(())` if the contract has accepted the token(s) and  `Err(PSP22ReceiverError::TransferRejected(String))` otherwise.",
+    " Returns `Ok(())` if the contract has accepted the token(s) and Error `TransferRejected(String))` otherwise.",
     "",
     " This method will get called on every transfer to check whether the recipient in `transfer` is a contract, and if it is,",
     " does it accept tokens. This is done to prevent contracts from locking tokens forever.",
@@ -668,7 +668,7 @@ When a contract deletes (burns) tokens, `to` will be `None`
 ```
 
 ### Types
-```json
+```rust
 // AccountId is 32 bytes array, like in substrate-based blockchains.
 type AccountId = [u8; 32];
 // u128 must be enough to cover most of the use cases of standard token.
@@ -679,7 +679,7 @@ type Balance = u128;
 Suggested methods don't return `Result` (except `on_received`). Instead, they panic.
 This panic can contain one of the following messages:
 
-```json
+```rust
  /// PSP22Error 
  
  /// Custom error type for cases if writer of traits added own restrictions
