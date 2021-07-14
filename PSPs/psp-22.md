@@ -499,8 +499,9 @@ PSP22Metadata is an optional interface of metadata for Fungible Token Standard
 
 #### PSP22Receiver
 PSP22Receiver is an interface for any contract that wants to support safe transfers from PSP22 token smart contracts to avoid unexpected tokens on balance of contract.
+This method is called before transfer to ensure the recipient of the tokens acknowledge receipt
 
-##### **on_received**(&mut self, operator: AccountId, from: AccountId, value: Balance, data: Vec<u8>) -> Result<(), PSP22ReceiverError>
+##### **before_received**(&mut self, operator: AccountId, from: AccountId, value: Balance, data: Vec<u8>) -> Result<(), PSP22ReceiverError>
 ```json
 {
   "args": [
@@ -542,8 +543,8 @@ PSP22Receiver is an interface for any contract that wants to support safe transf
     }
   ],
   "docs": [
-    " Handle the receipt of a PSP22 token by a smart contract.",
-    " Returns `Ok(())` if the contract has accepted the token(s) and Error `TransferRejected(String))` otherwise.",
+    " Ensure that the smart contract allow reception of PSP22 token.",
+    " Returns `Ok(())` if the contract allow the reception of the token(s) and Error `TransferRejected(String))` otherwise.",
     "",
     " This method will get called on every transfer to check whether the recipient in `transfer` is a contract, and if it is,",
     " does it accept tokens. This is done to prevent contracts from locking tokens forever.",
@@ -553,7 +554,7 @@ PSP22Receiver is an interface for any contract that wants to support safe transf
   "mutates": true,
   "name": [
     "PSP22Receiver",
-    "on_received"
+    "before_received"
   ],
   "payable": false,
   "returnType": {
