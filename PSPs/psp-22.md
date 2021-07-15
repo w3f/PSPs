@@ -183,7 +183,7 @@ As `pallet-contract` in Substrate can execute any WASM contracts, we should not 
   ],
   "docs": [
     " Transfers `value` amount of tokens from the caller's account to account `to`",
-    " with additional `data` in unspecified format..",
+    " with additional `data` in unspecified format.",
     "",
     " On success a `Transfer` event is emitted.",
     "",
@@ -698,4 +698,3 @@ This panic must be "revert with message" and  can contain one of the following m
 
 Each PSP must be labeled as placed in the
 [public domain](https://creativecommons.org/publicdomain/zero/1.0/).
-
