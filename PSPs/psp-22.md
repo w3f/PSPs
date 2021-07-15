@@ -9,7 +9,7 @@
 
 ## Summary
 
-A standard interface for WASM contracts Fungible Tokens.
+A standard fungible token interface for WASM contracts Fungible Tokens.
 
 This proposal aims to define the standard fungible token in WASM smart contracts, just like [EIP-20](https://github.com/ethereum/EIPs/edit/master/EIPS/eip-20.md) for Ethereum ecosystem.
 
@@ -18,7 +18,7 @@ Currently, while there is no standard, every contract will have different signat
 same **ABI** between all implementations.
 
 ## Implementation
-Example of Ink! implementation:
+Example of ink! implementation:
 
 - [OpenBrush](https://github.com/Supercolony-net/openbrush-contracts/blob/main/contracts/token/psp20/traits.rs)
 
@@ -27,18 +27,15 @@ A standard interface allows any tokens on Polkadot/Kusama to be re-used by other
 
 
 ## Motivation for having a standard separate from ERC20
-Due to different nature of WASM smart contracts and the difference between EVM and pallet-contract in substrate, the standard should have specific rules and methods,
+Due to different nature of WASM smart contracts and the difference between EVM and `pallet-contract` in substrate, the standard should have specific rules and methods,
 therefore PSP-22 differs from ERC-20 in its implementation.
 
-Also, this standard proposal defines an extensive method list in the(interface. Unlike ERC20, it includes `increase_allowance` & `decrease_allowance`, and defines metadata fields as part of a separate interface.
-Another difference is that it has `PSP22Receiver` interface, and `on_received` method is called at the end of transfer if the recipient is a contract.
+Also, this standard proposal defines an extensive method list in the interface. Unlike ERC20, it includes `increase_allowance` & `decrease_allowance`, and defines metadata fields as part of a separate interface.
+Another difference is that it has `PSP22Receiver` interface, and `before_received` method is called at the end of transfer if the recipient is a contract.
 
 # This standard is at ABI level
 
-As contract-pallet in Substrate can execute any WASM contracts, we should not restrain this standard to only Rust & Ink! Framework.
-So that it can be use by any language/framework that compile to WASM.
-The full ABI JSON for interface and events can be found at the top down of this proposal
-
+As `pallet-contract` in Substrate can execute any WASM contracts, we should not restrain this standard to only Rust & ink! Framework, so that it can be use by any language/framework that compile to WASM.
 
 ## Specification
 1. [Interface](#Interface)
@@ -152,7 +149,7 @@ The full ABI JSON for interface and events can be found at the top down of this 
 }
 ```
 
-##### **transfer**(to: AccountId, value: Balance, data: Vec<u8>)
+##### **transfer**(to: AccountId, value: Balance, data: [u8])
 ```json
 {
   "args": [
@@ -178,9 +175,9 @@ The full ABI JSON for interface and events can be found at the top down of this 
       "name": "data",
       "type": {
         "displayName": [
-          "Vec"
+          "[u8]"
         ],
-        "type": "Vec<u8>"
+        "type": "[u8]"
       }
     }
   ],
@@ -192,12 +189,12 @@ The full ABI JSON for interface and events can be found at the top down of this 
     "",
     " # Errors",
     "",
-    " Panics with message `InsufficientBalance` if there are not enough tokens on",
+    " Reverts with message `InsufficientBalance` if there are not enough tokens on",
     " the caller's account Balance.",
     "",
-    " Panics with message `ZeroSenderAddress` if sender's address is zero.",
+    " Reverts with message `ZeroSenderAddress` if sender's address is zero.",
     "",
-    " Panics with message `ZeroRecipientAddress` if recipient's address is zero."
+    " Reverts with message `ZeroRecipientAddress` if recipient's address is zero."
   ],
   "mutates": true,
   "name": [
@@ -210,7 +207,7 @@ The full ABI JSON for interface and events can be found at the top down of this 
 }
 ```
 
-##### **transfer_from**(from: AccountId, to: AccountId, value: Balance, data: Vec<u8>)
+##### **transfer_from**(from: AccountId, to: AccountId, value: Balance, data: [u8])
 ```json
 {
   "args": [
@@ -245,9 +242,9 @@ The full ABI JSON for interface and events can be found at the top down of this 
       "name": "data",
       "type": {
         "displayName": [
-          "Vec"
+          "[u8]"
         ],
-        "type": "Vec<u8>"
+        "type": "[u8]"
       }
     }
   ],
@@ -262,15 +259,15 @@ The full ABI JSON for interface and events can be found at the top down of this 
     "",
     " # Errors",
     "",
-    " Panics with message `InsufficientAllowance` if there are not enough tokens allowed",
+    " Reverts with message `InsufficientAllowance` if there are not enough tokens allowed",
     " for the caller to withdraw from `from`.",
     "",
-    " Panics with message `InsufficientBalance` if there are not enough tokens on",
+    " Reverts with message `InsufficientBalance` if there are not enough tokens on",
     " the the account Balance of `from`.",
     "",
-    " Panics with message `ZeroSenderAddress` if sender's address is zero.",
+    " Reverts with message `ZeroSenderAddress` if sender's address is zero.",
     "",
-    " Panics with message `ZeroRecipientAddress` if recipient's address is zero."
+    " Reverts with message `ZeroRecipientAddress` if recipient's address is zero."
   ],
   "mutates": true,
   "name": [
@@ -316,9 +313,9 @@ The full ABI JSON for interface and events can be found at the top down of this 
     "",
     " # Errors",
     "",
-    " Panics with message `ZeroSenderAddress` if sender's address is zero.",
+    " Reverts with message `ZeroSenderAddress` if sender's address is zero.",
     "",
-    " Panics with message `ZeroRecipientAddress` if recipient's address is zero."
+    " Reverts with message `ZeroRecipientAddress` if recipient's address is zero."
   ],
   "mutates": true,
   "name": [
@@ -362,9 +359,9 @@ The full ABI JSON for interface and events can be found at the top down of this 
     "",
     " # Errors",
     "",
-    " Panics with message `ZeroSenderAddress` if sender's address is zero.",
+    " Reverts with message `ZeroSenderAddress` if sender's address is zero.",
     "",
-    " Panics with message `ZeroRecipientAddress` if recipient's address is zero."
+    " Reverts with message `ZeroRecipientAddress` if recipient's address is zero."
   ],
   "mutates": true,
   "name": [
@@ -407,12 +404,12 @@ The full ABI JSON for interface and events can be found at the top down of this 
     "",
     " # Errors",
     "",
-    " Panics with message `InsufficientAllowance` if there are not enough tokens allowed",
+    " Reverts with message `InsufficientAllowance` if there are not enough tokens allowed",
     " by owner for `spender`.",
     "",
-    " Panics with message `ZeroSenderAddress` if sender's address is zero.",
+    " Reverts with message `ZeroSenderAddress` if sender's address is zero.",
     "",
-    " Panics with message `ZeroRecipientAddress` if recipient's address is zero."
+    " Reverts with message `ZeroRecipientAddress` if recipient's address is zero."
   ],
   "mutates": true,
   "name": [
@@ -445,7 +442,7 @@ PSP22Metadata is an optional interface of metadata for Fungible Token Standard
     "displayName": [
       "Option"
     ],
-    "type": "Option<str>"
+    "type": "Option<string>"
   },
   "selector": "0x9c994fe4"
 }
@@ -468,7 +465,7 @@ PSP22Metadata is an optional interface of metadata for Fungible Token Standard
     "displayName": [
       "Option"
     ],
-    "type": "Option<str>"
+    "type": "Option<string>"
   },
   "selector": "0x10972330"
 }
@@ -499,9 +496,9 @@ PSP22Metadata is an optional interface of metadata for Fungible Token Standard
 
 #### PSP22Receiver
 PSP22Receiver is an interface for any contract that wants to support safe transfers from PSP22 token smart contracts to avoid unexpected tokens on balance of contract.
-This method is called before transfer to ensure the recipient of the tokens acknowledge receipt
+This method is called before transfer to ensure the recipient of the tokens acknowledges receipt.
 
-##### **before_received**(&mut self, operator: AccountId, from: AccountId, value: Balance, data: Vec<u8>) -> Result<(), PSP22ReceiverError>
+##### **before_received**(&mut self, operator: AccountId, from: AccountId, value: Balance, data: [u8]) -> Result<(), PSP22ReceiverError>
 ```json
 {
   "args": [
@@ -536,15 +533,15 @@ This method is called before transfer to ensure the recipient of the tokens ackn
       "name": "data",
       "type": {
         "displayName": [
-          "Vec"
+          "[u8]"
         ],
-        "type": "Vec<u8>"
+        "type": "[u8]"
       }
     }
   ],
   "docs": [
-    " Ensure that the smart contract allow reception of PSP22 token.",
-    " Returns `Ok(())` if the contract allow the reception of the token(s) and Error `TransferRejected(String))` otherwise.",
+    " Ensures that the smart contract allows reception of PSP22 token(s).",
+    " Returns `Ok(())` if the contract allows the reception of the token(s) and Error `TransferRejected(String))` otherwise.",
     "",
     " This method will get called on every transfer to check whether the recipient in `transfer` is a contract, and if it is,",
     " does it accept tokens. This is done to prevent contracts from locking tokens forever.",
@@ -594,7 +591,7 @@ When a contract deletes (burns) tokens, `to` will be `None`
         "displayName": [
           "Option"
         ],
-        "type": "Option<AccountId]>"
+        "type": "Option<AccountId>"
       }
     },
     {
