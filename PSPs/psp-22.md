@@ -1,4 +1,4 @@
-# PSP-22 Fungible Token Standard in Ink!
+# PSP-22 Fungible Token Standard in WASM
 
 - **PSP Number:** 22
 - **Authors:** Green Baneling <green.baneling@supercolony.net>, Markian <markian@supercolony.net>, Pierre <pierre.ossun@supercolony.net>, Sven <sven.seven@supercolony.net>, Varg <varg.vikernes@supercolony.net>
