@@ -67,7 +67,7 @@ The full ABI JSON for interface and events can be found at the top down of this 
     "displayName": [
       "Balance"
     ],
-    "type": u128
+    "type": "Balance"
   },
   "selector": "0xd1ff92bd"
 }
@@ -83,7 +83,7 @@ The full ABI JSON for interface and events can be found at the top down of this 
         "displayName": [
           "AccountId"
         ],
-        "type": [u8; 32]
+        "type": "AccountId"
       }
     }
   ],
@@ -102,7 +102,7 @@ The full ABI JSON for interface and events can be found at the top down of this 
     "displayName": [
       "Balance"
     ],
-    "type": u128
+    "type": "Balance"
   },
   "selector": "0x936205de"
 }
@@ -118,7 +118,7 @@ The full ABI JSON for interface and events can be found at the top down of this 
         "displayName": [
           "AccountId"
         ],
-        "type": [u8; 32]
+        "type": "AccountId"
       }
     },
     {
@@ -127,7 +127,7 @@ The full ABI JSON for interface and events can be found at the top down of this 
         "displayName": [
           "AccountId"
         ],
-        "type": [u8; 32]
+        "type": "AccountId"
       }
     }
   ],
@@ -146,7 +146,7 @@ The full ABI JSON for interface and events can be found at the top down of this 
     "displayName": [
       "Balance"
     ],
-    "type": u128
+    "type": "Balance"
   },
   "selector": "0x467e8bff"
 }
@@ -162,7 +162,7 @@ The full ABI JSON for interface and events can be found at the top down of this 
         "displayName": [
           "AccountId"
         ],
-        "type": [u8; 32]
+        "type": "AccountId"
       }
     },
     {
@@ -171,7 +171,7 @@ The full ABI JSON for interface and events can be found at the top down of this 
         "displayName": [
           "Balance"
         ],
-        "type": u128
+        "type": "Balance"
       }
     },
     {
@@ -180,7 +180,7 @@ The full ABI JSON for interface and events can be found at the top down of this 
         "displayName": [
           "Vec"
         ],
-        "type": Vec<u8>
+        "type": "Vec<u8>"
       }
     }
   ],
@@ -220,7 +220,7 @@ The full ABI JSON for interface and events can be found at the top down of this 
         "displayName": [
           "AccountId"
         ],
-        "type": [u8; 32]
+        "type": "AccountId"
       }
     },
     {
@@ -229,7 +229,7 @@ The full ABI JSON for interface and events can be found at the top down of this 
         "displayName": [
           "AccountId"
         ],
-        "type": [u8; 32]
+        "type": "AccountId"
       }
     },
     {
@@ -238,7 +238,7 @@ The full ABI JSON for interface and events can be found at the top down of this 
         "displayName": [
           "Balance"
         ],
-        "type": u128
+        "type": "Balance"
       }
     },
     {
@@ -247,7 +247,7 @@ The full ABI JSON for interface and events can be found at the top down of this 
         "displayName": [
           "Vec"
         ],
-        "type": Vec<u8>
+        "type": "Vec<u8>"
       }
     }
   ],
@@ -293,7 +293,7 @@ The full ABI JSON for interface and events can be found at the top down of this 
         "displayName": [
           "AccountId"
         ],
-        "type": [u8; 32]
+        "type": "AccountId"
       }
     },
     {
@@ -302,7 +302,7 @@ The full ABI JSON for interface and events can be found at the top down of this 
         "displayName": [
           "Balance"
         ],
-        "type": u128
+        "type": "Balance"
       }
     }
   ],
@@ -342,7 +342,7 @@ The full ABI JSON for interface and events can be found at the top down of this 
         "displayName": [
           "AccountId"
         ],
-        "type": [u8; 32]
+        "type": "AccountId"
       }
     },
     {
@@ -351,7 +351,7 @@ The full ABI JSON for interface and events can be found at the top down of this 
         "displayName": [
           "Balance"
         ],
-        "type": u128
+        "type": "Balance"
       }
     }
   ],
@@ -387,7 +387,7 @@ The full ABI JSON for interface and events can be found at the top down of this 
         "displayName": [
           "AccountId"
         ],
-        "type": [u8; 32]
+        "type": "AccountId"
       }
     },
     {
@@ -396,7 +396,7 @@ The full ABI JSON for interface and events can be found at the top down of this 
         "displayName": [
           "Balance"
         ],
-        "type": u128
+        "type": "Balance"
       }
     }
   ],
@@ -445,7 +445,7 @@ PSP22Metadata is an optional interface of metadata for Fungible Token Standard
     "displayName": [
       "Option"
     ],
-    "type": str
+    "type": "Option<str>"
   },
   "selector": "0x9c994fe4"
 }
@@ -468,7 +468,7 @@ PSP22Metadata is an optional interface of metadata for Fungible Token Standard
     "displayName": [
       "Option"
     ],
-    "type": str
+    "type": "Option<str>"
   },
   "selector": "0x10972330"
 }
@@ -491,7 +491,7 @@ PSP22Metadata is an optional interface of metadata for Fungible Token Standard
     "displayName": [
       "u8"
     ],
-    "type": u8
+    "type": "u8"
   },
   "selector": "0x997ad16c"
 }
@@ -511,7 +511,7 @@ This method is called before transfer to ensure the recipient of the tokens ackn
         "displayName": [
           "AccountId"
         ],
-        "type": [u8; 32]
+        "type": "AccountId"
       }
     },
     {
@@ -520,7 +520,7 @@ This method is called before transfer to ensure the recipient of the tokens ackn
         "displayName": [
           "AccountId"
         ],
-        "type": [u8; 32]
+        "type": "AccountId"
       }
     },
     {
@@ -529,7 +529,7 @@ This method is called before transfer to ensure the recipient of the tokens ackn
         "displayName": [
           "Balance"
         ],
-        "type": u128
+        "type": "Balance"
       }
     },
     {
@@ -538,7 +538,7 @@ This method is called before transfer to ensure the recipient of the tokens ackn
         "displayName": [
           "Vec"
         ],
-        "type": Vec<u8>
+        "type": "Vec<u8>"
       }
     }
   ],
@@ -561,7 +561,7 @@ This method is called before transfer to ensure the recipient of the tokens ackn
     "displayName": [
       "Result"
     ],
-    "type": Result
+    "type": "Result"
   },
   "selector": "0xa9504238"
 }
@@ -583,7 +583,7 @@ When a contract deletes (burns) tokens, `to` will be `None`
         "displayName": [
           "Option"
         ],
-        "type": Option<[u8; 32]>
+        "type": "Option<AccountId>"
       }
     },
     {
@@ -594,7 +594,7 @@ When a contract deletes (burns) tokens, `to` will be `None`
         "displayName": [
           "Option"
         ],
-        "type": Option<[u8; 32]>
+        "type": "Option<AccountId]>"
       }
     },
     {
@@ -605,7 +605,7 @@ When a contract deletes (burns) tokens, `to` will be `None`
         "displayName": [
           "Balance"
         ],
-        "type": u128
+        "type": "Balance"
       }
     }
   ],
@@ -628,7 +628,7 @@ When a contract deletes (burns) tokens, `to` will be `None`
         "displayName": [
           "AccountId"
         ],
-        "type": [u8; 32]
+        "type": "AccountId"
       }
     },
     {
@@ -639,7 +639,7 @@ When a contract deletes (burns) tokens, `to` will be `None`
         "displayName": [
           "AccountId"
         ],
-        "type": [u8; 32]
+        "type": "AccountId"
       }
     },
     {
@@ -650,7 +650,7 @@ When a contract deletes (burns) tokens, `to` will be `None`
         "displayName": [
           "Balance"
         ],
-        "type": u128
+        "type": "Balance"
       }
     }
   ],
