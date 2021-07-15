@@ -67,7 +67,7 @@ The full ABI JSON for interface and events can be found at the top down of this 
     "displayName": [
       "Balance"
     ],
-    "type": 1
+    "type": u128
   },
   "selector": "0xd1ff92bd"
 }
@@ -83,7 +83,7 @@ The full ABI JSON for interface and events can be found at the top down of this 
         "displayName": [
           "AccountId"
         ],
-        "type": 5
+        "type": [u8; 32]
       }
     }
   ],
@@ -102,7 +102,7 @@ The full ABI JSON for interface and events can be found at the top down of this 
     "displayName": [
       "Balance"
     ],
-    "type": 1
+    "type": u128
   },
   "selector": "0x936205de"
 }
@@ -118,7 +118,7 @@ The full ABI JSON for interface and events can be found at the top down of this 
         "displayName": [
           "AccountId"
         ],
-        "type": 5
+        "type": [u8; 32]
       }
     },
     {
@@ -127,7 +127,7 @@ The full ABI JSON for interface and events can be found at the top down of this 
         "displayName": [
           "AccountId"
         ],
-        "type": 5
+        "type": [u8; 32]
       }
     }
   ],
@@ -146,7 +146,7 @@ The full ABI JSON for interface and events can be found at the top down of this 
     "displayName": [
       "Balance"
     ],
-    "type": 1
+    "type": u128
   },
   "selector": "0x467e8bff"
 }
@@ -162,7 +162,7 @@ The full ABI JSON for interface and events can be found at the top down of this 
         "displayName": [
           "AccountId"
         ],
-        "type": 5
+        "type": [u8; 32]
       }
     },
     {
@@ -171,7 +171,7 @@ The full ABI JSON for interface and events can be found at the top down of this 
         "displayName": [
           "Balance"
         ],
-        "type": 1
+        "type": u128
       }
     },
     {
@@ -180,7 +180,7 @@ The full ABI JSON for interface and events can be found at the top down of this 
         "displayName": [
           "Vec"
         ],
-        "type": 14
+        "type": Vec<u8>
       }
     }
   ],
@@ -220,7 +220,7 @@ The full ABI JSON for interface and events can be found at the top down of this 
         "displayName": [
           "AccountId"
         ],
-        "type": 5
+        "type": [u8; 32]
       }
     },
     {
@@ -229,7 +229,7 @@ The full ABI JSON for interface and events can be found at the top down of this 
         "displayName": [
           "AccountId"
         ],
-        "type": 5
+        "type": [u8; 32]
       }
     },
     {
@@ -238,7 +238,7 @@ The full ABI JSON for interface and events can be found at the top down of this 
         "displayName": [
           "Balance"
         ],
-        "type": 1
+        "type": u128
       }
     },
     {
@@ -247,7 +247,7 @@ The full ABI JSON for interface and events can be found at the top down of this 
         "displayName": [
           "Vec"
         ],
-        "type": 14
+        "type": Vec<u8>
       }
     }
   ],
@@ -293,7 +293,7 @@ The full ABI JSON for interface and events can be found at the top down of this 
         "displayName": [
           "AccountId"
         ],
-        "type": 5
+        "type": [u8; 32]
       }
     },
     {
@@ -302,7 +302,7 @@ The full ABI JSON for interface and events can be found at the top down of this 
         "displayName": [
           "Balance"
         ],
-        "type": 1
+        "type": u128
       }
     }
   ],
@@ -342,7 +342,7 @@ The full ABI JSON for interface and events can be found at the top down of this 
         "displayName": [
           "AccountId"
         ],
-        "type": 5
+        "type": [u8; 32]
       }
     },
     {
@@ -351,7 +351,7 @@ The full ABI JSON for interface and events can be found at the top down of this 
         "displayName": [
           "Balance"
         ],
-        "type": 1
+        "type": u128
       }
     }
   ],
@@ -387,7 +387,7 @@ The full ABI JSON for interface and events can be found at the top down of this 
         "displayName": [
           "AccountId"
         ],
-        "type": 5
+        "type": [u8; 32]
       }
     },
     {
@@ -396,7 +396,7 @@ The full ABI JSON for interface and events can be found at the top down of this 
         "displayName": [
           "Balance"
         ],
-        "type": 1
+        "type": u128
       }
     }
   ],
@@ -445,7 +445,7 @@ PSP22Metadata is an optional interface of metadata for Fungible Token Standard
     "displayName": [
       "Option"
     ],
-    "type": 13
+    "type": str
   },
   "selector": "0x9c994fe4"
 }
@@ -468,7 +468,7 @@ PSP22Metadata is an optional interface of metadata for Fungible Token Standard
     "displayName": [
       "Option"
     ],
-    "type": 13
+    "type": str
   },
   "selector": "0x10972330"
 }
@@ -491,7 +491,7 @@ PSP22Metadata is an optional interface of metadata for Fungible Token Standard
     "displayName": [
       "u8"
     ],
-    "type": 7
+    "type": u8
   },
   "selector": "0x997ad16c"
 }
@@ -511,7 +511,7 @@ This method is called before transfer to ensure the recipient of the tokens ackn
         "displayName": [
           "AccountId"
         ],
-        "type": 5
+        "type": [u8; 32]
       }
     },
     {
@@ -520,7 +520,7 @@ This method is called before transfer to ensure the recipient of the tokens ackn
         "displayName": [
           "AccountId"
         ],
-        "type": 5
+        "type": [u8; 32]
       }
     },
     {
@@ -529,7 +529,7 @@ This method is called before transfer to ensure the recipient of the tokens ackn
         "displayName": [
           "Balance"
         ],
-        "type": 1
+        "type": u128
       }
     },
     {
@@ -538,7 +538,7 @@ This method is called before transfer to ensure the recipient of the tokens ackn
         "displayName": [
           "Vec"
         ],
-        "type": 14
+        "type": Vec<u8>
       }
     }
   ],
@@ -561,19 +561,13 @@ This method is called before transfer to ensure the recipient of the tokens ackn
     "displayName": [
       "Result"
     ],
-    "type": 15
+    "type": Result
   },
   "selector": "0xa9504238"
 }
 ```
 
 ### Events
-
-‼️ Important ‼️
-
-Events are not supported currently due to how ink! currently handles them.  
-The identifiers of events must be based on the name of the trait. At the moment, ink! doesn't support it,
-but it must be fixed with this [issue](https://github.com/paritytech/ink/issues/809). 
 
 ##### Transfer 
 When a contract creates (mints) new tokens, `from` will be `None`
@@ -589,7 +583,7 @@ When a contract deletes (burns) tokens, `to` will be `None`
         "displayName": [
           "Option"
         ],
-        "type": 15
+        "type": Option<[u8; 32]>
       }
     },
     {
@@ -600,7 +594,7 @@ When a contract deletes (burns) tokens, `to` will be `None`
         "displayName": [
           "Option"
         ],
-        "type": 15
+        "type": Option<[u8; 32]>
       }
     },
     {
@@ -611,7 +605,7 @@ When a contract deletes (burns) tokens, `to` will be `None`
         "displayName": [
           "Balance"
         ],
-        "type": 1
+        "type": u128
       }
     }
   ],
@@ -634,7 +628,7 @@ When a contract deletes (burns) tokens, `to` will be `None`
         "displayName": [
           "AccountId"
         ],
-        "type": 5
+        "type": [u8; 32]
       }
     },
     {
@@ -645,7 +639,7 @@ When a contract deletes (burns) tokens, `to` will be `None`
         "displayName": [
           "AccountId"
         ],
-        "type": 5
+        "type": [u8; 32]
       }
     },
     {
@@ -656,7 +650,7 @@ When a contract deletes (burns) tokens, `to` will be `None`
         "displayName": [
           "Balance"
         ],
-        "type": 1
+        "type": u128
       }
     }
   ],
@@ -677,8 +671,8 @@ type Balance = u128;
 ```
 
 ### Errors
-Suggested methods don't return `Result` (except `on_received`). Instead, they panic.
-This panic can contain one of the following messages:
+Suggested methods don't return `Result` (except `before_received`). Instead, they panic.
+This panic must be "revert with message" and  can contain one of the following messages:
 
 ```rust
  /// PSP22Error 
