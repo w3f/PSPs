@@ -9,7 +9,7 @@
 
 ## Summary
 
-A standard fungible token interface for WASM contracts Fungible Tokens.
+A standard fungible token interface for WASM contracts.
 
 This proposal aims to define the standard fungible token in WASM smart contracts, just like [EIP-20](https://github.com/ethereum/EIPs/edit/master/EIPS/eip-20.md) for Ethereum ecosystem.
 
