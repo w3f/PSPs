@@ -48,6 +48,7 @@ As `pallet-contract` in Substrate can execute any WASM contracts, we should not 
 #### PSP22 is an interface of Fungible Token Standard
 
 ##### **total_supply**() -> Balance
+Selector: `0x162df8c2` - first 4 bytes of `blake2b_256("PSP22::total_supply")`
 ```json
 {
   "args": [],
@@ -66,11 +67,12 @@ As `pallet-contract` in Substrate can execute any WASM contracts, we should not 
     ],
     "type": "Balance"
   },
-  "selector": "0xd1ff92bd"
+  "selector": "0x162df8c2"
 }
 ```
 
 ##### **balance_of**(owner: AccountId) -> Balance
+Selector: `0x6568382f` - first 4 bytes of `blake2b_256("PSP22::balance_of")`
 ```json
 {
   "args": [
@@ -101,11 +103,12 @@ As `pallet-contract` in Substrate can execute any WASM contracts, we should not 
     ],
     "type": "Balance"
   },
-  "selector": "0x936205de"
+  "selector": "0x6568382f"
 }
 ```
 
 ##### **allowance**(owner: AccountId, spender: AccountId) -> Balance
+Selector: `0x4d47d921` - first 4 bytes of `blake2b_256("PSP22::allowance")`
 ```json
 {
   "args": [
@@ -145,11 +148,12 @@ As `pallet-contract` in Substrate can execute any WASM contracts, we should not 
     ],
     "type": "Balance"
   },
-  "selector": "0x467e8bff"
+  "selector": "0x4d47d921"
 }
 ```
 
 ##### **transfer**(to: AccountId, value: Balance, data: [u8])
+Selector: `0xdb20f9f5` - first 4 bytes of `blake2b_256("PSP22::transfer")`
 ```json
 {
   "args": [
@@ -203,11 +207,12 @@ As `pallet-contract` in Substrate can execute any WASM contracts, we should not 
   ],
   "payable": false,
   "returnType": null,
-  "selector": "0x18532c7c"
+  "selector": "0xdb20f9f5"
 }
 ```
 
 ##### **transfer_from**(from: AccountId, to: AccountId, value: Balance, data: [u8])
+Selector: `0x54b3c76e` - first 4 bytes of `blake2b_256("PSP22::transfer_from")`
 ```json
 {
   "args": [
@@ -276,11 +281,12 @@ As `pallet-contract` in Substrate can execute any WASM contracts, we should not 
   ],
   "payable": false,
   "returnType": null,
-  "selector": "0x9eb3870e"
+  "selector": "0x54b3c76e"
 }
 ```
 
 ##### **approve**(spender: AccountId, value: Balance)
+Selector: `0xb20f1bbd` - first 4 bytes of `blake2b_256("PSP22::approve")`
 ```json
 {
   "args": [
@@ -324,12 +330,13 @@ As `pallet-contract` in Substrate can execute any WASM contracts, we should not 
   ],
   "payable": false,
   "returnType": null,
-  "selector": "0xf229fa2f"
+  "selector": "0xb20f1bbd"
 }
 
 ```
 
 ##### **increase_allowance**(spender: AccountId, delta_value: Balance)
+Selector: `0x96d6b57a` - first 4 bytes of `blake2b_256("PSP22::increase_allowance")`
 ```json
 {
   "args": [
@@ -370,11 +377,12 @@ As `pallet-contract` in Substrate can execute any WASM contracts, we should not 
   ],
   "payable": false,
   "returnType": null,
-  "selector": "0xf43f7266"
+  "selector": "0x96d6b57a"
 }
 ```
 
 ##### **decrease_allowance**(spender: AccountId, delta_value: Balance)
+Selector: `0xfecb57d5` - first 4 bytes of `blake2b_256("PSP22::decrease_allowance")`
 ```json
 {
   "args": [
@@ -418,7 +426,7 @@ As `pallet-contract` in Substrate can execute any WASM contracts, we should not 
   ],
   "payable": false,
   "returnType": null,
-  "selector": "0x1f86d882"
+  "selector": "0xfecb57d5"
 }
 ```
 
@@ -426,6 +434,7 @@ As `pallet-contract` in Substrate can execute any WASM contracts, we should not 
 PSP22Metadata is an optional interface of metadata for Fungible Token Standard
 
 ##### **token_name**() -> Option<String>
+Selector: `0x3d261bd4` - first 4 bytes of `blake2b_256("PSP22Metadata::token_name")`
 ```json
 {
   "args": [],
@@ -444,11 +453,12 @@ PSP22Metadata is an optional interface of metadata for Fungible Token Standard
     ],
     "type": "Option<string>"
   },
-  "selector": "0x9c994fe4"
+  "selector": "0x3d261bd4"
 }
 ```
 
 ##### **token_symbol**() -> Option<String>
+Selector: `0x34205be5` - first 4 bytes of `blake2b_256("PSP22Metadata::token_symbol")`
 ```json
 {
   "args": [],
@@ -467,11 +477,12 @@ PSP22Metadata is an optional interface of metadata for Fungible Token Standard
     ],
     "type": "Option<string>"
   },
-  "selector": "0x10972330"
+  "selector": "0x34205be5"
 }
 ```
 
 ##### **token_decimals**() -> u8
+Selector: `0x7271b782` - first 4 bytes of `blake2b_256("PSP22Metadata::token_decimals")`
 ```json
 {
   "args": [],
@@ -490,7 +501,7 @@ PSP22Metadata is an optional interface of metadata for Fungible Token Standard
     ],
     "type": "u8"
   },
-  "selector": "0x997ad16c"
+  "selector": "0x7271b782"
 }
 ```
 
@@ -499,6 +510,7 @@ PSP22Receiver is an interface for any contract that wants to support safe transf
 This method is called before transfer to ensure the recipient of the tokens acknowledges receipt.
 
 ##### **before_received**(&mut self, operator: AccountId, from: AccountId, value: Balance, data: [u8]) -> Result<(), PSP22ReceiverError>
+Selector: `0xfda6f1a9` - first 4 bytes of `blake2b_256("PSP22Receiver::before_received")`
 ```json
 {
   "args": [
@@ -560,7 +572,7 @@ This method is called before transfer to ensure the recipient of the tokens ackn
     ],
     "type": "Result"
   },
-  "selector": "0xa9504238"
+  "selector": "0xfda6f1a9"
 }
 ```
 
