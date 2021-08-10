@@ -706,8 +706,7 @@ type Balance = u128;
                     "def": {
                       "tuple": []
                     }
-                  },
-                  "typeName": "T"
+                  }
                 }
               ],
               "name": "Ok"
@@ -722,8 +721,7 @@ type Balance = u128;
                           {
                             "fields": [
                               {
-                                "type": "string",
-                                "typeName": "String"
+                                "type": "string"
                               }
                             ],
                             "name": "Custom"
@@ -743,8 +741,7 @@ type Balance = u128;
                           {
                             "fields": [
                               {
-                                "type": "string",
-                                "typeName": "String"
+                                "type": "string"
                               }
                             ],
                             "name": "SafeTransferCheckFailed"
@@ -755,8 +752,7 @@ type Balance = u128;
                     "path": [
                       "PSP22Error"
                     ]
-                  },
-                  "typeName": "E"
+                  }
                 }
               ],
               "name": "Err"
@@ -776,8 +772,7 @@ type Balance = u128;
                     "def": {
                       "tuple": []
                     }
-                  },
-                  "typeName": "T"
+                  }
                 }
               ],
               "name": "Ok"
@@ -792,8 +787,7 @@ type Balance = u128;
                           {
                             "fields": [
                               {
-                                "type": "string",
-                                "typeName": "String"
+                                "type": "string"
                               }
                             ],
                             "name": "TransferRejected"
@@ -804,8 +798,7 @@ type Balance = u128;
                     "path": [
                       "PSP22ReceiverError"
                     ]
-                  },
-                  "typeName": "E"
+                  }
                 }
               ],
               "name": "Err"
