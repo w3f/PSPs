@@ -35,7 +35,7 @@ Another difference is that it has `PSP22Receiver` interface, and `before_receive
 
 # This standard is at ABI level
 
-As `pallet-contract` in Substrate can execute any WASM contracts, we should not restrain this standard to only Rust & ink! Framework, so that it can be use by any language/framework that compile to WASM.
+As `pallet-contract` in Substrate can execute any WASM contracts, we should not restrain this standard to only Rust & ink! Framework, so that it can be used by any language/framework that compile to WASM.
 
 ## Specification
 1. [Interface](#Interface)
@@ -206,7 +206,12 @@ Selector: `0xdb20f9f5` - first 4 bytes of `blake2b_256("PSP22::transfer")`
     "transfer"
   ],
   "payable": false,
-  "returnType": null,
+  "returnType": {
+    "displayName": [
+      "Result"
+    ],
+    "type": 1
+  },
   "selector": "0xdb20f9f5"
 }
 ```
@@ -280,7 +285,12 @@ Selector: `0x54b3c76e` - first 4 bytes of `blake2b_256("PSP22::transfer_from")`
     "transfer_from"
   ],
   "payable": false,
-  "returnType": null,
+  "returnType": {
+    "displayName": [
+      "Result"
+    ],
+    "type": 1
+  },
   "selector": "0x54b3c76e"
 }
 ```
@@ -329,7 +339,12 @@ Selector: `0xb20f1bbd` - first 4 bytes of `blake2b_256("PSP22::approve")`
     "approve"
   ],
   "payable": false,
-  "returnType": null,
+  "returnType": {
+    "displayName": [
+      "Result"
+    ],
+    "type": 1
+  },
   "selector": "0xb20f1bbd"
 }
 
@@ -376,7 +391,12 @@ Selector: `0x96d6b57a` - first 4 bytes of `blake2b_256("PSP22::increase_allowanc
     "increase_allowance"
   ],
   "payable": false,
-  "returnType": null,
+  "returnType": {
+    "displayName": [
+      "Result"
+    ],
+    "type": 1
+  },
   "selector": "0x96d6b57a"
 }
 ```
@@ -425,7 +445,12 @@ Selector: `0xfecb57d5` - first 4 bytes of `blake2b_256("PSP22::decrease_allowanc
     "decrease_allowance"
   ],
   "payable": false,
-  "returnType": null,
+  "returnType": {
+    "displayName": [
+      "Result"
+    ],
+    "type": 1
+  },
   "selector": "0xfecb57d5"
 }
 ```
@@ -570,7 +595,7 @@ Selector: `0xfda6f1a9` - first 4 bytes of `blake2b_256("PSP22Receiver::before_re
     "displayName": [
       "Result"
     ],
-    "type": "Result"
+    "type": 2
   },
   "selector": "0xfda6f1a9"
 }
@@ -677,6 +702,132 @@ When a contract deletes (burns) tokens, `to` will be `None`
 type AccountId = [u8; 32];
 // u128 must be enough to cover most of the use cases of standard token.
 type Balance = u128;
+```
+#### Return types
+```json
+{
+  "types": {
+    "1": {
+      "def": {
+        "variant": {
+          "variants": [
+            {
+              "fields": [
+                {
+                  "type": {
+                    "def": {
+                      "tuple": []
+                    }
+                  },
+                  "typeName": "T"
+                }
+              ],
+              "name": "Ok"
+            },
+            {
+              "fields": [
+                {
+                  "type": {
+                    "def": {
+                      "variant": {
+                        "variants": [
+                          {
+                            "fields": [
+                              {
+                                "type": "string",
+                                "typeName": "String"
+                              }
+                            ],
+                            "name": "Custom"
+                          },
+                          {
+                            "name": "InsufficientBalance"
+                          },
+                          {
+                            "name": "InsufficientAllowance"
+                          },
+                          {
+                            "name": "ZeroRecipientAddress"
+                          },
+                          {
+                            "name": "ZeroSenderAddress"
+                          },
+                          {
+                            "fields": [
+                              {
+                                "type": "string",
+                                "typeName": "String"
+                              }
+                            ],
+                            "name": "SafeTransferCheckFailed"
+                          }
+                        ]
+                      }
+                    },
+                    "path": [
+                      "PSP22Error"
+                    ]
+                  },
+                  "typeName": "E"
+                }
+              ],
+              "name": "Err"
+            }
+          ]
+        }
+      }
+    },
+    "2": {
+      "def": {
+        "variant": {
+          "variants": [
+            {
+              "fields": [
+                {
+                  "type": {
+                    "def": {
+                      "tuple": []
+                    }
+                  },
+                  "typeName": "T"
+                }
+              ],
+              "name": "Ok"
+            },
+            {
+              "fields": [
+                {
+                  "type": {
+                    "def": {
+                      "variant": {
+                        "variants": [
+                          {
+                            "fields": [
+                              {
+                                "type": "string",
+                                "typeName": "String"
+                              }
+                            ],
+                            "name": "TransferRejected"
+                          }
+                        ]
+                      }
+                    },
+                    "path": [
+                      "PSP22ReceiverError"
+                    ]
+                  },
+                  "typeName": "E"
+                }
+              ],
+              "name": "Err"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
 ```
 
 ### Errors
