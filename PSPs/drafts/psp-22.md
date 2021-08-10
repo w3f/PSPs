@@ -819,8 +819,7 @@ type Balance = u128;
 ```
 
 ### Errors
-Suggested methods returns `Result`.  
-Methods will revert the transaction and return Result with Error from this list:
+Suggested methods reverts the transaction and return Result with Error from this list:
 
 ```rust
  /// PSP22Error 
