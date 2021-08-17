@@ -35,7 +35,7 @@ Another difference is that it has `PSP22Receiver` interface, and `before_receive
 
 # This standard is at ABI level
 
-As `pallet-contract` in Substrate can execute any WASM contracts, we should not restrain this standard to only Rust & ink! Framework, so that it can be use by any language/framework that compile to WASM.
+As `pallet-contract` in Substrate can execute any WASM contracts, we should not restrain this standard to only Rust & ink! Framework, so that it can be used by any language/framework that compile to WASM.
 
 ## Specification
 1. [Interface](#Interface)
@@ -60,7 +60,6 @@ Selector: `0x162df8c2` - first 4 bytes of `blake2b_256("PSP22::total_supply")`
     "PSP22",
     "total_supply"
   ],
-  "payable": false,
   "returnType": {
     "displayName": [
       "Balance"
@@ -96,7 +95,6 @@ Selector: `0x6568382f` - first 4 bytes of `blake2b_256("PSP22::balance_of")`
     "PSP22",
     "balance_of"
   ],
-  "payable": false,
   "returnType": {
     "displayName": [
       "Balance"
@@ -141,7 +139,6 @@ Selector: `0x4d47d921` - first 4 bytes of `blake2b_256("PSP22::allowance")`
     "PSP22",
     "allowance"
   ],
-  "payable": false,
   "returnType": {
     "displayName": [
       "Balance"
@@ -152,7 +149,7 @@ Selector: `0x4d47d921` - first 4 bytes of `blake2b_256("PSP22::allowance")`
 }
 ```
 
-##### **transfer**(to: AccountId, value: Balance, data: [u8])
+##### **transfer**(to: AccountId, value: Balance, data: [u8]) -> Result<(), PSP22Error>
 Selector: `0xdb20f9f5` - first 4 bytes of `blake2b_256("PSP22::transfer")`
 ```json
 {
@@ -193,25 +190,29 @@ Selector: `0xdb20f9f5` - first 4 bytes of `blake2b_256("PSP22::transfer")`
     "",
     " # Errors",
     "",
-    " Reverts with message `InsufficientBalance` if there are not enough tokens on",
+    " Reverts with error `InsufficientBalance` if there are not enough tokens on",
     " the caller's account Balance.",
     "",
-    " Reverts with message `ZeroSenderAddress` if sender's address is zero.",
+    " Reverts with error `ZeroSenderAddress` if sender's address is zero.",
     "",
-    " Reverts with message `ZeroRecipientAddress` if recipient's address is zero."
+    " Reverts with error `ZeroRecipientAddress` if recipient's address is zero."
   ],
   "mutates": true,
   "name": [
     "PSP22",
     "transfer"
   ],
-  "payable": false,
-  "returnType": null,
+  "returnType": {
+    "displayName": [
+      "Result"
+    ],
+    "type": 1
+  },
   "selector": "0xdb20f9f5"
 }
 ```
 
-##### **transfer_from**(from: AccountId, to: AccountId, value: Balance, data: [u8])
+##### **transfer_from**(from: AccountId, to: AccountId, value: Balance, data: [u8]) -> Result<(), PSP22Error>
 Selector: `0x54b3c76e` - first 4 bytes of `blake2b_256("PSP22::transfer_from")`
 ```json
 {
@@ -264,28 +265,32 @@ Selector: `0x54b3c76e` - first 4 bytes of `blake2b_256("PSP22::transfer_from")`
     "",
     " # Errors",
     "",
-    " Reverts with message `InsufficientAllowance` if there are not enough tokens allowed",
+    " Reverts with error `InsufficientAllowance` if there are not enough tokens allowed",
     " for the caller to withdraw from `from`.",
     "",
-    " Reverts with message `InsufficientBalance` if there are not enough tokens on",
+    " Reverts with error `InsufficientBalance` if there are not enough tokens on",
     " the the account Balance of `from`.",
     "",
-    " Reverts with message `ZeroSenderAddress` if sender's address is zero.",
+    " Reverts with error `ZeroSenderAddress` if sender's address is zero.",
     "",
-    " Reverts with message `ZeroRecipientAddress` if recipient's address is zero."
+    " Reverts with error `ZeroRecipientAddress` if recipient's address is zero."
   ],
   "mutates": true,
   "name": [
     "PSP22",
     "transfer_from"
   ],
-  "payable": false,
-  "returnType": null,
+  "returnType": {
+    "displayName": [
+      "Result"
+    ],
+    "type": 1
+  },
   "selector": "0x54b3c76e"
 }
 ```
 
-##### **approve**(spender: AccountId, value: Balance)
+##### **approve**(spender: AccountId, value: Balance) -> Result<(), PSP22Error>
 Selector: `0xb20f1bbd` - first 4 bytes of `blake2b_256("PSP22::approve")`
 ```json
 {
@@ -319,23 +324,27 @@ Selector: `0xb20f1bbd` - first 4 bytes of `blake2b_256("PSP22::approve")`
     "",
     " # Errors",
     "",
-    " Reverts with message `ZeroSenderAddress` if sender's address is zero.",
+    " Reverts with error `ZeroSenderAddress` if sender's address is zero.",
     "",
-    " Reverts with message `ZeroRecipientAddress` if recipient's address is zero."
+    " Reverts with error `ZeroRecipientAddress` if recipient's address is zero."
   ],
   "mutates": true,
   "name": [
     "PSP22",
     "approve"
   ],
-  "payable": false,
-  "returnType": null,
+  "returnType": {
+    "displayName": [
+      "Result"
+    ],
+    "type": 1
+  },
   "selector": "0xb20f1bbd"
 }
 
 ```
 
-##### **increase_allowance**(spender: AccountId, delta_value: Balance)
+##### **increase_allowance**(spender: AccountId, delta_value: Balance) -> Result<(), PSP22Error>
 Selector: `0x96d6b57a` - first 4 bytes of `blake2b_256("PSP22::increase_allowance")`
 ```json
 {
@@ -366,22 +375,26 @@ Selector: `0x96d6b57a` - first 4 bytes of `blake2b_256("PSP22::increase_allowanc
     "",
     " # Errors",
     "",
-    " Reverts with message `ZeroSenderAddress` if sender's address is zero.",
+    " Reverts with error `ZeroSenderAddress` if sender's address is zero.",
     "",
-    " Reverts with message `ZeroRecipientAddress` if recipient's address is zero."
+    " Reverts with error `ZeroRecipientAddress` if recipient's address is zero."
   ],
   "mutates": true,
   "name": [
     "PSP22",
     "increase_allowance"
   ],
-  "payable": false,
-  "returnType": null,
+  "returnType": {
+    "displayName": [
+      "Result"
+    ],
+    "type": 1
+  },
   "selector": "0x96d6b57a"
 }
 ```
 
-##### **decrease_allowance**(spender: AccountId, delta_value: Balance)
+##### **decrease_allowance**(spender: AccountId, delta_value: Balance) -> Result<(), PSP22Error>
 Selector: `0xfecb57d5` - first 4 bytes of `blake2b_256("PSP22::decrease_allowance")`
 ```json
 {
@@ -412,20 +425,24 @@ Selector: `0xfecb57d5` - first 4 bytes of `blake2b_256("PSP22::decrease_allowanc
     "",
     " # Errors",
     "",
-    " Reverts with message `InsufficientAllowance` if there are not enough tokens allowed",
+    " Reverts with error `InsufficientAllowance` if there are not enough tokens allowed",
     " by owner for `spender`.",
     "",
-    " Reverts with message `ZeroSenderAddress` if sender's address is zero.",
+    " Reverts with error `ZeroSenderAddress` if sender's address is zero.",
     "",
-    " Reverts with message `ZeroRecipientAddress` if recipient's address is zero."
+    " Reverts with error `ZeroRecipientAddress` if recipient's address is zero."
   ],
   "mutates": true,
   "name": [
     "PSP22",
     "decrease_allowance"
   ],
-  "payable": false,
-  "returnType": null,
+  "returnType": {
+    "displayName": [
+      "Result"
+    ],
+    "type": 1
+  },
   "selector": "0xfecb57d5"
 }
 ```
@@ -446,7 +463,6 @@ Selector: `0x3d261bd4` - first 4 bytes of `blake2b_256("PSP22Metadata::token_nam
     "PSP22Metadata",
     "token_name"
   ],
-  "payable": false,
   "returnType": {
     "displayName": [
       "Option"
@@ -470,7 +486,6 @@ Selector: `0x34205be5` - first 4 bytes of `blake2b_256("PSP22Metadata::token_sym
     "PSP22Metadata",
     "token_symbol"
   ],
-  "payable": false,
   "returnType": {
     "displayName": [
       "Option"
@@ -494,7 +509,6 @@ Selector: `0x7271b782` - first 4 bytes of `blake2b_256("PSP22Metadata::token_dec
     "PSP22Metadata",
     "token_decimals"
   ],
-  "payable": false,
   "returnType": {
     "displayName": [
       "u8"
@@ -565,12 +579,11 @@ Selector: `0xfda6f1a9` - first 4 bytes of `blake2b_256("PSP22Receiver::before_re
     "PSP22Receiver",
     "before_received"
   ],
-  "payable": false,
   "returnType": {
     "displayName": [
       "Result"
     ],
-    "type": "Result"
+    "type": 2
   },
   "selector": "0xfda6f1a9"
 }
@@ -678,10 +691,128 @@ type AccountId = [u8; 32];
 // u128 must be enough to cover most of the use cases of standard token.
 type Balance = u128;
 ```
+#### Return types
+```json
+{
+  "types": {
+    "1": {
+      "def": {
+        "variant": {
+          "variants": [
+            {
+              "fields": [
+                {
+                  "type": {
+                    "def": {
+                      "tuple": []
+                    }
+                  }
+                }
+              ],
+              "name": "Ok"
+            },
+            {
+              "fields": [
+                {
+                  "type": {
+                    "def": {
+                      "variant": {
+                        "variants": [
+                          {
+                            "fields": [
+                              {
+                                "type": "string"
+                              }
+                            ],
+                            "name": "Custom"
+                          },
+                          {
+                            "name": "InsufficientBalance"
+                          },
+                          {
+                            "name": "InsufficientAllowance"
+                          },
+                          {
+                            "name": "ZeroRecipientAddress"
+                          },
+                          {
+                            "name": "ZeroSenderAddress"
+                          },
+                          {
+                            "fields": [
+                              {
+                                "type": "string"
+                              }
+                            ],
+                            "name": "SafeTransferCheckFailed"
+                          }
+                        ]
+                      }
+                    },
+                    "path": [
+                      "PSP22Error"
+                    ]
+                  }
+                }
+              ],
+              "name": "Err"
+            }
+          ]
+        }
+      }
+    },
+    "2": {
+      "def": {
+        "variant": {
+          "variants": [
+            {
+              "fields": [
+                {
+                  "type": {
+                    "def": {
+                      "tuple": []
+                    }
+                  }
+                }
+              ],
+              "name": "Ok"
+            },
+            {
+              "fields": [
+                {
+                  "type": {
+                    "def": {
+                      "variant": {
+                        "variants": [
+                          {
+                            "fields": [
+                              {
+                                "type": "string"
+                              }
+                            ],
+                            "name": "TransferRejected"
+                          }
+                        ]
+                      }
+                    },
+                    "path": [
+                      "PSP22ReceiverError"
+                    ]
+                  }
+                }
+              ],
+              "name": "Err"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+```
 
 ### Errors
-Suggested methods don't return `Result` (except `before_received`). Instead, they panic.
-This panic must be "revert with message" and  can contain one of the following messages:
+Suggested methods revert the transaction and return Result with Error from this list:
 
 ```rust
  /// PSP22Error 
