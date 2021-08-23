@@ -35,7 +35,7 @@ Another difference is that it has `PSP22Receiver` interface, and `before_receive
 
 # This standard is at ABI level
 
-As `pallet-contract` in Substrate can execute any WASM contracts, we should not restrain this standard to only Rust & ink! Framework, so that it can be use by any language/framework that compile to WASM.
+As `pallet-contract` in Substrate can execute any WASM contracts, we should not restrain this standard to only Rust & ink! Framework, so that it can be used by any language/framework that compile to WASM.
 
 ## Specification
 1. [Interface](#Interface)
@@ -48,6 +48,7 @@ As `pallet-contract` in Substrate can execute any WASM contracts, we should not 
 #### PSP22 is an interface of Fungible Token Standard
 
 ##### **total_supply**() -> Balance
+Selector: `0x162df8c2` - first 4 bytes of `blake2b_256("PSP22::total_supply")`
 ```json
 {
   "args": [],
@@ -59,18 +60,18 @@ As `pallet-contract` in Substrate can execute any WASM contracts, we should not 
     "PSP22",
     "total_supply"
   ],
-  "payable": false,
   "returnType": {
     "displayName": [
       "Balance"
     ],
     "type": "Balance"
   },
-  "selector": "0xd1ff92bd"
+  "selector": "0x162df8c2"
 }
 ```
 
 ##### **balance_of**(owner: AccountId) -> Balance
+Selector: `0x6568382f` - first 4 bytes of `blake2b_256("PSP22::balance_of")`
 ```json
 {
   "args": [
@@ -94,18 +95,18 @@ As `pallet-contract` in Substrate can execute any WASM contracts, we should not 
     "PSP22",
     "balance_of"
   ],
-  "payable": false,
   "returnType": {
     "displayName": [
       "Balance"
     ],
     "type": "Balance"
   },
-  "selector": "0x936205de"
+  "selector": "0x6568382f"
 }
 ```
 
 ##### **allowance**(owner: AccountId, spender: AccountId) -> Balance
+Selector: `0x4d47d921` - first 4 bytes of `blake2b_256("PSP22::allowance")`
 ```json
 {
   "args": [
@@ -138,18 +139,18 @@ As `pallet-contract` in Substrate can execute any WASM contracts, we should not 
     "PSP22",
     "allowance"
   ],
-  "payable": false,
   "returnType": {
     "displayName": [
       "Balance"
     ],
     "type": "Balance"
   },
-  "selector": "0x467e8bff"
+  "selector": "0x4d47d921"
 }
 ```
 
-##### **transfer**(to: AccountId, value: Balance, data: [u8])
+##### **transfer**(to: AccountId, value: Balance, data: [u8]) -> Result<(), PSP22Error>
+Selector: `0xdb20f9f5` - first 4 bytes of `blake2b_256("PSP22::transfer")`
 ```json
 {
   "args": [
@@ -189,25 +190,30 @@ As `pallet-contract` in Substrate can execute any WASM contracts, we should not 
     "",
     " # Errors",
     "",
-    " Reverts with message `InsufficientBalance` if there are not enough tokens on",
+    " Reverts with error `InsufficientBalance` if there are not enough tokens on",
     " the caller's account Balance.",
     "",
-    " Reverts with message `ZeroSenderAddress` if sender's address is zero.",
+    " Reverts with error `ZeroSenderAddress` if sender's address is zero.",
     "",
-    " Reverts with message `ZeroRecipientAddress` if recipient's address is zero."
+    " Reverts with error `ZeroRecipientAddress` if recipient's address is zero."
   ],
   "mutates": true,
   "name": [
     "PSP22",
     "transfer"
   ],
-  "payable": false,
-  "returnType": null,
-  "selector": "0x18532c7c"
+  "returnType": {
+    "displayName": [
+      "Result"
+    ],
+    "type": 1
+  },
+  "selector": "0xdb20f9f5"
 }
 ```
 
-##### **transfer_from**(from: AccountId, to: AccountId, value: Balance, data: [u8])
+##### **transfer_from**(from: AccountId, to: AccountId, value: Balance, data: [u8]) -> Result<(), PSP22Error>
+Selector: `0x54b3c76e` - first 4 bytes of `blake2b_256("PSP22::transfer_from")`
 ```json
 {
   "args": [
@@ -259,28 +265,33 @@ As `pallet-contract` in Substrate can execute any WASM contracts, we should not 
     "",
     " # Errors",
     "",
-    " Reverts with message `InsufficientAllowance` if there are not enough tokens allowed",
+    " Reverts with error `InsufficientAllowance` if there are not enough tokens allowed",
     " for the caller to withdraw from `from`.",
     "",
-    " Reverts with message `InsufficientBalance` if there are not enough tokens on",
+    " Reverts with error `InsufficientBalance` if there are not enough tokens on",
     " the the account Balance of `from`.",
     "",
-    " Reverts with message `ZeroSenderAddress` if sender's address is zero.",
+    " Reverts with error `ZeroSenderAddress` if sender's address is zero.",
     "",
-    " Reverts with message `ZeroRecipientAddress` if recipient's address is zero."
+    " Reverts with error `ZeroRecipientAddress` if recipient's address is zero."
   ],
   "mutates": true,
   "name": [
     "PSP22",
     "transfer_from"
   ],
-  "payable": false,
-  "returnType": null,
-  "selector": "0x9eb3870e"
+  "returnType": {
+    "displayName": [
+      "Result"
+    ],
+    "type": 1
+  },
+  "selector": "0x54b3c76e"
 }
 ```
 
-##### **approve**(spender: AccountId, value: Balance)
+##### **approve**(spender: AccountId, value: Balance) -> Result<(), PSP22Error>
+Selector: `0xb20f1bbd` - first 4 bytes of `blake2b_256("PSP22::approve")`
 ```json
 {
   "args": [
@@ -313,23 +324,28 @@ As `pallet-contract` in Substrate can execute any WASM contracts, we should not 
     "",
     " # Errors",
     "",
-    " Reverts with message `ZeroSenderAddress` if sender's address is zero.",
+    " Reverts with error `ZeroSenderAddress` if sender's address is zero.",
     "",
-    " Reverts with message `ZeroRecipientAddress` if recipient's address is zero."
+    " Reverts with error `ZeroRecipientAddress` if recipient's address is zero."
   ],
   "mutates": true,
   "name": [
     "PSP22",
     "approve"
   ],
-  "payable": false,
-  "returnType": null,
-  "selector": "0xf229fa2f"
+  "returnType": {
+    "displayName": [
+      "Result"
+    ],
+    "type": 1
+  },
+  "selector": "0xb20f1bbd"
 }
 
 ```
 
-##### **increase_allowance**(spender: AccountId, delta_value: Balance)
+##### **increase_allowance**(spender: AccountId, delta_value: Balance) -> Result<(), PSP22Error>
+Selector: `0x96d6b57a` - first 4 bytes of `blake2b_256("PSP22::increase_allowance")`
 ```json
 {
   "args": [
@@ -359,22 +375,27 @@ As `pallet-contract` in Substrate can execute any WASM contracts, we should not 
     "",
     " # Errors",
     "",
-    " Reverts with message `ZeroSenderAddress` if sender's address is zero.",
+    " Reverts with error `ZeroSenderAddress` if sender's address is zero.",
     "",
-    " Reverts with message `ZeroRecipientAddress` if recipient's address is zero."
+    " Reverts with error `ZeroRecipientAddress` if recipient's address is zero."
   ],
   "mutates": true,
   "name": [
     "PSP22",
     "increase_allowance"
   ],
-  "payable": false,
-  "returnType": null,
-  "selector": "0xf43f7266"
+  "returnType": {
+    "displayName": [
+      "Result"
+    ],
+    "type": 1
+  },
+  "selector": "0x96d6b57a"
 }
 ```
 
-##### **decrease_allowance**(spender: AccountId, delta_value: Balance)
+##### **decrease_allowance**(spender: AccountId, delta_value: Balance) -> Result<(), PSP22Error>
+Selector: `0xfecb57d5` - first 4 bytes of `blake2b_256("PSP22::decrease_allowance")`
 ```json
 {
   "args": [
@@ -404,21 +425,25 @@ As `pallet-contract` in Substrate can execute any WASM contracts, we should not 
     "",
     " # Errors",
     "",
-    " Reverts with message `InsufficientAllowance` if there are not enough tokens allowed",
+    " Reverts with error `InsufficientAllowance` if there are not enough tokens allowed",
     " by owner for `spender`.",
     "",
-    " Reverts with message `ZeroSenderAddress` if sender's address is zero.",
+    " Reverts with error `ZeroSenderAddress` if sender's address is zero.",
     "",
-    " Reverts with message `ZeroRecipientAddress` if recipient's address is zero."
+    " Reverts with error `ZeroRecipientAddress` if recipient's address is zero."
   ],
   "mutates": true,
   "name": [
     "PSP22",
     "decrease_allowance"
   ],
-  "payable": false,
-  "returnType": null,
-  "selector": "0x1f86d882"
+  "returnType": {
+    "displayName": [
+      "Result"
+    ],
+    "type": 1
+  },
+  "selector": "0xfecb57d5"
 }
 ```
 
@@ -426,6 +451,7 @@ As `pallet-contract` in Substrate can execute any WASM contracts, we should not 
 PSP22Metadata is an optional interface of metadata for Fungible Token Standard
 
 ##### **token_name**() -> Option<String>
+Selector: `0x3d261bd4` - first 4 bytes of `blake2b_256("PSP22Metadata::token_name")`
 ```json
 {
   "args": [],
@@ -437,18 +463,18 @@ PSP22Metadata is an optional interface of metadata for Fungible Token Standard
     "PSP22Metadata",
     "token_name"
   ],
-  "payable": false,
   "returnType": {
     "displayName": [
       "Option"
     ],
     "type": "Option<string>"
   },
-  "selector": "0x9c994fe4"
+  "selector": "0x3d261bd4"
 }
 ```
 
 ##### **token_symbol**() -> Option<String>
+Selector: `0x34205be5` - first 4 bytes of `blake2b_256("PSP22Metadata::token_symbol")`
 ```json
 {
   "args": [],
@@ -460,18 +486,18 @@ PSP22Metadata is an optional interface of metadata for Fungible Token Standard
     "PSP22Metadata",
     "token_symbol"
   ],
-  "payable": false,
   "returnType": {
     "displayName": [
       "Option"
     ],
     "type": "Option<string>"
   },
-  "selector": "0x10972330"
+  "selector": "0x34205be5"
 }
 ```
 
 ##### **token_decimals**() -> u8
+Selector: `0x7271b782` - first 4 bytes of `blake2b_256("PSP22Metadata::token_decimals")`
 ```json
 {
   "args": [],
@@ -483,14 +509,13 @@ PSP22Metadata is an optional interface of metadata for Fungible Token Standard
     "PSP22Metadata",
     "token_decimals"
   ],
-  "payable": false,
   "returnType": {
     "displayName": [
       "u8"
     ],
     "type": "u8"
   },
-  "selector": "0x997ad16c"
+  "selector": "0x7271b782"
 }
 ```
 
@@ -499,6 +524,7 @@ PSP22Receiver is an interface for any contract that wants to support safe transf
 This method is called before transfer to ensure the recipient of the tokens acknowledges receipt.
 
 ##### **before_received**(&mut self, operator: AccountId, from: AccountId, value: Balance, data: [u8]) -> Result<(), PSP22ReceiverError>
+Selector: `0xfda6f1a9` - first 4 bytes of `blake2b_256("PSP22Receiver::before_received")`
 ```json
 {
   "args": [
@@ -553,14 +579,13 @@ This method is called before transfer to ensure the recipient of the tokens ackn
     "PSP22Receiver",
     "before_received"
   ],
-  "payable": false,
   "returnType": {
     "displayName": [
       "Result"
     ],
-    "type": "Result"
+    "type": 2
   },
-  "selector": "0xa9504238"
+  "selector": "0xfda6f1a9"
 }
 ```
 
@@ -666,10 +691,128 @@ type AccountId = [u8; 32];
 // u128 must be enough to cover most of the use cases of standard token.
 type Balance = u128;
 ```
+#### Return types
+```json
+{
+  "types": {
+    "1": {
+      "def": {
+        "variant": {
+          "variants": [
+            {
+              "fields": [
+                {
+                  "type": {
+                    "def": {
+                      "tuple": []
+                    }
+                  }
+                }
+              ],
+              "name": "Ok"
+            },
+            {
+              "fields": [
+                {
+                  "type": {
+                    "def": {
+                      "variant": {
+                        "variants": [
+                          {
+                            "fields": [
+                              {
+                                "type": "string"
+                              }
+                            ],
+                            "name": "Custom"
+                          },
+                          {
+                            "name": "InsufficientBalance"
+                          },
+                          {
+                            "name": "InsufficientAllowance"
+                          },
+                          {
+                            "name": "ZeroRecipientAddress"
+                          },
+                          {
+                            "name": "ZeroSenderAddress"
+                          },
+                          {
+                            "fields": [
+                              {
+                                "type": "string"
+                              }
+                            ],
+                            "name": "SafeTransferCheckFailed"
+                          }
+                        ]
+                      }
+                    },
+                    "path": [
+                      "PSP22Error"
+                    ]
+                  }
+                }
+              ],
+              "name": "Err"
+            }
+          ]
+        }
+      }
+    },
+    "2": {
+      "def": {
+        "variant": {
+          "variants": [
+            {
+              "fields": [
+                {
+                  "type": {
+                    "def": {
+                      "tuple": []
+                    }
+                  }
+                }
+              ],
+              "name": "Ok"
+            },
+            {
+              "fields": [
+                {
+                  "type": {
+                    "def": {
+                      "variant": {
+                        "variants": [
+                          {
+                            "fields": [
+                              {
+                                "type": "string"
+                              }
+                            ],
+                            "name": "TransferRejected"
+                          }
+                        ]
+                      }
+                    },
+                    "path": [
+                      "PSP22ReceiverError"
+                    ]
+                  }
+                }
+              ],
+              "name": "Err"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+```
 
 ### Errors
-Suggested methods don't return `Result` (except `before_received`). Instead, they panic.
-This panic must be "revert with message" and  can contain one of the following messages:
+Suggested methods revert the transaction and return Result with Error from this list:
 
 ```rust
  /// PSP22Error 
