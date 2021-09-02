@@ -20,7 +20,7 @@ same **ABI** between all implementations.
 ## Implementation
 Example of ink! implementation:
 
-- [OpenBrush](https://github.com/Supercolony-net/openbrush-contracts/blob/main/contracts/token/psp20/traits.rs)
+- [OpenBrush](https://github.com/Supercolony-net/openbrush-contracts/blob/main/contracts/token/psp22/src/traits.rs)
 
 ## Motivation
 A standard interface allows any tokens on Polkadot/Kusama to be re-used by other applications: from wallets to decentralized exchanges.
