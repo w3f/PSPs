@@ -1,4 +1,4 @@
-# Fungible Token Standard for Substrate's `contracts` pallet
+# Fungible Token Standard for WebAssembly smart contracts
 
 - **PSP Number:** 22
 - **Authors:** Green Baneling <green.baneling@supercolony.net>, Markian <markian@supercolony.net>, Pierre <pierre.ossun@supercolony.net>, Sven <sven.seven@supercolony.net>, Varg <varg.vikernes@supercolony.net>
@@ -9,33 +9,32 @@
 
 ## Summary
 
-A standard for a Fungible Token Interface for WASM contracts.
+A standard for a fungible token interface for WebAssembly smart contracts.
 
-This proposal aims to define the standard fungible token interface for WASM smart contracts, just like [EIP-20](https://github.com/ethereum/EIPs/edit/master/EIPS/eip-20.md) for the Ethereum ecosystem.
+This proposal aims to define the standard fungible token interface for WebAssembly smart contracts, just like [EIP-20](https://github.com/ethereum/EIPs/edit/master/EIPS/eip-20.md) for the Ethereum ecosystem.
 
-## Importance
+## Motivation
+
 Currently, while there is no standard, every contract will have different a signature. Thus, no interoperability is possible. This proposal aims to resolve that by defining one **interface** that shares the
 same **ABI** between all implementations.
 
-## Implementation
-Example of an ink! implementation:
+A standard interface allows any token on Polkadot/Kusama to be re-used by other applications: from wallets to decentralized exchanges.
 
-- [OpenBrush](https://github.com/Supercolony-net/openbrush-contracts/blob/main/contracts/token/psp22/src/traits.rs)
+## Implementations
+Examples of implementations:
 
-## Motivation
-A standard interface allows any tokens on Polkadot/Kusama to be re-used by other applications: from wallets to decentralized exchanges.
-
+- [OpenBrush](https://github.com/Supercolony-net/openbrush-contracts/blob/main/contracts/token/psp22/src/traits.rs), written in [ink!](https://github.com/paritytech/ink).
 
 ## Motivation for having a standard separate from ERC-20
-Due to the different nature of WASM smart contracts and the difference between EVM and `pallet-contracts` in Substrate, this standard proposal has specific rules and methods,
+Due to the different nature of WebAssembly smart contracts and the difference between EVM and the [`contracts` pallet](https://github.com/paritytech/substrate/tree/master/frame/contracts) in Substrate, this standard proposal has specific rules and methods,
 therefore PSP-22 differs from ERC-20 in its implementation.
 
-Also, this standard proposal defines an extensive method list in the interface. Unlike ERC-20, it includes `increase_allowance` & `decrease_allowance`, and defines metadata fields as part of a separate interface.
-Another difference is that it has the `PSP22Receiver` interface, and `before_received` method is called at the end of transfer if the recipient is a contract.
+Also, this standard proposal defines an extensive method list in the interface. Unlike ERC-20, it includes `increase_allowance` and `decrease_allowance`, and defines metadata fields as part of a separate interface.
+Another difference is that it has the `PSP22Receiver` interface, and the `before_received` method is called at the end of transfer if the recipient is a contract.
 
 # This standard is at ABI level
 
-The `contracts` pallet in Substrate can execute any WASM contract that implements a defined API; we should not restrain this standard to only Rust and the ink! language, but make it possible to be implemented by any language/framework that compiles to WASM.
+Substrate's [`contracts` pallet](https://github.com/paritytech/substrate/tree/master/frame/contracts) can execute any WebAssembly contract that implements its defined API; we do not want to restrain this standard to only Rust and [the ink! language](https://github.com/paritytech/ink), but make it possible to be implemented by any language/framework that compiles to WebAssembly.
 
 ## Specification
 1. [Interfaces](#Interfaces)
@@ -45,7 +44,9 @@ The `contracts` pallet in Substrate can execute any WASM contract that implement
 
 ### Interfaces
 
-#### PSP-22 Interface for a Fungible Token Standard
+#### PSP-22 Interface
+
+This section defines the required interface for this standard.
 
 ##### **total_supply()** ➔ Balance
 Selector: `0x162df8c2` - first 4 bytes of `blake2b_256("PSP22::total_supply")`
@@ -448,7 +449,8 @@ Selector: `0xfecb57d5` - first 4 bytes of `blake2b_256("PSP22::decrease_allowanc
 ```
 
 #### PSP22Metadata 
-`PSP22Metadata` is an optional interface for metadata for this Fungible Token Standard.
+
+`PSP22Metadata` is an optional interface for metadata for this fungible token standard.
 
 ##### **token_name**() ➔ Option<String>
 Selector: `0x3d261bd4` - first 4 bytes of `blake2b_256("PSP22Metadata::token_name")`
@@ -813,7 +815,7 @@ type Balance = u128;
 ```
 
 ### Errors
-The suggested methods revert the transaction and return a `Result` type with one of the following Error enum's:
+The suggested methods revert the transaction and return a `Result` type with one of the following error enum's:
 
 ```rust
 enum PSP22Error {
@@ -839,5 +841,4 @@ enum PSP22ReceiverError {
 
 ## Copyright
 
-This PSP is placed in the
-[public domain](https://creativecommons.org/publicdomain/zero/1.0/).
+This PSP is placed in the [public domain](https://creativecommons.org/publicdomain/zero/1.0/).
