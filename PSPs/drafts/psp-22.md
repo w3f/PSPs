@@ -1,4 +1,4 @@
-# PSP-22 Fungible Token Standard in WASM
+# Fungible Token Standard for Substrate's `contracts` pallet
 
 - **PSP Number:** 22
 - **Authors:** Green Baneling <green.baneling@supercolony.net>, Markian <markian@supercolony.net>, Pierre <pierre.ossun@supercolony.net>, Sven <sven.seven@supercolony.net>, Varg <varg.vikernes@supercolony.net>
@@ -9,7 +9,7 @@
 
 ## Summary
 
-A standard fungible token interface for WASM contracts.
+A standard for a Fungible Token Interface for WASM contracts.
 
 This proposal aims to define the standard fungible token interface for WASM smart contracts, just like [EIP-20](https://github.com/ethereum/EIPs/edit/master/EIPS/eip-20.md) for the Ethereum ecosystem.
 
@@ -38,16 +38,16 @@ Another difference is that it has the `PSP22Receiver` interface, and `before_rec
 The `contracts` pallet in Substrate can execute any WASM contract that implements a defined API; we should not restrain this standard to only Rust and the ink! language, but make it possible to be implemented by any language/framework that compiles to WASM.
 
 ## Specification
-1. [Interface](#Interface)
+1. [Interfaces](#Interfaces)
 2. [Events](#Events)
 3. [Types](#Types)
 4. [Errors](#Errors)
 
-### Interface
+### Interfaces
 
-#### PSP-22 is an interface of Fungible Token Standard
+#### PSP-22 Interface for a Fungible Token Standard
 
-##### **`total_supply`**`() -> Balance`
+##### **total_supply()** ➔ Balance
 Selector: `0x162df8c2` - first 4 bytes of `blake2b_256("PSP22::total_supply")`
 ```json
 {
@@ -70,7 +70,7 @@ Selector: `0x162df8c2` - first 4 bytes of `blake2b_256("PSP22::total_supply")`
 }
 ```
 
-##### **balance_of**(owner: AccountId) -> Balance
+##### **balance_of**(owner: AccountId) ➔ Balance
 Selector: `0x6568382f` - first 4 bytes of `blake2b_256("PSP22::balance_of")`
 ```json
 {
@@ -105,7 +105,7 @@ Selector: `0x6568382f` - first 4 bytes of `blake2b_256("PSP22::balance_of")`
 }
 ```
 
-##### **allowance**(owner: AccountId, spender: AccountId) -> Balance
+##### **allowance**(owner: AccountId, spender: AccountId) ➔ Balance
 Selector: `0x4d47d921` - first 4 bytes of `blake2b_256("PSP22::allowance")`
 ```json
 {
@@ -149,7 +149,7 @@ Selector: `0x4d47d921` - first 4 bytes of `blake2b_256("PSP22::allowance")`
 }
 ```
 
-##### **transfer**(to: AccountId, value: Balance, data: [u8]) -> Result<(), PSP22Error>
+##### **transfer**(to: AccountId, value: Balance, data: [u8]) ➔ Result<(), PSP22Error>
 Selector: `0xdb20f9f5` - first 4 bytes of `blake2b_256("PSP22::transfer")`
 ```json
 {
@@ -212,7 +212,7 @@ Selector: `0xdb20f9f5` - first 4 bytes of `blake2b_256("PSP22::transfer")`
 }
 ```
 
-##### **transfer_from**(from: AccountId, to: AccountId, value: Balance, data: [u8]) -> Result<(), PSP22Error>
+##### **transfer_from**(from: AccountId, to: AccountId, value: Balance, data: [u8]) ➔ Result<(), PSP22Error>
 Selector: `0x54b3c76e` - first 4 bytes of `blake2b_256("PSP22::transfer_from")`
 ```json
 {
@@ -290,7 +290,7 @@ Selector: `0x54b3c76e` - first 4 bytes of `blake2b_256("PSP22::transfer_from")`
 }
 ```
 
-##### **approve**(spender: AccountId, value: Balance) -> Result<(), PSP22Error>
+##### **approve**(spender: AccountId, value: Balance) ➔ Result<(), PSP22Error>
 Selector: `0xb20f1bbd` - first 4 bytes of `blake2b_256("PSP22::approve")`
 ```json
 {
@@ -344,7 +344,7 @@ Selector: `0xb20f1bbd` - first 4 bytes of `blake2b_256("PSP22::approve")`
 
 ```
 
-##### **increase_allowance**(spender: AccountId, delta_value: Balance) -> Result<(), PSP22Error>
+##### **increase_allowance**(spender: AccountId, delta_value: Balance) ➔ Result<(), PSP22Error>
 Selector: `0x96d6b57a` - first 4 bytes of `blake2b_256("PSP22::increase_allowance")`
 ```json
 {
@@ -394,7 +394,7 @@ Selector: `0x96d6b57a` - first 4 bytes of `blake2b_256("PSP22::increase_allowanc
 }
 ```
 
-##### **decrease_allowance**(spender: AccountId, delta_value: Balance) -> Result<(), PSP22Error>
+##### **decrease_allowance**(spender: AccountId, delta_value: Balance) ➔ Result<(), PSP22Error>
 Selector: `0xfecb57d5` - first 4 bytes of `blake2b_256("PSP22::decrease_allowance")`
 ```json
 {
@@ -448,9 +448,9 @@ Selector: `0xfecb57d5` - first 4 bytes of `blake2b_256("PSP22::decrease_allowanc
 ```
 
 #### PSP22Metadata 
-PSP22Metadata is an optional interface of metadata for Fungible Token Standard
+`PSP22Metadata` is an optional interface for metadata for this Fungible Token Standard.
 
-##### **token_name**() -> Option<String>
+##### **token_name**() ➔ Option<String>
 Selector: `0x3d261bd4` - first 4 bytes of `blake2b_256("PSP22Metadata::token_name")`
 ```json
 {
@@ -473,7 +473,7 @@ Selector: `0x3d261bd4` - first 4 bytes of `blake2b_256("PSP22Metadata::token_nam
 }
 ```
 
-##### **token_symbol**() -> Option<String>
+##### **token_symbol**() ➔ Option<String>
 Selector: `0x34205be5` - first 4 bytes of `blake2b_256("PSP22Metadata::token_symbol")`
 ```json
 {
@@ -496,7 +496,7 @@ Selector: `0x34205be5` - first 4 bytes of `blake2b_256("PSP22Metadata::token_sym
 }
 ```
 
-##### **token_decimals**() -> u8
+##### **token_decimals**() ➔ u8
 Selector: `0x7271b782` - first 4 bytes of `blake2b_256("PSP22Metadata::token_decimals")`
 ```json
 {
@@ -520,10 +520,10 @@ Selector: `0x7271b782` - first 4 bytes of `blake2b_256("PSP22Metadata::token_dec
 ```
 
 #### PSP22Receiver
-PSP22Receiver is an interface for any contract that wants to support safe transfers from PSP22 token smart contracts to avoid unexpected tokens on balance of contract.
-This method is called before transfer to ensure the recipient of the tokens acknowledges receipt.
+`PSP22Receiver` is an interface for any contract that wants to support safe transfers from a PSP-22 token smart contract to avoid unexpected tokens in the balance of contract.
+This method is called before a transfer to ensure the recipient of the tokens acknowledges the receipt.
 
-##### **before_received**(&mut self, operator: AccountId, from: AccountId, value: Balance, data: [u8]) -> Result<(), PSP22ReceiverError>
+##### **before_received**(&mut self, operator: AccountId, from: AccountId, value: Balance, data: [u8]) ➔ Result<(), PSP22ReceiverError>
 Selector: `0xfda6f1a9` - first 4 bytes of `blake2b_256("PSP22Receiver::before_received")`
 ```json
 {
@@ -592,8 +592,8 @@ Selector: `0xfda6f1a9` - first 4 bytes of `blake2b_256("PSP22Receiver::before_re
 ### Events
 
 ##### Transfer 
-When a contract creates (mints) new tokens, `from` will be `None`
-When a contract deletes (burns) tokens, `to` will be `None`
+When a contract creates (mints) new tokens, `from` will be `None`.
+When a contract deletes (burns) tokens, `to` will be `None`.
 ```json
 {
   "args": [
@@ -688,6 +688,7 @@ When a contract deletes (burns) tokens, `to` will be `None`
 ```rust
 // AccountId is a 32 bytes Array, like in Substrate-based blockchains.
 type AccountId = [u8; 32];
+
 // `u128` must be enough to cover most of the use-cases of standard tokens.
 type Balance = u128;
 ```
@@ -814,7 +815,7 @@ type Balance = u128;
 ### Errors
 Suggested methods revert the transaction and return Result with Error from this list:
 
-```rust
+```
 /// PSP22Error 
 
 /// Custom error type for cases if writer of traits added own restrictions
@@ -839,5 +840,5 @@ TransferRejected(String),
 
 ## Copyright
 
-Each PSP must be labeled as placed in the
+This PSP is placed in the
 [public domain](https://creativecommons.org/publicdomain/zero/1.0/).
