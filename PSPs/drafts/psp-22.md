@@ -53,7 +53,7 @@ Selector: `0x162df8c2` - first 4 bytes of `blake2b_256("PSP22::total_supply")`
 {
   "args": [],
   "docs": [
-    " Returns the total token supply."
+    "Returns the total token supply."
   ],
   "mutates": false,
   "name": [
@@ -86,9 +86,9 @@ Selector: `0x6568382f` - first 4 bytes of `blake2b_256("PSP22::balance_of")`
     }
   ],
   "docs": [
-    " Returns the account Balance for the specified `owner`.",
+    "Returns the account balance for the specified `owner`.",
     "",
-    " Returns `0` if the account is non-existent."
+    "Returns `0` if the account is non-existent."
   ],
   "mutates": false,
   "name": [
@@ -130,9 +130,9 @@ Selector: `0x4d47d921` - first 4 bytes of `blake2b_256("PSP22::allowance")`
     }
   ],
   "docs": [
-    " Returns the amount which `spender` is still allowed to withdraw from `owner`.",
+    "Returns the amount which `spender` is still allowed to withdraw from `owner`.",
     "",
-    " Returns `0` if no allowance has been set `0`."
+    "Returns `0` if no allowance has been set `0`."
   ],
   "mutates": false,
   "name": [
@@ -183,19 +183,19 @@ Selector: `0xdb20f9f5` - first 4 bytes of `blake2b_256("PSP22::transfer")`
     }
   ],
   "docs": [
-    " Transfers `value` amount of tokens from the caller's account to account `to`",
-    " with additional `data` in unspecified format.",
+    "Transfers `value` amount of tokens from the caller's account to account `to`",
+    "with additional `data` in unspecified format.",
     "",
-    " On success a `Transfer` event is emitted.",
+    "On success a `Transfer` event is emitted.",
     "",
-    " # Errors",
+    "# Errors",
     "",
-    " Reverts with error `InsufficientBalance` if there are not enough tokens on",
-    " the caller's account Balance.",
+    "Reverts with error `InsufficientBalance` if there are not enough tokens on",
+    "the caller's account Balance.",
     "",
-    " Reverts with error `ZeroSenderAddress` if sender's address is zero.",
+    "Reverts with error `ZeroSenderAddress` if sender's address is zero.",
     "",
-    " Reverts with error `ZeroRecipientAddress` if recipient's address is zero."
+    "Reverts with error `ZeroRecipientAddress` if recipient's address is zero."
   ],
   "mutates": true,
   "name": [
@@ -255,25 +255,25 @@ Selector: `0x54b3c76e` - first 4 bytes of `blake2b_256("PSP22::transfer_from")`
     }
   ],
   "docs": [
-    " Transfers `value` tokens on the behalf of `from` to the account `to`",
-    " with additional `data` in unspecified format.",
+    "Transfers `value` tokens on the behalf of `from` to the account `to`",
+    "with additional `data` in unspecified format.",
     "",
-    " This can be used to allow a contract to transfer tokens on ones behalf and/or",
-    " to charge fees in sub-currencies, for example.",
+    "This can be used to allow a contract to transfer tokens on ones behalf and/or",
+    "to charge fees in sub-currencies, for example.",
     "",
-    " On success a `Transfer` and `Approval` events are emitted.",
+    "On success a `Transfer` and `Approval` events are emitted.",
     "",
-    " # Errors",
+    "# Errors",
     "",
-    " Reverts with error `InsufficientAllowance` if there are not enough tokens allowed",
-    " for the caller to withdraw from `from`.",
+    "Reverts with error `InsufficientAllowance` if there are not enough tokens allowed",
+    "for the caller to withdraw from `from`.",
     "",
-    " Reverts with error `InsufficientBalance` if there are not enough tokens on",
-    " the the account Balance of `from`.",
+    "Reverts with error `InsufficientBalance` if there are not enough tokens on",
+    "the the account Balance of `from`.",
     "",
-    " Reverts with error `ZeroSenderAddress` if sender's address is zero.",
+    "Reverts with error `ZeroSenderAddress` if sender's address is zero.",
     "",
-    " Reverts with error `ZeroRecipientAddress` if recipient's address is zero."
+    "Reverts with error `ZeroRecipientAddress` if recipient's address is zero."
   ],
   "mutates": true,
   "name": [
@@ -315,18 +315,18 @@ Selector: `0xb20f1bbd` - first 4 bytes of `blake2b_256("PSP22::approve")`
     }
   ],
   "docs": [
-    " Allows `spender` to withdraw from the caller's account multiple times, up to",
-    " the `value` amount.",
+    "Allows `spender` to withdraw from the caller's account multiple times, up to",
+    "the `value` amount.",
     "",
-    " If this function is called again it overwrites the current allowance with `value`.",
+    "If this function is called again it overwrites the current allowance with `value`.",
     "",
-    " An `Approval` event is emitted.",
+    "An `Approval` event is emitted.",
     "",
-    " # Errors",
+    "# Errors",
     "",
-    " Reverts with error `ZeroSenderAddress` if sender's address is zero.",
+    "Reverts with error `ZeroSenderAddress` if sender's address is zero.",
     "",
-    " Reverts with error `ZeroRecipientAddress` if recipient's address is zero."
+    "Reverts with error `ZeroRecipientAddress` if recipient's address is zero."
   ],
   "mutates": true,
   "name": [
@@ -369,15 +369,15 @@ Selector: `0x96d6b57a` - first 4 bytes of `blake2b_256("PSP22::increase_allowanc
     }
   ],
   "docs": [
-    " Atomically increases the allowance granted to `spender` by the caller.",
+    "Atomically increases the allowance granted to `spender` by the caller.",
     "",
-    " An `Approval` event is emitted.",
+    "An `Approval` event is emitted.",
     "",
-    " # Errors",
+    "# Errors",
     "",
-    " Reverts with error `ZeroSenderAddress` if sender's address is zero.",
+    "Reverts with error `ZeroSenderAddress` if sender's address is zero.",
     "",
-    " Reverts with error `ZeroRecipientAddress` if recipient's address is zero."
+    "Reverts with error `ZeroRecipientAddress` if recipient's address is zero."
   ],
   "mutates": true,
   "name": [
@@ -419,18 +419,18 @@ Selector: `0xfecb57d5` - first 4 bytes of `blake2b_256("PSP22::decrease_allowanc
     }
   ],
   "docs": [
-    " Atomically decreases the allowance granted to `spender` by the caller.",
+    "Atomically decreases the allowance granted to `spender` by the caller.",
     "",
-    " An `Approval` event is emitted.",
+    "An `Approval` event is emitted.",
     "",
-    " # Errors",
+    "# Errors",
     "",
-    " Reverts with error `InsufficientAllowance` if there are not enough tokens allowed",
-    " by owner for `spender`.",
+    "Reverts with error `InsufficientAllowance` if there are not enough tokens allowed",
+    "by owner for `spender`.",
     "",
-    " Reverts with error `ZeroSenderAddress` if sender's address is zero.",
+    "Reverts with error `ZeroSenderAddress` if sender's address is zero.",
     "",
-    " Reverts with error `ZeroRecipientAddress` if recipient's address is zero."
+    "Reverts with error `ZeroRecipientAddress` if recipient's address is zero."
   ],
   "mutates": true,
   "name": [
@@ -456,7 +456,7 @@ Selector: `0x3d261bd4` - first 4 bytes of `blake2b_256("PSP22Metadata::token_nam
 {
   "args": [],
   "docs": [
-    " Returns the token name."
+    "Returns the token name."
   ],
   "mutates": false,
   "name": [
@@ -479,7 +479,7 @@ Selector: `0x34205be5` - first 4 bytes of `blake2b_256("PSP22Metadata::token_sym
 {
   "args": [],
   "docs": [
-    " Returns the token symbol."
+    "Returns the token symbol."
   ],
   "mutates": false,
   "name": [
@@ -502,7 +502,7 @@ Selector: `0x7271b782` - first 4 bytes of `blake2b_256("PSP22Metadata::token_dec
 {
   "args": [],
   "docs": [
-    " Returns the token decimals."
+    "Returns the token decimals."
   ],
   "mutates": false,
   "name": [
@@ -566,13 +566,13 @@ Selector: `0xfda6f1a9` - first 4 bytes of `blake2b_256("PSP22Receiver::before_re
     }
   ],
   "docs": [
-    " Ensures that the smart contract allows reception of PSP22 token(s).",
-    " Returns `Ok(())` if the contract allows the reception of the token(s) and Error `TransferRejected(String))` otherwise.",
+    "Ensures that the smart contract allows reception of PSP22 token(s).",
+    "Returns `Ok(())` if the contract allows the reception of the token(s) and Error `TransferRejected(String))` otherwise.",
     "",
-    " This method will get called on every transfer to check whether the recipient in `transfer` is a contract, and if it is,",
-    " does it accept tokens. This is done to prevent contracts from locking tokens forever.",
+    "This method will get called on every transfer to check whether the recipient in `transfer` is a contract, and if it is,",
+    "does it accept tokens. This is done to prevent contracts from locking tokens forever.",
     "",
-    " This method does not throw. Returns `PSP22ReceiverError` if the contract does not accept the tokens."
+    "This method does not throw. Returns `PSP22ReceiverError` if the contract does not accept the tokens."
   ],
   "mutates": true,
   "name": [
@@ -632,7 +632,7 @@ When a contract deletes (burns) tokens, `to` will be `None`
     }
   ],
   "docs": [
-    " Event emitted when a token transfer occurs."
+    "Event emitted when a token transfer occurs."
   ],
   "name": "Transfer"
 }
@@ -677,8 +677,8 @@ When a contract deletes (burns) tokens, `to` will be `None`
     }
   ],
   "docs": [
-    " Event emitted when an approval occurs that `spender` is allowed to withdraw",
-    " up to the amount of `value` tokens from `owner`."
+    "Event emitted when an approval occurs that `spender` is allowed to withdraw",
+    "up to the amount of `value` tokens from `owner`."
   ],
   "name": "Approval"
 }
@@ -686,9 +686,9 @@ When a contract deletes (burns) tokens, `to` will be `None`
 
 ### Types
 ```rust
-// AccountId is 32 bytes array, like in substrate-based blockchains.
+// AccountId is a 32 bytes Array, like in Substrate-based blockchains.
 type AccountId = [u8; 32];
-// u128 must be enough to cover most of the use cases of standard token.
+// `u128` must be enough to cover most of the use-cases of standard tokens.
 type Balance = u128;
 ```
 #### Return types
@@ -815,26 +815,26 @@ type Balance = u128;
 Suggested methods revert the transaction and return Result with Error from this list:
 
 ```rust
- /// PSP22Error 
- 
- /// Custom error type for cases if writer of traits added own restrictions
- Custom(String),
- /// Returned if not enough balance to fulfill a request is available.
- InsufficientBalance,
- /// Returned if not enough allowance to fulfill a request is available.
- InsufficientAllowance,
- /// Returned if recipient's address is zero.
- ZeroRecipientAddress,
- /// Returned if sender's address is zero.
- ZeroSenderAddress,
- /// Returned if safe transfer check fails (see _do_safe_transfer_check() in PSP22 trait)
- SafeTransferCheckFailed(String),
+/// PSP22Error 
+
+/// Custom error type for cases if writer of traits added own restrictions
+Custom(String),
+/// Returned if not enough balance to fulfill a request is available.
+InsufficientBalance,
+/// Returned if not enough allowance to fulfill a request is available.
+InsufficientAllowance,
+/// Returned if recipient's address is zero.
+ZeroRecipientAddress,
+/// Returned if sender's address is zero.
+ZeroSenderAddress,
+/// Returned if safe transfer check fails (see _do_safe_transfer_check() in PSP22 trait)
+SafeTransferCheckFailed(String),
 
 
- /// PSP22ReceiverError 
- 
- /// Returned if a transfer is rejected.
- TransferRejected(String),
+/// PSP22ReceiverError 
+
+/// Returned if a transfer is rejected.
+TransferRejected(String),
 ```
 
 ## Copyright
