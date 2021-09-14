@@ -813,29 +813,28 @@ type Balance = u128;
 ```
 
 ### Errors
-Suggested methods revert the transaction and return Result with Error from this list:
+The suggested methods revert the transaction and return a `Result` type with one of the following Error enum's:
 
-```
-/// PSP22Error 
+```rust
+enum PSP22Error {
+    /// Custom error type for cases in which an implementation adds its own restrictions.
+    Custom(String),
+    /// Returned if not enough balance to fulfill a request is available.
+    InsufficientBalance,
+    /// Returned if not enough allowance to fulfill a request is available.
+    InsufficientAllowance,
+    /// Returned if recipient's address is zero.
+    ZeroRecipientAddress,
+    /// Returned if sender's address is zero.
+    ZeroSenderAddress,
+    /// Returned if a safe transfer check fails (e.g. if the receiving contract does not accept tokens).
+    SafeTransferCheckFailed(String),
+}
 
-/// Custom error type for cases if writer of traits added own restrictions
-Custom(String),
-/// Returned if not enough balance to fulfill a request is available.
-InsufficientBalance,
-/// Returned if not enough allowance to fulfill a request is available.
-InsufficientAllowance,
-/// Returned if recipient's address is zero.
-ZeroRecipientAddress,
-/// Returned if sender's address is zero.
-ZeroSenderAddress,
-/// Returned if safe transfer check fails (see _do_safe_transfer_check() in PSP22 trait)
-SafeTransferCheckFailed(String),
-
-
-/// PSP22ReceiverError 
-
-/// Returned if a transfer is rejected.
-TransferRejected(String),
+enum PSP22ReceiverError {
+    /// Returned if a transfer is rejected.
+    TransferRejected(String),
+}
 ```
 
 ## Copyright
