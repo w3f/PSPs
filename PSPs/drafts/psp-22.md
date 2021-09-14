@@ -47,7 +47,7 @@ The `contracts` pallet in Substrate can execute any WASM contract that implement
 
 #### PSP-22 is an interface of Fungible Token Standard
 
-##### **total_supply**() -> Balance
+##### **`total_supply`**`() -> Balance`
 Selector: `0x162df8c2` - first 4 bytes of `blake2b_256("PSP22::total_supply")`
 ```json
 {
