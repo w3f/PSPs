@@ -11,14 +11,14 @@
 
 A standard fungible token interface for WASM contracts.
 
-This proposal aims to define the standard fungible token in WASM smart contracts, just like [EIP-20](https://github.com/ethereum/EIPs/edit/master/EIPS/eip-20.md) for Ethereum ecosystem.
+This proposal aims to define the standard fungible token interface for WASM smart contracts, just like [EIP-20](https://github.com/ethereum/EIPs/edit/master/EIPS/eip-20.md) for the Ethereum ecosystem.
 
 ## Importance
-Currently, while there is no standard, every contract will have different signature. Thus, no interoperability is possible. This proposal aims to resolve that by having one **interface** that shares the
+Currently, while there is no standard, every contract will have different a signature. Thus, no interoperability is possible. This proposal aims to resolve that by defining one **interface** that shares the
 same **ABI** between all implementations.
 
 ## Implementation
-Example of ink! implementation:
+Example of an ink! implementation:
 
 - [OpenBrush](https://github.com/Supercolony-net/openbrush-contracts/blob/main/contracts/token/psp22/src/traits.rs)
 
@@ -26,16 +26,16 @@ Example of ink! implementation:
 A standard interface allows any tokens on Polkadot/Kusama to be re-used by other applications: from wallets to decentralized exchanges.
 
 
-## Motivation for having a standard separate from ERC20
-Due to different nature of WASM smart contracts and the difference between EVM and `pallet-contract` in substrate, the standard should have specific rules and methods,
+## Motivation for having a standard separate from ERC-20
+Due to the different nature of WASM smart contracts and the difference between EVM and `pallet-contracts` in Substrate, this standard proposal has specific rules and methods,
 therefore PSP-22 differs from ERC-20 in its implementation.
 
-Also, this standard proposal defines an extensive method list in the interface. Unlike ERC20, it includes `increase_allowance` & `decrease_allowance`, and defines metadata fields as part of a separate interface.
-Another difference is that it has `PSP22Receiver` interface, and `before_received` method is called at the end of transfer if the recipient is a contract.
+Also, this standard proposal defines an extensive method list in the interface. Unlike ERC-20, it includes `increase_allowance` & `decrease_allowance`, and defines metadata fields as part of a separate interface.
+Another difference is that it has the `PSP22Receiver` interface, and `before_received` method is called at the end of transfer if the recipient is a contract.
 
 # This standard is at ABI level
 
-As `pallet-contract` in Substrate can execute any WASM contracts, we should not restrain this standard to only Rust & ink! Framework, so that it can be used by any language/framework that compile to WASM.
+The `contracts` pallet in Substrate can execute any WASM contract that implements a defined API; we should not restrain this standard to only Rust and the ink! language, but make it possible to be implemented by any language/framework that compiles to WASM.
 
 ## Specification
 1. [Interface](#Interface)
@@ -45,7 +45,7 @@ As `pallet-contract` in Substrate can execute any WASM contracts, we should not 
 
 ### Interface
 
-#### PSP22 is an interface of Fungible Token Standard
+#### PSP-22 is an interface of Fungible Token Standard
 
 ##### **total_supply**() -> Balance
 Selector: `0x162df8c2` - first 4 bytes of `blake2b_256("PSP22::total_supply")`
