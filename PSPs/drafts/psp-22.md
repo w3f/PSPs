@@ -15,8 +15,7 @@ This proposal aims to define the standard fungible token interface for WebAssemb
 
 ## Motivation
 
-Currently, while there is no standard, every contract will have different a signature. Thus, no interoperability is possible. This proposal aims to resolve that by defining one **interface** that shares the
-same **ABI** between all implementations.
+Currently, while there is no standard, every contract will have different a signature. Thus, no interoperability is possible. This proposal aims to resolve that by defining one **interface** that shares the same **ABI** between all implementations.
 
 A standard interface allows any token on Polkadot/Kusama to be re-used by other applications: from wallets to decentralized exchanges.
 
