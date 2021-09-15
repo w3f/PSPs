@@ -1,4 +1,4 @@
-# Fungible Token Standard for WebAssembly smart contracts
+# Fungible Token Standard for Substrate's `contracts` pallet
 
 - **PSP Number:** 22
 - **Authors:** Green Baneling <green.baneling@supercolony.net>, Markian <markian@supercolony.net>, Pierre <pierre.ossun@supercolony.net>, Sven <sven.seven@supercolony.net>, Varg <varg.vikernes@supercolony.net>
@@ -9,7 +9,7 @@
 
 ## Summary
 
-A standard for a fungible token interface for WebAssembly smart contracts.
+A standard for a fungible token interface for WebAssembly smart contracts which run on Substrate's [`contracts` pallet](https://github.com/paritytech/substrate/tree/master/frame/contracts).
 
 This proposal aims to define the standard fungible token interface for WebAssembly smart contracts, just like [EIP-20](https://github.com/ethereum/EIPs/edit/master/EIPS/eip-20.md) for the Ethereum ecosystem.
 
@@ -17,7 +17,7 @@ This proposal aims to define the standard fungible token interface for WebAssemb
 
 Currently, while there is no standard, every contract will have different a signature. Thus, no interoperability is possible. This proposal aims to resolve that by defining one **interface** that shares the same **ABI** between all implementations.
 
-A standard interface allows any token on Polkadot/Kusama to be re-used by other applications: from wallets to decentralized exchanges.
+The goal is to have a standard contract interface that allows tokens on Polkadot/Kusama which implement it to be re-used by other applications: from wallets to decentralized exchanges.
 
 ## Implementations
 Examples of implementations:
