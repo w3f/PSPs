@@ -132,7 +132,7 @@ Selector: `0x4d47d921` - first 4 bytes of `blake2b_256("PSP22::allowance")`
   "docs": [
     "Returns the amount which `spender` is still allowed to withdraw from `owner`.",
     "",
-    "Returns `0` if no allowance has been set `0`."
+    "Returns `0` if no allowance has been set."
   ],
   "mutates": false,
   "name": [
