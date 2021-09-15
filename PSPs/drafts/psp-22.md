@@ -196,6 +196,7 @@ Selector: `0xdb20f9f5` - first 4 bytes of `blake2b_256("PSP22::transfer")`
     "Reverts with error `ZeroSenderAddress` if sender's address is zero.",
     "",
     "Reverts with error `ZeroRecipientAddress` if recipient's address is zero."
+    "Reverts with error `SafeTransferCheckFailed` if the recipient is a contract and rejected the transfer."
   ],
   "mutates": true,
   "name": [
