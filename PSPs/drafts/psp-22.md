@@ -685,7 +685,7 @@ When a contract deletes (burns) tokens, `to` will be `None`.
 }
 ```
 
-## Types
+### Types
 ```rust
 // AccountId is a 32 bytes Array, like in Substrate-based blockchains.
 type AccountId = [u8; 32];
@@ -694,7 +694,7 @@ type AccountId = [u8; 32];
 type Balance = u128;
 ```
 
-### Return types
+#### Return types
 ```json
 {
   "types": {
@@ -814,7 +814,7 @@ type Balance = u128;
 }
 ```
 
-### Errors
+#### Errors
 The suggested methods revert the transaction and return a `Result` type with one of the following error enum's:
 
 ```rust
