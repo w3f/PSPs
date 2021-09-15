@@ -814,7 +814,7 @@ type Balance = u128;
 }
 ```
 
-#### Errors
+### Errors
 The suggested methods revert the transaction and return a `Result` type with one of the following error enum's:
 
 ```rust
