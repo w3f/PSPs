@@ -816,7 +816,7 @@ type Balance = u128;
 ```
 
 ### Errors
-The suggested methods revert the transaction and return a `Result` type with one of the following error enum's:
+The suggested methods revert the transaction and return a [SCALE-encoded](https://github.com/paritytech/parity-scale-codec) `Result` type with one of the following `Error` enum variants:
 
 ```rust
 enum PSP22Error {
