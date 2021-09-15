@@ -593,7 +593,7 @@ Selector: `0xfda6f1a9` - first 4 bytes of `blake2b_256("PSP22Receiver::before_re
 
 ### Events
 
-##### Transfer 
+#### Transfer 
 When a contract creates (mints) new tokens, `from` will be `None`.
 When a contract deletes (burns) tokens, `to` will be `None`.
 ```json
@@ -640,7 +640,7 @@ When a contract deletes (burns) tokens, `to` will be `None`.
 }
 ```
 
-#### Approval
+### Approval
 ```json
 {
   "args": [
@@ -686,7 +686,7 @@ When a contract deletes (burns) tokens, `to` will be `None`.
 }
 ```
 
-### Types
+## Types
 ```rust
 // AccountId is a 32 bytes Array, like in Substrate-based blockchains.
 type AccountId = [u8; 32];
@@ -694,7 +694,8 @@ type AccountId = [u8; 32];
 // `u128` must be enough to cover most of the use-cases of standard tokens.
 type Balance = u128;
 ```
-#### Return types
+
+### Return types
 ```json
 {
   "types": {
