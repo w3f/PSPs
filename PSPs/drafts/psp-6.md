@@ -2754,7 +2754,10 @@ _NOTE: This type is future-reserved, specification will be adjusted._
 
 ### 1.14.2. `payment_queryInfo`
 
-Query the known data about the fee of an extrinsic at the given block.
+Query the known data about the fee of an extrinsic at the given block. This value can be determined
+by calling the `TransactionPaymentApi_query_info` runtime method, which is specified in Appendix
+E.3.12.1 of
+[The Polkadot Host Protocol Specification](https://research.web3.foundation/en/latest/polkadot/specifications/host.html).
 
 This method cannot be aware of the internals of an extension, for example a tip. It only interprets
 the extrinsic as some encoded value and accounts for its weight and length, the runtime's extrinsic
