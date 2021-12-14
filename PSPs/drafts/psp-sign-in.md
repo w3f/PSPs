@@ -46,7 +46,7 @@ Sign-In with Polkadot works as follows:
 
 8. The target service may further fetch data associated with the Polkadot address, such as from the Polkadot blockchain (e.g., PNS, Parachain), or other data sources that may or may not be permissioned.
 
- ![Sign-in Flow](../src/psp-sign-in.png)
+ ![Sign-in Flow](../../src/psp-sign-in.png)
 
 #
 
