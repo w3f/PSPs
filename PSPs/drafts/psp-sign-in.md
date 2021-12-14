@@ -1,10 +1,10 @@
 # Standard Proposal and workflow for Polkadot Sign In
 
 - **PSP Number:**
-- **Authors:**
-- **Status:**
+- **Authors:** hanwencheng (hanwen@litentry.com)
+- **Status:** Draft
 - **Created:** 2021-11-20
-- **Reference Implementation:**
+- **Reference Implementation:** https://github.com/litentry/PolkaSignIn (WIP)
 
 ## Summary
 
