@@ -101,7 +101,7 @@ Selector: `0xcde7e55f` - first 4 bytes of `blake2b_256("PSP34::balance_of")`
 }
 ```
 
-##### **owner_of**(id: Id) ➔ AccountId
+##### **owner_of**(id: Id) ➔ Option<AccountId>
 Selector: `0x1168624d` - first 4 bytes of `blake2b_256("PSP34::owner_of")`
 ```json
 {
@@ -124,9 +124,9 @@ Selector: `0x1168624d` - first 4 bytes of `blake2b_256("PSP34::owner_of")`
   "payable": false,
   "returnType": {
     "displayName": [
-       "AccountId"
+      "Option"
     ],
-    "type": "AccountId"
+    "type": "Option<AccountId>"
   },
   "selector": "0x1168624d"
 }
