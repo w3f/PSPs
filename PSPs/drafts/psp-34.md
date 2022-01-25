@@ -117,7 +117,7 @@ Selector: `0x1168624d` - first 4 bytes of `blake2b_256("PSP34::owner_of")`
     }
   ],
   "docs": [
-    "Returns the owner of the token."
+    "Returns the owner of the token if any."
   ],
   "mutates": false,
   "label": "PSP34::owner_of",
@@ -337,7 +337,7 @@ Selector: `0x3128d61b` - first 4 bytes of `blake2b_256("PSP34::transfer")`
     "",
     "# Errors",
     "",
-    "Returns `TokenNotExists` error if `id` is not exist.",
+    "Returns `TokenNotExists` error if `id` does not exist.",
     "",
     "Returns `SafeTransferCheckFailed` error if `to` doesn't accept transfer."
   ],
@@ -423,7 +423,7 @@ Selector: `0x718fd38b` - first 4 bytes of `blake2b_256("PSP34::transfer_from")`
 ```
 
 #### PSP34Receiver
-`PSP34Receiver` is an interface for any contract that wants to support safe transfers from a PSP-30 token smart contract to avoid unexpected tokens in the balance of contract.
+`PSP34Receiver` is an interface for any contract that wants to support safe transfers from a PSP-34 token smart contract to avoid unexpected tokens in the balance of contract.
 This method is called before a transfer to ensure the recipient of the tokens acknowledges the receipt.
 
 ##### **before_received**(operator: AccountId, from: AccountId, id: Id, data: [u8]) ➔ Result<(), PSP34ReceiverError>
