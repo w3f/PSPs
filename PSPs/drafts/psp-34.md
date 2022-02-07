@@ -276,7 +276,7 @@ Selector: `0x1932a8b0` - first 4 bytes of `blake2b_256("PSP34::approve")`
   "docs": [
     "Approves the account to transfer the specified token on behalf of the caller.",
     "",
-    "On success a `Approval` event is emitted.",
+    "On success an `Approval` event is emitted.",
     "",
     "# Errors",
     "",
