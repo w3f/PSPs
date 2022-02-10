@@ -422,6 +422,26 @@ Selector: `0x718fd38b` - first 4 bytes of `blake2b_256("PSP34::transfer_from")`
 }
 ```
 
+##### **total_supply**() ➔ Balance
+Selector: `0x628413fe` - first 4 bytes of `blake2b_256("PSP34::total_supply")`
+```json
+{
+  "args": [],
+  "docs": [
+    "Returns the current total supply of the NFT."
+  ],
+  "mutates": false,
+  "label": "PSP34::total_supply",
+  "returnType": {
+    "displayName": [
+      "Balance"
+    ],
+    "type": "Balance"
+  },
+  "selector": "0x628413fe"
+}
+```
+
 #### PSP34Receiver
 `PSP34Receiver` is an interface for any contract that wants to support safe transfers from a PSP-34 token smart contract to avoid unexpected tokens in the balance of contract.
 This method is called before a transfer to ensure the recipient of the tokens acknowledges the receipt.
@@ -498,26 +518,6 @@ Selector: `0xbb7df780` - first 4 bytes of `blake2b_256("PSP34Receiver::before_re
 `PSP34Metadata` is a **recommended** extension for this Non-Fungible Token standard
 because it is main feature of the NFT.
 
-##### **total_supply**() ➔ Balance
-Selector: `0x50a9188c` - first 4 bytes of `blake2b_256("PSP34Metadata::total_supply")`
-```json
-{
-  "args": [],
-  "docs": [
-    "Returns the current total supply of the NFT."
-  ],
-  "mutates": false,
-  "label": "PSP34Metadata::total_supply",
-  "returnType": {
-    "displayName": [
-      "Balance"
-    ],
-    "type": "Balance"
-  },
-  "selector": "0x50a9188c"
-}
-```
-
 ##### **get_attribute**(id: Id, key: [u8]) ➔ Option<[u8]>
 Selector: `0xf19d48d1` - first 4 bytes of `blake2b_256("PSP34Metadata::get_attribute")`
 ```json
@@ -560,7 +560,8 @@ Selector: `0xf19d48d1` - first 4 bytes of `blake2b_256("PSP34Metadata::get_attri
 }
 ```
 
-The list of required attributes for NFT should be defined in a separate 
+Attributes are more flexible than single `tokenURI` function like in [`Erc721`](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md).
+The list of required attributes for NFT should be defined in a separate
 proposal based on the scope of the usage.
 
 ### Events
