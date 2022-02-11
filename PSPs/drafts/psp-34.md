@@ -2,7 +2,7 @@
 
 - **PSP Number:** 34
 - **Authors:** Pierre Ossun <pierre.ossun@supercolony.net>, Green Baneling <green.baneling@supercolony.net>, Markian <markian@supercolony.net>
-- **Status:** Draft
+- **Status:** Call for Feedback
 - **Created:** 2021-11-22
 - **Reference Implementation** [OpenBrush](https://github.com/Supercolony-net/openbrush-contracts/blob/main/contracts/token/psp721/psp721.rs)
 
