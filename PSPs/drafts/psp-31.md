@@ -1,6 +1,6 @@
 # Standard Proposal and workflow for Polkadot Sign In
 
-- **PSP Number:**
+- **PSP Number:** 31
 - **Authors:** hanwencheng (hanwen@litentry.com)
 - **Status:** Draft
 - **Created:** 2021-11-20
