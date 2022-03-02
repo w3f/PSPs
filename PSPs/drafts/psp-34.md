@@ -2,7 +2,7 @@
 
 - **PSP Number:** 34
 - **Authors:** Pierre Ossun <pierre.ossun@supercolony.net>, Green Baneling <green.baneling@supercolony.net>, Markian <markian@supercolony.net>
-- **Status:** Draft
+- **Status:** Call for Feedback
 - **Created:** 2021-11-22
 - **Reference Implementation** [OpenBrush](https://github.com/Supercolony-net/openbrush-contracts/blob/main/contracts/token/psp34/psp34.rs)
 
@@ -132,39 +132,8 @@ Selector: `0x1168624d` - first 4 bytes of `blake2b_256("PSP34::owner_of")`
 }
 ```
 
-##### **get_approved**(id: Id) ➔ Option<AccountId>
-Selector: `0x82db011d` - first 4 bytes of `blake2b_256("PSP34::get_approved")`
-```json
-{
-  "args": [
-    {
-      "label": "id",
-      "type": {
-        "displayName": [
-           "Id"
-        ],
-        "type": "Id"
-      }
-    }
-  ],
-  "docs": [
-    "Returns the approved account ID for this token if any."
-  ],
-  "mutates": false,
-  "label": "PSP34::get_approved",
-  "payable": false,
-  "returnType": {
-    "displayName": [
-      "Option"
-    ],
-    "type": "Option<AccountId>"
-  },
-  "selector": "0x82db011d"
-}
-```
-
-##### **is_approved_for_all**(owner: AccountId, operator: AccountId) ➔ bool
-Selector: `0x53e20ef5` - first 4 bytes of `blake2b_256("PSP34::is_approved_for_all")`
+##### **allowance**(owner: AccountId, operator: AccountId, id: Option<Id>) ➔ bool
+Selector: `0x4790f55a` - first 4 bytes of `blake2b_256("PSP34::allowance")`
 ```json
 {
   "args": [
@@ -185,13 +154,23 @@ Selector: `0x53e20ef5` - first 4 bytes of `blake2b_256("PSP34::is_approved_for_a
         ],
         "type": "AccountId"
       }
+    },
+    {
+      "label": "id",
+      "type": {
+        "displayName": [
+          "Option"
+        ],
+        "type": "Option<Id>"
+      }
     }
   ],
   "docs": [
-    "Returns `true` if the operator is approved by the owner."
+    "Returns `true` if the operator is approved by the owner to withdraw `id` token.",
+    "If `id` is `None`, returns `true` if the operator is approved to withdraw all owner's tokens."
   ],
   "mutates": false,
-  "label": "PSP34::is_approved_for_all",
+  "label": "PSP34::allowance",
   "payable": false,
   "returnType": {
     "displayName": [
@@ -199,12 +178,12 @@ Selector: `0x53e20ef5` - first 4 bytes of `blake2b_256("PSP34::is_approved_for_a
     ],
     "type": "bool"
   },
-  "selector": "0x53e20ef5"
+  "selector": "0x4790f55a"
 }
 ```
 
-##### **set_approval_for_all**(operator: AccountId, approved: bool) ➔ Result<(), PSP34Error>
-Selector: `0xf8938214` - first 4 bytes of `blake2b_256("PSP34::set_approval_for_all")`
+##### **approve**(operator: AccountId, id: Option<Id>, approved: bool) ➔ Result<(), PSP34Error>
+Selector: `0x1932a8b0` - first 4 bytes of `blake2b_256("PSP34::approve")`
 ```json
 {
   "args": [
@@ -218,65 +197,29 @@ Selector: `0xf8938214` - first 4 bytes of `blake2b_256("PSP34::set_approval_for_
       }
     },
     {
-      "label": "approved",
+      "label": "id",
       "type": {
         "displayName": [
-        "bool"
+          "Option"
+        ],
+        "type": "Option<Id>"
+      }
+    },
+    {
+      "name": "approved",
+      "type": {
+        "displayName": [
+          "bool"
         ],
         "type": "bool"
       }
     }
   ],
   "docs": [
-    "Approves or disapproves the operator for all tokens of the caller.",
+    "Approves `operator` to withdraw  the `id` token from the caller's account.",
+    "If `id` is `None` approves or disapproves the operator for all tokens of the caller.",
     "",
-    "On success a `ApprovalForAll` event is emitted.",
-    "",
-    "# Errors",
-    "",
-    "Returns `SelfApprove` error if it is self approve."
-  ],
-  "mutates": true,
-  "label": "PSP34::set_approval_for_all",
-  "payable": false,
-  "returnType": {
-    "displayName": [
-      "Result"
-    ],
-    "type": 1
-  },
-  "selector": "0xf8938214"
-}
-```
-
-##### **approve**(to: AccountId, id: Id) ➔ Result<(), PSP34Error>
-Selector: `0x1932a8b0` - first 4 bytes of `blake2b_256("PSP34::approve")`
-```json
-{
-  "args": [
-    {
-      "label": "to",
-      "type": {
-        "displayName": [
-          "AccountId"
-        ],
-        "type": "AccountId"
-      }
-    },
-    {
-      "label": "id",
-      "type": {
-        "displayName": [
-           "Id"
-        ],
-        "type": "Id"
-      }
-    }
-  ],
-  "docs": [
-    "Approves the account to transfer the specified token on behalf of the caller.",
-    "",
-    "On success an `Approval` event is emitted.",
+    "An `Approval` event is emitted.",
     "",
     "# Errors",
     "",
@@ -620,51 +563,6 @@ When a contract deletes (burns) tokens, `to` will be `None`.
     {
       "docs": [],
       "indexed": true,
-      "label": "from",
-      "type": {
-        "displayName": [
-          "AccountId"
-        ],
-        "type": "AccountId"
-      }
-    },
-    {
-      "docs": [],
-      "indexed": true,
-      "label": "to",
-      "type": {
-        "displayName": [
-          "AccountId"
-        ],
-        "type": "AccountId"
-      }
-    },
-    {
-      "docs": [],
-      "indexed": true,
-      "label": "id",
-      "type": {
-        "displayName": [
-           "Id"
-        ],
-        "type": "Id"
-      }
-    }
-  ],
-  "docs": [
-    "Event emitted when a token approve occurs."
-  ],
-  "label": "Approval"
-}
-```
-
-### ApprovalForAll
-```json
-{
-  "args": [
-    {
-      "docs": [],
-      "indexed": true,
       "label": "owner",
       "type": {
         "displayName": [
@@ -686,6 +584,17 @@ When a contract deletes (burns) tokens, `to` will be `None`.
     },
     {
       "docs": [],
+      "indexed": true,
+      "label": "id",
+      "type": {
+        "displayName": [
+          "Option<Id>"
+        ],
+        "type": "Option<Id>"
+      }
+    },
+    {
+      "docs": [],
       "indexed": false,
       "label": "approved",
       "type": {
@@ -697,10 +606,9 @@ When a contract deletes (burns) tokens, `to` will be `None`.
     }
   ],
   "docs": [
-    "Event emitted when an operator is enabled or disabled for an owner.",
-    "The operator can manage all NFTs of the owner."
+    "Event emitted when a token approve occurs."
   ],
-  "label": "ApprovalForAll"
+  "label": "Approval"
 }
 ```
 
