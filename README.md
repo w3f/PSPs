@@ -6,20 +6,26 @@ PSP process is not supposed to be a substitute for Polkadot Governance process a
 
 ---
 
-- [:clipboard: Process](#clipboard-process)
-- [:pencil: Contributing](#pencil-contributing)
-- [:bulb: Help](#bulb-help)
+- [Polkadot Standards Proposals (PSPs)](#polkadot-standards-proposals-psps)
+	- [:clipboard: Process](#clipboard-process)
+	- [:pencil: Contributing](#pencil-contributing)
+	- [:bulb: Help](#bulb-help)
 
 ## :clipboard: Process  
 
 Below is the workflow of a successful PSP:
 ```
-1. Draft -> 2. Call for Feedback -> 3. Accepted -> 4. Integrated
+1. Draft -> 2. Call for Feedback -> 3. Published -> 4. Integrated
 ```
-1. **Draft:** A valid draft, which is merged into into the [draft subfolder](./PSPs/drafts) and actively improved together with the community. 
-2. **Call for Feedback:** The PSP will be shared on different channels for additional feedback for at least 2 weeks. The result of this step is either an acceptance of the standard (->Accepted) or the rejection (->Draft). 
-3. **Accepted:** Any further changes are unlikely, and developers can start integrating the PSP. Once a PSP is accepted, a reference implementation needs to be created and the PSP will be merged into the accepted subfolder.    
-4. **Integrated:** The PSP is actively used and a reference implementation exists and the PSP will be merged into the integrated subfolder.
+1. **Draft:** A valid draft, which is merged into into the [draft
+   subfolder](./PSPs/drafts) and actively improved together with the community.
+2. **Call for Feedback:** The PSP will be shared on different channels for
+   additional feedback for at least 2 weeks. The result of this step is either
+   an acceptance of the standard (->Published) or the rejection (->Draft).
+3. **Published:** Any further changes are unlikely, and developers can start
+   integrating the PSP.
+4. **Integrated:** The PSP is actively used and a reference implementation
+   exists and the PSP will be merged into the integrated subfolder.
 
 In order to be **merged or accepted** for the different stages, reviewers need to approve a PR. Reviewers should be known experts in the topic covered by the PSP. 
 
