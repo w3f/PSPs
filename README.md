@@ -4,12 +4,22 @@
 A Polkadot Standards Proposal (PSP) describes standards for the Polkadot ecosystem. The Polkadot Standards Proposal GitHub is a community-based initiative.  
 PSP process is not supposed to be a substitute for Polkadot Governance process and is meant to focus only on commonly agreed usage patterns rather than protocol adjustments.  
 
+> __Disclaimer__: The Polkadot network is relatively young and many ecosystem
+projects are just getting started. While the interoperability aspect of
+Polkadot, parachains and community tools are still being actively developed,
+participants of the ecosystem can create proposals for certain mechanisms for
+the wider community to use. As of now, we loosely accept proposals that we do
+not actively endorse or expect to be implemented. We think many standards will
+be adopted organically (with some coordination) and will evolve with time. We
+expect that a more firm process for standardization will evolve as adoption
+takes place. Certain proposals might be adjusted, replaced or deprecated.
+
 ---
 
 - [Polkadot Standards Proposals (PSPs)](#polkadot-standards-proposals-psps)
-	- [:clipboard: Process](#clipboard-process)
-	- [:pencil: Contributing](#pencil-contributing)
-	- [:bulb: Help](#bulb-help)
+  - [:clipboard: Process](#clipboard-process)
+  - [:pencil: Contributing](#pencil-contributing)
+  - [:bulb: Help](#bulb-help)
 
 ## :clipboard: Process  
 
@@ -25,7 +35,7 @@ Below is the workflow of a successful PSP:
 3. **Published:** Any further changes are unlikely, and developers can start
    integrating the PSP.
 4. **Integrated:** The PSP is actively used and a reference implementation
-   exists and the PSP will be merged into the integrated subfolder.
+   exists.
 
 In order to be **merged or accepted** for the different stages, reviewers need to approve a PR. Reviewers should be known experts in the topic covered by the PSP. 
 
