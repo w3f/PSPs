@@ -2,7 +2,7 @@
 
 - **PSP Number:** 34
 - **Authors:** Pierre Ossun <pierre.ossun@supercolony.net>, Green Baneling <green.baneling@supercolony.net>, Markian <markian@supercolony.net>
-- **Status:** Call for Feedback
+- **Status:** Accepted
 - **Created:** 2021-11-22
 - **Reference Implementation** [OpenBrush](https://github.com/Supercolony-net/openbrush-contracts/blob/main/contracts/token/psp34/psp34.rs)
 
@@ -282,6 +282,8 @@ Selector: `0x3128d61b` - first 4 bytes of `blake2b_256("PSP34::transfer")`
     "",
     "Returns `TokenNotExists` error if `id` does not exist.",
     "",
+    "Returns `NotApproved` error if `from` doesn't have allowance for transferring.",
+    "",
     "Returns `SafeTransferCheckFailed` error if `to` doesn't accept transfer."
   ],
   "mutates": true,
@@ -294,74 +296,6 @@ Selector: `0x3128d61b` - first 4 bytes of `blake2b_256("PSP34::transfer")`
     "type": 1
   },
   "selector": "0x3128d61b"
-}
-```
-
-##### **transfer_from**(from: AccountId, to: AccountId, id: Id, data: [u8]) ➔ Result<(), PSP34Error>
-Selector: `0x718fd38b` - first 4 bytes of `blake2b_256("PSP34::transfer_from")`
-```json
-{
-  "args": [
-    {
-      "label": "from",
-      "type": {
-        "displayName": [
-          "AccountId"
-        ],
-        "type": "AccountId"
-      }
-    },
-    {
-      "label": "to",
-      "type": {
-        "displayName": [
-          "AccountId"
-        ],
-        "type": "AccountId"
-      }
-    },
-    {
-      "label": "id",
-      "type": {
-        "displayName": [
-           "Id"
-        ],
-        "type": "Id"
-      }
-    },
-    {
-      "label": "data",
-      "type": {
-        "displayName": [
-          "[u8]"
-        ],
-        "type": "[u8]"
-      }
-    }
-  ],
-  "docs": [
-    "Transfer approved or owned token from `from`.",
-    "",
-    "On success a `Transfer` event is emitted.",
-    "",
-    "# Errors",
-    "",
-    "Returns `TokenNotExists` error if `id` does not exist.",
-    "",
-    "Returns `NotApproved` error if `from` doesn't have allowance for transferring.",
-    "",
-    "Returns `SafeTransferCheckFailed` error if `to` doesn't accept transfer."
-  ],
-  "mutates": true,
-  "label": "PSP34::transfer_from",
-  "payable": false,
-  "returnType": {
-    "displayName": [
-      "Result"
-    ],
-    "type": 1
-  },
-  "selector": "0x718fd38b"
 }
 ```
 
