@@ -9,10 +9,11 @@ projects are just getting started. While the interoperability aspect of
 Polkadot, parachains and community tools are still being actively developed,
 participants of the ecosystem can create proposals for certain mechanisms for
 the wider community to use. As of now, we loosely accept proposals that we do
-not actively endorse or expect to be implemented. We think many standards will
-be adopted organically (with some coordination) and change with time. We expect
-that a more firm process for standardization will evolve as adoption takes
-place. Certain proposals might be adjusted, replaced or deprecated.
+not actively endorse, expect to be implemented or might fall outside the scope
+of the PSP. We think many standards will be adopted organically (with some
+coordination) and change with time. We expect that a more firm process for
+standardization will evolve as adoption takes place. Certain proposals might be
+adjusted, replaced or deprecated.
 
 ---
 
