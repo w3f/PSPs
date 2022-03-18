@@ -1,9 +1,9 @@
-# PSP-7: Polkadot DKG threshold multisig wallet
+# PSP-7: Polkadot DKG Threshold Multisig Wallet
 
 * **PSP Number:** 7
 * **Author(s):** Everstake
-* **Status:** PoC
-* **Created:** [2020-02-13]
+* **Status:** Call for Feedback
+* **Created:** 2020-02-13
 * **Reference Implementation** [-]
 
 
@@ -26,6 +26,20 @@ So far Polkadot has two implementations: one is a non-cryptographic multisignatu
 If possible, it would be ideal to investigate the possibilities of standarising the use of DKG, such that a wallet can take advantage of DKG for the creation of Threshold Multisignature addresses. 
 
 As compared to Shamir Secret Sharing or Verifiable Secret Sharing, by using DKG we avoid a single point of failure problem since all the participants generate their keys themselves and no one, except for a creator knows them.
+
+
+### Feedback
+
+The timing of our PSP was imperfect to say the least since we initiated call for feedback at the time when most of the devs are preparing for the Polkadot mainnet launch and simply didn’t have time to review our PSP. So, I’m not sure how useful our feedback is going to be.
+
+In general, since this process is still new and not yet established, it lacks clarity in terms of goals, deliverables and mechanics of the process overall. Here are some of the questions we had to answer for ourselves when working on the PSP. Note, this is our experience while yours can be different; we’re posting it here because we think it might help someone in the same situation.
+1. **Who are the audience of our PSP, regular users or devs? Should the language of the PSP be more general or technical?** Ours was purely technical and I think we should have explained certain things in a simpler fashion.
+2. **What is the best way media channels and format for sharing with community?** We ended up with googledocs and medium and shared it in several Riot groups, TG chat and twitter.
+3. **How long do we collect the feedback for and how often do we ‘remind’ people of our PSP?** We did one month and posted our call for feedback 5 times during this period.
+4. **What are the criteria for the amount of feedback collected?** Because of the afore-mentioned reasons we were happy with any feedback.
+5. **How do decide which feedback is the most relevant?** We were guided by common sense, just trying to understand the amount of value added by suggestions.
+
+We ended up calling our proposal PSP-2 because most of the existing PSPs don’t have a number attached to them. This can also be confusing a bit especially for somebody doing it for the first time.
 
 
 ## Specification
@@ -51,11 +65,11 @@ To make communication between users secure we will use AES256-GCM encryption to 
 
 Here is sequence diagram to see all the steps in distributed key generating process. Suppose that wallet client connect to web-server through websocket and continuously receive new status. "Rust DKG lib" on diagram - Rust code compiled to WebAssembly to use it in JS. Also there are on diagrams "found message" symbols, it means that Wallet APP got new status from web-server through the websocket.
 
-![](/pictures/sequence_wallet_diagram.png)
+![](/src/psp-7/sequence_wallet_diagram.png)
 
 To sign transactions we will use the DSS protocol that was mentioned above. It’s secure 3 - round Schnorr signature scheme where signature is creating distributively. Final signature is compatible with the EdDSA verification function against the distributed secret key. When transaction is signed there are will be couple of options to send it. Transaction can be send by the last partisipant who add his partial signature or by the first who initiate transaction.
 
-![](/pictures/dss_sequence_diagram.png)
+![](/src/psp-7/dss_sequence_diagram.png)
 
 ## Web-server wallet API
 
