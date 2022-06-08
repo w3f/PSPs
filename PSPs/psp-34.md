@@ -4,7 +4,7 @@
 - **Authors:** Pierre Ossun <pierre.ossun@supercolony.net>, Green Baneling <green.baneling@supercolony.net>, Markian <markian@supercolony.net>
 - **Status:** Published
 - **Created:** 2021-11-22
-- **Reference Implementation** [OpenBrush](https://github.com/Supercolony-net/openbrush-contracts/blob/main/contracts/token/psp34/psp34.rs)
+- **Reference Implementation** [OpenBrush](https://github.com/Supercolony-net/openbrush-contracts/blob/main/contracts/src/token/psp34/psp34.rs)
 
 ## Summary
 
@@ -22,7 +22,7 @@ The goal is to have a standard contract interface that allows tokens deployed on
 ## Implementations
 Examples of implementations:
 
-- [OpenBrush](https://github.com/Supercolony-net/openbrush-contracts/blob/main/contracts/token/psp34/psp34.rs), written in [ink!](https://github.com/paritytech/ink).
+- [OpenBrush](https://github.com/Supercolony-net/openbrush-contracts/blob/main/contracts/src/token/psp34/psp34.rs), written in [ink!](https://github.com/paritytech/ink).
 
 ## Motivation for having a standard separate from ERC-721
 Due to the different nature of WebAssembly smart contracts and the difference between EVM and the [`contracts` pallet](https://github.com/paritytech/substrate/tree/master/frame/contracts) in Substrate, this standard proposal has specific rules and methods,
