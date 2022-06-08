@@ -4,7 +4,7 @@
 - **Authors:** Green Baneling <green.baneling@supercolony.net>, Markian <markian@supercolony.net>, Pierre <pierre.ossun@supercolony.net>, Sven <sven.seven@supercolony.net>, Varg <varg.vikernes@supercolony.net>
 - **Status:** Published
 - **Created:** 2021-06-19
-- **Reference Implementation:** [OpenBrush](https://github.com/Supercolony-net/openbrush-contracts/blob/main/contracts/token/psp22/psp22.rs)
+- **Reference Implementation:** [OpenBrush](https://github.com/Supercolony-net/openbrush-contracts/blob/main/contracts/src/token/psp22/psp22.rs)
 
 
 ## Summary
@@ -22,7 +22,7 @@ The goal is to have a standard contract interface that allows tokens on Polkadot
 ## Implementations
 Examples of implementations:
 
-- [OpenBrush](https://github.com/Supercolony-net/openbrush-contracts/blob/main/contracts/token/psp22/psp22.rs), written in [ink!](https://github.com/paritytech/ink).
+- [OpenBrush](https://github.com/Supercolony-net/openbrush-contracts/blob/main/contracts/src/token/psp22/psp22.rs), written in [ink!](https://github.com/paritytech/ink).
 
 ## Motivation for having a standard separate from ERC-20
 Due to the different nature of WebAssembly smart contracts and the difference between EVM and the [`contracts` pallet](https://github.com/paritytech/substrate/tree/master/frame/contracts) in Substrate, this standard proposal has specific rules and methods,
