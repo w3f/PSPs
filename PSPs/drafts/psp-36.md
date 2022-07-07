@@ -8,6 +8,9 @@
 
 ## Summary
 
+This document described the protocol to send and receive telemetry information
+produced by Polkadot Host implemenations. This information can be processed and
+displayed as seen on https://telemetry.polkadot.io, for example.
 
 ## Motivation
 
@@ -15,26 +18,25 @@ Polkadot Host implemenations can send telemetry information about their current
 state and activity to one or more endpoints that collect and process that
 information. This gives observers an insight on the current state of the
 network, which includes block imports, finalization, ressource requirements and
-so on.
-
-Sending telemetry information is a voluntary act and is not required for Polkadot
+so on. Sending telemetry information is a voluntary act and is not required for Polkadot
 and Kusama to function properly, respectively it's not part of the consensus protocol.
 
-## Specification
+All telemetry messges are serialized in JSON format.
 
-### Note on Security
+## Note on Security
 
 All telemetry information sent or collected is entirely **subjective** and its
 origin is untrusted. The telemetry information should offer an insight into the
 network and should not be interpreted at face value. Impersonations of
 participants cannot be prevented.
 
-### Versioning
+## Versioning
 
 All telemetry messages are versioned, allowing for more messages in the future.
 This standard introduces two versions represented as JSON messages, `V1` and `V2`.
+The payload is described in [JSON Messagew](#json-messages).
 
-#### V1
+### V1
 
 In this version, the message payload is sent directly. This version can be
 detected if it cannot be decoded as `V2`.
@@ -53,7 +55,7 @@ Example:
 }
 ```
 
-#### V2
+### V2
 
 | Name    | Type | Required | Description         |
 |---------|------|----------|---------------------|
@@ -73,9 +75,12 @@ Example:
 }
 ```
 
-### JSON Messages
+## JSON Messages
 
-#### System Connected
+All passed on information is subjective and in accordance with the implemenator
+of this protocol.
+
+### System Connected
 
 | Name          | Type          | Required | Description                     |
 |---------------|---------------|----------|---------------------------------|
@@ -105,7 +110,7 @@ NODE_SYS_INFO:
 | is_virtual_machine | BOOLEAN | NO       | Whether the node is running |
 |                    |         |          | in a virtual machine        |
 
-#### System Interval
+### System Interval
 
 | Name                  | Type   | Required | Description                       |
 |-----------------------|--------|----------|-----------------------------------|
@@ -120,7 +125,7 @@ NODE_SYS_INFO:
 | best                  | HEX_32 | NO       | Latest non-finalized block hash   |
 | used_state_cache_size | FLOAT  | NO       |                                   |
 
-#### Block Import
+### Block Import
 
 | Name   | Type   | Required | Description                 |
 |--------|--------|----------|-----------------------------|
@@ -128,7 +133,7 @@ NODE_SYS_INFO:
 | height | UINT   | YES      | Block number                |
 | best   | HEX_32 | YES      | Block hash                  |
 
-#### Notify Finalized
+### Notify Finalized
 
 | Name   | Type   | Required | Description                     |
 |--------|--------|----------|---------------------------------|
@@ -136,7 +141,7 @@ NODE_SYS_INFO:
 | height | STRING | YES      | Block number                    |
 | hash   | HEX_32 | YES      | Block hash                      |
 
-#### (Afg) Authority Set
+### (Afg) Authority Set
 
 | Name             | Type   | Required | Description                      |
 |------------------|--------|----------|----------------------------------|
@@ -145,7 +150,7 @@ NODE_SYS_INFO:
 | authorities      | STRING | YES      |                                  |
 | authority_set_id | STRING | YES      |                                  |
 
-#### Hardware Bench
+### Hardware Bench
 
 | Name                        | Type   | Required | Description                    |
 |-----------------------------|--------|----------|--------------------------------|
@@ -155,13 +160,6 @@ NODE_SYS_INFO:
 | disk_sequential_write_score | UINT   | NO       |                                |
 | disk_random_write_score     | UINT   | NO       |                                |
 
-## Tests
-
-TODO
-
 ## Copyright
 
-TODO
-
-Each PSP must be labeled as placed in the
-[public domain](https://creativecommons.org/publicdomain/zero/1.0/).
+This PSP is placed in the [public domain](https://creativecommons.org/publicdomain/zero/1.0/).
