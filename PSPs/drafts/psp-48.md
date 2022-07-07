@@ -1,6 +1,6 @@
 # Node Telemetry Protocol
 
-- **PSP Number:** [To be assigned (=number of the initial PR to the PSPs repo)]
+- **PSP Number:** 48
 - **Authors:** Fabio Lama <fabio.lama@pm.me>
 - **Status:** Draft
 - **Created:** 2022-07-06
