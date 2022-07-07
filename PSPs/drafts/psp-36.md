@@ -30,30 +30,20 @@ origin is untrusted. The telemetry information should offer an insight into the
 network and should not be interpreted at face value. Impersonations of
 participants cannot be prevented.
 
+## Transport
+
+Telemetry messages are send over the websocket procotol. Conventially, the
+websocket stream connects on port `8000` to the endpoint `/submit`, which is not
+a requirement. Servers that collect telemetry data might have different
+requirements.
+
+An example of such an endpoint might look like `wss://telemetry.example.com:8000/submit`.
+
 ## Versioning
 
-All telemetry messages are versioned, allowing for more messages in the future.
+All telemetry messages are versioned, allowing for more message types in the future.
 This standard introduces two versions represented as JSON messages, `V1` and `V2`.
 The payload is described in [JSON Messagew](#json-messages).
-
-### V1
-
-In this version, the message payload is sent directly. This version can be
-detected if it cannot be decoded as `V2`.
-
-| Name | Type | Required | Description                |
-|------|------|----------|----------------------------|
-| -    | ANY  | YES      | Message is passed directly |
-
-Example:
-
-```json
-{
-	"msg":"notify.finalized",
-	"best":"0x031c3521ca2f9c673812d692fc330b9a18e18a2781e3f9976992f861fd3ea0cb",
-	"height":"50"
-}
-```
 
 ### V2
 
@@ -72,6 +62,26 @@ Example:
 		"best":"0x031c3521ca2f9c673812d692fc330b9a18e18a2781e3f9976992f861fd3ea0cb",
 		"height":"50"
 	}
+}
+```
+
+### V1
+
+In this version, the message payload is sent directly. This version can be
+detected if it cannot be decoded as `V2`. This version serves primarily for
+backwards-compatibility reasons.
+
+| Name | Type | Required | Description                |
+|------|------|----------|----------------------------|
+| -    | ANY  | YES      | Message is passed directly |
+
+Example:
+
+```json
+{
+	"msg":"notify.finalized",
+	"best":"0x031c3521ca2f9c673812d692fc330b9a18e18a2781e3f9976992f861fd3ea0cb",
+	"height":"50"
 }
 ```
 
