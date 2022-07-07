@@ -43,7 +43,7 @@ An example of such an endpoint might look like `wss://telemetry.example.com:8000
 
 All telemetry messages are versioned, allowing for more message types in the future.
 This standard introduces two versions represented as JSON messages, `V1` and `V2`.
-The payload is described in [JSON Messagew](#json-messages).
+The payloads are documented in [JSON Messagew](#json-messages).
 
 ### V2
 
