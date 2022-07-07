@@ -106,19 +106,18 @@ of this protocol.
 | target_os     | STRING        | NO       |                                 |
 | target_arch   | STRING        | NO       |                                 |
 | target_env    | STRING        | NO       |                                 |
-| sysinfo       | NODE_SYS_INFO | NO       |                                 |
+| sysinfo       | _NodeSysInfo_ | NO       |                                 |
 
-NODE_SYS_INFO:
+where _NodeSysInfo_ is structured as:
 
-| Name               | Type    | Required | Description                 |
-|--------------------|---------|----------|-----------------------------|
-| cpu                | STRING  | NO       | Name of the CPU             |
-| memory             | UINT    | NO       | Memory in bytes             |
-| core_count         | UINT    | NO       | Number of cores             |
-| linux_kernel       | STRING  | NO       | Name of the Linux kernel    |
-| linux_distro       | STRING  | NO       | Name of the Linux distro    |
-| is_virtual_machine | BOOLEAN | NO       | Whether the node is running |
-|                    |         |          | in a virtual machine        |
+| Name               | Type    | Required | Description                                      |
+|--------------------|---------|----------|--------------------------------------------------|
+| cpu                | STRING  | NO       | Name of the CPU                                  |
+| memory             | UINT    | NO       | Memory in bytes                                  |
+| core_count         | UINT    | NO       | Number of cores                                  |
+| linux_kernel       | STRING  | NO       | Name of the Linux kernel                         |
+| linux_distro       | STRING  | NO       | Name of the Linux distro                         |
+| is_virtual_machine | BOOLEAN | NO       | Whether the node is running in a virtual machine |
 
 ### System Interval
 
