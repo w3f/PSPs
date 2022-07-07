@@ -8,15 +8,70 @@
 
 ## Summary
 
-TODO
 
 ## Motivation
 
-TODO
+Polkadot Host implemenations can send telemetry information about their current
+state and activity to one or more endpoints that collect and process that
+information. This gives observers an insight on the current state of the
+network, which includes block imports, finalization, ressource requirements and
+so on.
+
+Sending telemetry information is a voluntary act and is not required for Polkadot
+and Kusama to function properly, respectively it's not part of the consensus protocol.
 
 ## Specification
 
-TODO
+### Note on Security
+
+All telemetry information sent or collected is entirely **subjective** and its
+origin is untrusted. The telemetry information should offer an insight into the
+network and should not be interpreted at face value. Impersonations of
+participants cannot be prevented.
+
+### Versioning
+
+All telemetry messages are versioned, allowing for more messages in the future.
+This standard introduces two versions represented as JSON messages, `V1` and `V2`.
+
+#### V1
+
+In this version, the message payload is sent directly. This version can be
+detected if it cannot be decoded as `V2`.
+
+| Name | Type | Required | Description                |
+|------|------|----------|----------------------------|
+| -    | ANY  | YES      | Message is passed directly |
+
+Example:
+
+```json
+{
+	"msg":"notify.finalized",
+	"best":"0x031c3521ca2f9c673812d692fc330b9a18e18a2781e3f9976992f861fd3ea0cb",
+	"height":"50"
+}
+```
+
+#### V2
+
+| Name    | Type | Required | Description         |
+|---------|------|----------|---------------------|
+| id      | UINT | YES      |                     |
+| payload | ANY  | YES      | The payload message |
+
+Example:
+
+```json
+{
+	"id": 1,
+	"payload": {
+		"msg":"notify.finalized",
+		"best":"0x031c3521ca2f9c673812d692fc330b9a18e18a2781e3f9976992f861fd3ea0cb",
+		"height":"50"
+	}
+}
+```
 
 ### JSON Messages
 
