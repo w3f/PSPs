@@ -1,4 +1,4 @@
-# Title
+# Node Telemetry Protocol
 
 - **PSP Number:** [To be assigned (=number of the initial PR to the PSPs repo)]
 - **Authors:** Fabio Lama <fabio.lama@pm.me>
