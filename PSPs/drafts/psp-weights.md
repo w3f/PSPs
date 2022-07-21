@@ -45,6 +45,43 @@ constants to simplify the declaration of weights.
 
 ## ParityDb
 
+The weights reflect the time it takes to read and write one storage item. The
+value is calculated by multiplying the *Average* of all values with `1.1` and
+adding `0`.
+
+* `read`: $11'826 \times w_n$
+	* Justification:
+		| Stats   | Nanoseconds  |
+		|---------|--------------|
+		| Min     | $4'611$      |
+		| Max     | $13'478'005$ |
+		| Average | $10'750$     |
+		| Median  | $10'655$     |
+		| Std-Dev | $12'214.49$  |
+
+		| Percentiles | Nanoseconds |
+		|-------------|-------------|
+		| 99th        | $14'451$    |
+		| 95th        | $12'588$    |
+		| 75th        | $11'200$    |
+
+
+* `write`: $38'053 \times w_n$
+	* Justification:
+		| Stats   | Nanoseconds  |
+		|---------|--------------|
+		| Min     | $8'023$      |
+		| Max     | $47'367'740$ |
+		| Average | $34'592$     |
+		| Median  | $32'703$     |
+		| Std-Dev | $49'417.24$  |
+
+		| Percentiles | Nanoseconds |
+		|-------------|-------------|
+		| 99th        | $69'379$    |
+		| 95th        | $47'168$    |
+		| 75th        | $35'252$    |
+
 ## Tests
 
 If applicable, please include a list of potential test cases to validate an implementation.
