@@ -27,10 +27,23 @@ implemenations are too strict or too loose in terms of costs of their resource
 requirements which could lead to bad economic outcomes and a fractured network
 of implemenations.
 
-## Specification
+## Constants
 
-The specification should describe the feature as detailed as possible. The proposal should be
-complete, consistent, unambiguous, quantitative, and feasible.
+A weight of _1 unit_ corresponds to one picosecond. We define a list of
+constants to simplify the declaration of weights.
+
+| Symbol  | Weight                  | Description            |
+|---------|-------------------------|------------------------|
+| $w_s$   | 1'000'000'000'000       | Weight per second      |
+| $w_m$   | $$\frac{w_s}{1'000}$$   | Weight per millisecond |
+| $w_\mu$ | $$\frac{w_m}{1'000}$$   | Weight per microsecond |
+| $w_n$   | $$\frac{w_\mu}{1'000}$$ | Weight per nanosecond  |
+
+## Databases
+
+## RocksDb
+
+## ParityDb
 
 ## Tests
 
