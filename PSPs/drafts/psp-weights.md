@@ -43,6 +43,42 @@ constants to simplify the declaration of weights.
 
 ## RocksDb
 
+The weights reflect the time it takes to read and write one storage item. The
+value is calculated by multiplying the *Average* of all values with `1.1` and
+adding `0`.
+
+* `read`: $20'499 \times w_n$
+	*	| Stats   | Nanoseconds |
+		|---------|-------------|
+		| Min     | $5'015$     |
+		| Max     | $1'441'022$ |
+		| Average | $18'635$    |
+		| Median  | $17'795$    |
+		| Std-Dev | $4'829.75$  |
+
+	*	| Percentiles | Nanoseconds |
+		|-------------|-------------|
+		| 99th        | $32'074$    |
+		| 95th        | $26'658$    |
+		| 75th        | $19'363$    |
+
+
+* `write`: $83'471 \times w_n$
+	*	| Stats   | Nanoseconds  |
+		|---------|--------------|
+		| Min     | $16'368$     |
+		| Max     | $34'500'937$ |
+		| Average | $75'882$     |
+		| Median  | $74'236$     |
+		| Std-Dev | $64'706.41$  |
+
+	*	| Percentiles | Nanoseconds |
+		|-------------|-------------|
+		| 99th        | $111'151$   |
+		| 95th        | $92'666$    |
+		| 75th        | $80'297$    |
+
+
 ## ParityDb
 
 The weights reflect the time it takes to read and write one storage item. The
