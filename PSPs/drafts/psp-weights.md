@@ -78,6 +78,23 @@ adding `0`.
 		| 95th        | $92'666$    |
 		| 75th        | $80'297$    |
 
+Information on Substrate Benchmark CLI:
+
+```
+DATABASE: `RocksDb`, RUNTIME: `Polkadot`
+BLOCK-NUM: `BlockId::Number(9643856)`
+SKIP-WRITE: `false`, SKIP-READ: `false`, WARMUPS: `1`
+STATE-VERSION: `V0`, STATE-CACHE-SIZE: `0`
+WEIGHT-PATH: `runtime/polkadot/constants/src/weights/`
+METRIC: `Average`, WEIGHT-MUL: `1.1`, WEIGHT-ADD: `0`
+
+Executed Command:
+  ./target/production/polkadot
+  benchmark-storage
+  --state-version=0
+  --mul=1.1
+  --weight-path=runtime/polkadot/constants/src/weights/
+```
 
 ## ParityDb
 
@@ -115,6 +132,28 @@ adding `0`.
 		| 99th        | $69'379$    |
 		| 95th        | $47'168$    |
 		| 75th        | $35'252$    |
+
+Information on Substrate Benchmark CLI:
+
+```
+THIS FILE WAS AUTO-GENERATED USING THE SUBSTRATE BENCHMARK CLI VERSION 4.0.0-dev
+DATE: 2022-03-30 (Y/M/D)
+
+DATABASE: `ParityDb`, RUNTIME: `Polkadot`
+BLOCK-NUM: `BlockId::Number(9653477)`
+SKIP-WRITE: `false`, SKIP-READ: `false`, WARMUPS: `1`
+STATE-VERSION: `V0`, STATE-CACHE-SIZE: `0`
+WEIGHT-PATH: `runtime/polkadot/constants/src/weights/`
+METRIC: `Average`, WEIGHT-MUL: `1.1`, WEIGHT-ADD: `0`
+
+Executed Command:
+  ./target/production/polkadot
+  benchmark-storage
+  --db=paritydb
+  --state-version=0
+  --mul=1.1
+  --weight-path=runtime/polkadot/constants/src/weights/
+```
 
 ## Tests
 
