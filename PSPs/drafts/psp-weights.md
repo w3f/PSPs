@@ -39,6 +39,23 @@ constants to simplify the declaration of weights.
 | $w_\mu$ | $$\frac{w_m}{1'000}$$   | Weight per microsecond |
 | $w_n$   | $$\frac{w_\mu}{1'000}$$ | Weight per nanosecond  |
 
+## Extrinsic
+
+* `ExtrinsicBaseWeight` = $85'212 \times w_n$
+	*	| Stats   | Nanoseconds |
+		|---------|-------------|
+		| Min     | $84'940$    |
+		| Max     | $86'590$    |
+		| Average | $85'212$    |
+		| Median  | $85'156$    |
+		| Std-Dev | $243.25$    |
+
+	*	| Percentiles | Nanoseconds |
+		|-------------|-------------|
+		| 99th        | $86'269$    |
+		| 95th        | $85'510$    |
+		| 75th        | $85'216$    |
+
 ## Databases
 
 ## RocksDb
@@ -47,7 +64,7 @@ The weights reflect the time it takes to read and write one storage item. The
 value is calculated by multiplying the *Average* of all values with `1.1` and
 adding `0`.
 
-* `read`: $20'499 \times w_n$
+* `read` = $20'499 \times w_n$
 	*	| Stats   | Nanoseconds |
 		|---------|-------------|
 		| Min     | $5'015$     |
@@ -63,7 +80,7 @@ adding `0`.
 		| 75th        | $19'363$    |
 
 
-* `write`: $83'471 \times w_n$
+* `write` = $83'471 \times w_n$
 	*	| Stats   | Nanoseconds  |
 		|---------|--------------|
 		| Min     | $16'368$     |
@@ -136,9 +153,6 @@ adding `0`.
 Information on Substrate Benchmark CLI:
 
 ```
-THIS FILE WAS AUTO-GENERATED USING THE SUBSTRATE BENCHMARK CLI VERSION 4.0.0-dev
-DATE: 2022-03-30 (Y/M/D)
-
 DATABASE: `ParityDb`, RUNTIME: `Polkadot`
 BLOCK-NUM: `BlockId::Number(9653477)`
 SKIP-WRITE: `false`, SKIP-READ: `false`, WARMUPS: `1`
