@@ -50,8 +50,7 @@ value is calculated by multiplying the *Average* of all values with `1.1` and
 adding `0`.
 
 * `read`: $11'826 \times w_n$
-	* Justification:
-		| Stats   | Nanoseconds  |
+	*	| Stats   | Nanoseconds  |
 		|---------|--------------|
 		| Min     | $4'611$      |
 		| Max     | $13'478'005$ |
@@ -59,7 +58,7 @@ adding `0`.
 		| Median  | $10'655$     |
 		| Std-Dev | $12'214.49$  |
 
-		| Percentiles | Nanoseconds |
+	*	| Percentiles | Nanoseconds |
 		|-------------|-------------|
 		| 99th        | $14'451$    |
 		| 95th        | $12'588$    |
@@ -67,8 +66,7 @@ adding `0`.
 
 
 * `write`: $38'053 \times w_n$
-	* Justification:
-		| Stats   | Nanoseconds  |
+	*	| Stats   | Nanoseconds  |
 		|---------|--------------|
 		| Min     | $8'023$      |
 		| Max     | $47'367'740$ |
@@ -76,7 +74,7 @@ adding `0`.
 		| Median  | $32'703$     |
 		| Std-Dev | $49'417.24$  |
 
-		| Percentiles | Nanoseconds |
+	*	| Percentiles | Nanoseconds |
 		|-------------|-------------|
 		| 99th        | $69'379$    |
 		| 95th        | $47'168$    |
