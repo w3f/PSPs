@@ -41,6 +41,11 @@ constants to simplify the declaration of weights.
 
 ## Extrinsic
 
+The weight reflects the time it takes to execute a no-op extrinsic, such as
+`system_remark`, respectively an extrinsic that does not perform an operation.
+This weight indicates the _minimum (or base) requirement_ to execute an
+extrinsic.
+
 * `ExtrinsicBaseWeight` = $85'212 \times w_n$
 	*	| Stats   | Nanoseconds |
 		|---------|-------------|
@@ -56,7 +61,24 @@ constants to simplify the declaration of weights.
 		| 95th        | $85'510$    |
 		| 75th        | $85'216$    |
 
-## Databases
+# Block
+
+* `BlockExecutionWeight` = $5'797'172 \times w_n$
+	*	| Stats   | Nanoseconds |
+		|---------|-------------|
+		| Min     | $5'722'294$ |
+		| Max     | $5'960'144$ |
+		| Average | $5'797'172$ |
+		| Median  | $5'786'450$ |
+		| Std-Dev | $48'146.81$ |
+
+	*	| Percentiles | Nanoseconds |
+		|-------------|-------------|
+		| 99th        | $5'940'244$ |
+		| 95th        | $5'890'113$ |
+		| 75th        | $5'824'797$ |
+
+## Database
 
 ## RocksDb
 
