@@ -1,4 +1,4 @@
-# Title
+# Base Weights
 
 - **PSP Number:** [To be assigned (=number of the initial PR to the PSPs repo)]
 - **Authors:** Fabio Lama <fabio.lama@pm.me>
@@ -80,6 +80,8 @@ extrinsic.
 
 ## Database
 
+...
+
 ## RocksDb
 
 The weights reflect the time it takes to read and write one storage item. The
@@ -154,11 +156,6 @@ adding `0`.
 		| 95th        | $47'168$    |
 		| 75th        | $35'252$    |
 
-## Tests
-
-If applicable, please include a list of potential test cases to validate an implementation.
-
 ## Copyright
 
-Each PSP must be labeled as placed in the
-[public domain](https://creativecommons.org/publicdomain/zero/1.0/).
+This document is placed in the [public domain](https://creativecommons.org/publicdomain/zero/1.0/).
