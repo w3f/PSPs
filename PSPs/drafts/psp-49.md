@@ -1,6 +1,6 @@
 # Base Weights
 
-- **PSP Number:** [To be assigned (=number of the initial PR to the PSPs repo)]
+- **PSP Number:** 49
 - **Authors:** Fabio Lama <fabio.lama@pm.me>
 - **Status:** Draft
 - **Created:** 2022-07-21
@@ -26,6 +26,8 @@ of participants at large. The goal is to avoid situations where alternative
 implemenations are too strict or too loose in terms of costs of their resource
 requirements which could lead to bad economic outcomes and a fractured network
 of implemenations.
+
+...
 
 ## Constants
 
