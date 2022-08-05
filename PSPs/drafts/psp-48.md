@@ -177,10 +177,8 @@ Information about the hardware performance of the system.
 | Name                        | Type   | Required | Description                    |
 |-----------------------------|--------|----------|--------------------------------|
 | msg                         | STRING | YES      | Constant "**sysinfo.hwbench**" |
-| cpu_hashrate_score          | UINT   | YES      |                                |
-| memory_memcpy_score         | UINT   | YES      |                                |
-| disk_sequential_write_score | UINT   | NO       |                                |
-| disk_random_write_score     | UINT   | NO       |                                |
+| cpu_hashrate_score          | UINT   | YES      | The number of Blake2 hashes it can generate on 32kB of data per second |
+| memory_memcpy_score         | UINT   | YES      | How many MBs of data `memcpy` can copy per second |
 
 ## Recommended Behavior
 
