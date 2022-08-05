@@ -98,17 +98,19 @@ of this protocol.
 | genesis_hash  | HEX_32        | YES      | Genesis hash of the chain       |
 | chain         | STRING        | YES      | Name of the chain               |
 | name          | STRING        | YES      | Name of the node                |
-| implemenation | STRING        | YES      |                                 |
-| version       | STRING        | YES      |                                 |
+| implemenation | STRING        | YES      | Name of the node implemenation  |
+| version       | STRING        | YES      | Node version, e.g. `0.9.17-75dd6c7d0`|
 | validator     | STRING        | NO       |                                 |
-| network_id    | STRING_64     | YES      |                                 |
-| startup_time  | STRING        | NO       |                                 |
-| target_os     | STRING        | NO       |                                 |
-| target_arch   | STRING        | NO       |                                 |
-| target_env    | STRING        | NO       |                                 |
+| network_id    | STRING_64     | YES      | Network Id, e.g. `polkadot` or `ksmcc3`|
+| startup_time  | STRING        | NO       | Startup time of the node        |
+| target_os     | STRING        | NO       | Operating system, e.g. `linux`  |
+| target_arch   | STRING        | NO       | CPU architecture, e.g `x86_64`  |
+| target_env    | STRING        | NO       | OS environment, e.g. `gnu`      |
 | sysinfo       | _NodeSysInfo_ | NO       |                                 |
 
-where _NodeSysInfo_ is structured as:
+The fields `version`, `target_arch`, `target_os` and `target_env` concatenate
+to, for example, `0.9.17-75dd6c7d0-x86-linux-gnu`. _NodeSysInfo_ is structured
+as:
 
 | Name               | Type    | Required | Description                                      |
 |--------------------|---------|----------|--------------------------------------------------|
@@ -126,13 +128,13 @@ where _NodeSysInfo_ is structured as:
 | msg                   | STRING | YES      | Constant "**system.interval**"    |
 | peers                 | UINT   | NO       | Number of connected peers         |
 | txcount               | UINT   | NO       | Number of pending transactions    |
-| bandwidth_upload      | FLOAT  | NO       |                                   |
-| bandwith_download     | FLOAT  | NO       |                                   |
+| bandwidth_upload      | FLOAT  | NO       | Upload speed in kB/s              |
+| bandwith_download     | FLOAT  | NO       | Download speed in kB/s            |
 | finalized_height      | UINT   | NO       | Latest finalized block number     |
 | finalized_hash        | HEX_32 | NO       | Latest finalized block hash       |
 | height                | UINT   |          | Latest non-finalized block number |
 | best                  | HEX_32 | NO       | Latest non-finalized block hash   |
-| used_state_cache_size | FLOAT  | NO       |                                   |
+| used_state_cache_size | FLOAT  | NO       | Size of the node's state cache in MB/s |
 
 ### Block Import
 
