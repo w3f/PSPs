@@ -102,7 +102,6 @@ Information about the system environment.
 | name          | STRING        | YES      | Name of the node                |
 | implemenation | STRING        | YES      | Name of the node implemenation  |
 | version       | STRING        | YES      | Node version, e.g. `0.9.17-75dd6c7d0`|
-| validator     | STRING        | NO       |                                 |
 | network_id    | STRING_64     | YES      | Network Id, e.g. `polkadot` or `ksmcc3`|
 | startup_time  | STRING        | NO       | Startup time of the node        |
 | target_os     | STRING        | NO       | Operating system, e.g. `linux`  |
@@ -169,7 +168,6 @@ Information about the GRANDPA authority set.
 |------------------|--------|----------|----------------------------------|
 | msg              | STRING | YES      | Constant "**afg.authority_set**" |
 | authority_id     | STRING | YES      | The public key if the local node is an elected authority, empty value otherwise |
-| authorities      | STRING | YES      |                                  |
 | authority_set_id | STRING | YES      | The Set Id of the current authority list |
 
 ### Hardware Bench
