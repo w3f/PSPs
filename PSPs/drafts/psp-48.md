@@ -92,6 +92,8 @@ of this protocol.
 
 ### System Connected
 
+Information about the system environment.
+
 | Name          | Type          | Required | Description                     |
 |---------------|---------------|----------|---------------------------------|
 | msg           | STRING        | YES      | Constant "**system.connected**" |
@@ -124,6 +126,8 @@ The structure _NodeSysInfo_ is structured as:
 
 ### System Interval
 
+Information about the state of the system.
+
 | Name                  | Type   | Required | Description                       |
 |-----------------------|--------|----------|-----------------------------------|
 | msg                   | STRING | YES      | Constant "**system.interval**"    |
@@ -139,6 +143,8 @@ The structure _NodeSysInfo_ is structured as:
 
 ### Block Import
 
+Information about an imported block.
+
 | Name   | Type   | Required | Description                 |
 |--------|--------|----------|-----------------------------|
 | msg    | STRING | YES      | Constant "**block.import**" |
@@ -146,6 +152,8 @@ The structure _NodeSysInfo_ is structured as:
 | best   | HEX_32 | YES      | Block hash                  |
 
 ### Notify Finalized
+
+Information about an imported, finalized block.
 
 | Name   | Type   | Required | Description                     |
 |--------|--------|----------|---------------------------------|
@@ -155,6 +163,8 @@ The structure _NodeSysInfo_ is structured as:
 
 ### (Afg) Authority Set
 
+Information about the GRANDPA authority set.
+
 | Name             | Type   | Required | Description                      |
 |------------------|--------|----------|----------------------------------|
 | msg              | STRING | YES      | Constant "**afg.authority_set**" |
@@ -163,6 +173,8 @@ The structure _NodeSysInfo_ is structured as:
 | authority_set_id | STRING | YES      | The Set Id of the current authority list |
 
 ### Hardware Bench
+
+Information about the hardware performance of the system.
 
 | Name                        | Type   | Required | Description                    |
 |-----------------------------|--------|----------|--------------------------------|
