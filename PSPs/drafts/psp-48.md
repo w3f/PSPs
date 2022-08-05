@@ -179,23 +179,25 @@ its own rules. However, this section describes the recommended behavior that the
 implementation _should_ abide by, as is reflected in the substrate
 implementation.
 
-* The `system.connected` message should be sent once when the telemetry client
-starts, respectively on (re-)connection to the telemetry server.
-* The `system.interval` message should be sent every five seconds.
-* The `block.import` message should be sent everytime a block is imported when
-  the client is _fully synced_. The message should **NOT** be sent during sync
-  in order not to spam the telemetry server. While the client is syncing, this
-  message should be sent every 10 blocks.
-* The `notify.finalized` message should be sent everytime a _finalized_ block is
-  imported when the client is _fully synced_. This message should **NOT** be
-  sent during sync in order not to spam the telemetry server. This message
-  should
-  also trigger a `block.import` message.
-* The `afg.authority_set` message should be sent everytime the telemetry client
-  starts, respectively on (re-)connection to the telemetry server and everytime
-  the authority set changes (start of a new Era).
-* The `sysinfo.hwbench` message should be sent everytime the telemetry client
-  starts, respectively on (re-)connection to the telemetry server.
+* The [`system.connected`](#system-connected) message should be sent once when
+the telemetry client starts, respectively on (re-)connection to the telemetry
+server.
+* The [`system.interval`](#system-interval) message should be sent every five
+  seconds.
+* The [`block.import`](#block-import) message should be sent everytime a block
+  is imported when the client is _fully synced_. The message should **NOT** be
+  sent during sync in order not to spam the telemetry server. While the client
+  is syncing, this message should be sent every 10 blocks.
+* The [`notify.finalized`](#notify-finalized) message should be sent everytime a
+  _finalized_ block is imported when the client is _fully synced_. This message
+  should **NOT** be sent during sync in order not to spam the telemetry server.
+  This message should also trigger a [`block.import`](#block-import) message.
+* The [`afg.authority_set`](#afg-authority-set) message should be sent everytime
+  the telemetry client starts, respectively on (re-)connection to the telemetry
+  server and everytime the authority set changes (start of a new Era).
+* The [`sysinfo.hwbench`](#hardware-bench) message should be sent everytime the
+  telemetry client starts, respectively on (re-)connection to the telemetry
+  server.
 
 ## Copyright
 
