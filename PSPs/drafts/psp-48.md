@@ -158,9 +158,9 @@ The structure _NodeSysInfo_ is structured as:
 | Name             | Type   | Required | Description                      |
 |------------------|--------|----------|----------------------------------|
 | msg              | STRING | YES      | Constant "**afg.authority_set**" |
-| authority_id     | STRING | YES      |                                  |
+| authority_id     | STRING | YES      | The public key if the local node is an elected authority, empty value otherwise |
 | authorities      | STRING | YES      |                                  |
-| authority_set_id | STRING | YES      |                                  |
+| authority_set_id | STRING | YES      | The Set Id of the current authority list |
 
 ### Hardware Bench
 
@@ -191,8 +191,11 @@ starts, respectively on (re-)connection to the telemetry server.
   sent during sync in order not to spam the telemetry server. This message
   should
   also trigger a `block.import` message.
-
-
+* The `afg.authority_set` message should be sent everytime the telemetry client
+  starts, respectively on (re-)connection to the telemetry server and everytime
+  the authority set changes (start of a new Era).
+* The `sysinfo.hwbench` message should be sent everytime the telemetry client
+  starts, respectively on (re-)connection to the telemetry server.
 
 ## Copyright
 
