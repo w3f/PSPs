@@ -109,8 +109,9 @@ of this protocol.
 | sysinfo       | _NodeSysInfo_ | NO       |                                 |
 
 The fields `version`, `target_arch`, `target_os` and `target_env` concatenate
-to, for example, `0.9.17-75dd6c7d0-x86-linux-gnu`. _NodeSysInfo_ is structured
-as:
+to, for example, `0.9.17-75dd6c7d0-x86-linux-gnu`.
+
+The structure _NodeSysInfo_ is structured as:
 
 | Name               | Type    | Required | Description                                      |
 |--------------------|---------|----------|--------------------------------------------------|
@@ -170,6 +171,28 @@ as:
 | memory_memcpy_score         | UINT   | YES      |                                |
 | disk_sequential_write_score | UINT   | NO       |                                |
 | disk_random_write_score     | UINT   | NO       |                                |
+
+## Recommended Behavior
+
+The telemetry protocol of a Polkadot Host implementation can behave according to
+its own rules. However, this section describes the recommended behavior that the
+implementation _should_ abide by, as is reflected in the substrate
+implementation.
+
+* The `system.connected` message should be sent once when the telemetry client
+starts, respectively on (re-)connection to the telemetry server.
+* The `system.interval` message should be sent every five seconds.
+* The `block.import` message should be sent everytime a block is imported when
+  the client is _fully synced_. The message should **NOT** be sent during sync
+  in order not to spam the telemetry server. While the client is syncing, this
+  message should be sent every 10 blocks.
+* The `notify.finalized` message should be sent everytime a _finalized_ block is
+  imported when the client is _fully synced_. This message should **NOT** be
+  sent during sync in order not to spam the telemetry server. This message
+  should
+  also trigger a `block.import` message.
+
+
 
 ## Copyright
 
