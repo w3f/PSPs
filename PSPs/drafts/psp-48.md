@@ -136,8 +136,8 @@ Information about the state of the system.
 | bandwith_download     | FLOAT  | NO       | Download speed in kB/s            |
 | finalized_height      | UINT   | NO       | Latest finalized block number     |
 | finalized_hash        | HEX_32 | NO       | Latest finalized block hash       |
-| height                | UINT   |          | Latest non-finalized block number |
-| best                  | HEX_32 | NO       | Latest non-finalized block hash   |
+| height                | UINT   | NO*      | Latest non-finalized block number _(* required if `best` is specified)_ |
+| best                  | HEX_32 | NO*      | Latest non-finalized block hash _(* required if `height` is specified)_ |
 | used_state_cache_size | FLOAT  | NO       | Size of the node's state cache in MB/s |
 
 ### Block Import
