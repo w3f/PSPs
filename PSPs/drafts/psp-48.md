@@ -188,8 +188,8 @@ Information about the hardware performance of the system.
 
 The telemetry protocol of a Polkadot Host implementation can behave according to
 its own rules. However, this section describes the recommended behavior that the
-implementation _should_ abide by, as is reflected in the substrate
-implementation.
+implementation _should_ abide by, as is reflected in the
+[Substrate](https://github.com/paritytech/substrate) implementation.
 
 * The [`system.connected`](#system-connected) message should be sent once when
 the telemetry client starts, respectively on (re-)connection to the telemetry
