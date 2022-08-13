@@ -4,7 +4,7 @@
 - **Authors:** Pierre Ossun <pierre.ossun@supercolony.net>, Green Baneling <green.baneling@supercolony.net>, Markian <markian@supercolony.net>
 - **Status:** Accepted
 - **Created:** 2022-03-01
-- **Reference Implementation** [OpenBrush](https://github.com/Supercolony-net/openbrush-contracts/blob/main/contracts/src/token/psp1155/psp1155.rs)
+- **Reference Implementation** [OpenBrush](https://github.com/Supercolony-net/openbrush-contracts/blob/main/contracts/src/token/psp37/psp37.rs)
 
 ## Summary
 
@@ -58,20 +58,18 @@ Selector: `0xc42919e2` - first 4 bytes of `blake2b_256("PSP37::balance_of")`
       "label": "owner",
       "type": {
         "displayName": [
-          "psp37_external",
-          "BalanceOfInput1"
+          "AccountId"
         ],
-        "type": 2
+        "type": "AccountId"
       }
     },
     {
       "label": "id",
       "type": {
         "displayName": [
-          "psp37_external",
-          "BalanceOfInput2"
+          "Option"
         ],
-        "type": 5
+        "type": "Option<Id>"
       }
     }
   ],
@@ -85,17 +83,16 @@ Selector: `0xc42919e2` - first 4 bytes of `blake2b_256("PSP37::balance_of")`
   "payable": false,
   "returnType": {
     "displayName": [
-      "psp37_external",
-      "BalanceOfOutput"
+      "Balance"
     ],
-    "type": 10
+    "type": "Balance"
   },
   "selector": "0xc42919e2"
 }
 ```
 
 ##### **total_supply**(id: Option<Id>) ➔ Balance
-Selector: `0x9a49e85a` - first 4 bytes of `blake2b_256("PSP37::total_supply)`
+Selector: `0x9a49e85a` - first 4 bytes of `blake2b_256("PSP37::total_supply")`
 ```json
 {
   "args": [
@@ -103,10 +100,9 @@ Selector: `0x9a49e85a` - first 4 bytes of `blake2b_256("PSP37::total_supply)`
       "label": "id",
       "type": {
         "displayName": [
-          "psp37_external",
-          "TotalSupplyInput1"
+          "Option"
         ],
-        "type": 5
+        "type": "Option<Id>"
       }
     }
   ],
@@ -120,10 +116,9 @@ Selector: `0x9a49e85a` - first 4 bytes of `blake2b_256("PSP37::total_supply)`
   "payable": false,
   "returnType": {
     "displayName": [
-      "psp37_external",
-      "TotalSupplyOutput"
+      "Balance"
     ],
-    "type": 10
+    "type": "Balance"
   },
   "selector": "0x9a49e85a"
 }
@@ -138,30 +133,27 @@ Selector: `0xcb78a065` - first 4 bytes of `blake2b_256("PSP37::allowance")`
       "label": "owner",
       "type": {
         "displayName": [
-          "psp37_external",
-          "AllowanceInput1"
+          "AccountId"
         ],
-        "type": 2
+        "type": "AccountId"
       }
     },
     {
       "label": "operator",
       "type": {
         "displayName": [
-          "psp37_external",
-          "AllowanceInput2"
+          "AccountId"
         ],
-        "type": 2
+        "type": "AccountId"
       }
     },
     {
       "label": "id",
       "type": {
         "displayName": [
-          "psp37_external",
-          "AllowanceInput3"
+          "Option"
         ],
-        "type": 5
+        "type": "Option<Id>"
       }
     }
   ],
@@ -174,10 +166,9 @@ Selector: `0xcb78a065` - first 4 bytes of `blake2b_256("PSP37::allowance")`
   "payable": false,
   "returnType": {
     "displayName": [
-      "psp37_external",
-      "AllowanceOutput"
+      "Balance"
     ],
-    "type": 10
+    "type": "Balance"
   },
   "selector": "0xcb78a065"
 }
@@ -192,30 +183,27 @@ Selector: `0x31a1a453` - first 4 bytes of `blake2b_256("PSP37::approve")`
       "label": "operator",
       "type": {
         "displayName": [
-          "psp37_external",
-          "ApproveInput1"
+          "AccountId"
         ],
-        "type": 2
+        "type": "AccountId"
       }
     },
     {
       "label": "id",
       "type": {
         "displayName": [
-          "psp37_external",
-          "ApproveInput2"
+          "Option"
         ],
-        "type": 5
+        "type": "Option<Id>"
       }
     },
     {
       "label": "value",
       "type": {
         "displayName": [
-          "psp37_external",
-          "ApproveInput3"
+          "Balance"
         ],
-        "type": 10
+        "type": "Balance"
       }
     }
   ],
@@ -232,10 +220,9 @@ Selector: `0x31a1a453` - first 4 bytes of `blake2b_256("PSP37::approve")`
   "payable": false,
   "returnType": {
     "displayName": [
-      "psp37_external",
-      "ApproveOutput"
+      "Result"
     ],
-    "type": 25
+    "type": 1
   },
   "selector": "0x31a1a453"
 }
@@ -250,40 +237,36 @@ Selector: `0x04e09961` - first 4 bytes of `blake2b_256("PSP37::transfer")`
       "label": "to",
       "type": {
         "displayName": [
-          "psp37_external",
-          "TransferInput1"
+          "AccountId"
         ],
-        "type": 2
+        "type": "AccountId"
       }
     },
     {
       "label": "id",
       "type": {
         "displayName": [
-          "psp37_external",
-          "TransferInput2"
+          "Id"
         ],
-        "type": 6
+        "type": "Id"
       }
     },
     {
       "label": "value",
       "type": {
         "displayName": [
-          "psp37_external",
-          "TransferInput3"
+          "Balance"
         ],
-        "type": 10
+        "type": "Balance"
       }
     },
     {
       "label": "data",
       "type": {
         "displayName": [
-          "psp37_external",
-          "TransferInput4"
+          "[u8]"
         ],
-        "type": 11
+        "type": "[u8]"
       }
     }
   ],
@@ -307,10 +290,9 @@ Selector: `0x04e09961` - first 4 bytes of `blake2b_256("PSP37::transfer")`
   "payable": false,
   "returnType": {
     "displayName": [
-      "psp37_external",
-      "TransferOutput"
+      "Result"
     ],
-    "type": 25
+    "type": 1
   },
   "selector": "0x04e09961"
 }
@@ -325,50 +307,45 @@ Selector: `0x5cf8b7d4` - first 4 bytes of `blake2b_256("PSP37::transfer_from")`
       "label": "from",
       "type": {
         "displayName": [
-          "psp37_external",
-          "TransferFromInput1"
+          "AccountId"
         ],
-        "type": 2
+        "type": "AccountId"
       }
     },
     {
       "label": "to",
       "type": {
         "displayName": [
-          "psp37_external",
-          "TransferFromInput2"
+          "AccountId"
         ],
-        "type": 2
+        "type": "AccountId"
       }
     },
     {
       "label": "id",
       "type": {
         "displayName": [
-          "psp37_external",
-          "TransferFromInput3"
+          "Id"
         ],
-        "type": 6
+        "type": "Id"
       }
     },
     {
       "label": "amount",
       "type": {
         "displayName": [
-          "psp37_external",
-          "TransferFromInput4"
+          "Balance"
         ],
-        "type": 10
+        "type": "Balance"
       }
     },
     {
       "label": "data",
       "type": {
         "displayName": [
-          "psp37_external",
-          "TransferFromInput5"
+          "[u8]"
         ],
-        "type": 11
+        "type": "[u8]"
       }
     }
   ],
@@ -392,10 +369,9 @@ Selector: `0x5cf8b7d4` - first 4 bytes of `blake2b_256("PSP37::transfer_from")`
   "payable": false,
   "returnType": {
     "displayName": [
-      "psp37_external",
-      "TransferFromOutput"
+      "Result"
     ],
-    "type": 25
+    "type": 1
   },
   "selector": "0x5cf8b7d4"
 }
@@ -485,20 +461,18 @@ Selector: `0x61dda97c` - first 4 bytes of `blake2b_256("PSP37Metadata::get_attri
       "label": "id",
       "type": {
         "displayName": [
-          "psp37metadata_external",
-          "GetAttributeInput1"
+          "Id"
         ],
-        "type": 6
+        "type": "Id"
       }
     },
     {
       "label": "key",
       "type": {
         "displayName": [
-          "psp37metadata_external",
-          "GetAttributeInput2"
+          "[u8]"
         ],
-        "type": 11
+        "type": "[u8]"
       }
     }
   ],
@@ -508,10 +482,9 @@ Selector: `0x61dda97c` - first 4 bytes of `blake2b_256("PSP37Metadata::get_attri
   "payable": false,
   "returnType": {
     "displayName": [
-      "psp37metadata_external",
-      "GetAttributeOutput"
+      "Option"
     ],
-    "type": 29
+    "type": "Option<[u8]>"
   },
   "selector": "0x61dda97c"
 }
@@ -527,7 +500,7 @@ proposal based on the scope of the usage.
 
 
 ##### **batch_transfer**(to: AccountId, ids_amounts: [(Id, Balance)], data: [u8]) ➔ Result<(), PSP37Error>
-Selector: `0x9bfb1d2b` - first 4 bytes of `blake2b_256("PSP37Batch::transfer")`
+Selector: `0x9bfb1d2b` - first 4 bytes of `blake2b_256("PSP37Batch::batch_transfer")`
 ```json
 {
   "args": [
@@ -535,30 +508,27 @@ Selector: `0x9bfb1d2b` - first 4 bytes of `blake2b_256("PSP37Batch::transfer")`
       "label": "to",
       "type": {
         "displayName": [
-          "psp37batch_external",
-          "BatchTransferInput1"
+          "AccountId"
         ],
-        "type": 2
+        "type": "AccountId"
       }
     },
     {
       "label": "ids_amounts",
       "type": {
         "displayName": [
-          "psp37batch_external",
-          "BatchTransferInput2"
+          "[(Id, Balance)]"
         ],
-        "type": 22
+        "type": "[(Id, Balance)]"
       }
     },
     {
       "label": "data",
       "type": {
         "displayName": [
-          "psp37batch_external",
-          "BatchTransferInput3"
+          "[u8]"
         ],
-        "type": 11
+        "type": "[u8]"
       }
     }
   ],
@@ -568,17 +538,16 @@ Selector: `0x9bfb1d2b` - first 4 bytes of `blake2b_256("PSP37Batch::transfer")`
   "payable": false,
   "returnType": {
     "displayName": [
-      "psp37batch_external",
-      "BatchTransferOutput"
+      "Result"
     ],
-    "type": 24
+    "type": 1
   },
   "selector": "0x9bfb1d2b"
 }
 ```
 
 ##### **batch_transfer_from**(from: AccountId, to: AccountId, ids_amounts: [(Id, Balance)], data: [u8]) ➔ Result<(), PSP37Error>
-Selector: `0xf4ebeed2` - first 4 bytes of `blake2b_256("PSP37Batch::transfer_from")`
+Selector: `0xf4ebeed2` - first 4 bytes of `blake2b_256("PSP37Batch::batch_transfer_from")`
 ```json
 {
   "args": [
@@ -586,40 +555,36 @@ Selector: `0xf4ebeed2` - first 4 bytes of `blake2b_256("PSP37Batch::transfer_fro
       "label": "from",
       "type": {
         "displayName": [
-          "psp37batch_external",
-          "BatchTransferFromInput1"
+          "AccountId"
         ],
-        "type": 2
+        "type": "AccountId"
       }
     },
     {
       "label": "to",
       "type": {
         "displayName": [
-          "psp37batch_external",
-          "BatchTransferFromInput2"
+          "AccountId"
         ],
-        "type": 2
+        "type": "AccountId"
       }
     },
     {
       "label": "ids_amounts",
       "type": {
         "displayName": [
-          "psp37batch_external",
-          "BatchTransferFromInput3"
+          "[(Id, Balance)]"
         ],
-        "type": 22
+        "type": "[(Id, Balance)]"
       }
     },
     {
       "label": "data",
       "type": {
         "displayName": [
-          "psp37batch_external",
-          "BatchTransferFromInput4"
+          "[u8]"
         ],
-        "type": 11
+        "type": "[u8]"
       }
     }
   ],
@@ -629,10 +594,9 @@ Selector: `0xf4ebeed2` - first 4 bytes of `blake2b_256("PSP37Batch::transfer_fro
   "payable": false,
   "returnType": {
     "displayName": [
-      "psp37batch_external",
-      "BatchTransferFromOutput"
+      "Result"
     ],
-    "type": 24
+    "type": 1
   },
   "selector": "0xf4ebeed2"
 }
@@ -652,20 +616,18 @@ Selector: `0x4cc01ee0` - first 4 bytes of `blake2b_256("PSP37Enumerable::owners_
       "label": "owner",
       "type": {
         "displayName": [
-          "psp37enumerable_external",
-          "OwnersTokenByIndexInput1"
+          "AccountId"
         ],
-        "type": 2
+        "type": "AccountId"
       }
     },
     {
       "label": "index",
       "type": {
         "displayName": [
-          "psp37enumerable_external",
-          "OwnersTokenByIndexInput2"
+          "u128"
         ],
-        "type": 9
+        "type": "u128"
       }
     }
   ],
@@ -678,17 +640,16 @@ Selector: `0x4cc01ee0` - first 4 bytes of `blake2b_256("PSP37Enumerable::owners_
   "payable": false,
   "returnType": {
     "displayName": [
-      "psp37enumerable_external",
-      "OwnersTokenByIndexOutput"
+      "Option"
     ],
-    "type": 23
+    "type": "Option<Id>"
   },
   "selector": "0x4cc01ee0"
 }
 ```
 
 ##### **token_by_index**(index: u128) -> Option<Id>
-Selector: `0x127b5477` - first 4 bytes of `blake2b_256("PSP37Enumerable::owners_token_by_index")`
+Selector: `0x127b5477` - first 4 bytes of `blake2b_256("PSP37Enumerable::token_by_index")`
 ```json
 {
   "args": [
@@ -696,10 +657,9 @@ Selector: `0x127b5477` - first 4 bytes of `blake2b_256("PSP37Enumerable::owners_
       "label": "index",
       "type": {
         "displayName": [
-          "psp37enumerable_external",
-          "TokenByIndexInput1"
+          "u128"
         ],
-        "type": 9
+        "type": "u128"
       }
     }
   ],
@@ -712,10 +672,9 @@ Selector: `0x127b5477` - first 4 bytes of `blake2b_256("PSP37Enumerable::owners_
   "payable": false,
   "returnType": {
     "displayName": [
-      "psp37enumerable_external",
-      "TokenByIndexOutput"
+      "Option"
     ],
-    "type": 23
+    "type": "Option<Id>"
   },
   "selector": "0x127b5477"
 }
