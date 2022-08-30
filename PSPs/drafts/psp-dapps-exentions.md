@@ -17,13 +17,41 @@
 ## Specification
 
 ...
+
+### Top Level Variables
+
+#### isWeb3Injected
+
+Declaration:
+
+```typescript
+let isWeb3Injected: boolean;
+```
+
+#### web3EnablePromise
+
+Declaration:
+
+```typescript
+let web3EnablePromise: Promise<InjectedExtension[]> | null;
+```
+
+#### packageInfo
+
+Declaration:
+
+```typescript
+const packageInfo: {
+    name: string;
+    path: string;
+    type: string;
+    version: string;
+};
+```
+
 ### Top Level Function
 
-export { packageInfo } from './packageInfo';
-export { unwrapBytes, wrapBytes } from './wrapBytes';
-declare let isWeb3Injected: boolean;
-declare let web3EnablePromise: Promise<InjectedExtension[]> | null;
-
+> TODO: Should `export { unwrapBytes, wrapBytes } from './wrapBytes';` be documented?
 
 #### web3Enable
 
@@ -81,6 +109,87 @@ Declaration
 function web3UseRpcProvider(source: string, key: string): Promise<InjectedProviderWithMeta>
 ```
 
+### Types
+
+```typescript
+export declare type InjectedExtension = InjectedExtensionInfo & Injected;
+
+export interface InjectedExtensionInfo {
+    name: string;
+    version: string;
+}
+
+export interface Injected {
+    accounts: InjectedAccounts;
+    metadata?: InjectedMetadata;
+    provider?: InjectedProvider;
+    signer: InjectedSigner;
+}
+```
+
+```typescript
+export interface InjectedAccountWithMeta {
+    address: string;
+    meta: {
+        genesisHash?: string | null;
+        name?: string;
+        source: string;
+    };
+    type?: KeypairType;
+}
+```
+
+```typescript
+export declare type ProviderList = Record<string, ProviderMeta>;
+
+export interface ProviderMeta {
+    network: string;
+    node: 'full' | 'light';
+    source: string;
+    transport: string;
+}
+```
+
+```typescript
+export interface InjectedProviderWithMeta {
+    provider: InjectedProvider;
+    meta: ProviderMeta;
+}
+
+export interface InjectedProvider extends ProviderInterface {
+    listProviders: () => Promise<ProviderList>;
+    startProvider: (key: string) => Promise<ProviderMeta>;
+}
+
+export interface ProviderInterface {
+    readonly hasSubscriptions: boolean;
+    readonly isConnected: boolean;
+    readonly stats?: ProviderStats;
+    clone(): ProviderInterface;
+    connect(): Promise<void>;
+    disconnect(): Promise<void>;
+    on(type: 'connected' | 'disconnected' | 'error', sub: (value?: any) => any): () => void;
+    send<T = any>(method: string, params: unknown[], isCacheable?: boolean): Promise<T>;
+    subscribe(type: string, method: string, params: unknown[], cb: (error: Error | null, result: any) => void): Promise<number | string>;
+    unsubscribe(type: string, method: string, id: number | string): Promise<boolean>;
+}
+
+export interface ProviderStats {
+    active: {
+        requests: number;
+        subscriptions: number;
+    };
+    total: {
+        bytesRecv: number;
+        bytesSent: number;
+        cached: number;
+        errors: number;
+        requests: number;
+        subscriptions: number;
+        timeout: number;
+    };
+}
+```
 
 ## Tests
 
