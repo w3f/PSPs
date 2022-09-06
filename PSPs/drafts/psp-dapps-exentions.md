@@ -8,16 +8,22 @@
 
 ## Summary
 
-...
+This PSP describes how browser applications ("apps") and Extensions can interact
+with each other. Essentially, Dapps should be able to interact with any
+extension that implements this standard and vice-versa.
 
 ## Motivation
 
-...
+This standard unifies the Polkadot and Kusama network by allowing apps to
+interact with commonly used extensions, such as wallets, and makes it easy to
+develop new extensions that are compatible with existing apps.
 
 ## Specification
 
-NOTE: All types are expresses in Typescript and are therefore also accessible in
-javascript.
+This specification only describes the interface for how apps and extensions
+should interact with each other. Everything else is implementation specific.
+Addtionally, all types are expresses in Typescript and are therefore also
+accessible in javascript.
 
 ### Communication
 
