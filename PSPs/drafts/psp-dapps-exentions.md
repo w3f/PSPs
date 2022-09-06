@@ -1,4 +1,4 @@
-# app Extension API
+# App Extension API
 
 - **PSP Number:** [To be assigned (=number of the initial PR to the PSPs repo)]
 - **Authors:** Fabio Lama <fabio.lama@pm.me>
@@ -68,7 +68,7 @@ itself, the apps is responsible for that.
 
 #### Extension
 
-This structure is the primary way to interact with the Extension. 
+This structure is the primary way to interact with the extension.
 
 ```typescript
 export interface InjectedExtension {
