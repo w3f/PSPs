@@ -1,6 +1,6 @@
 # App Extension API
 
-- **PSP Number:** [To be assigned (=number of the initial PR to the PSPs repo)]
+- **PSP Number:** 52
 - **Authors:** Fabio Lama <fabio.lama@pm.me>
 - **Status:** Draft
 - **Created:** [2022-08-30]
