@@ -16,32 +16,48 @@
 
 ## Specification
 
-...
+NOTE: All types are expresses in Typescript and are therefore also accessible in
+javascript.
 
 ### Communication
 
 Extensions inject a specific structure into the `injectedWeb3` field in the main
 `window` object of the DOM. Dapps can then interspect that field, search for the
 desired extension and then interact with the extension by calling the defined
-functions.
+functions. Implementers of extension can decide for themselves on how the
+functions are implemented, as long as the standardized structures are defined
+correctly.
 
-`window.injectedWeb` is of type `Record<string, InjectedWindowProvider>`
+The `window.injectedWeb` is of type:
 
-where
+```typescript
+Record<string, InjectedWindowProvider>
+```
 
-```type
+The key identifies the name of the extension (e.g. `polkadot-js`), which the
+Dapp can use to identify the correct extension. Its corresponding value is a
+datastructure of the following format:
+
+```typescript
 export interface InjectedWindowProvider {
+    // Start communication process.
     enable: (origin: string) => Promise<Injected>;
+    // Version of the extension.
     version: string;
 }
 ```
 
+To start the communication with the extension, the Dapp calls the `enable`
+function, passing the `origin` parameter indicating the arbitrary name of the
+Dapp, where the resulting action is then executed by the extension. Normally,
+this is where the extension asks the user for permission on whehter the Dapp
+should be allowed to access the extension.
 
-The datastucture contains (meta)data about the extension and offers some
+The returned value contains (meta)data about the extension and offers some
 functions such as the ability to retrieve accounts and sign messages. The
-extension itself does not create any sort of transactions and does not submit
-anything to any network, the dapps is responsible for that. Ultimately, the
-extension primarily manages accounts and creates signatures of messages.
+extension itself does not create any sort of transactions, the dapps is
+responsible for that. Ultimately, the extension primarily manages accounts,
+creates signatures of messages and communicates with RPC servers.
 
 ### Types
 
