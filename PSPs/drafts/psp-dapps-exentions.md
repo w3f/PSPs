@@ -35,6 +35,8 @@ extension primarily manages accounts and creates signatures of messages.
 
 ### Types
 
+#### Extension
+
 ```typescript
 export interface InjectedExtension {
     name: string;
@@ -46,24 +48,58 @@ export interface InjectedExtension {
 }
 ```
 
+#### Accounts
+
 ```typescript
 export interface InjectedAccounts {
   get: (anyType?: boolean) => Promise<InjectedAccount[]>;
   subscribe: (cb: (accounts: InjectedAccount[]) => void | Promise<void>) => Unsubcall;
 }
+
+export interface InjectedAccount {
+  address: string;
+  genesisHash?: string | null;
+  name?: string;
+  type?: KeypairType;
+}
+
+export type KeypairType = 'ed25519' | 'sr25519' | 'ecdsa' | 'ethereum';
 ```
+
+#### Metadata
 
 ```typescript
 export interface InjectedMetadata {
   get: () => Promise<InjectedMetadataKnown[]>;
   provide: (definition: MetadataDef) => Promise<boolean>;
 }
+
+export interface InjectedMetadataKnown {
+  genesisHash: string;
+  specVersion: number;
+}
 ```
+
+#### RPC Provider
 
 ```typescript
 export interface InjectedProvider extends ProviderInterface {
   listProviders: () => Promise<ProviderList>;
   startProvider: (key: string) => Promise<ProviderMeta>;
+}
+
+export type ProviderList = Record<string, ProviderMeta>
+
+// Metadata about a provider
+export interface ProviderMeta {
+  // Network of the provider
+  network: string;
+  // Light or full node
+  node: 'full' | 'light';
+  // The extension source
+  source: string;
+  // Provider transport: 'WsProvider' etc.
+  transport: string;
 }
 
 export interface ProviderInterface {
@@ -95,7 +131,53 @@ export interface ProviderStats {
     timeout: number;
   };
 }
+
+export interface SignerPayloadJSON {
+  address: string;
+  blockHash: string;
+  blockNumber: string;
+  era: string;
+  genesisHash: string;
+  method: string;
+  nonce: string;
+  specVersion: string;
+  tip: string;
+  transactionVersion: string;
+  signedExtensions: string[];
+  version: number;
+}
+
+export interface SignerPayloadRaw extends SignerPayloadRawBase {
+  address: string;
+  type: 'bytes' | 'payload';
+}
+
+export interface SignerResult {
+  id: number;
+  signature: HexString;
+}
+
+export interface ISubmittableResult {
+  readonly dispatchError?: DispatchError;
+  readonly dispatchInfo?: DispatchInfo;
+  readonly events: EventRecord[];
+  readonly internalError?: Error;
+  readonly status: ExtrinsicStatus;
+  readonly isCompleted: boolean;
+  readonly isError: boolean;
+  readonly isFinalized: boolean;
+  readonly isInBlock: boolean;
+  readonly isWarning: boolean;
+  readonly txHash: Hash;
+  readonly txIndex?: number;
+
+  filterRecords (section: string, method: string): EventRecord[];
+  findRecord (section: string, method: string): EventRecord | undefined;
+  toHuman (isExtended?: boolean): AnyJson;
+}
 ```
+
+#### Signer
 
 ```typescript
 export interface Signer {
