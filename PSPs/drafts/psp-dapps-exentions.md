@@ -74,10 +74,26 @@ export interface ProviderInterface {
   clone (): ProviderInterface;
   connect (): Promise<void>;
   disconnect (): Promise<void>;
-  on (type: ProviderInterfaceEmitted, sub: ProviderInterfaceEmitCb): () => void;
+  on (type: 'connected' | 'disconnected' | 'error', sub: (value?: any) => any): () => void;
   send <T = any> (method: string, params: unknown[], isCacheable?: boolean): Promise<T>;
-  subscribe (type: string, method: string, params: unknown[], cb: ProviderInterfaceCallback): Promise<number | string>;
+  subscribe (type: string, method: string, params: unknown[], cb: (error: Error | null, result: any) => void): Promise<number | string>;
   unsubscribe (type: string, method: string, id: number | string): Promise<boolean>;
+}
+
+export interface ProviderStats {
+  active: {
+    requests: number;
+    subscriptions: number;
+  };
+  total: {
+    bytesRecv: number;
+    bytesSent: number;
+    cached: number;
+    errors: number;
+    requests: number;
+    subscriptions: number;
+    timeout: number;
+  };
 }
 ```
 
@@ -88,7 +104,6 @@ export interface Signer {
   update?: (id: number, status: H256 | ISubmittableResult) => void;
 }
 ```
-
 
 ## Tests
 
