@@ -20,8 +20,8 @@
 
 ### Communication
 
-Extensions inject a `injectedWeb3` field with a specific structure into the
-`window` entry in the DOM. Dapps can then interspect that field, search for the
+Extensions inject a specific structure into the `injectedWeb3` field in the main
+`window` object of the DOM. Dapps can then interspect that field, search for the
 desired extension and then interact with the extension by calling the defined
 functions.
 
@@ -48,21 +48,44 @@ export interface InjectedExtension {
 
 ```typescript
 export interface InjectedAccounts {
+  get: (anyType?: boolean) => Promise<InjectedAccount[]>;
+  subscribe: (cb: (accounts: InjectedAccount[]) => void | Promise<void>) => Unsubcall;
 }
 ```
 
 ```typescript
 export interface InjectedMetadata {
+  get: () => Promise<InjectedMetadataKnown[]>;
+  provide: (definition: MetadataDef) => Promise<boolean>;
 }
 ```
 
 ```typescript
-export interface InjectedProvider {
+export interface InjectedProvider extends ProviderInterface {
+  listProviders: () => Promise<ProviderList>;
+  startProvider: (key: string) => Promise<ProviderMeta>;
+}
+
+export interface ProviderInterface {
+  readonly hasSubscriptions: boolean;
+  readonly isConnected: boolean;
+  readonly stats?: ProviderStats;
+
+  clone (): ProviderInterface;
+  connect (): Promise<void>;
+  disconnect (): Promise<void>;
+  on (type: ProviderInterfaceEmitted, sub: ProviderInterfaceEmitCb): () => void;
+  send <T = any> (method: string, params: unknown[], isCacheable?: boolean): Promise<T>;
+  subscribe (type: string, method: string, params: unknown[], cb: ProviderInterfaceCallback): Promise<number | string>;
+  unsubscribe (type: string, method: string, id: number | string): Promise<boolean>;
 }
 ```
 
 ```typescript
-export interface InjectedSigner {
+export interface Signer {
+  signPayload?: (payload: SignerPayloadJSON) => Promise<SignerResult>;
+  signRaw?: (raw: SignerPayloadRaw) => Promise<SignerResult>;
+  update?: (id: number, status: H256 | ISubmittableResult) => void;
 }
 ```
 
