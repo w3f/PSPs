@@ -1,15 +1,15 @@
-# DApp Extension API
+# app Extension API
 
 - **PSP Number:** [To be assigned (=number of the initial PR to the PSPs repo)]
 - **Authors:** Fabio Lama <fabio.lama@pm.me>
 - **Status:** Draft
 - **Created:** [2022-08-30]
-- **Reference Implementation** https://github.com/polkadot-js/extension/tree/master/packages/extension-dapp
+- **Reference Implementation** https://github.com/polkadot-js/extension/tree/master/packages/extension-app
 
 ## Summary
 
 This PSP describes how browser applications ("apps") and extensions, such as
-wallets, can interact with each other. Essentially, Dapps should be able to
+wallets, can interact with each other. Essentially, apps should be able to
 interact with any extension that implements this standard and vice-versa.
 
 ## Motivation
@@ -29,7 +29,7 @@ accessible in javascript.
 
 Extensions inject an `injectedWeb3` attribute with a specific datastructure in
 the [`window` object](https://developer.mozilla.org/en-US/docs/Web/API/Window).
-Dapps can then interspect that attribute, search for the desired extension and
+apps can then interspect that attribute, search for the desired extension and
 then interact with the extension by calling the defined functions. Implementers
 of extension can decide for themselves on how the functions are implemented, as
 long as the standardized structures are defined correctly.
@@ -41,7 +41,7 @@ Record<string, InjectedWindowProvider>
 ```
 
 The key identifies the name of the extension (e.g. `polkadot-js`), which the
-Dapp can use to identify the correct extension. Its corresponding value is a
+app can use to identify the correct extension. Its corresponding value is a
 datastructure of the following format:
 
 ```typescript
@@ -53,16 +53,16 @@ export interface InjectedWindowProvider {
 }
 ```
 
-To start the communication with the extension, the Dapp calls the `enable`
+To start the communication with the extension, the app calls the `enable`
 function, passing the `origin` parameter indicating the arbitrary name of the
-Dapp, where an action is then executed by the extension. Normally, this is where
-the extension asks the user for permission on whehter the Dapp should be allowed
-to access the extension.
+app, where an action is then executed by the extension. Normally, this is where
+the extension asks the user for permission on whehter the app should be allowed
+to access the extension or throws an exception if not.
 
 The returned value contains (meta)data about the extension and offers some
 functions such as the ability to retrieve accounts, sign messages and interact
 with RPC servers. The extension itself does not create any sort of transactions
-itself, the dapps is responsible for that.
+itself, the apps is responsible for that.
 
 ### Types
 
@@ -80,7 +80,7 @@ export interface InjectedExtension {
     accounts: InjectedAccounts;
     // A structure containing metadata (optional)
     metadata?: InjectedMetadata;
-    // A structure to allow the Dapp to submit
+    // A structure to allow the app to submit
     // RPC request to the network (optional).
     provider?: InjectedProvider;
     // A structure to sign messages with a given account.
@@ -90,7 +90,7 @@ export interface InjectedExtension {
 
 #### Accounts
 
-The accounts structure allows the Dapps to retrieve a list of accounts,
+The accounts structure allows the apps to retrieve a list of accounts,
 including listening for account changes. The extension is responsible for
 handling permissions accordingly.
 
@@ -122,7 +122,7 @@ export type KeypairType = 'ed25519' | 'sr25519' | 'ecdsa' | 'ethereum';
 
 #### Metadata
 
-The metadata stucture allows Dapps to retrieve information about known
+The metadata stucture allows apps to retrieve information about known
 blockchain, but also allows to register new blockchains with the extension. The
 extension is responsible for handling permissions accordingly.
 
@@ -180,7 +180,7 @@ export type ExtInfo = {
 
 #### Signer
 
-The signer datastructure allows Dapps to sign messages with a given account. The
+The signer datastructure allows apps to sign messages with a given account. The
 extension is responsible for handling permissions accordingly.
 
 ```typescript
@@ -256,10 +256,10 @@ export interface ISubmittableResult {
 
 #### RPC Provider
 
-The RPC provider structure allows Dapps to communicate with an RPC server, such
+The RPC provider structure allows apps to communicate with an RPC server, such
 as submitting transactions. The extension is responsible for initiating and
 maintaining the connection to the RPC server, including handling all requests
-and forwarding responses to the Dapp.
+and forwarding responses to the app.
 
 ```typescript
 export interface ProviderInterface {
