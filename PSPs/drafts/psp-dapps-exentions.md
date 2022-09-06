@@ -21,12 +21,12 @@ javascript.
 
 ### Communication
 
-Extensions inject a specific structure into the `injectedWeb3` field in the main
-`window` object of the DOM. Dapps can then interspect that field, search for the
-desired extension and then interact with the extension by calling the defined
-functions. Implementers of extension can decide for themselves on how the
-functions are implemented, as long as the standardized structures are defined
-correctly.
+Extensions inject an `injectedWeb3` attribute with a specific datastructure in
+the [`window` object](https://developer.mozilla.org/en-US/docs/Web/API/Window).
+Dapps can then interspect that attribute, search for the desired extension and
+then interact with the extension by calling the defined functions. Implementers
+of extension can decide for themselves on how the functions are implemented, as
+long as the standardized structures are defined correctly.
 
 The `window.injectedWeb` is of type:
 
@@ -49,15 +49,14 @@ export interface InjectedWindowProvider {
 
 To start the communication with the extension, the Dapp calls the `enable`
 function, passing the `origin` parameter indicating the arbitrary name of the
-Dapp, where the resulting action is then executed by the extension. Normally,
-this is where the extension asks the user for permission on whehter the Dapp
-should be allowed to access the extension.
+Dapp, where an action is then executed by the extension. Normally, this is where
+the extension asks the user for permission on whehter the Dapp should be allowed
+to access the extension.
 
 The returned value contains (meta)data about the extension and offers some
-functions such as the ability to retrieve accounts and sign messages. The
-extension itself does not create any sort of transactions, the dapps is
-responsible for that. Ultimately, the extension primarily manages accounts,
-creates signatures of messages and communicates with RPC servers.
+functions such as the ability to retrieve accounts, sign messages and interact
+with RPC servers. The extension itself does not create any sort of transactions
+itself, the dapps is responsible for that.
 
 ### Types
 
