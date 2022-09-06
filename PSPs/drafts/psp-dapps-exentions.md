@@ -25,7 +25,17 @@ Extensions inject a specific structure into the `injectedWeb3` field in the main
 desired extension and then interact with the extension by calling the defined
 functions.
 
-`window.injectedWeb` is defined as TODO
+`window.injectedWeb` is of type `Record<string, InjectedWindowProvider>`
+
+where
+
+```type
+export interface InjectedWindowProvider {
+    enable: (origin: string) => Promise<Injected>;
+    version: string;
+}
+```
+
 
 The datastucture contains (meta)data about the extension and offers some
 functions such as the ability to retrieve accounts and sign messages. The
@@ -36,6 +46,8 @@ extension primarily manages accounts and creates signatures of messages.
 ### Types
 
 #### Extension
+
+This structure is the primary way to interact with the Extension. 
 
 ```typescript
 export interface InjectedExtension {
@@ -48,6 +60,14 @@ export interface InjectedExtension {
 }
 ```
 
+* `name`: the name of the extension, e.g. `"polkadot-js"`.
+* `version`: the version of the extension, e.g. `"0.44.1"`.
+* `accounts`: an [Accounts](#accounts) structure to retrieve accounts.
+* `metadata`: a [Metadata](#metadata) structure containing metadata (optional).
+* `provider`: a [Provider](#rpc-provider) structure to allow the Dapp to submit
+  RPC request to the network (optional).
+* `signer`: a [Signer](#signer) structure to sign messages with a given account.
+
 #### Accounts
 
 ```typescript
@@ -56,6 +76,17 @@ export interface InjectedAccounts {
   subscribe: (cb: (accounts: InjectedAccount[]) => void | Promise<void>) => Unsubcall;
 }
 
+export type Unsubcall = () => void;
+```
+
+* `get`: returns a list of accounts.
+* `subscribe`: subscribers to the list of accounts, useful for detecting account
+  changes. The returns value of type `Unsubcall` will stop the subscription if
+  called.
+
+The account structure is defined as follows:
+
+```typescript
 export interface InjectedAccount {
   address: string;
   genesisHash?: string | null;
@@ -65,6 +96,11 @@ export interface InjectedAccount {
 
 export type KeypairType = 'ed25519' | 'sr25519' | 'ecdsa' | 'ethereum';
 ```
+
+* `address`: the address of the account.
+* `genesisHash`: the genesis hash of the chain (optional).
+* `name`: the custom name of the account (optional).
+* `type`: the cryptographic type of the account (optional).
 
 #### Metadata
 
