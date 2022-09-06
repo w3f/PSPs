@@ -8,15 +8,15 @@
 
 ## Summary
 
-This PSP describes how browser applications ("apps") and Extensions can interact
-with each other. Essentially, Dapps should be able to interact with any
-extension that implements this standard and vice-versa.
+This PSP describes how browser applications ("apps") and extensions, such as
+wallets, can interact with each other. Essentially, Dapps should be able to
+interact with any extension that implements this standard and vice-versa.
 
 ## Motivation
 
 This standard unifies the Polkadot and Kusama network by allowing apps to
-interact with commonly used extensions, such as wallets, and makes it easy to
-develop new extensions that are compatible with existing apps.
+interact with commonly used extensions and makes it easy to develop new
+extensions that are compatible with existing apps.
 
 ## Specification
 
@@ -47,7 +47,7 @@ datastructure of the following format:
 ```typescript
 export interface InjectedWindowProvider {
     // Start communication process.
-    enable: (origin: string) => Promise<Injected>;
+    enable: (origin: string) => Promise<InjectedExtension>;
     // Version of the extension.
     version: string;
 }
@@ -311,10 +311,6 @@ export interface ProviderMeta {
   transport: string;
 }
 ```
-
-## Tests
-
-...
 
 ## Copyright
 
