@@ -35,7 +35,7 @@ then interact with the extension by calling the defined functions. Implementers
 of extension can decide for themselves on how the functions are implemented, as
 long as the standardized structures are defined correctly.
 
-The `window.injectedWeb` is of type:
+The `window.injectedWeb3` is of type:
 
 ```typescript
 Record<string, InjectedWindowProvider>
