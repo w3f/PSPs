@@ -3,7 +3,7 @@
 - **PSP Number:** 52
 - **Authors:** Fabio Lama <fabio.lama@pm.me>
 - **Status:** Draft
-- **Created:** [2022-08-30]
+- **Created:** 2022-08-30
 - **Reference Implementation** https://github.com/polkadot-js/extension/tree/master/packages/extension-app
 
 ## Summary
