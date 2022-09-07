@@ -8,28 +8,29 @@
 
 ## Summary
 
-This PSP describes how browser applications ("apps") and extensions, such as
-wallets, can interact with each other. Essentially, apps should be able to
-interact with any extension that implements this standard and vice-versa.
+This PSP describes how web applications ("apps") and browser extensions, such as
+wallets like the [polkadot{.js} extensions](https://polkadot.js.org/extension/),
+can interact with each other. Essentially, apps should be able to interact with
+any extension that implements this standard and vice-versa.
 
 ## Motivation
 
 This standard unifies the Polkadot and Kusama network by allowing apps to
-interact with commonly used extensions and makes it easy to develop new
+interact with commonly used extensions and makes it easier to develop new
 extensions that are compatible with existing apps.
 
 ## Specification
 
 This specification only describes the interface for how apps and extensions
 should interact with each other. Everything else is implementation specific.
-Addtionally, all types are expresses in Typescript and are therefore also
-accessible in javascript.
+Addtionally, all types are expressed in Typescript and are therefore also
+accessible with javascript.
 
 ### Communication
 
-Extensions inject an `injectedWeb3` attribute with a specific datastructure in
+Extensions inject an `injectedWeb3` attribute with a specific datastructure into
 the [`window` object](https://developer.mozilla.org/en-US/docs/Web/API/Window).
-apps can then interspect that attribute, search for the desired extension and
+Apps can then interspect that attribute, search for the desired extension and
 then interact with the extension by calling the defined functions. Implementers
 of extension can decide for themselves on how the functions are implemented, as
 long as the standardized structures are defined correctly.
