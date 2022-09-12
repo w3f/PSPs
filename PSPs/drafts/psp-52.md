@@ -164,15 +164,11 @@ export interface MetadataDef {
     tokenDecimals: number;
     // The name of the token.
     tokenSymbol: string;
-    // TODO: Unclear
     types: Record<string, Record<string, string> | string>;
-    // TODO: Unclear
     metaCalls?: string;
-    // TODO: Unclear
     userExtensions?: Record<string, ExtInfo>;
 }
 
-// TODO: Unclear
 export type ExtInfo = {
   extrinsic: ExtTypes;
   payload: ExtTypes;
@@ -190,7 +186,6 @@ export interface Signer {
     signPayload?: (payload: SignerPayloadJSON) => Promise<SignerResult>;
     // Signs the given raw payload and returns the result.
     signRaw?: (raw: SignerPayloadRaw) => Promise<SignerResult>;
-    // TODO: Unclear
     update?: (id: number, status: H256 | ISubmittableResult) => void;
 }
 
@@ -205,7 +200,6 @@ export interface SignerPayloadJSON {
     era: string;
     // The gensis hash 
     genesisHash: string;
-    // TODO: Unclear
     method: string;
     // The lastest nonce for the given account.
     nonce: string;
@@ -217,9 +211,7 @@ export interface SignerPayloadJSON {
     tip: string;
     // The transaction version.
     transactionVersion: string;
-    // TODO: Unclear (the extra data to be signed for the transaction?)
     signedExtensions: string[];
-    // TODO: Unclear
     version: number;
 }
 
@@ -234,7 +226,6 @@ export interface SignerResult {
     signature: string;
 }
 
-// TODO: Clear
 export interface ISubmittableResult {
     readonly dispatchError?: DispatchError;
     readonly dispatchInfo?: DispatchInfo;
