@@ -2,7 +2,7 @@
 
 - **PSP Number:** 37
 - **Authors:** Pierre Ossun <pierre.ossun@supercolony.net>, Green Baneling <green.baneling@supercolony.net>, Markian <markian@supercolony.net>
-- **Status:** Accepted
+- **Status:** Published
 - **Created:** 2022-03-01
 - **Reference Implementation** [OpenBrush](https://github.com/Supercolony-net/openbrush-contracts/blob/main/contracts/src/token/psp37/psp37.rs)
 
