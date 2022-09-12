@@ -441,6 +441,89 @@ Attributes are more flexible than single `tokenURI` function like in [`Erc721`](
 The list of required attributes for NFT should be defined in a separate
 proposal based on the scope of the usage.
 
+#### PSP34Enumerable
+
+`PSP34Enumerable` is an **optional** extension for this Multi Token standard to support enumeration of tokens.
+
+
+##### **owners_token_by_index**(owner: AccountId, index: u128) ➔ Option<Id>
+Selector: `0x3bcfb511` - first 4 bytes of `blake2b_256("PSP34Enumerable::owners_token_by_index")`
+```json
+{
+  "args": [
+    {
+      "label": "owner",
+      "type": {
+        "displayName": [
+          "psp34enumerable_external",
+          "OwnersTokenByIndexInput1"
+        ],
+        "type": 8
+      }
+    },
+    {
+      "label": "index",
+      "type": {
+        "displayName": [
+          "psp34enumerable_external",
+          "OwnersTokenByIndexInput2"
+        ],
+        "type": 6
+      }
+    }
+  ],
+  "docs": [
+    " Returns a token `Id` owned by `owner` at a given `index` of its token list.",
+    " Use along with `balance_of` to enumerate all of ``owner``'s tokens."
+  ],
+  "label": "PSP34Enumerable::owners_token_by_index",
+  "mutates": false,
+  "payable": false,
+  "returnType": {
+    "displayName": [
+      "psp34enumerable_external",
+      "OwnersTokenByIndexOutput"
+    ],
+    "type": 26
+  },
+  "selector": "0x3bcfb511"
+}
+```
+
+##### **token_by_index**(index: u128) -> Option<Id>
+Selector: `0xcd0340d0` - first 4 bytes of `blake2b_256("PSP37Enumerable::owners_token_by_index")`
+```json
+{
+  "args": [
+    {
+      "label": "index",
+      "type": {
+        "displayName": [
+          "psp34enumerable_external",
+          "TokenByIndexInput1"
+        ],
+        "type": 6
+      }
+    }
+  ],
+  "docs": [
+    " Returns a token `Id` at a given `index` of all the tokens stored by the contract.",
+    " Use along with `total_supply` to enumerate all tokens."
+  ],
+  "label": "PSP34Enumerable::token_by_index",
+  "mutates": false,
+  "payable": false,
+  "returnType": {
+    "displayName": [
+      "psp34enumerable_external",
+      "TokenByIndexOutput"
+    ],
+    "type": 26
+  },
+  "selector": "0xcd0340d0"
+}
+```
+
 ### Events
 
 #### Transfer
