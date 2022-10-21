@@ -30,7 +30,7 @@ Below is the workflow of a successful PSP:
 ```
 1. **Draft:** A valid draft, which is merged into into the [draft
    subfolder](./PSPs/drafts) and actively improved together with the community.
-2. **Call for Feedback:** The PSP will be shared on different channels for
+2. **Call for Feedback:** The PSP will be shared on different public channels for
    additional feedback for at least 2 weeks. The result of this step is either
    an acceptance of the standard (->Published) or the rejection (->Draft).
 3. **Published:** Any further changes are unlikely, and developers can start
@@ -42,7 +42,7 @@ In order to be **merged or accepted** for the different stages, reviewers need t
 
 ## :pencil: Contributing
 
-Before you start writing a formal PSP, you should discuss an idea in the various community channels (see the [Polkadot community website](https://polkadot.network/community/)). A PSP should provide the motivation as well as a technical specification for the feature. 
+Before you start writing a formal PSP, you should discuss an idea in the various community public channels (see the [Polkadot community website](https://polkadot.network/community/)). A PSP should provide the motivation as well as a technical specification for the feature. 
 
 1. Fork this repository.
 2. In the newly created fork, create a copy of the template.
