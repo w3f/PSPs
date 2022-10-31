@@ -1,9 +1,9 @@
 # Fungible Token Standard for Substrate's `contracts` pallet
 
-- **PSP Number:** 22
+- **PSP Number:** 55
 - **Authors:** Konrad Wierzbik <konrad.wierzbik@gmail.com >
-- **Status:** Published
-- **Created:** 2021-06-19
+- **Status:** Draft
+- **Created:** 2022-10-31
 
 ## Summary
 
