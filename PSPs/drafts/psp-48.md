@@ -21,7 +21,7 @@ network, which includes block imports, finalization, ressource requirements and
 so on. Sending telemetry information is a voluntary act and is not required for Polkadot
 and Kusama to function properly, respectively it's not part of the consensus protocol.
 
-All telemetry messges are serialized in JSON format.
+All telemetry messages are serialized in JSON format.
 
 ## Note on Security
 
