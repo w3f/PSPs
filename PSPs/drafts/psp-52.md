@@ -329,9 +329,8 @@ interface DispatchError {
 }
 
 interface DispatchErrorModule {
-  readonly index: u8;
-  // TODO
-  readonly error: U8aFixed;
+  readonly index: number;
+  readonly error: Uint8Array;
 }
 
 interface TokenError {
@@ -389,10 +388,21 @@ interface Pays {
 ```typescript
 interface EventRecord {
   readonly phase: Phase;
-  // TODO
+  // Events.
   readonly event: Event;
-  // TODO
-  readonly topics: Vec<Hash>;
+  // An array of hashes.
+  readonly topics: Uint8Array[];
+}
+
+interface Event {
+  // SCALE encoded events.
+  readonly data: Record<string, Uint8Array>;
+  // The event Id
+  readonly index: Uint8Array;
+  // The Runtime method name.
+  readonly method: string;
+  // The Runtime section name.
+  readonly section: string;
 }
 ```
 
@@ -409,22 +419,21 @@ interface Error {
 ##### Extrinsic Status
 
 ```typescript
-/** @name ExtrinsicStatus */
 interface ExtrinsicStatus {
   readonly isFuture: boolean;
   readonly isReady: boolean;
   readonly isBroadcast: boolean;
-  readonly asBroadcast: Vec<Text>;
+  readonly asBroadcast: string[];
   readonly isInBlock: boolean;
-  readonly asInBlock: Hash;
+  readonly asInBlock: Uint8Array;
   readonly isRetracted: boolean;
-  readonly asRetracted: Hash;
+  readonly asRetracted: Uint8Array;
   readonly isFinalityTimeout: boolean;
-  readonly asFinalityTimeout: Hash;
+  readonly asFinalityTimeout: Uint8Array;
   readonly isFinalized: boolean;
-  readonly asFinalized: Hash;
+  readonly asFinalized: Uint8Array;
   readonly isUsurped: boolean;
-  readonly asUsurped: Hash;
+  readonly asUsurped: Uint8Array;
   readonly isDropped: boolean;
   readonly isInvalid: boolean;
   readonly type: 'Future' | 'Ready' | 'Broadcast' | 'InBlock' | 'Retracted' | 'FinalityTimeout' | 'Finalized' | 'Usurped' | 'Dropped' | 'Invalid';
