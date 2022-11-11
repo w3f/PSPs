@@ -46,7 +46,7 @@ app can use to identify the correct extension. Its corresponding value is a
 datastructure of the following format:
 
 ```typescript
-export interface InjectedWindowProvider {
+interface InjectedWindowProvider {
     // Start communication process.
     enable: (origin: string) => Promise<InjectedExtension>;
     // Version of the extension.
@@ -72,7 +72,7 @@ itself, the apps is responsible for that.
 This structure is the primary way to interact with the extension.
 
 ```typescript
-export interface InjectedExtension {
+interface InjectedExtension {
     // The name of the extension, e.g. `"polkadot-js"`
     name: string;
     // The version of the extension, e.g. `"0.44.1"`
@@ -96,7 +96,7 @@ including listening for account changes. The extension is responsible for
 handling permissions accordingly.
 
 ```typescript
-export interface InjectedAccounts {
+interface InjectedAccounts {
     // Returns a list of accounts.
     get: (anyType?: boolean) => Promise<InjectedAccount[]>;
     // Subscribers to the list of accounts, useful for
@@ -105,9 +105,9 @@ export interface InjectedAccounts {
 }
 
 // Stops the subscription if called.
-export type Unsubcall = () => void;
+type Unsubcall = () => void;
 
-export interface InjectedAccount {
+interface InjectedAccount {
 // The address of the account.
   address: string;
   // The genesis hash of the blockchain (optional).
@@ -118,7 +118,7 @@ export interface InjectedAccount {
   type?: KeypairType;
 }
 
-export type KeypairType = 'ed25519' | 'sr25519' | 'ecdsa' | 'ethereum';
+type KeypairType = 'ed25519' | 'sr25519' | 'ecdsa' | 'ethereum';
 ```
 
 #### Metadata
@@ -128,14 +128,14 @@ blockchain, but also allows to register new blockchains with the extension. The
 extension is responsible for handling permissions accordingly.
 
 ```typescript
-export interface InjectedMetadata {
+interface InjectedMetadata {
     // Retuns a list of know parameters about the blockchain.
     get: () => Promise<InjectedMetadataKnown[]>;
     // Provide the extension with information about a blockchain.
     provide: (definition: MetadataDef) => Promise<boolean>;
 }
 
-export interface InjectedMetadataKnown {
+interface InjectedMetadataKnown {
     // The genesis hash of the blockchain.
     genesisHash: string;
     // The chain spec version of the blockchain
@@ -143,7 +143,7 @@ export interface InjectedMetadataKnown {
     specVersion: number;
 }
 
-export interface MetadataDef {
+interface MetadataDef {
     // The name of the blockchain.
     chain: string;
     // The genesis hash of the blockchain.
@@ -169,7 +169,7 @@ export interface MetadataDef {
     userExtensions?: Record<string, ExtInfo>;
 }
 
-export type ExtInfo = {
+type ExtInfo = {
   extrinsic: ExtTypes;
   payload: ExtTypes;
 }
@@ -181,7 +181,7 @@ The signer datastructure allows apps to sign messages with a given account. The
 extension is responsible for handling permissions accordingly.
 
 ```typescript
-export interface Signer {
+interface Signer {
     // Signs the given JSON payload and returns the result.
     signPayload?: (payload: SignerPayloadJSON) => Promise<SignerResult>;
     // Signs the given raw payload and returns the result.
@@ -189,7 +189,7 @@ export interface Signer {
     update?: (id: number, status: H256 | ISubmittableResult) => void;
 }
 
-export interface SignerPayloadJSON {
+interface SignerPayloadJSON {
     // The address of the account that should sign the message.
     address: string;
     // The HEX-encoded block hash.
@@ -215,18 +215,18 @@ export interface SignerPayloadJSON {
     version: number;
 }
 
-export interface SignerPayloadRaw {
+interface SignerPayloadRaw {
     address: string;
     type: 'bytes' | 'payload';
 }
 
-export interface SignerResult {
+interface SignerResult {
     id: number;
     // The HEX-encoded signature.
     signature: string;
 }
 
-export interface ISubmittableResult {
+interface ISubmittableResult {
     readonly dispatchError?: DispatchError;
     readonly dispatchInfo?: DispatchInfo;
     readonly events: EventRecord[];
@@ -254,7 +254,7 @@ maintaining the connection to the RPC server, including handling all requests
 and forwarding responses to the app.
 
 ```typescript
-export interface ProviderInterface {
+interface ProviderInterface {
   readonly hasSubscriptions: boolean;
   readonly isConnected: boolean;
   readonly stats?: ProviderStats;
@@ -268,7 +268,7 @@ export interface ProviderInterface {
   unsubscribe (type: string, method: string, id: number | string): Promise<boolean>;
 }
 
-export interface ProviderStats {
+interface ProviderStats {
   active: {
     requests: number;
     subscriptions: number;
@@ -284,15 +284,15 @@ export interface ProviderStats {
   };
 }
 
-export interface InjectedProvider extends ProviderInterface {
+interface InjectedProvider extends ProviderInterface {
   listProviders: () => Promise<ProviderList>;
   startProvider: (key: string) => Promise<ProviderMeta>;
 }
 
-export type ProviderList = Record<string, ProviderMeta>
+type ProviderList = Record<string, ProviderMeta>
 
 // Metadata about a provider
-export interface ProviderMeta {
+interface ProviderMeta {
   // Network of the provider
   network: string;
   // Light or full node
@@ -301,6 +301,63 @@ export interface ProviderMeta {
   source: string;
   // Provider transport: 'WsProvider' etc.
   transport: string;
+}
+```
+
+##### Error Types
+
+```typescript
+interface DispatchError {
+  readonly isOther: boolean;
+  readonly isCannotLookup: boolean;
+  readonly isBadOrigin: boolean;
+  readonly isModule: boolean;
+  readonly asModule: DispatchErrorModule;
+  readonly isConsumerRemaining: boolean;
+  readonly isNoProviders: boolean;
+  readonly isTooManyConsumers: boolean;
+  readonly isToken: boolean;
+  readonly asToken: TokenError;
+  readonly isArithmetic: boolean;
+  readonly asArithmetic: ArithmeticError;
+  readonly isTransactional: boolean;
+  readonly asTransactional: TransactionalError;
+  readonly isExhausted: boolean;
+  readonly isCorruption: boolean;
+  readonly isUnavailable: boolean;
+  readonly type: 'Other' | 'CannotLookup' | 'BadOrigin' | 'Module' | 'ConsumerRemaining' | 'NoProviders' | 'TooManyConsumers' | 'Token' | 'Arithmetic' | 'Transactional' | 'Exhausted' | 'Corruption' | 'Unavailable';
+}
+
+interface DispatchErrorModule {
+  readonly index: u8;
+  // TODO
+  readonly error: U8aFixed;
+}
+
+interface TokenError {
+  readonly isNoFunds: boolean;
+  readonly isWouldDie: boolean;
+  readonly isBelowMinimum: boolean;
+  readonly isCannotCreate: boolean;
+  readonly isUnknownAsset: boolean;
+  readonly isFrozen: boolean;
+  readonly isUnsupported: boolean;
+  readonly isUnderflow: boolean;
+  readonly isOverflow: boolean;
+  readonly type: 'NoFunds' | 'WouldDie' | 'BelowMinimum' | 'CannotCreate' | 'UnknownAsset' | 'Frozen' | 'Unsupported' | 'Underflow' | 'Overflow';
+}
+
+interface ArithmeticError {
+  readonly isUnderflow: boolean;
+  readonly isOverflow: boolean;
+  readonly isDivisionByZero: boolean;
+  readonly type: 'Underflow' | 'Overflow' | 'DivisionByZero';
+}
+
+interface TransactionalError extends Enum {
+  readonly isLimitReached: boolean;
+  readonly isNoLayer: boolean;
+  readonly type: 'LimitReached' | 'NoLayer';
 }
 ```
 
