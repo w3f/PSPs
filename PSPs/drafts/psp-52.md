@@ -391,7 +391,7 @@ interface EventRecord {
   // Events.
   readonly event: Event;
   // An array of hashes.
-  readonly topics: Uint8Array[];
+  readonly topics: Array<Uint8Array>;
 }
 
 interface Event {
@@ -423,7 +423,7 @@ interface ExtrinsicStatus {
   readonly isFuture: boolean;
   readonly isReady: boolean;
   readonly isBroadcast: boolean;
-  readonly asBroadcast: string[];
+  readonly asBroadcast: Array<string>;
   readonly isInBlock: boolean;
   readonly asInBlock: Uint8Array;
   readonly isRetracted: boolean;
