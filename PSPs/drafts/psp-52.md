@@ -387,7 +387,7 @@ interface Pays {
 ##### Event Record
 
 ```typescript
-export interface EventRecord {
+interface EventRecord {
   readonly phase: Phase;
   // TODO
   readonly event: Event;
@@ -410,7 +410,7 @@ interface Error {
 
 ```typescript
 /** @name ExtrinsicStatus */
-export interface ExtrinsicStatus {
+interface ExtrinsicStatus {
   readonly isFuture: boolean;
   readonly isReady: boolean;
   readonly isBroadcast: boolean;
