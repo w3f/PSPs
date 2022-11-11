@@ -304,7 +304,7 @@ interface ProviderMeta {
 }
 ```
 
-##### Error Types
+##### Dispatch Error
 
 ```typescript
 interface DispatchError {
@@ -354,10 +354,80 @@ interface ArithmeticError {
   readonly type: 'Underflow' | 'Overflow' | 'DivisionByZero';
 }
 
-interface TransactionalError extends Enum {
+interface TransactionalError {
   readonly isLimitReached: boolean;
   readonly isNoLayer: boolean;
   readonly type: 'LimitReached' | 'NoLayer';
+}
+```
+
+##### Dispatch Info
+
+```typescript
+interface DispatchInfo {
+  readonly weight: number;
+  readonly class: DispatchClass;
+  readonly paysFee: Pays;
+}
+
+interface DispatchClass {
+  readonly isNormal: boolean;
+  readonly isOperational: boolean;
+  readonly isMandatory: boolean;
+  readonly type: 'Normal' | 'Operational' | 'Mandatory';
+}
+
+interface Pays {
+  readonly isYes: boolean;
+  readonly isNo: boolean;
+  readonly type: 'Yes' | 'No';
+}
+```
+
+##### Event Record
+
+```typescript
+export interface EventRecord {
+  readonly phase: Phase;
+  // TODO
+  readonly event: Event;
+  // TODO
+  readonly topics: Vec<Hash>;
+}
+```
+
+##### Error
+
+```typescript
+interface Error {
+    name: string;
+    message: string;
+    stack?: string;
+}
+```
+
+##### Extrinsic Status
+
+```typescript
+/** @name ExtrinsicStatus */
+export interface ExtrinsicStatus {
+  readonly isFuture: boolean;
+  readonly isReady: boolean;
+  readonly isBroadcast: boolean;
+  readonly asBroadcast: Vec<Text>;
+  readonly isInBlock: boolean;
+  readonly asInBlock: Hash;
+  readonly isRetracted: boolean;
+  readonly asRetracted: Hash;
+  readonly isFinalityTimeout: boolean;
+  readonly asFinalityTimeout: Hash;
+  readonly isFinalized: boolean;
+  readonly asFinalized: Hash;
+  readonly isUsurped: boolean;
+  readonly asUsurped: Hash;
+  readonly isDropped: boolean;
+  readonly isInvalid: boolean;
+  readonly type: 'Future' | 'Ready' | 'Broadcast' | 'InBlock' | 'Retracted' | 'FinalityTimeout' | 'Finalized' | 'Usurped' | 'Dropped' | 'Invalid';
 }
 ```
 
