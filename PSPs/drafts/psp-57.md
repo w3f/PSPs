@@ -55,6 +55,18 @@ In order for Recipient contracts to extract the Transaction Signer's AccountId, 
 
 Recipient contracts must ensure extra AccountId bytes are appended by Trusted Forwarder, otherwise contracts' message get executed with a forged AccountId as the original caller.
 
+### Meta Transaction Support Discovery Mechanism
+
+Recipient contracts need to implement a function that allows external entities know whether they are supporting meta transaction or not.
+
+```
+#[ink(message)]
+pub fn is_trusted_forwarder(&self, account_id: AccountId) -> bool;
+```
+
+The function `is_trusted_forwarder` must return a Boolean value of `true` if the provided `account_id` corresponds to a Trusted Forwarder's AccountId. Conversely, if the `account_id` does not correspond to a Trusted Forwarder's AccountId, the function should return `false`.
+
+
 ## Copyright
 
 Each PSP must be labeled as placed in the
