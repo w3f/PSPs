@@ -377,75 +377,6 @@ Selector: `0x5cf8b7d4` - first 4 bytes of `blake2b_256("PSP37::transfer_from")`
 }
 ```
 
-#### PSP37Receiver
-`PSP37Receiver` is an interface for any contract that wants to support safe transfers from a PSP-37 token smart contract to avoid unexpected tokens in the balance of contract.
-This method is called before a transfer to ensure the recipient of the tokens acknowledges the receipt.
-
-##### **before_received**(operator: AccountId, from: AccountId, ids_amounts: [(Id, Balance)], data: [u8]) ➔ Result<(), PSP37ReceiverError>
-Selector: `0x11e16fea` - first 4 bytes of `blake2b_256("PSP37Receiver::before_received")`
-```json
-{
-  "args": [
-    {
-      "label": "operator",
-      "type": {
-        "displayName": [
-          "AccountId"
-        ],
-        "type": "AccountId"
-      }
-    },
-    {
-      "label": "from",
-      "type": {
-        "displayName": [
-          "AccountId"
-        ],
-        "type": "AccountId"
-      }
-    },
-    {
-      "label": "ids_amounts",
-      "type": {
-        "displayName": [
-           "[(Id, Balance)]"
-        ],
-        "type": "[(Id, Balance)]"
-      }
-    },
-    {
-      "label": "data",
-      "type": {
-        "displayName": [
-          "[u8]"
-        ],
-        "type": "[u8]"
-      }
-    }
-  ],
-  "docs": [
-    "Ensures that the smart contract allows reception of PSP37 token(s).",
-    "Returns `Ok(())` if the contract allows the reception of the token(s) and Error `TransferRejected(String)` otherwise.",
-    "",
-    "This method will get called on every transfer to check whether the recipient in `transfer`",
-    "`transfer_from`, `transfer_batch` or `transfer_from_batch`, is a contract, and if it is, does it accept tokens.",
-    "This is done to prevent contracts from locking tokens forever.",
-    "",
-    "Returns `PSP37ReceiverError` if the contract does not accept the tokens."
-  ],
-  "mutates": true,
-  "label": "PSP37Receiver::before_received",
-  "payable": false,
-  "returnType": {
-    "displayName": [
-      "Result"
-    ],
-    "type": 2
-  },
-  "selector": "0x11e16fea"
-}
-```
-
 ### Extension
 
 #### PSP37Metadata
@@ -976,52 +907,6 @@ type Balance = u128;
           ]
         }
       }
-    },
-    "2": {
-      "def": {
-        "variant": {
-          "variants": [
-            {
-              "fields": [
-                {
-                  "type": {
-                    "def": {
-                      "tuple": []
-                    }
-                  }
-                }
-              ],
-              "name": "Ok"
-            },
-            {
-              "fields": [
-                {
-                  "type": {
-                    "def": {
-                      "variant": {
-                        "variants": [
-                          {
-                            "fields": [
-                              {
-                                "type": "string"
-                              }
-                            ],
-                            "name": "TransferRejected"
-                          }
-                        ]
-                      }
-                    },
-                    "path": [
-                      "PSP37ReceiverError"
-                    ]
-                  }
-                }
-              ],
-              "name": "Err"
-            }
-          ]
-        }
-      }
     }
   }
 }
@@ -1044,11 +929,6 @@ enum PSP37Error {
     TokenNotExists,
     /// Returned if safe transfer check fails
     SafeTransferCheckFailed(String),
-}
-
-enum PSP37ReceiverError {
-    /// Returned if transfer is rejected.
-    TransferRejected(String),
 }
 ```
 

@@ -319,75 +319,6 @@ Selector: `0x628413fe` - first 4 bytes of `blake2b_256("PSP34::total_supply")`
 }
 ```
 
-#### PSP34Receiver
-`PSP34Receiver` is an interface for any contract that wants to support safe transfers from a PSP-34 token smart contract to avoid unexpected tokens in the balance of contract.
-This method is called before a transfer to ensure the recipient of the tokens acknowledges the receipt.
-
-##### **before_received**(operator: AccountId, from: AccountId, id: Id, data: [u8]) ➔ Result<(), PSP34ReceiverError>
-Selector: `0xbb7df780` - first 4 bytes of `blake2b_256("PSP34Receiver::before_received")`
-```json
-{
-  "args": [
-    {
-      "label": "operator",
-      "type": {
-        "displayName": [
-          "AccountId"
-        ],
-        "type": "AccountId"
-      }
-    },
-    {
-      "label": "from",
-      "type": {
-        "displayName": [
-          "AccountId"
-        ],
-        "type": "AccountId"
-      }
-    },
-    {
-      "label": "id",
-      "type": {
-        "displayName": [
-           "Id"
-        ],
-        "type": "Id"
-      }
-    },
-    {
-      "label": "data",
-      "type": {
-        "displayName": [
-          "[u8]"
-        ],
-        "type": "[u8]"
-      }
-    }
-  ],
-  "docs": [
-    "Ensures that the smart contract allows reception of PSP34 token(s).",
-    "Returns `Ok(())` if the contract allows the reception of the token(s) and Error `TransferRejected(String)` otherwise.",
-    "",
-    "This method will get called on every transfer to check whether the recipient in `transfer`",
-    "or `transfer_from` is a contract, and if it is, does it accept tokens.",
-    "This is done to prevent contracts from locking tokens forever.",
-    "",
-    "Returns `PSP34ReceiverError` if the contract does not accept the tokens."
-  ],
-  "mutates": true,
-  "label": "PSP34Receiver::before_received",
-  "payable": false,
-  "returnType": {
-    "displayName": [
-      "Result"
-    ],
-    "type": 2
-  },
-  "selector": "0xbb7df780"
-}
-```
-
 ### Extension
 
 #### PSP34Metadata
@@ -759,52 +690,6 @@ type AccountId = [u8; 32];
           ]
         }
       }
-    },
-    "2": {
-      "def": {
-        "variant": {
-          "variants": [
-            {
-              "fields": [
-                {
-                  "type": {
-                    "def": {
-                      "tuple": []
-                    }
-                  }
-                }
-              ],
-              "name": "Ok"
-            },
-            {
-              "fields": [
-                {
-                  "type": {
-                    "def": {
-                      "variant": {
-                        "variants": [
-                          {
-                            "fields": [
-                              {
-                                "type": "string"
-                              }
-                            ],
-                            "name": "TransferRejected"
-                          }
-                        ]
-                      }
-                    },
-                    "path": [
-                      "PSP34ReceiverError"
-                    ]
-                  }
-                }
-              ],
-              "name": "Err"
-            }
-          ]
-        }
-      }
     }
   }
 }
@@ -827,11 +712,6 @@ enum PSP34Error {
     TokenNotExists,
     /// Returned if safe transfer check fails
     SafeTransferCheckFailed(String),
-}
-
-enum PSP34ReceiverError {
-    /// Returned if transfer is rejected.
-    TransferRejected(String),
 }
 ```
 

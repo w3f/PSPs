@@ -29,7 +29,6 @@ Due to the different nature of WebAssembly smart contracts and the difference be
 therefore PSP-22 differs from ERC-20 in its implementation.
 
 Also, this standard proposal defines an extensive method list in the interface. Unlike ERC-20, it includes `increase_allowance` and `decrease_allowance`, and defines metadata fields as part of a separate interface.
-Another difference is that it has the `PSP22Receiver` interface, and the `before_received` method is called at the end of transfer if the recipient is a contract.
 
 # This standard is at ABI level
 
@@ -521,76 +520,6 @@ Selector: `0x7271b782` - first 4 bytes of `blake2b_256("PSP22Metadata::token_dec
 }
 ```
 
-#### PSP22Receiver
-`PSP22Receiver` is an interface for any contract that wants to support safe transfers from a PSP-22 token smart contract to avoid unexpected tokens in the balance of contract.
-This method is called before a transfer to ensure the recipient of the tokens acknowledges the receipt.
-
-##### **before_received**(&mut self, operator: AccountId, from: AccountId, value: Balance, data: [u8]) ➔ Result<(), PSP22ReceiverError>
-Selector: `0xfda6f1a9` - first 4 bytes of `blake2b_256("PSP22Receiver::before_received")`
-```json
-{
-  "args": [
-    {
-      "name": "operator",
-      "type": {
-        "displayName": [
-          "AccountId"
-        ],
-        "type": "AccountId"
-      }
-    },
-    {
-      "name": "from",
-      "type": {
-        "displayName": [
-          "AccountId"
-        ],
-        "type": "AccountId"
-      }
-    },
-    {
-      "name": "value",
-      "type": {
-        "displayName": [
-          "Balance"
-        ],
-        "type": "Balance"
-      }
-    },
-    {
-      "name": "data",
-      "type": {
-        "displayName": [
-          "[u8]"
-        ],
-        "type": "[u8]"
-      }
-    }
-  ],
-  "docs": [
-    "Ensures that the smart contract allows reception of PSP22 token(s).",
-    "Returns `Ok(())` if the contract allows the reception of the token(s) and Error `TransferRejected(String))` otherwise.",
-    "",
-    "This method will get called on every transfer to check whether the recipient in `transfer` is a contract, and if it is,",
-    "does it accept tokens. This is done to prevent contracts from locking tokens forever.",
-    "",
-    "This method does not throw. Returns `PSP22ReceiverError` if the contract does not accept the tokens."
-  ],
-  "mutates": true,
-  "name": [
-    "PSP22Receiver",
-    "before_received"
-  ],
-  "returnType": {
-    "displayName": [
-      "Result"
-    ],
-    "type": 2
-  },
-  "selector": "0xfda6f1a9"
-}
-```
-
 ### Events
 
 #### Transfer 
@@ -764,52 +693,6 @@ type Balance = u128;
           ]
         }
       }
-    },
-    "2": {
-      "def": {
-        "variant": {
-          "variants": [
-            {
-              "fields": [
-                {
-                  "type": {
-                    "def": {
-                      "tuple": []
-                    }
-                  }
-                }
-              ],
-              "name": "Ok"
-            },
-            {
-              "fields": [
-                {
-                  "type": {
-                    "def": {
-                      "variant": {
-                        "variants": [
-                          {
-                            "fields": [
-                              {
-                                "type": "string"
-                              }
-                            ],
-                            "name": "TransferRejected"
-                          }
-                        ]
-                      }
-                    },
-                    "path": [
-                      "PSP22ReceiverError"
-                    ]
-                  }
-                }
-              ],
-              "name": "Err"
-            }
-          ]
-        }
-      }
     }
   }
 }
@@ -832,11 +715,6 @@ enum PSP22Error {
     ZeroSenderAddress,
     /// Returned if a safe transfer check fails (e.g. if the receiving contract does not accept tokens).
     SafeTransferCheckFailed(String),
-}
-
-enum PSP22ReceiverError {
-    /// Returned if a transfer is rejected.
-    TransferRejected(String),
 }
 ```
 
