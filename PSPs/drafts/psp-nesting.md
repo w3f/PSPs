@@ -30,7 +30,7 @@ An NFT can be owned by a single other NFT, but can in turn have a number of NFTs
 ### Interfaces
 This section defines the required interface for this standard.
 
-#### Nesting::add_child
+#### Nesting::add_child(&mut self, parent_token_id: u128, child_nft: ChildNft) -> Result<(), NestingError>
 Selector: `0x1d6f5156`, first 4 bytes of `blake2b_256(Nesting::add_child)`
 ```json
 {
@@ -82,15 +82,14 @@ Selector: `0x1d6f5156`, first 4 bytes of `blake2b_256(Nesting::add_child)`
     "payable": false,
     "returnType": {
         "displayName": [
-        "ink",
         "MessageResult"
         ],
-        "type": "Result"
+        "type": "Result<(), NestingError>"
     }
 }
 ```
 
-#### Nesting::remove_child
+#### Nesting::remove_child(&mut self, parent_token_id: Id, child_nft: ChildNft) -> Result<(), NestingError>
 Selector: `0x27e7420e`, first 4 bytes of `blake2b_256(Nesting::remove_child)`
 ```json
 {
@@ -135,15 +134,385 @@ Selector: `0x27e7420e`, first 4 bytes of `blake2b_256(Nesting::remove_child)`
     "payable": false,
     "returnType": {
         "displayName": [
-        "ink",
         "MessageResult"
         ],
-        "type": "Result"
+        "type": "Result<(), NestingError>"
     }
 }
 ```
+
+#### Nesting::accept_child(&mut self, parent_token_id: Id, child_nft: ChildNft) -> Result<(), NestingError>
+Selector: `0x3b3e2643`, first 4 bytes of `blake2b_256(Nesting::accept_child)`
+
+```json
+{
+    "args": [
+        {
+        "label": "parent_token_id",
+        "type": {
+            "displayName": [
+            "ParentTokenId"
+            ],
+            "type": "u128"
+        }
+        },
+        {
+        "label": "child_nft",
+        "type": {
+            "displayName": [
+            "ChildNft"
+            ],
+            "type": "ChildNft"
+        }
+        }
+    ],
+    "docs": [
+        " Accept a child NFT (from different collection) to be owned by parent token.",
+        "",
+        " # Requirements:",
+        " * The status of the child is `Pending`",
+        "",
+        " # Arguments:",
+        " * `parent_token_id`: is the tokenId of the parent NFT.",
+        " * `child_nft`: (collection_id, token_id) of the child instance.",
+        "",
+        " # Result:",
+        " Child Nft is moved from pending to accepted",
+        " On success emits `ChildAccepted`"
+    ],
+    "label": "Nesting::accept_child",
+    "mutates": true,
+    "payable": false,
+    "returnType": {
+        "displayName": [
+        "MessageResult"
+        ],
+        "type": "Result<(), NestingError>"
+    }
+}
+```
+
+### Nesting::reject_child(&mut self, parent_token_id: Id, child_nft: ChildNft) -> Result<(), NestingError>
+Selector: `0xdd308ed4`, first 4 bytes of `blake2b_256(Nesting::reject_child)`
+```json
+{
+    "args": [
+        {
+        "label": "parent_token_id",
+        "type": {
+            "displayName": [
+            "ParentTokenId"
+            ],
+            "type": "u128"
+        }
+        },
+        {
+        "label": "child_nft",
+        "type": {
+            "displayName": [
+            "ChildNft"
+            ],
+            "type": "ChildNft"
+        }
+        }
+    ],
+    "docs": [
+        " Reject a child NFT (from different collection).",
+        "",
+        " # Requirements:",
+        " * The status of the child is `Pending`",
+        "",
+        " # Arguments:",
+        " * `parent_token_id`: is the tokenId of the parent NFT.",
+        " * `child_nft`: (collection_id, token_id) of the child instance.",
+        "",
+        " # Result:",
+        " Child Nft is removed from pending",
+        " On success emits `ChildRejected`"
+    ],
+    "label": "Nesting::reject_child",
+    "mutates": true,
+    "payable": false,
+    "returnType": {
+        "displayName": [
+        "MessageResult"
+        ],
+        "type": "Result<(), NestingError>"
+    }
+}
+```
+
+#### Nesting::transfer_child(&mut self, from: u128, to: u128, child_nft: ChildNft) -> Result<(), NestingError>;
+Selector: `0xdb43324e`, first 4 bytes of `blake2b_256(Nesting::transfer_child)`
+```json
+{
+    "args": [
+        {
+        "label": "from",
+        "type": {
+            "displayName": [
+            "From"
+            ],
+            "type": "u128"
+        }
+        },
+        {
+        "label": "to",
+        "type": {
+            "displayName": [
+            "To"
+            ],
+            "type": "u128"
+        }
+        },
+        {
+        "label": "child_nft",
+        "type": {
+            "displayName": [
+            "ChildNft"
+            ],
+            "type": "ChildNft"
+        }
+        }
+    ],
+    "docs": [
+        " Transfer the child NFT from one parent to another (in this collection).",
+        "",
+        " # Requirements:",
+        " * The status of the child is `Accepted`",
+        "",
+        " # Arguments:",
+        " * `current_parent`: current parent tokenId which holds child nft",
+        " * `new_parent`: new parent tokenId which will hold child nft",
+        " * `child_nft`: (collection_id, token_id) of the child instance.",
+        "",
+        " # Result:",
+        " Ownership of child NFT will be transferred to this contract (cross contract call)",
+        " On success emits `ChildAdded`",
+        " On success emits `ChildAccepted` - only if caller is already owner of child NFT"
+    ],
+    "label": "Nesting::transfer_child",
+    "mutates": true,
+    "payable": false,
+    "returnType": {
+        "displayName": [
+        "MessageResult"
+        ],
+        "type": "Result<(), NestingError>"
+    }
+}
+```
+
+#### Nesting::get_parent_of_child(&self, child_nft: ChildNft) -> Option<u128>
+Selector: `0x40255e26`, first 4 bytes of `blake2b_256(Nesting::get_parent_of_child)`
+```json
+{
+    "args": [
+        {
+        "label": "child_nft",
+        "type": {
+            "displayName": [
+            "ChildNft"
+            ],
+            "type": "ChildNft"
+        }
+        }
+    ],
+    "docs": [
+        " Returns the parent token id of the provided child nft."
+    ],
+    "label": "Nesting::get_parent_of_child",
+    "mutates": false,
+    "payable": false,
+    "returnType": {
+        "displayName": [
+        "MessageResult"
+        ],
+        "type": "Option<u128>"
+    }
+}
+```
+
 ### Events
 
+### ChildAdded
+```json
+{
+    "args": [
+        {
+        "docs": [],
+        "indexed": true,
+        "label": "to",
+        "type": {
+            "displayName": [
+            "ParentId"
+            ],
+            "type": "u128"
+        }
+        },
+        {
+        "docs": [],
+        "indexed": true,
+        "label": "collection",
+        "type": {
+            "displayName": [
+            "ChildCollectionAddress"
+            ],
+            "type": "AccountId"
+        }
+        },
+        {
+        "docs": [],
+        "indexed": true,
+        "label": "child",
+        "type": {
+            "displayName": [
+            "ChildId"
+            ],
+            "type": "u128"
+        }
+        }
+    ],
+    "docs": [
+        " Event emitted when a new child is added."
+    ],
+    "label": "ChildAdded"
+}
+```
+#### ChildAccepted
+```json
+{
+    "args": [
+        {
+        "docs": [],
+        "indexed": true,
+        "label": "parent",
+        "type": {
+            "displayName": [
+            "ParentId"
+            ],
+            "type": "u128"
+        }
+        },
+        {
+        "docs": [],
+        "indexed": true,
+        "label": "collection",
+        "type": {
+            "displayName": [
+            "CollectionAddress"
+            ],
+            "type": "AccountId"
+        }
+        },
+        {
+        "docs": [],
+        "indexed": true,
+        "label": "child",
+        "type": {
+            "displayName": [
+            "ChildId"
+            ],
+            "type": "u128"
+        }
+        }
+    ],
+    "docs": [
+        " Event emitted when a child is accepted."
+    ],
+    "label": "ChildAccepted"
+}
+```
+
+### ChildRemoved
+```json
+{
+    "args": [
+        {
+        "docs": [],
+        "indexed": true,
+        "label": "parent",
+        "type": {
+            "displayName": [
+            "ParentId"
+            ],
+            "type": 11
+        }
+        },
+        {
+        "docs": [],
+        "indexed": true,
+        "label": "child_collection",
+        "type": {
+            "displayName": [
+            "ChildCollection"
+            ],
+            "type": "AccountId"
+        }
+        },
+        {
+        "docs": [],
+        "indexed": true,
+        "label": "child_token_id",
+        "type": {
+            "displayName": [
+            "ChildId"
+            ],
+            "type": "u128"
+        }
+        }
+    ],
+    "docs": [
+        " Event emitted when a child is removed."
+    ],
+    "label": "ChildRemoved"
+}
+```
+
+#### ChildRejected
+```json
+{
+    "args": [
+        {
+        "docs": [],
+        "indexed": true,
+        "label": "parent",
+        "type": {
+            "displayName": [
+            "ParentId"
+            ],
+            "type": 11
+        }
+        },
+        {
+        "docs": [],
+        "indexed": true,
+        "label": "child_collection",
+        "type": {
+            "displayName": [
+            "ChildCollection"
+            ],
+            "type": "AccountId"
+        }
+        },
+        {
+        "docs": [],
+        "indexed": true,
+        "label": "child_token_id",
+        "type": {
+            "displayName": [
+            "ChildId"
+            ],
+            "type": "u128"
+        }
+        }
+    ],
+    "docs": [
+        " Event emitted when a child is rejected."
+    ],
+    "label": "ChildRejected"
+}
+```
 ### Types
 ```rust
 // AccountId is a 32 bytes Array, like in Substrate-based blockchains.
@@ -159,29 +528,17 @@ The suggested methods revert the transaction and return a [SCALE-encoded](https:
 
 ```rust
 enum NestingError {
-    /// Custom error type for cases if writer of traits added own restrictions
-    Custom(String),
-    /// Returned if owner approves self
-    SelfApprove,
-    /// Returned if the caller doesn't have allowance for transferring.
-    NotApproved,
-    /// Returned if the owner already own the token.
-    TokenExists,
-    /// Returned if the token doesn't exist
-    TokenNotExists,
-    /// Returned if safe transfer check fails
-    SafeTransferCheckFailed(String),
-}
-
-enum PSP34ReceiverError {
-    /// Returned if transfer is rejected.
-    TransferRejected(String),
+    AlreadyAddedChild,
+    AddingPendingChild,
+    InvalidParentId,
+    ChildNotFound,
+    NotTokenOwner,
 }
 ```
 
 ## Tests
 
-If applicable, please include a list of potential test cases to validate an implementation.
+Check reference implementation
 
 ## Copyright
 
