@@ -30,7 +30,8 @@ An NFT can be owned by a single other NFT, but can in turn have a number of NFTs
 ### Interfaces
 This section defines the required interface for this standard.
 
-#### Nesting::add_child(&mut self, parent_token_id: u128, child_nft: ChildNft) -> Result<(), NestingError>
+#### Nesting::add_child(parent_token_id: Id, child_nft: ChildNft) -> Result<(), NestingError>
+
 Selector: `0x1d6f5156`, first 4 bytes of `blake2b_256(Nesting::add_child)`
 ```json
 {
@@ -41,7 +42,7 @@ Selector: `0x1d6f5156`, first 4 bytes of `blake2b_256(Nesting::add_child)`
             "displayName": [
             "ParentTokenId"
             ],
-            "type": "u128"
+            "type": "Id"
         }
         },
         {
@@ -55,9 +56,9 @@ Selector: `0x1d6f5156`, first 4 bytes of `blake2b_256(Nesting::add_child)`
         }
     ],
     "docs": [
-        " Add a child NFT (from different collection) to the NFT in this collection.",
-        " The status of the added child is `Pending` if caller is not owner of child NFT",
-        " The status of the added child is `Accepted` if caller is is owner of child NFT",
+        " Add a child NFT (from different collection) to the NFT in this (parent) collection.",
+        " The status of the added child is `Pending` if caller is not owner of parent NFT",
+        " The status of the added child is `Accepted` if caller is the owner of parent NFT",
         " The caller needs not to be the owner of the parent_token_id,",
         " but the Caller must be owner of the child NFT,",
         " in order to perform transfer() ownership of the child nft to parent_token_id.",
@@ -73,9 +74,9 @@ Selector: `0x1d6f5156`, first 4 bytes of `blake2b_256(Nesting::add_child)`
         " * `child_nft`: (collection_id, token_id) of the child instance.",
         "",
         " # Result:",
-        " Ownership of child NFT will be transferred to this contract (cross contract call)",
+        " Ownership of child NFT will be transferred to this parent NFT",
         " On success emits `ChildAdded`",
-        " On success emits `ChildAccepted` - only if caller is already the owner of the child NFT"
+        " On success emits `ChildAccepted` - only if caller is already the owner of the parent NFT"
     ],
     "label": "Nesting::add_child",
     "mutates": true,
@@ -89,7 +90,8 @@ Selector: `0x1d6f5156`, first 4 bytes of `blake2b_256(Nesting::add_child)`
 }
 ```
 
-#### Nesting::remove_child(&mut self, parent_token_id: Id, child_nft: ChildNft) -> Result<(), NestingError>
+#### Nesting::remove_child(parent_token_id: Id, child_nft: ChildNft) -> Result<(), NestingError>
+
 Selector: `0x27e7420e`, first 4 bytes of `blake2b_256(Nesting::remove_child)`
 ```json
 {
@@ -100,7 +102,7 @@ Selector: `0x27e7420e`, first 4 bytes of `blake2b_256(Nesting::remove_child)`
             "displayName": [
             "ParentTokenId"
             ],
-            "type": "u128"
+            "type": "Id"
         }
         },
         {
@@ -114,9 +116,7 @@ Selector: `0x27e7420e`, first 4 bytes of `blake2b_256(Nesting::remove_child)`
         }
     ],
     "docs": [
-        " Remove a child NFT (from different collection) from parent_token_id in this collection.",
-        " The status of added child is `Pending` if caller is not owner of child NFT",
-        " The status of added child is `Accepted` if caller is owner of child NFT",
+        " Transfer the child NFT ownership from parent_token_id to the parent token owner.",
         "",
         " # Requirements:",
         " * The status of the child is `Accepted`",
@@ -126,7 +126,7 @@ Selector: `0x27e7420e`, first 4 bytes of `blake2b_256(Nesting::remove_child)`
         " * `child_nft`: (collection_id, token_id) of the child instance.",
         "",
         " # Result:",
-        " Ownership of child NFT will be transferred to parent NFT owner (cross contract call)",
+        " Ownership of child NFT will be transferred to parent NFT owner",
         " On success emits `ChildRemoved`"
     ],
     "label": "Nesting::remove_child",
@@ -141,7 +141,8 @@ Selector: `0x27e7420e`, first 4 bytes of `blake2b_256(Nesting::remove_child)`
 }
 ```
 
-#### Nesting::accept_child(&mut self, parent_token_id: Id, child_nft: ChildNft) -> Result<(), NestingError>
+#### Nesting::accept_child(parent_token_id: Id, child_nft: ChildNft) -> Result<(), NestingError>
+
 Selector: `0x3b3e2643`, first 4 bytes of `blake2b_256(Nesting::accept_child)`
 
 ```json
@@ -153,7 +154,7 @@ Selector: `0x3b3e2643`, first 4 bytes of `blake2b_256(Nesting::accept_child)`
             "displayName": [
             "ParentTokenId"
             ],
-            "type": "u128"
+            "type": "Id"
         }
         },
         {
@@ -192,7 +193,8 @@ Selector: `0x3b3e2643`, first 4 bytes of `blake2b_256(Nesting::accept_child)`
 }
 ```
 
-### Nesting::reject_child(&mut self, parent_token_id: Id, child_nft: ChildNft) -> Result<(), NestingError>
+### Nesting::reject_child(parent_token_id: Id, child_nft: ChildNft) -> Result<(), NestingError>
+
 Selector: `0xdd308ed4`, first 4 bytes of `blake2b_256(Nesting::reject_child)`
 ```json
 {
@@ -203,7 +205,7 @@ Selector: `0xdd308ed4`, first 4 bytes of `blake2b_256(Nesting::reject_child)`
             "displayName": [
             "ParentTokenId"
             ],
-            "type": "u128"
+            "type": "Id"
         }
         },
         {
@@ -242,7 +244,8 @@ Selector: `0xdd308ed4`, first 4 bytes of `blake2b_256(Nesting::reject_child)`
 }
 ```
 
-#### Nesting::transfer_child(&mut self, from: u128, to: u128, child_nft: ChildNft) -> Result<(), NestingError>;
+#### Nesting::transfer_child(from: Id, to: Id, child_nft: ChildNft) -> Result<(), NestingError>;
+
 Selector: `0xdb43324e`, first 4 bytes of `blake2b_256(Nesting::transfer_child)`
 ```json
 {
@@ -253,7 +256,7 @@ Selector: `0xdb43324e`, first 4 bytes of `blake2b_256(Nesting::transfer_child)`
             "displayName": [
             "From"
             ],
-            "type": "u128"
+            "type": "Id"
         }
         },
         {
@@ -262,7 +265,7 @@ Selector: `0xdb43324e`, first 4 bytes of `blake2b_256(Nesting::transfer_child)`
             "displayName": [
             "To"
             ],
-            "type": "u128"
+            "type": "Id"
         }
         },
         {
@@ -303,7 +306,8 @@ Selector: `0xdb43324e`, first 4 bytes of `blake2b_256(Nesting::transfer_child)`
 }
 ```
 
-#### Nesting::get_parent_of_child(&self, child_nft: ChildNft) -> Option<u128>
+#### Nesting::get_parent_of_child(&self, child_nft: ChildNft) -> Option<Id>
+
 Selector: `0x40255e26`, first 4 bytes of `blake2b_256(Nesting::get_parent_of_child)`
 ```json
 {
@@ -328,7 +332,7 @@ Selector: `0x40255e26`, first 4 bytes of `blake2b_256(Nesting::get_parent_of_chi
         "displayName": [
         "MessageResult"
         ],
-        "type": "Option<u128>"
+        "type": "Option<Id>"
     }
 }
 ```
@@ -347,7 +351,7 @@ Selector: `0x40255e26`, first 4 bytes of `blake2b_256(Nesting::get_parent_of_chi
             "displayName": [
             "ParentId"
             ],
-            "type": "u128"
+            "type": "Id"
         }
         },
         {
@@ -369,7 +373,7 @@ Selector: `0x40255e26`, first 4 bytes of `blake2b_256(Nesting::get_parent_of_chi
             "displayName": [
             "ChildId"
             ],
-            "type": "u128"
+            "type": "Id"
         }
         }
     ],
@@ -391,7 +395,7 @@ Selector: `0x40255e26`, first 4 bytes of `blake2b_256(Nesting::get_parent_of_chi
             "displayName": [
             "ParentId"
             ],
-            "type": "u128"
+            "type": "Id"
         }
         },
         {
@@ -413,7 +417,7 @@ Selector: `0x40255e26`, first 4 bytes of `blake2b_256(Nesting::get_parent_of_chi
             "displayName": [
             "ChildId"
             ],
-            "type": "u128"
+            "type": "Id"
         }
         }
     ],
@@ -458,7 +462,7 @@ Selector: `0x40255e26`, first 4 bytes of `blake2b_256(Nesting::get_parent_of_chi
             "displayName": [
             "ChildId"
             ],
-            "type": "u128"
+            "type": "Id"
         }
         }
     ],
@@ -503,7 +507,7 @@ Selector: `0x40255e26`, first 4 bytes of `blake2b_256(Nesting::get_parent_of_chi
             "displayName": [
             "ChildId"
             ],
-            "type": "u128"
+            "type": "Id"
         }
         }
     ],
@@ -519,8 +523,12 @@ Selector: `0x40255e26`, first 4 bytes of `blake2b_256(Nesting::get_parent_of_chi
 type AccountId = [u8; 32];
 ```
 ```rust
+// Id is a 128 bit unsigned integer
+type Id = u128;
+```
+```rust
 // ChildNft is a tuple of Child's contract address and child's Id
-type ChildNft = (AccountId, u128)
+type ChildNft = (AccountId, Id)
 ```
 
 ### Errors
