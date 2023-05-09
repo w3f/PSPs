@@ -1,8 +1,8 @@
 # Nesting NFTs
 
-- **PSP Number:** [To be assigned (=number of the initial PR to the PSPs repo)]
-- **Authors:** [boyswan](https://github.com/boyswan), [Maar-io](https://github.com/Maar-io), 
-- **Status:** Draft 
+- **PSP Number:** 60
+- **Authors:** [boyswan](https://github.com/boyswan), [Maar-io](https://github.com/Maar-io),
+- **Status:** Draft
 - **Created:** [2023-05-08]
 - **Reference Implementation** [Link to a first reference implementation](https://github.com/rmrk-team/rmrk-ink)
 
