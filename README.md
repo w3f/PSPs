@@ -1,17 +1,14 @@
 # Polkadot Contracts Proposals (PCPs)
 
 
-A Polkadot Contracts Proposals (PCPs) describes standards for the Polkadot ecosystem. The Polkadot Standards Proposal GitHub is a community-based initiative.  
-PCPs process is not supposed to be a substitute for the Polkadot Governance process and is meant to focus only on commonly agreed usage patterns rather than protocol adjustments.  
+A Polkadot Contracts Proposals (PCPs) describes standards for the Polkadot ecosystem. The Polkadot Standards Proposal GitHub is a community-based initiative.  PCPs process is not supposed to be a substitute for the Polkadot Governance process and is meant to focus only on commonly agreed usage patterns rather than protocol adjustments. 
 
 > __Disclaimer__: The Polkadot Standards Proposals (PSPs) have been renamed to Polkadot Contracts Proposals (PCPs). Everything else should be discussed as part of the [RFCs process](https://github.com/polkadot-fellows/RFCs).  
 
 ---
-
-- [Polkadot Contracts Proposals (PCPs)](#polkadot-standards-proposals-pcps)
-  - [:clipboard: Process](#clipboard-process)
-  - [:pencil: Contributing](#pencil-contributing)
-  - [:bulb: Help](#bulb-help)
+- [:clipboard: Process](#clipboard-process)
+- [:pencil: Contributing](#pencil-contributing)
+- [:bulb: Help](#bulb-help)
 
 ## :clipboard: Process  
 
