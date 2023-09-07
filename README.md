@@ -42,4 +42,4 @@ Before you start writing a formal PCP, you should discuss an idea in the various
 ## :bulb: Help
 
 * [GitHub Discussions](https://github.com/w3f/PCPs/discussions)
-* [PCP Channel on Element](https://app.element.io/#/room/#psp:web3.foundation)
+* [PCP Channel on Element](https://app.element.io/#/room/#pcp:web3.foundation)
