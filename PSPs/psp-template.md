@@ -1,6 +1,6 @@
 # Title
 
-- **PCP Number:** [To be assigned (=number of the initial PR to the PCPs repo)]
+- **PSP Number:** [To be assigned (=number of the initial PR to the PSPs repo)]
 - **Authors:** [Name and Email or GitHub Username]
 - **Status:** [Draft, Call for Feedback, Accepted, Integrated]
 - **Created:** [yyyy-mm-dd]
@@ -26,5 +26,5 @@ If applicable, please include a list of potential test cases to validate an impl
 
 ## Copyright
 
-Each PCP must be labeled as placed in the
+Each PSP must be labeled as placed in the
 [public domain](https://creativecommons.org/publicdomain/zero/1.0/).
