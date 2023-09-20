@@ -1,9 +1,9 @@
-# Polkadot Smart Contracts Proposals (PSPs)
+# Polkadot Smart Contract Proposals (PSPs)
 
 
-A Polkadot Smart Contracts Proposal (PSP) describes standards for **smart contracts in the Polkadot ecosystem**. The Polkadot Smart Contracts Proposal GitHub is a community-based initiative. The PSP process is not supposed to be a substitute for the Polkadot Governance process or the [RFCs process](https://github.com/polkadot-fellows/RFCs). 
+A Polkadot Smart Contract Proposal (PSP) describes standards for **smart contracts in the Polkadot ecosystem**. The Polkadot Smart Contract Proposal GitHub is a community-based initiative. The PSP process is not supposed to be a substitute for the Polkadot Governance process or the [RFCs process](https://github.com/polkadot-fellows/RFCs). 
 
-> __Disclaimer__: The Polkadot Standards Proposals have been renamed to Polkadot Smart Contracts Proposals (PSPs). Everything else should be discussed as part of the [RFCs process](https://github.com/polkadot-fellows/RFCs).  
+> __Disclaimer__: The Polkadot Standards Proposals have been renamed to Polkadot Smart Contract Proposals (PSPs). Everything else should be discussed as part of the [RFCs process](https://github.com/polkadot-fellows/RFCs).  
 
 ---
 - [:clipboard: Process](#clipboard-process)
