@@ -26,7 +26,7 @@ Examples of implementations:
 
 ## Motivation for having a standard separate from ERC-1155
 Due to the different nature of WebAssembly smart contracts and the difference between EVM and the [`contracts` pallet](https://github.com/paritytech/substrate/tree/master/frame/contracts) in Substrate, this standard proposal has specific rules and methods,
-therefore PSP-37 differs from ERC-1155 in its implementation. 
+therefore PSP-37 differs from ERC-1155 in its implementation.
 
 Also the proposal contains new:
 - types to keep interoperability with Fungible and Non-Fungible tokens standard defined in previous PSPs.
@@ -83,7 +83,8 @@ Selector: `0xc42919e2` - first 4 bytes of `blake2b_256("PSP37::balance_of")`
   "payable": false,
   "returnType": {
     "displayName": [
-      "Balance"
+      "ink",
+      "MessageResult"
     ],
     "type": "Balance"
   },
@@ -116,7 +117,8 @@ Selector: `0x9a49e85a` - first 4 bytes of `blake2b_256("PSP37::total_supply")`
   "payable": false,
   "returnType": {
     "displayName": [
-      "Balance"
+      "ink",
+      "MessageResult"
     ],
     "type": "Balance"
   },
@@ -166,7 +168,8 @@ Selector: `0xcb78a065` - first 4 bytes of `blake2b_256("PSP37::allowance")`
   "payable": false,
   "returnType": {
     "displayName": [
-      "Balance"
+      "ink",
+      "MessageResult"
     ],
     "type": "Balance"
   },
@@ -220,7 +223,8 @@ Selector: `0x31a1a453` - first 4 bytes of `blake2b_256("PSP37::approve")`
   "payable": false,
   "returnType": {
     "displayName": [
-      "Result"
+      "ink",
+      "MessageResult"
     ],
     "type": 1
   },
@@ -290,7 +294,8 @@ Selector: `0x04e09961` - first 4 bytes of `blake2b_256("PSP37::transfer")`
   "payable": false,
   "returnType": {
     "displayName": [
-      "Result"
+      "ink",
+      "MessageResult"
     ],
     "type": 1
   },
@@ -369,7 +374,8 @@ Selector: `0x5cf8b7d4` - first 4 bytes of `blake2b_256("PSP37::transfer_from")`
   "payable": false,
   "returnType": {
     "displayName": [
-      "Result"
+      "ink",
+      "MessageResult"
     ],
     "type": 1
   },
@@ -413,7 +419,8 @@ Selector: `0x61dda97c` - first 4 bytes of `blake2b_256("PSP37Metadata::get_attri
   "payable": false,
   "returnType": {
     "displayName": [
-      "Option"
+      "ink",
+      "MessageResult"
     ],
     "type": "Option<[u8]>"
   },
@@ -469,7 +476,8 @@ Selector: `0x9bfb1d2b` - first 4 bytes of `blake2b_256("PSP37Batch::batch_transf
   "payable": false,
   "returnType": {
     "displayName": [
-      "Result"
+      "ink",
+      "MessageResult"
     ],
     "type": 1
   },
@@ -525,7 +533,8 @@ Selector: `0xf4ebeed2` - first 4 bytes of `blake2b_256("PSP37Batch::batch_transf
   "payable": false,
   "returnType": {
     "displayName": [
-      "Result"
+      "ink",
+      "MessageResult"
     ],
     "type": 1
   },
@@ -571,7 +580,8 @@ Selector: `0x4cc01ee0` - first 4 bytes of `blake2b_256("PSP37Enumerable::owners_
   "payable": false,
   "returnType": {
     "displayName": [
-      "Option"
+      "ink",
+      "MessageResult"
     ],
     "type": "Option<Id>"
   },
@@ -603,7 +613,8 @@ Selector: `0x127b5477` - first 4 bytes of `blake2b_256("PSP37Enumerable::token_b
   "payable": false,
   "returnType": {
     "displayName": [
-      "Option"
+      "ink",
+      "MessageResult"
     ],
     "type": "Option<Id>"
   },
@@ -647,7 +658,7 @@ When a contract deletes (burns) tokens, `to` will be `None`.
       "label": "id",
       "type": {
         "displayName": [
-           "Id"
+          "Id"
         ],
         "type": "Id"
       }
@@ -705,7 +716,7 @@ When a contract deletes (burns) tokens, `to` will be `None`.
       "label": "ids_amounts",
       "type": {
         "displayName": [
-           "[(Id, Balance)]"
+          "[(Id, Balance)]"
         ],
         "type": "[(Id, Balance)]"
       }
@@ -750,7 +761,7 @@ When a contract deletes (burns) tokens, `to` will be `None`.
       "label": "id",
       "type": {
         "displayName": [
-           "Option<Id>"
+          "Option<Id>"
         ],
         "type": "Option<Id>"
       }
@@ -784,7 +795,7 @@ When a contract deletes (burns) tokens, `to` will be `None`.
       "label": "id",
       "type": {
         "displayName": [
-           "Id"
+          "Id"
         ],
         "type": "Id"
       }

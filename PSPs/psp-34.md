@@ -110,7 +110,7 @@ Selector: `0x1168624d` - first 4 bytes of `blake2b_256("PSP34::owner_of")`
       "label": "id",
       "type": {
         "displayName": [
-           "Id"
+          "Id"
         ],
         "type": "Id"
       }
@@ -124,7 +124,8 @@ Selector: `0x1168624d` - first 4 bytes of `blake2b_256("PSP34::owner_of")`
   "payable": false,
   "returnType": {
     "displayName": [
-      "Option"
+      "ink",
+      "MessageResult"
     ],
     "type": "Option<AccountId>"
   },
@@ -174,7 +175,8 @@ Selector: `0x4790f55a` - first 4 bytes of `blake2b_256("PSP34::allowance")`
   "payable": false,
   "returnType": {
     "displayName": [
-      "bool"
+      "ink",
+      "MessageResult"
     ],
     "type": "bool"
   },
@@ -232,7 +234,8 @@ Selector: `0x1932a8b0` - first 4 bytes of `blake2b_256("PSP34::approve")`
   "payable": false,
   "returnType": {
     "displayName": [
-      "Result"
+      "ink",
+      "MessageResult"
     ],
     "type": 1
   },
@@ -291,7 +294,8 @@ Selector: `0x3128d61b` - first 4 bytes of `blake2b_256("PSP34::transfer")`
   "payable": false,
   "returnType": {
     "displayName": [
-      "Result"
+      "ink",
+      "MessageResult"
     ],
     "type": 1
   },
@@ -311,7 +315,8 @@ Selector: `0x628413fe` - first 4 bytes of `blake2b_256("PSP34::total_supply")`
   "label": "PSP34::total_supply",
   "returnType": {
     "displayName": [
-      "Balance"
+      "ink",
+      "MessageResult"
     ],
     "type": "Balance"
   },
@@ -360,7 +365,8 @@ Selector: `0xf19d48d1` - first 4 bytes of `blake2b_256("PSP34Metadata::get_attri
   "payable": false,
   "returnType": {
     "displayName": [
-      "Option"
+      "ink",
+      "MessageResult"
     ],
     "type": "Option<[u8]>"
   },
@@ -412,8 +418,8 @@ Selector: `0x3bcfb511` - first 4 bytes of `blake2b_256("PSP34Enumerable::owners_
   "payable": false,
   "returnType": {
     "displayName": [
-      "psp34enumerable_external",
-      "OwnersTokenByIndexOutput"
+      "ink",
+      "MessageResult"
     ],
     "type": 26
   },
@@ -446,8 +452,8 @@ Selector: `0xcd0340d0` - first 4 bytes of `blake2b_256("PSP37Enumerable::owners_
   "payable": false,
   "returnType": {
     "displayName": [
-      "psp34enumerable_external",
-      "TokenByIndexOutput"
+      "ink",
+      "MessageResult"
     ],
     "type": 26
   },
@@ -491,7 +497,7 @@ When a contract deletes (burns) tokens, `to` will be `None`.
       "label": "id",
       "type": {
         "displayName": [
-           "Id"
+          "Id"
         ],
         "type": "Id"
       }
@@ -570,7 +576,7 @@ When a contract deletes (burns) tokens, `to` will be `None`.
       "label": "id",
       "type": {
         "displayName": [
-           "Id"
+          "Id"
         ],
         "type": "Id"
       }
